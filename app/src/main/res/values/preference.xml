@@ -105,6 +105,8 @@
     <string name="version">Version</string>
     <string name="halfDuplex">One-way audio</string>
     <string name="halfDuplexSum">Mutes other playback during push-to-talk to avoid audio loops/feedback.</string>
+    <string name="releaseBeep">Transmission end beep</string>
+    <string name="releaseBeepSum">Transmits a short tone to the channel when you release the talk button, signalling that the channel is free. Useful for half-duplex PTT operation (e.g. POC radios).</string>
     <string name="handsetMode">Handset</string>
     <string name="handsetModeSum">Uses the front speaker and proximity sensor to simulate a traditional phone call.</string>
     <string name="pttSound">Push-to-talk sound</string>

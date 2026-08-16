@@ -74,8 +74,10 @@ android {
         // Remember: app_news_items_vX_Y_Z in src/main/res/values/strings.xml
         // and NEWS_ITEMS in src/main/res/java/se/lublin/mumla/app/DialogUtils.java
         //     code:XYYZZbb (bb for build)
-        versionCode 3070300
-        versionName gitDescribe
+        versionCode 3070301
+        // Custom test build for IW2DPO's PMR/POC group: adds a "roger beep" transmitted on
+        // PTT release. Based on upstream Mumla (gitDescribe below), not an official release.
+        versionName gitDescribe + "-IW2DPO-rogerbeep-beta1"
 
         buildConfigField "long", "TIMESTAMP", System.currentTimeMillis() + "L"
         buildConfigField "String", "VERSIONTAG", "\"" + gitDescribe.split("-")[0] + "\""

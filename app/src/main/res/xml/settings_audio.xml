@@ -100,6 +100,12 @@
             android:title="@string/halfDuplex"
             android:summary="@string/halfDuplexSum"
             app:iconSpaceReserved="false"/>
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="release_beep_enabled"
+            android:title="@string/releaseBeep"
+            android:summary="@string/releaseBeepSum"
+            app:iconSpaceReserved="false"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/advancedAudio"
         app:iconSpaceReserved="false">

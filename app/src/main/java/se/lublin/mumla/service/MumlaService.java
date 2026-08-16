@@ -461,6 +461,9 @@ public class MumlaService extends HumlaService implements
                 changedExtras.putString(EXTRAS_ECHO_CANCELLATION_METHOD,
                         mSettings.getEchoCancellationMethod());
                 break;
+            case Settings.PREF_RELEASE_BEEP:
+                changedExtras.putBoolean(EXTRAS_RELEASE_BEEP, mSettings.isReleaseBeepEnabled());
+                break;
             case Settings.PREF_PTT_SOUND:
                 mPTTSoundEnabled = mSettings.isPttSoundEnabled();
                 break;

@@ -1,0 +1,57 @@
+name: Build IW2DPO beta APK (roger beep on PTT release)
+
+# Questo workflow compila un APK di test (flavor "beta", buildType "debug")
+# con la modifica richiesta da IW2DPO: un breve beep trasmesso al canale al
+# rilascio del PTT, per segnalare che il canale e' libero (uso con radio POC
+# in half-duplex).
+#
+# Va eseguito su GitHub Actions (non nel sandbox cloud di Claude), perche'
+# richiede accesso a Maven Central, Google Maven e GitLab per i submodule
+# nativi (celt/opus/speex/spongycastle) - reti non raggiungibili dal sandbox
+# di sviluppo. Basta pushare questo repository (con i submodule) su GitHub e
+# lanciare il workflow (manualmente o ad ogni push); l'APK compilato sara'
+# scaricabile come "artifact" della run.
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (con submodule ricorsivi: humla, celt, opus, speex, spongycastle)
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android NDK richiesto (25.1.8937393)
+        run: sdkmanager --install "ndk;25.1.8937393"
+
+      - name: Costruisci humla-spongycastle (dipendenza di libraries/humla)
+        working-directory: libraries/humla/libs/humla-spongycastle
+        run: |
+          chmod +x ../../gradlew
+          ../../gradlew jar
+
+      - name: Costruisci APK di debug (flavor beta, per test - installabile insieme alla versione ufficiale)
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleBetaDebug --stacktrace
+
+      - name: Carica APK come artifact scaricabile
+        uses: actions/upload-artifact@v4
+        with:
+          name: mumla-beta-iw2dpo-rogerbeep-debug-apk
+          path: app/build/outputs/apk/**/*.apk
+          if-no-files-found: error

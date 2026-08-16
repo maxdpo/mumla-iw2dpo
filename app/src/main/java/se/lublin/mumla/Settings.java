@@ -135,6 +135,9 @@ public class Settings {
     public static final String PREF_HALF_DUPLEX = "half_duplex";
     public static final boolean DEFAULT_HALF_DUPLEX = false;
 
+    public static final String PREF_RELEASE_BEEP = "release_beep_enabled";
+    public static final boolean DEFAULT_RELEASE_BEEP = true;
+
     public static final String PREF_HANDSET_MODE = "handset_mode";
     public static final boolean DEFAULT_HANDSET_MODE = false;
 
@@ -348,6 +351,10 @@ public class Settings {
 
     public boolean isHalfDuplex() {
         return preferences.getBoolean(PREF_HALF_DUPLEX, DEFAULT_HALF_DUPLEX);
+    }
+
+    public boolean isReleaseBeepEnabled() {
+        return preferences.getBoolean(PREF_RELEASE_BEEP, DEFAULT_RELEASE_BEEP);
     }
 
     public boolean isHandsetMode() {
