@@ -1,39 +1,34 @@
-# Modifica richiesta da IW2DPO: beep di fine trasmissione (PTT)
+Change requested by IW2DPO Max Italy : end-of-transmission beep (PTT)
+Problem
 
-## Problema
+The group uses Mumla on PoC radios in PTT (half-duplex) mode. 
+Upon releasing the PTT button, no acoustic signal was transmitted to 
+the channel, leaving listening users unaware when the channel became free.
 
-Il gruppo usa Mumla su radio POC in modalità PTT (half-duplex). Al rilascio
-del pulsante PTT non veniva trasmesso alcun segnale acustico al canale, per
-cui gli altri utenti in ascolto non capivano quando il canale tornava
-libero.
+Solution
+When the PTT button is released, a short tone ("roger beep") is synthesized 
+right before ending the audio encoding. 
+It is sent to the channel just like microphone audio: it goes through the 
+same encoder (Opus/CELT) and encryption/network stream, making it audible 
+to all connected users, not just locally.
 
-## Soluzione
+Beep characteristics (easily adjustable in libraries/humla/src/main/java/se/lublin/humla/protocol/AudioHandler.java):
 
-Quando il PTT viene rilasciato, prima di terminare la codifica audio viene
-sintetizzato un breve tono ("roger beep") e inviato al canale esattamente
-come se fosse audio del microfono: passa quindi attraverso lo stesso
-encoder (Opus/CELT), la stessa cifratura/rete e viene sentito da tutti gli
-utenti collegati, non solo in locale.
+Frequency: 1500 Hz
+Duration: 150 ms
+Amplitude: 40% full scale (to avoid being overly obtrusive)
+Fade-in/out: 10 ms to prevent clicking sounds
 
-Caratteristiche del beep (facilmente regolabili, vedi
-`libraries/humla/src/main/java/se/lublin/humla/protocol/AudioHandler.java`):
+Activation / Deactivation
+Added a new option under the Audio settings in the app, within the "Push-to-talk settings" section:
 
-- Frequenza: 1500 Hz
-- Durata: 150 ms
-- Ampiezza: 40% del fondo scala (per non risultare troppo invadente)
-- Dissolvenza (fade-in/out) di 10 ms per evitare click
+End of transmission beep (preference key: release_beep_enabled)
+Enabled by default (true)
 
-## Attivazione / disattivazione
+Visible only when the transmission mode is set to "Push-to-talk"
 
-Aggiunta una nuova opzione nelle impostazioni Audio dell'app, sotto la
-sezione "Impostazioni push-to-talk":
+Modified files
 
-- **Beep di fine trasmissione** (chiave preferenza: `release_beep_enabled`)
-- Attiva per default (`true`)
-- Visibile solo quando la modalità di trasmissione è impostata su
-  "Push-to-talk"
-
-## File modificati
 
 - `libraries/humla/src/main/java/se/lublin/humla/protocol/AudioHandler.java`
   — logica di generazione/trasmissione del beep (metodo
