@@ -1,3 +1,6 @@
+This code is in BETA version
+Created on Aug 16 2026
+
 Change requested by IW2DPO Max Italy : end-of-transmission beep (PTT)
 Problem
 
