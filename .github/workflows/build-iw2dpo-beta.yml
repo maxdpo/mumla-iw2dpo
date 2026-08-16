@@ -21,7 +21,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout (con submodule ricorsivi: humla, celt, opus, speex, spongycastle)
+      - name: "Checkout (con submodule ricorsivi: humla, celt, opus, speex, spongycastle)"
         uses: actions/checkout@v4
         with:
           submodules: recursive
