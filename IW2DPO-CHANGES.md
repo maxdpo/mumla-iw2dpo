@@ -1,6 +1,10 @@
 This code is in BETA version
 Created on Aug 16 2026
 
+Roger beep and Beep volume adjustable
+Tested on Phone and HIRO it works
+
+
 This code need the libraries 
 https://github.com/maxdpo/humla-iw2dpo
 
