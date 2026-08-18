@@ -1,39 +1,48 @@
-# Modifica richiesta da IW2DPO: beep di fine trasmissione (PTT)
+This code is in BETA version
+Created on Aug 16 2026
 
-## Problema
+This code need the libraries 
+https://github.com/maxdpo/humla-iw2dpo
 
-Il gruppo usa Mumla su radio POC in modalità PTT (half-duplex). Al rilascio
-del pulsante PTT non veniva trasmesso alcun segnale acustico al canale, per
-cui gli altri utenti in ascolto non capivano quando il canale tornava
-libero.
+Change requested by IW2DPO Max Italy : end-of-transmission beep (PTT)
+Problem
 
-## Soluzione
+The group uses Mumla on PoC radios in PTT (half-duplex) mode. 
+Upon releasing the PTT button, no acoustic signal was transmitted to 
+the channel, leaving listening users unaware when the channel became free.
 
-Quando il PTT viene rilasciato, prima di terminare la codifica audio viene
-sintetizzato un breve tono ("roger beep") e inviato al canale esattamente
-come se fosse audio del microfono: passa quindi attraverso lo stesso
-encoder (Opus/CELT), la stessa cifratura/rete e viene sentito da tutti gli
-utenti collegati, non solo in locale.
+Solution
+When the PTT button is released, a short tone ("roger beep") is synthesized 
+right before ending the audio encoding. 
+It is sent to the channel just like microphone audio: it goes through the 
+same encoder (Opus/CELT) and encryption/network stream, making it audible 
+to all connected users, not just locally.
 
-Caratteristiche del beep (facilmente regolabili, vedi
-`libraries/humla/src/main/java/se/lublin/humla/protocol/AudioHandler.java`):
+Beep characteristics (easily adjustable in libraries/humla/src/main/java/se/lublin/humla/protocol/AudioHandler.java):
 
-- Frequenza: 1500 Hz
-- Durata: 150 ms
-- Ampiezza: 40% del fondo scala (per non risultare troppo invadente)
-- Dissolvenza (fade-in/out) di 10 ms per evitare click
+Frequency: 1500 Hz
+Duration: 150 ms
+Amplitude: adjustable in-app (see "Beep volume" below), 40% full scale by default (to avoid being overly obtrusive)
+Fade-in/out: 10 ms to prevent clicking sounds
 
-## Attivazione / disattivazione
+Activation / Deactivation
+Added a new option under the Audio settings in the app, within the "Push-to-talk settings" section:
 
-Aggiunta una nuova opzione nelle impostazioni Audio dell'app, sotto la
-sezione "Impostazioni push-to-talk":
+End of transmission beep (preference key: release_beep_enabled)
+Enabled by default (true)
 
-- **Beep di fine trasmissione** (chiave preferenza: `release_beep_enabled`)
-- Attiva per default (`true`)
-- Visibile solo quando la modalità di trasmissione è impostata su
-  "Push-to-talk"
+Visible only when the transmission mode is set to "Push-to-talk"
 
-## File modificati
+Beep volume
+Added a slider right below the beep toggle, in the same "Push-to-talk settings" section:
+
+Transmission end beep volume (preference key: release_beep_volume)
+Range 1-100 (percentage of full scale), default 40, same as the original fixed amplitude
+Only enabled when "End of transmission beep" is on
+Propagated to the Humla library through a new extra, EXTRAS_RELEASE_BEEP_VOLUME
+
+Modified files
+
 
 - `libraries/humla/src/main/java/se/lublin/humla/protocol/AudioHandler.java`
   — logica di generazione/trasmissione del beep (metodo
@@ -60,8 +69,8 @@ sezione "Impostazioni push-to-talk":
 
 ## Versione di questa build
 
-- versionName: `<versione-base>-IW2DPO-rogerbeep-beta1` (es.
-  `3.7.3-21-g477b337-IW2DPO-rogerbeep-beta1[-debug]`)
+- versionName: `<versione-base>-IW2DPO-rogerbeep-beta2` (es.
+  `3.7.3-21-g477b337-IW2DPO-rogerbeep-beta2[-debug]`)
 - Nome app sul dispositivo: **Mumla Beta IW2DPO**
 - Package Android (applicationId): `se.lublin.mumla.beta` — può essere
   installata *insieme* alla versione ufficiale di Mumla, senza

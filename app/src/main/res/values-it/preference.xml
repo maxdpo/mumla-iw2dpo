@@ -70,6 +70,8 @@
     <string name="halfDuplexSum">Disattiva altre riproduzioni durante il push-to-talk, per evitare loop/feedback audio.</string>
     <string name="releaseBeep">Beep di fine trasmissione</string>
     <string name="releaseBeepSum">Trasmette un breve tono al canale quando rilasci il pulsante PTT, per segnalare che il canale è libero. Utile in modalità half-duplex (es. radio POC).</string>
+    <string name="releaseBeepVolume">Volume beep di fine trasmissione</string>
+    <string name="releaseBeepVolumeSum">Intensità del beep di fine trasmissione, in percentuale del fondo scala.</string>
     <string name="handsetModeSum">Usa l\'altoparlante anteriore e il sensore di prossimità per simulare una telefonata tradizionale.</string>
     <string name="pressKeyInfo">L\'app deve essere aperta (a causa di restrizioni Android).</string>
     <string name="preprocessor_enabled">Pre-elaborazione dell\'input</string>

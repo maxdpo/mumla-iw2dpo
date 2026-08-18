@@ -138,6 +138,9 @@ public class Settings {
     public static final String PREF_RELEASE_BEEP = "release_beep_enabled";
     public static final boolean DEFAULT_RELEASE_BEEP = true;
 
+    public static final String PREF_RELEASE_BEEP_VOLUME = "release_beep_volume";
+    public static final int DEFAULT_RELEASE_BEEP_VOLUME = 40;
+
     public static final String PREF_HANDSET_MODE = "handset_mode";
     public static final boolean DEFAULT_HANDSET_MODE = false;
 
@@ -355,6 +358,10 @@ public class Settings {
 
     public boolean isReleaseBeepEnabled() {
         return preferences.getBoolean(PREF_RELEASE_BEEP, DEFAULT_RELEASE_BEEP);
+    }
+
+    public int getReleaseBeepVolume() {
+        return preferences.getInt(PREF_RELEASE_BEEP_VOLUME, DEFAULT_RELEASE_BEEP_VOLUME);
     }
 
     public boolean isHandsetMode() {

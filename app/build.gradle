@@ -77,7 +77,7 @@ android {
         versionCode 3070301
         // Custom test build for IW2DPO's PMR/POC group: adds a "roger beep" transmitted on
         // PTT release. Based on upstream Mumla (gitDescribe below), not an official release.
-        versionName gitDescribe + "-IW2DPO-rogerbeep-beta1"
+        versionName gitDescribe + "-IW2DPO-rogerbeep-beta2"
 
         buildConfigField "long", "TIMESTAMP", System.currentTimeMillis() + "L"
         buildConfigField "String", "VERSIONTAG", "\"" + gitDescribe.split("-")[0] + "\""

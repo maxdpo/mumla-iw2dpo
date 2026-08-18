@@ -106,6 +106,16 @@
             android:title="@string/releaseBeep"
             android:summary="@string/releaseBeepSum"
             app:iconSpaceReserved="false"/>
+        <se.lublin.mumla.preference.SeekBarDialogPreference
+            android:dependency="release_beep_enabled"
+            android:key="release_beep_volume"
+            android:title="@string/releaseBeepVolume"
+            android:summary="@string/releaseBeepVolumeSum"
+            app:max="100"
+            app:min="1"
+            android:defaultValue="40"
+            android:text="%"
+            app:iconSpaceReserved="false"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/advancedAudio"
         app:iconSpaceReserved="false">
