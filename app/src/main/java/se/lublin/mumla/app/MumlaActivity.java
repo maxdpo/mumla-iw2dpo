@@ -21,6 +21,7 @@ import static java.util.Objects.requireNonNull;
 
 import android.Manifest;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
@@ -132,6 +133,10 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     private static final int PERMISSIONS_REQUEST_POST_NOTIFICATIONS = 2;
     private Server mServerPendingPerm = null;
     private boolean mPermPostNotificationsAsked = false;
+    /** IW2DPO: true right after a fresh app launch if we should auto-connect to the
+     * preferred server as soon as the service is bound. Consumed (set back to false) the
+     * first time {@link #mConnection}'s onServiceConnected runs. */
+    private boolean mPendingAutoConnect = false;
 
     private AlertDialog mConnectingDialog;
     private AlertDialog mErrorDialog;
@@ -159,6 +164,17 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
                 loadDrawerFragment(DrawerAdapter.ITEM_FAVOURITES);
             }
             updateConnectionState(getService());
+
+            // IW2DPO: auto-connect to the preferred server, once, right after a fresh launch.
+            if (mPendingAutoConnect) {
+                mPendingAutoConnect = false;
+                if (!mService.isConnected()) {
+                    Server preferred = findServerById(mDatabase.getServers(), mSettings.getAutoconnectServerId());
+                    if (preferred != null) {
+                        connectToServer(preferred);
+                    }
+                }
+            }
         }
 
         @Override
@@ -166,6 +182,16 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
             mService = null;
         }
     };
+
+    /** IW2DPO: finds a saved server by database ID, or null if it's no longer saved. */
+    private static Server findServerById(List<Server> servers, long id) {
+        for (Server server : servers) {
+            if (server.getId() == id) {
+                return server;
+            }
+        }
+        return null;
+    }
 
     private final HumlaObserver mObserver = new HumlaObserver() {
         @Override
@@ -385,6 +411,10 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
                 showFirstRunGuide();
             } else {
                 new StartupAction().execute(this);
+                // IW2DPO: remember to auto-connect to the preferred server once the
+                // background service is bound (see mConnection.onServiceConnected below).
+                mPendingAutoConnect = mSettings.isAutoconnectEnabled()
+                        && mSettings.getAutoconnectServerId() >= 0;
             }
         }
     }
@@ -399,7 +429,12 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     protected void onResume() {
         super.onResume();
         Intent connectIntent = new Intent(this, MumlaService.class);
-        bindService(connectIntent, mConnection, 0);
+        // IW2DPO: normally we only attach to the service if it's already running (flags=0).
+        // When an auto-connect to the preferred server is pending, force-create it instead
+        // (BIND_AUTO_CREATE), otherwise onServiceConnected below would never fire on a real
+        // cold start (no service running yet) and auto-connect would silently never happen.
+        int bindFlags = mPendingAutoConnect ? Context.BIND_AUTO_CREATE : 0;
+        bindService(connectIntent, mConnection, bindFlags);
     }
 
     @Override

@@ -41,6 +41,30 @@ Range 1-100 (percentage of full scale), default 40, same as the original fixed a
 Only enabled when "End of transmission beep" is on
 Propagated to the Humla library through a new extra, EXTRAS_RELEASE_BEEP_VOLUME
 
+Automatic connect/reconnect (beta3)
+Problem: on the group's PoC radios, Mumla doesn't log into any saved server on launch --
+you have to open the app, wait for the server list, and pick one by hand every time.
+Also, when mobile data is briefly unavailable, Mumla can silently drop the connection and
+stay offline without anyone noticing.
+
+Solution: a new "preferred server" setting plus an automatic connect/reconnect toggle,
+added to General settings, right after "Start up showing pinned channels":
+
+Preferred server (preference key: autoconnect_server_id)
+A dropdown listing every server already saved on the device (populated at runtime, since
+the list can't be known when the app is built)
+
+Automatic connect/reconnect (preference key: autoconnect_enabled)
+Off by default, so nothing changes for anyone who doesn't turn it on
+When on: connects to the preferred server automatically as soon as Mumla starts (no need
+to open the server list by hand), and a watchdog checks every 60 seconds whether that
+connection is still up -- if not, it reconnects on its own, no user action needed
+While actively retrying, the app keeps its background service in the foreground (with a
+"riconnessione automatica in corso" notification) specifically so Android doesn't kill it
+before the next 60-second check -- this is why the setting mentions extra battery use
+Note: this is a "stay connected no matter what" feature. If you want to disconnect for
+good, turn the toggle off first, otherwise the watchdog will reconnect you.
+
 Modified files
 
 
@@ -66,11 +90,23 @@ Modified files
   versione ufficiale, package `se.lublin.mumla.beta`).
 - `.github/workflows/build-iw2dpo-beta.yml` — workflow GitHub Actions per
   compilare l'APK di test automaticamente nel cloud (vedi istruzioni).
+- `app/src/main/java/se/lublin/mumla/Settings.java` — nuove preferenze
+  `PREF_AUTOCONNECT_ENABLED` / `PREF_AUTOCONNECT_SERVER_ID`.
+- `app/src/main/res/xml/settings_general.xml`,
+  `app/src/main/java/se/lublin/mumla/preference/GeneralSettingsFragment.java`
+  — nuove voci "Server preferito" e "Connessione/riconnessione automatica"
+  in Impostazioni generali, con l'elenco server popolato a runtime.
+- `app/src/main/java/se/lublin/mumla/app/MumlaActivity.java` — connessione
+  automatica al server preferito subito dopo l'avvio dell'app.
+- `app/src/main/java/se/lublin/mumla/service/MumlaService.java` — watchdog
+  che controlla ogni 60 secondi lo stato della connessione e riconnette da
+  solo se necessario; mantiene il servizio in primo piano durante i
+  tentativi di riconnessione.
 
 ## Versione di questa build
 
-- versionName: `<versione-base>-IW2DPO-rogerbeep-beta2` (es.
-  `3.7.3-21-g477b337-IW2DPO-rogerbeep-beta2[-debug]`)
+- versionName: `<versione-base>-IW2DPO-autoconnect-beta3` (es.
+  `3.7.3-21-g477b337-IW2DPO-autoconnect-beta3[-debug]`)
 - Nome app sul dispositivo: **Mumla Beta IW2DPO**
 - Package Android (applicationId): `se.lublin.mumla.beta` — può essere
   installata *insieme* alla versione ufficiale di Mumla, senza
@@ -78,6 +114,6 @@ Modified files
 
 ## Nota importante
 
-Questa è una build di test ("beta1"), non rivista né distribuita dal
+Questa è una build di test ("beta3"), non rivista né distribuita dal
 maintainer ufficiale di Mumla. È pensata solo per il collaudo interno del
 gruppo radioamatoriale.

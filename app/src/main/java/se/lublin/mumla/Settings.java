@@ -93,6 +93,14 @@ public class Settings {
     public static final String PREF_AUTO_RECONNECT = "autoReconnect";
     public static final Boolean DEFAULT_AUTO_RECONNECT = true;
 
+    /** IW2DPO: connect automatically to a preferred server on app launch, and keep watching
+     * the connection, reconnecting on its own if it drops. */
+    public static final String PREF_AUTOCONNECT_ENABLED = "autoconnect_enabled";
+    public static final boolean DEFAULT_AUTOCONNECT_ENABLED = false;
+
+    public static final String PREF_AUTOCONNECT_SERVER_ID = "autoconnect_server_id";
+    public static final String DEFAULT_AUTOCONNECT_SERVER_ID = "-1";
+
     public static final String PREF_THEME = "theme";
     public static final String PREF_LANGUAGE = "language";
 
@@ -307,6 +315,21 @@ public class Settings {
 
     public boolean isAutoReconnectEnabled() {
         return preferences.getBoolean(PREF_AUTO_RECONNECT, DEFAULT_AUTO_RECONNECT);
+    }
+
+    /** IW2DPO: whether to connect automatically to the preferred server on launch, and keep
+     * watching/restoring that connection while the app runs. */
+    public boolean isAutoconnectEnabled() {
+        return preferences.getBoolean(PREF_AUTOCONNECT_ENABLED, DEFAULT_AUTOCONNECT_ENABLED);
+    }
+
+    /** IW2DPO: database ID of the preferred server, or -1 if none is configured. */
+    public long getAutoconnectServerId() {
+        try {
+            return Long.parseLong(preferences.getString(PREF_AUTOCONNECT_SERVER_ID, DEFAULT_AUTOCONNECT_SERVER_ID));
+        } catch (NumberFormatException e) {
+            return -1L;
+        }
     }
 
     public boolean isTcpForced() {

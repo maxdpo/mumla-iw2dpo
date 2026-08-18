@@ -83,4 +83,20 @@
         android:summary="@string/pref_start_upIn_pinned_mode_sum"
         android:title="@string/pref_start_up_in_pinned_mode"
         app:iconSpaceReserved="false" />
+
+    <!-- IW2DPO: preferred server + automatic connect/reconnect, entries filled in at
+         runtime by GeneralSettingsFragment from the list of saved servers. -->
+    <ListPreference
+        android:key="autoconnect_server_id"
+        android:title="@string/autoconnectServer"
+        android:summary="@string/autoconnectServerSum"
+        android:defaultValue="-1"
+        app:iconSpaceReserved="false" />
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="autoconnect_enabled"
+        android:title="@string/autoconnectEnabled"
+        android:summary="@string/autoconnectEnabledSum"
+        app:iconSpaceReserved="false" />
 </PreferenceScreen>

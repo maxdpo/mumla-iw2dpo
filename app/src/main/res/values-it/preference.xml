@@ -63,6 +63,12 @@
     <string name="shortTtsMessages">Messaggi sintesi vocale abbreviati</string>
     <string name="shortTtsMessagesSum">Accorcia i messaggi leggendo solo i nomi dei domini dei collegamenti.</string>
     <string name="autoReconnectSum">Ristabilisce la connessione al server quando viene persa.</string>
+    <string name="autoconnectServer">Server preferito</string>
+    <string name="autoconnectServerSum">Server usato per la connessione/riconnessione automatica (vedi sotto).</string>
+    <string name="autoconnectServerNone">Nessuno</string>
+    <string name="autoconnectEnabled">Connessione/riconnessione automatica</string>
+    <string name="autoconnectEnabledSum">Si connette al server preferito appena Mumla si avvia, e controlla ogni 60 secondi che la connessione sia ancora attiva, riconnettendosi da sola se cade. Consuma più batteria mentre è attiva, perché mantiene l\'app in esecuzione in background per sorvegliare la connessione.</string>
+    <string name="autoconnectReconnecting">Riconnessione automatica in corso…</string>
     <string name="useTorSum">Richiede l\'app Orbot.</string>
     <string name="loadImagesSum">Scarica e mostra le immagini in chat.</string>
     <string name="halfDuplex">Audio a senso unico</string>
