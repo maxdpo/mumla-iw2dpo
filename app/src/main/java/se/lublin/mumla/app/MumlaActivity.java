@@ -134,7 +134,7 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     private Server mServerPendingPerm = null;
     private boolean mPermPostNotificationsAsked = false;
     /** IW2DPO: true right after a fresh app launch if we should auto-connect to the
-     * preferred server as soon as the service is bound. Consumed (set back to false) the
+     * last used server as soon as the service is bound. Consumed (set back to false) the
      * first time {@link #mConnection}'s onServiceConnected runs. */
     private boolean mPendingAutoConnect = false;
 
@@ -165,13 +165,13 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
             }
             updateConnectionState(getService());
 
-            // IW2DPO: auto-connect to the preferred server, once, right after a fresh launch.
+            // IW2DPO: auto-connect to the last used server, once, right after a fresh launch.
             if (mPendingAutoConnect) {
                 mPendingAutoConnect = false;
                 if (!mService.isConnected()) {
-                    Server preferred = findServerById(mDatabase.getServers(), mSettings.getAutoconnectServerId());
-                    if (preferred != null) {
-                        connectToServer(preferred);
+                    Server lastServer = findServerById(mDatabase.getServers(), mSettings.getLastServerId());
+                    if (lastServer != null) {
+                        connectToServer(lastServer);
                     }
                 }
             }
@@ -411,10 +411,10 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
                 showFirstRunGuide();
             } else {
                 new StartupAction().execute(this);
-                // IW2DPO: remember to auto-connect to the preferred server once the
+                // IW2DPO: remember to auto-connect to the last used server once the
                 // background service is bound (see mConnection.onServiceConnected below).
                 mPendingAutoConnect = mSettings.isAutoconnectEnabled()
-                        && mSettings.getAutoconnectServerId() >= 0;
+                        && mSettings.getLastServerId() >= 0;
             }
         }
     }
@@ -430,7 +430,7 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         super.onResume();
         Intent connectIntent = new Intent(this, MumlaService.class);
         // IW2DPO: normally we only attach to the service if it's already running (flags=0).
-        // When an auto-connect to the preferred server is pending, force-create it instead
+        // When an auto-connect to the last used server is pending, force-create it instead
         // (BIND_AUTO_CREATE), otherwise onServiceConnected below would never fire on a real
         // cold start (no service running yet) and auto-connect would silently never happen.
         int bindFlags = mPendingAutoConnect ? Context.BIND_AUTO_CREATE : 0;

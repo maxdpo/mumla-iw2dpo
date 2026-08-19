@@ -76,9 +76,9 @@ android {
         //     code:XYYZZbb (bb for build)
         versionCode 3070301
         // Custom test build for IW2DPO's PMR/POC group: adds a "roger beep" transmitted on
-        // PTT release, plus automatic connect/reconnect to a preferred server. Based on
+        // PTT release, plus automatic connect/reconnect to the last used server. Based on
         // upstream Mumla (gitDescribe below), not an official release.
-        versionName gitDescribe + "-IW2DPO-autoconnect-beta3"
+        versionName gitDescribe + "-IW2DPO-autoconnect-beta4"
 
         buildConfigField "long", "TIMESTAMP", System.currentTimeMillis() + "L"
         buildConfigField "String", "VERSIONTAG", "\"" + gitDescribe.split("-")[0] + "\""

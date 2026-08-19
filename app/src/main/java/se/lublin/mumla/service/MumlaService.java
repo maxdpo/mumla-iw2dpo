@@ -76,14 +76,14 @@ public class MumlaService extends HumlaService implements
     public static final int TTS_THRESHOLD = 250; // Maximum number of characters to read
     public static final int RECONNECT_DELAY = 10000;
     /** IW2DPO: how often the reconnect watchdog checks whether we're still connected to the
-     * preferred server. */
+     * last used server. */
     public static final long RECONNECT_WATCHDOG_INTERVAL_MS = 60000;
 
     private Settings mSettings;
     private MumlaConnectionNotification mNotification;
     private MumlaMessageNotification mMessageNotification;
     private MumlaReconnectNotification mReconnectNotification;
-    /** IW2DPO: own database handle used by the reconnect watchdog to look up the preferred
+    /** IW2DPO: own database handle used by the reconnect watchdog to look up the last used
      * server; opened in onCreate(), closed in onDestroy(). */
     private MumlaDatabase mWatchdogDatabase;
     private Handler mReconnectWatchdogHandler;
@@ -164,17 +164,24 @@ public class MumlaService extends HumlaService implements
                 mNotification.setActionsShown(true);
                 mNotification.show();
             }
+
+            // IW2DPO: remember this as the "last used server", so a future launch (or the
+            // reconnect watchdog) can log back into it automatically.
+            Server target = getTargetServer();
+            if (target != null) {
+                mSettings.setLastServerId(target.getId());
+            }
         }
 
         @Override
         public void onDisconnected(HumlaException e) {
-            // IW2DPO: an unexpected drop from the preferred server, with automatic
+            // IW2DPO: an unexpected drop from the last used server, with automatic
             // connect/reconnect enabled -- keep the foreground notification up (instead of
             // hiding it) so Android doesn't kill this service while the watchdog waits for
             // its next 60-second check to reconnect us.
             boolean watchdogWillRetry = e != null
                     && mSettings.isAutoconnectEnabled()
-                    && isPreferredServer(getTargetServer());
+                    && isLastUsedServer(getTargetServer());
             if (mNotification != null) {
                 if (watchdogWillRetry) {
                     mNotification.setCustomContentText(getString(R.string.autoconnectReconnecting));
@@ -352,8 +359,8 @@ public class MumlaService extends HumlaService implements
         mTalkReceiver = new TalkBroadcastReceiver(this);
 
         // IW2DPO: start the reconnect watchdog. checkAutoReconnect() itself does nothing
-        // unless the user has enabled automatic connect/reconnect and picked a preferred
-        // server, so this is a no-op for everyone else.
+        // unless the user has enabled automatic connect/reconnect and has used a server
+        // at least once before, so this is a no-op for everyone else.
         mWatchdogDatabase = new MumlaSQLiteDatabase(this);
         mWatchdogDatabase.open();
         mReconnectWatchdogHandler = new Handler(getMainLooper());
@@ -400,41 +407,41 @@ public class MumlaService extends HumlaService implements
 
     /**
      * IW2DPO: checks, every {@link #RECONNECT_WATCHDOG_INTERVAL_MS}, whether we're connected
-     * to the user's preferred server; if not (and no connection attempt is already under way),
+     * to the last used server; if not (and no connection attempt is already under way),
      * reconnects on its own. No-op unless automatic connect/reconnect is enabled and a
-     * preferred server is configured.
+     * server has actually been used before.
      */
     private void checkAutoReconnect() {
         if (!mSettings.isAutoconnectEnabled()) {
             return;
         }
-        long preferredId = mSettings.getAutoconnectServerId();
-        if (preferredId < 0) {
+        long lastServerId = mSettings.getLastServerId();
+        if (lastServerId < 0) {
             return;
         }
         if (isConnected() || getConnectionState() == ConnectionState.CONNECTING || isReconnecting()) {
             return; // already connected, already connecting, or the library's own auto-reconnect is already retrying
         }
 
-        Server preferred = null;
+        Server lastServer = null;
         for (Server server : mWatchdogDatabase.getServers()) {
-            if (server.getId() == preferredId) {
-                preferred = server;
+            if (server.getId() == lastServerId) {
+                lastServer = server;
                 break;
             }
         }
-        if (preferred == null) {
-            return; // preferred server no longer exists (e.g. removed by the user)
+        if (lastServer == null) {
+            return; // last used server no longer exists (e.g. removed by the user)
         }
 
-        Log.i(TAG, "Reconnect watchdog: not connected to preferred server \"" + preferred.getName()
+        Log.i(TAG, "Reconnect watchdog: not connected to last used server \"" + lastServer.getName()
                 + "\", reconnecting automatically");
-        new ServerConnectTask(this, mWatchdogDatabase).execute(preferred);
+        new ServerConnectTask(this, mWatchdogDatabase).execute(lastServer);
     }
 
-    /** IW2DPO: true if the given server is the configured preferred server. */
-    private boolean isPreferredServer(Server server) {
-        return server != null && server.getId() == mSettings.getAutoconnectServerId();
+    /** IW2DPO: true if the given server is the last one we successfully connected to. */
+    private boolean isLastUsedServer(Server server) {
+        return server != null && server.getId() == mSettings.getLastServerId();
     }
 
     @Override

@@ -84,15 +84,8 @@
         android:title="@string/pref_start_up_in_pinned_mode"
         app:iconSpaceReserved="false" />
 
-    <!-- IW2DPO: preferred server + automatic connect/reconnect, entries filled in at
-         runtime by GeneralSettingsFragment from the list of saved servers. -->
-    <ListPreference
-        android:key="autoconnect_server_id"
-        android:title="@string/autoconnectServer"
-        android:summary="@string/autoconnectServerSum"
-        android:defaultValue="-1"
-        app:iconSpaceReserved="false" />
-
+    <!-- IW2DPO: automatic connect/reconnect to whichever server was last used
+         successfully (tracked automatically, no server picker needed here). -->
     <CheckBoxPreference
         android:defaultValue="false"
         android:key="autoconnect_enabled"

@@ -93,13 +93,15 @@ public class Settings {
     public static final String PREF_AUTO_RECONNECT = "autoReconnect";
     public static final Boolean DEFAULT_AUTO_RECONNECT = true;
 
-    /** IW2DPO: connect automatically to a preferred server on app launch, and keep watching
+    /** IW2DPO: connect automatically to the last used server on app launch, and keep watching
      * the connection, reconnecting on its own if it drops. */
     public static final String PREF_AUTOCONNECT_ENABLED = "autoconnect_enabled";
     public static final boolean DEFAULT_AUTOCONNECT_ENABLED = false;
 
-    public static final String PREF_AUTOCONNECT_SERVER_ID = "autoconnect_server_id";
-    public static final String DEFAULT_AUTOCONNECT_SERVER_ID = "-1";
+    /** IW2DPO: database ID of the server we last successfully connected to, kept up to date
+     * automatically (not user-facing) so we know what to log back into. */
+    public static final String PREF_LAST_SERVER_ID = "last_server_id";
+    public static final long DEFAULT_LAST_SERVER_ID = -1L;
 
     public static final String PREF_THEME = "theme";
     public static final String PREF_LANGUAGE = "language";
@@ -317,19 +319,21 @@ public class Settings {
         return preferences.getBoolean(PREF_AUTO_RECONNECT, DEFAULT_AUTO_RECONNECT);
     }
 
-    /** IW2DPO: whether to connect automatically to the preferred server on launch, and keep
+    /** IW2DPO: whether to connect automatically to the last used server on launch, and keep
      * watching/restoring that connection while the app runs. */
     public boolean isAutoconnectEnabled() {
         return preferences.getBoolean(PREF_AUTOCONNECT_ENABLED, DEFAULT_AUTOCONNECT_ENABLED);
     }
 
-    /** IW2DPO: database ID of the preferred server, or -1 if none is configured. */
-    public long getAutoconnectServerId() {
-        try {
-            return Long.parseLong(preferences.getString(PREF_AUTOCONNECT_SERVER_ID, DEFAULT_AUTOCONNECT_SERVER_ID));
-        } catch (NumberFormatException e) {
-            return -1L;
-        }
+    /** IW2DPO: database ID of the server we last successfully connected to, or -1 if none. */
+    public long getLastServerId() {
+        return preferences.getLong(PREF_LAST_SERVER_ID, DEFAULT_LAST_SERVER_ID);
+    }
+
+    /** IW2DPO: records the server we just successfully connected to, so a future launch (or
+     * the reconnect watchdog) knows what to log back into. */
+    public void setLastServerId(long id) {
+        preferences.edit().putLong(PREF_LAST_SERVER_ID, id).apply();
     }
 
     public boolean isTcpForced() {
