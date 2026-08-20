@@ -5,28 +5,35 @@ This code needs the libraries:
 https://github.com/maxdpo/humla-iw2dpo
 
 Important Note
-This is a test build ("beta4"),
+This is a test build ("beta"),
 neither reviewed nor distributed by 
 the official Mumla maintainer.
 It is intended solely for internal 
 testing by the amateur radio group.
 
-Beta 1: Added beep upon PTT release
-(very useful) 1500 Hz x 150 ms
-16/08/2026
+Beta 5: in progress
 
-Beta 2: Added beep level adjustment
-It is recommended to set it to 10%
-17/08/2026
-
-Beta 3: Added automatic connection
-to a default server
-18/08/2026
 
 Beta 4: Added automatic connection
 to the last used server and automatic
 reconnection in case of disconnection
 19/08/2026
+
+Beta 3: Added automatic connection
+to a default server
+18/08/2026
+
+Beta 2: Added beep level adjustment
+It is recommended to set it to 10%
+17/08/2026
+
+Beta 1: Added beep upon PTT release
+(very useful) 1500 Hz x 150 ms
+16/08/2026
+
+
+
+
 
 Version of this build
 versionName: <base-version>-IW2DPO-autoconnect-beta4 (e.g.,

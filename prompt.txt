@@ -1,0 +1,24 @@
+Usa le seguenti due repository pubbliche 
+la prima è il programma e la seconda sono le librerie 
+https://github.com/maxdpo/mumla-iw2dpo 
+https://github.com/maxdpo/humla-iw2dpo 
+
+Premessa : il menù "Transmit mode" contiene
+le seguenti voci :
+
+- voice activity
+- Push-to-talk
+- Continuous
+
+
+Partendo dal commit più recente cambia il
+preset di default del seguente menù
+"Transmit mode" mettendo Push-to-talk
+
+Fornisci un file apk scaricabile
+in un  device android per le prove.
+Assegna la versione con il nome beta5
+
+Accedi pure direttamente alla mia cartella 
+locale C:\mumla-iw2dpo per le modifiche del caso.
+
