@@ -1,0 +1,108 @@
+--- a/src/main/java/se/lublin/humla/protocol/AudioHandler.java
++++ b/src/main/java/se/lublin/humla/protocol/AudioHandler.java
+@@ -64,10 +64,10 @@
+      * released, so listeners using half-duplex devices (e.g. POC radios) know the channel is
+      * free again. Requested by IW2DPO.
+      */
+-    private static final int RELEASE_BEEP_FREQUENCY_HZ = 1500;
+-    private static final int RELEASE_BEEP_DURATION_MS = 150;
++    private static final int[] RELEASE_BEEP_FREQUENCIES_HZ = { 1836, 1409, 1069 };
++    private static final int[] RELEASE_BEEP_TONE_DURATIONS_MS = { 70, 70, 70 };
+     private static final int RELEASE_BEEP_VOLUME_DEFAULT = 40; // percent of full scale
+-    private static final int RELEASE_BEEP_FADE_MS = 10; // fade in/out to avoid clicks
++    private static final int RELEASE_BEEP_FADE_MS = 10; // fade in/out to avoid clicks, per tone
+ 
+     private final Context mContext;
+     private final HumlaLogger mLogger;
+@@ -536,43 +536,67 @@
+ 
+         final int sampleRate = mInput.getSampleRate();
+         final int frameSize = mInput.getFrameSize();
+-        final int totalSamples = (RELEASE_BEEP_DURATION_MS * sampleRate) / 1000;
+-        final int fadeSamples = Math.max(1, (RELEASE_BEEP_FADE_MS * sampleRate) / 1000);
+         final double amplitude = Short.MAX_VALUE * (mReleaseBeepVolume / 100.0);
++        final int fadeSamples = Math.max(1, (RELEASE_BEEP_FADE_MS * sampleRate) / 1000);
+ 
+         short[] frame = new short[frameSize];
+-        int sampleIndex = 0;
+-        while (sampleIndex < totalSamples) {
+-            int samplesInFrame = Math.min(frameSize, totalSamples - sampleIndex);
+-            for (int i = 0; i < samplesInFrame; i++) {
++        int frameFill = 0;
++
++        // Play each configured tone (frequency/duration pair) back to back, with its own
++        // fade in/out envelope so there are no audible clicks between tones or at the
++        // start/end of the whole beep.
++        for (int toneIndex = 0; toneIndex < RELEASE_BEEP_FREQUENCIES_HZ.length; toneIndex++) {
++            final int frequencyHz = RELEASE_BEEP_FREQUENCIES_HZ[toneIndex];
++            final int toneDurationMs = RELEASE_BEEP_TONE_DURATIONS_MS[toneIndex];
++            final int toneSamples = (toneDurationMs * sampleRate) / 1000;
++
++            for (int sampleIndex = 0; sampleIndex < toneSamples; sampleIndex++) {
+                 double t = (double) sampleIndex / sampleRate;
+                 double envelope = 1.0;
+                 if (sampleIndex < fadeSamples) {
+                     envelope = (double) sampleIndex / fadeSamples;
+-                } else if (sampleIndex > totalSamples - fadeSamples) {
+-                    envelope = (double) (totalSamples - sampleIndex) / fadeSamples;
++                } else if (sampleIndex > toneSamples - fadeSamples) {
++                    envelope = (double) (toneSamples - sampleIndex) / fadeSamples;
++                }
++                double sample = Math.sin(2.0 * Math.PI * frequencyHz * t);
++                frame[frameFill] = (short) Math.round(sample * amplitude * envelope);
++                frameFill++;
++
++                if (frameFill == frameSize) {
++                    if (!encodeReleaseBeepFrame(frame, frameSize)) {
++                        return;
++                    }
++                    frameFill = 0;
+                 }
+-                double sample = Math.sin(2.0 * Math.PI * RELEASE_BEEP_FREQUENCY_HZ * t);
+-                frame[i] = (short) Math.round(sample * amplitude * envelope);
+-                sampleIndex++;
+             }
+-            // Zero-pad the final, possibly partial, frame.
+-            for (int i = samplesInFrame; i < frameSize; i++) {
++        }
++
++        // Flush any remaining, partially-filled frame (zero-padded).
++        if (frameFill > 0) {
++            for (int i = frameFill; i < frameSize; i++) {
+                 frame[i] = 0;
+             }
++            encodeReleaseBeepFrame(frame, frameSize);
++        }
++    }
+ 
+-            try {
+-                mEncoder.encode(frame, frameSize);
+-                mFrameCounter++;
+-                // Drain the encoder as soon as a packet's worth of audio is ready, mirroring
+-                // the behaviour of the normal microphone capture path.
+-                if (mEncoder.isReady()) {
+-                    sendEncodedAudio();
+-                }
+-            } catch (NativeAudioException e) {
+-                Log.e(TAG, "Failed to encode release beep", e);
+-                return;
++    /**
++     * Feeds a single frame of synthesized release beep audio through the encoder, draining
++     * the encoder as soon as a packet's worth of audio is ready -- mirroring the behaviour of
++     * the normal microphone capture path. Returns false if encoding failed, in which case the
++     * caller should abort generating the rest of the beep.
++     */
++    private boolean encodeReleaseBeepFrame(short[] frame, int frameSize) {
++        try {
++            mEncoder.encode(frame, frameSize);
++            mFrameCounter++;
++            if (mEncoder.isReady()) {
++                sendEncodedAudio();
+             }
++            return true;
++        } catch (NativeAudioException e) {
++            Log.e(TAG, "Failed to encode release beep", e);
++            return false;
+         }
+     }
+ 
