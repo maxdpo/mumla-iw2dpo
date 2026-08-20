@@ -11,7 +11,8 @@ the official Mumla maintainer.
 It is intended solely for internal 
 testing by the amateur radio group.
 
-Beta 5: in progress
+Beta 5: set default transmit mode
+as PTT
 
 
 Beta 4: Added automatic connection
