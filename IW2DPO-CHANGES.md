@@ -11,8 +11,14 @@ the official Mumla maintainer.
 It is intended solely for internal 
 testing by the amateur radio group.
 
+
+
 Beta 5: set default transmit mode
-as PTT
+as Push-to-talk and set 
+Input sample rate to 16000
+Beep audio livel to 7%
+Reduced beep audio level range from 1% to 30%
+
 
 
 Beta 4: Added automatic connection
