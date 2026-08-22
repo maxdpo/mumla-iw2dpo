@@ -13,12 +13,12 @@ testing by the amateur radio group.
 
 
 
-Beta 5: set default transmit mode
-as Push-to-talk and set 
-Input sample rate to 16000
-Beep audio livel to 7%
-Reduced beep audio level range from 1% to 30%
-
+Beta 5: Sat 22/08/2026
+Input sample rate to 16000 : FIXED
+beep audio level default   : 7%
+Hide Push-to-talk button   : FIXED
+default transmit mode PTT  : NOT FIXED
+microphone input quality   : NOT FIXED
 
 
 Beta 4: Added automatic connection
