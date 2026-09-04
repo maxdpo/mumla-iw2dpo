@@ -12,10 +12,14 @@ name: Build IW2DPO beta APK (roger beep on PTT release)
 # lanciare il workflow (manualmente o ad ogni push); l'APK compilato sara'
 # scaricabile come "artifact" della run.
 
+#on:
+#  workflow_dispatch:
+#  push:
+#    branches: [ "**" ]
+
 on:
   workflow_dispatch:
-  push:
-    branches: [ "**" ]
+
 
 jobs:
   build:
