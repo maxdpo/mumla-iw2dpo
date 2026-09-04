@@ -1,3 +1,6 @@
+Test automatic compiler start when a file is updated
+Now in manual mode
+
 This code is in BETA version
 created Aug 2026
 
