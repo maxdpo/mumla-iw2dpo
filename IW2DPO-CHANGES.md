@@ -1,3 +1,8 @@
+Test TortoiseGit
+Sept 07/2026
+
+
+
 Test automatic compiler start when a file is updated
 Now in manual mode
 
