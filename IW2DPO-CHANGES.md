@@ -1,15 +1,3 @@
-Test TortoiseGit
-Test 1 Sept 07/2026
-Test 2 Sept 07/2026
-Test 3 Sept 07/2026
-Test 4 Sept 09/2026
-
-
-
-
-Test automatic compiler start when a file is updated
-Now in manual mode
-
 This code is in BETA version
 created Aug 2026
 
@@ -23,14 +11,7 @@ the official Mumla maintainer.
 It is intended solely for internal 
 testing by the amateur radio group.
 
-
-
-Beta 5: Sat 22/08/2026
-Input sample rate to 16000 : FIXED
-beep audio level default   : 7%
-Hide Push-to-talk button   : FIXED
-default transmit mode PTT  : NOT FIXED
-microphone input quality   : NOT FIXED
+Beta 5: in progress
 
 
 Beta 4: Added automatic connection
