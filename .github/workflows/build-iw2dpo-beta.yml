@@ -32,8 +32,11 @@ jobs:
           distribution: temurin
           java-version: '21'
 
-      - name: Set up Android SDK
+      - name: Setup Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools'   # was defaulting to "tools platform-tools"
+      
 
       - name: Install Android NDK richiesto (25.1.8937393)
         run: sdkmanager --install "ndk;25.1.8937393"
