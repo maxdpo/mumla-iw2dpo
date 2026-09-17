@@ -9,11 +9,13 @@ name: Build IW2DPO beta APK (roger beep on PTT release)
 # richiede accesso a Maven Central, Google Maven e GitLab per i submodule
 # nativi (celt/opus/speex/spongycastle) - reti non raggiungibili dal sandbox
 # di sviluppo. Basta pushare questo repository (con i submodule) su GitHub e
-# lanciare il workflow manualmente; l'APK compilato sara' scaricabile come
-# "artifact" della run.
+# lanciare il workflow (manualmente o ad ogni push); l'APK compilato sara'
+# scaricabile come "artifact" della run.
 
 on:
   workflow_dispatch:
+  push:
+    branches: [ "**" ]
 
 jobs:
   build:
