@@ -1,3 +1,12 @@
+Things to do :
+
+Qualità audio microfono : default 40000 reduce to 20000
+TX Mode : VOX (PTT still not work)
+Nascondi Pulsante Push To Talk : disable
+
+
+
+
 
 C:\mumla-iw2dpo\app\src\main\res\xml\settings_audio.xml
 
