@@ -25,6 +25,8 @@ How to trigger a build manually afterward
 Repo 
 → Actions tab 
 → select the workflow in the left sidebar 
+→ click on the left "Build IW2DPO beta APK......"
+→ after the click above on the right you should see "Run Workflow"
 → click Run workflow (dropdown appears if workflow_dispatch is set) 
 → choose branch 
 → Run workflow.
