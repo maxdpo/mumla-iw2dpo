@@ -14,8 +14,9 @@ name: Build IW2DPO beta APK (roger beep on PTT release)
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ "**" ]
+
+    
+    # branches: [ "**" ]
 
 jobs:
   build:

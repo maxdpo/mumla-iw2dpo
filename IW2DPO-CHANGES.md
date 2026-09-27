@@ -1,3 +1,39 @@
+
+C:\mumla-iw2dpo\app\src\main\res\xml\settings_audio.xml
+
+Changed :
+input_quality : 16000
+release_beep_volume : default 7
+release_beep_volume range : 1-30%
+
+
+"C:\mumla-iw2dpo\app\src\main\java\se\lublin\mumla\Settings.java"
+
+Changed the string :
+ARRAY_INPUT_METHOD_VOICE
+to
+ARRAY_INPUT_METHOD_PTT
+
+This code is BETA4_1
+
+
+Blocked automatic APK compile on every push
+"C:\mumla-iw2dpo\.github\workflows\build-iw2dpo-beta.yml"
+
+How to trigger a build manually afterward
+
+Repo 
+→ Actions tab 
+→ select the workflow in the left sidebar 
+→ click Run workflow (dropdown appears if workflow_dispatch is set) 
+→ choose branch 
+→ Run workflow.
+
+
+
+
+
+
 This code is in BETA version
 created Aug 2026
 
