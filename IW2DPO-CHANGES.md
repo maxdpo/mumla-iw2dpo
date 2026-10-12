@@ -1,3 +1,9 @@
+Android12 Branck
+This has been created for solve issues
+in Android 12 POC
+12/10/2026
+
+
 Things to do :
 
 Qualità audio microfono : default 40000 reduce to 20000
