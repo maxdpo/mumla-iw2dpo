@@ -4,6 +4,12 @@ in Android 12 POC
 12/10/2026
 
 
+Installato un crash logger
+app/src/main/java/se/lublin/mumla/app/MumlaApplication.java
+12/10/2026
+
+
+
 Things to do :
 
 Qualità audio microfono : default 40000 reduce to 20000
