@@ -1,12 +1,110 @@
+12/10/2026
 Android12 Branck
 This has been created for solve issues
 in Android 12 POC
+
+
 12/10/2026
-
-
 Installato un crash logger
 app/src/main/java/se/lublin/mumla/app/MumlaApplication.java
-12/10/2026
+
+
+17/10/2026
+Ho scelto questa soluzione che hai citato tu.
+Te la riscrivo qui sotto :
+
+Log salvato dall’app stessa (quello che chiedevi). Ho modificato il file MumlaApplication.java del branch Android12. Ora l’app scrive un file di testo ogni volta che si chiude per errore. Lo trovi in Download/MumlaLog/ (visibile con qualsiasi file manager sulla radio) e in copia anche in Android/data/se.lublin.mumla.beta/files/MumlaLog/.
+C'e' pero' un problema : su questo apparato, un HYTERA P50 pro
+è impossibile leggere il file di log il sistema è protetto.
+Servirebbe quindi che il file di log venga copiato su in server
+esterno per essere analizzato.
+
+L'idea che ho avuto è quella di chiedeti di inserire nel
+codice un client FTP e copiare il file di log
+in un server FTP di cui sotto ti passo le credenziali.
+
+Il server FTP sarà ubicato nella stessa subnet
+dell'IP dell'apparato che è connesso in WI-FI
+
+Ti do anche i dati della repository di GITHUB
+dove andare a prendere le informazioni e dove
+è depositato il lavoro fatto fino ad ora.
+
+IP: 192.168.113.253
+User: Max
+Psw: Massimo2026
+
+https://github.com/maxdpo/mumla-iw2dpo/tree/Android12
+
+ANSWER :
+
+Ho integrato l’invio FTP partendo dal codice attuale del branch Android12, 
+cioè dal tuo commit “Installed a crash logger”. 
+Il client FTP è scritto in Java standard, senza librerie esterne, 
+quindi non aggiunge dipendenze alla build.
+
+Come funziona. Ogni log viene salvato in locale e poi inviato 
+al server 192.168.113.253 nella cartella MumlaLog. 
+Al momento del crash l’app prova a inviare il file subito, 
+aspettando al massimo 10 secondi. Se non ci riesce, 
+lo reinvia al successivo avvio: i file già inviati non vengono rispediti.
+
+Ad ogni avvio l’app invia anche un piccolo file di prova mumla_start_….txt, 
+con il modello della radio e gli IP Wi-Fi e cellulare. 
+Se questo file compare sul server, il collegamento funziona. 
+Quando non ti serve più, metti FTP_STARTUP_TEST = false in MumlaApplication.java.
+
+Se la radio ha attivi anche i dati mobili, il codice forza 
+comunque l’uso della rete Wi-Fi, altrimenti Android potrebbe 
+cercare il server sulla rete cellulare.
+
+Cosa caricare su GitHub (branch Android12):
+
+FtpLogUploader.java è un file nuovo. 
+Vai in app/src/main/java/se/lublin/mumla/app/, 
+poi Add file → Create new file, 
+chiamalo FtpLogUploader.java e incolla il contenuto.
+MumlaApplication.java, nella stessa cartella: 
+aprilo con la matita ✏️ e sostituisci tutto il contenuto.
+AndroidManifest.xml, in app/src/main/: sostituisci tutto il contenuto. 
+L’unica modifica è il permesso ACCESS_NETWORK_STATE, 
+necessario per trovare la rete Wi-Fi.
+Fai commit sul branch Android12, rilancia il workflow e installa il nuovo APK.
+
+Sul server FTP controlla tre cose:
+
+FTP in chiaro consentito. 
+Se usi FileZilla Server, le versioni recenti richiedono TLS di default. 
+Va abilitato l’FTP semplice, altrimenti il login viene rifiutato.
+Modalità passiva e firewall. Devono essere aperte la porta 21 
+e il range di porte passive del server (su Windows, controlla Windows Defender Firewall).
+Permessi dell’utente Max. Deve poter scrivere, e possibilmente creare la cartella MumlaLog. 
+Se non può crearla, i file finiscono nella cartella principale.
+
+La password è scritta nel codice e quindi leggibile nell’APK e nel repository, 
+che è pubblico. Usa questo account solo per i log, con accesso limitato a quella cartella, 
+e cambia la password quando hai finito i test.
+
+Non ho potuto compilare qui. Se la build fallisce, mandami lo screenshot 
+dell’errore. Se invece la build va ma sul server non arriva nemmeno il file 
+mumla_start, dimmelo e controlliamo la rete.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

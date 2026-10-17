@@ -41,6 +41,11 @@ public class MumlaApplication extends Application implements SharedPreferences.O
         // IW2DPO: registrazione crash su file (Download/MumlaLog)
         installCrashLogger();
         saveLastExitReasons();
+        if (FTP_STARTUP_TEST) {
+            writeLog("start", "=== AVVIO APP (test invio FTP) ===\n" + deviceInfo() + "\n" + networkInfo());
+        }
+        // IW2DPO: invio al server FTP dei log non ancora inviati (in background)
+        new Thread(() -> FtpLogUploader.uploadPending(this, localLogDir()), "ftp-log-upload").start();
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         applyTheme(preferences);
         preferences.registerOnSharedPreferenceChangeListener(this);
@@ -90,6 +95,40 @@ public class MumlaApplication extends Application implements SharedPreferences.O
     // ======================================================================
 
     private static final String LOG_DIR = "MumlaLog";
+    /**
+     * true = ad ogni avvio invia anche un piccolo file "mumla_start_...txt"
+     * per verificare che il collegamento FTP funzioni. Mettere false quando
+     * non serve piu'.
+     */
+    private static final boolean FTP_STARTUP_TEST = true;
+
+    private File localLogDir() {
+        File base = getExternalFilesDir(null);
+        if (base == null) base = getFilesDir();
+        return new File(base, LOG_DIR);
+    }
+
+    private String networkInfo() {
+        StringBuilder sb = new StringBuilder("Reti attive:\n");
+        try {
+            android.net.ConnectivityManager cm =
+                    (android.net.ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
+            for (android.net.Network n : cm.getAllNetworks()) {
+                android.net.NetworkCapabilities c = cm.getNetworkCapabilities(n);
+                android.net.LinkProperties lp = cm.getLinkProperties(n);
+                String type = c == null ? "?" :
+                        c.hasTransport(android.net.NetworkCapabilities.TRANSPORT_WIFI) ? "WIFI" :
+                        c.hasTransport(android.net.NetworkCapabilities.TRANSPORT_CELLULAR) ? "CELLULARE" : "ALTRO";
+                sb.append("  ").append(type).append(": ")
+                  .append(lp == null ? "?" : lp.getLinkAddresses()).append('\n');
+            }
+            sb.append("Server FTP: ").append(FtpLogUploader.FTP_HOST).append(':')
+              .append(FtpLogUploader.FTP_PORT).append('\n');
+        } catch (Throwable t) {
+            sb.append("  errore: ").append(t).append('\n');
+        }
+        return sb.toString();
+    }
     private static final String PREF_LAST_EXIT_TS = "iw2dpo_last_exit_ts";
 
     private void installCrashLogger() {
@@ -108,6 +147,11 @@ public class MumlaApplication extends Application implements SharedPreferences.O
                 pw.print(readOwnLogcat());
                 pw.flush();
                 writeLog("crash", sw.toString());
+                // Tentativo di invio immediato al server FTP (max 10 secondi),
+                // altrimenti il file verra' inviato al prossimo avvio.
+                Thread up = new Thread(() -> FtpLogUploader.uploadPending(this, localLogDir()), "ftp-crash-upload");
+                up.start();
+                up.join(10000);
             } catch (Throwable ignored) {
                 // il logger non deve mai bloccare la chiusura
             }
@@ -223,7 +267,7 @@ public class MumlaApplication extends Application implements SharedPreferences.O
         byte[] data = text.getBytes(StandardCharsets.UTF_8);
 
         // 1) Cartella pubblica Download/MumlaLog (visibile da qualsiasi file manager)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && !"start".equals(prefix)) {
             try {
                 ContentValues v = new ContentValues();
                 v.put(MediaStore.MediaColumns.DISPLAY_NAME, name);
@@ -238,15 +282,13 @@ public class MumlaApplication extends Application implements SharedPreferences.O
             } catch (Throwable ignored) { }
         }
 
-        // 2) Copia nella cartella dell'app (Android/data/<package>/files/MumlaLog)
+        // 2) Copia nella cartella dell'app (Android/data/<package>/files/MumlaLog):
+        //    da qui i file vengono inviati al server FTP.
         try {
-            File base = getExternalFilesDir(null);
-            if (base != null) {
-                File dir = new File(base, LOG_DIR);
-                if (dir.exists() || dir.mkdirs()) {
-                    try (FileOutputStream fos = new FileOutputStream(new File(dir, name))) {
-                        fos.write(data);
-                    }
+            File dir = localLogDir();
+            if (dir.exists() || dir.mkdirs()) {
+                try (FileOutputStream fos = new FileOutputStream(new File(dir, name))) {
+                    fos.write(data);
                 }
             }
         } catch (Throwable ignored) { }
