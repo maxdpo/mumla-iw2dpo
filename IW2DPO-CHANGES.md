@@ -1,19 +1,26 @@
-12/10/2026
-Android12 Branck
-This has been created for solve issues
-in Android 12 POC
+18/10/2026
+Ha funzionato !
+Questa versione sospende il client FTP
+Per riattivare l’FTP in futuro basta mettere 
+FTP_ENABLED = true in FtpLogUploader.java e ricompilare. 
+Se vuoi anche il file di prova all’avvio, 
+metti FTP_STARTUP_TEST = true in MumlaApplication.java.
 
 
-12/10/2026
-Installato un crash logger
-app/src/main/java/se/lublin/mumla/app/MumlaApplication.java
+--------------------------------------------------
+18/10/2026
+Tentativo risoluzione BUG
+Working in progress
 
+------------------------------------------------------
 
 17/10/2026
-Ho scelto questa soluzione che hai citato tu.
-Te la riscrivo qui sotto :
-
-Log salvato dall’app stessa (quello che chiedevi). Ho modificato il file MumlaApplication.java del branch Android12. Ora l’app scrive un file di testo ogni volta che si chiude per errore. Lo trovi in Download/MumlaLog/ (visibile con qualsiasi file manager sulla radio) e in copia anche in Android/data/se.lublin.mumla.beta/files/MumlaLog/.
+prompt
+Log salvato dall’app stessa (quello che chiedevi). 
+Ho modificato il file MumlaApplication.java del branch Android12. 
+Ora l’app scrive un file di testo ogni volta che si chiude per errore. 
+Lo trovi in Download/MumlaLog/ (visibile con qualsiasi file manager sulla radio) 
+e in copia anche in Android/data/se.lublin.mumla.beta/files/MumlaLog/.
 C'e' pero' un problema : su questo apparato, un HYTERA P50 pro
 è impossibile leggere il file di log il sistema è protetto.
 Servirebbe quindi che il file di log venga copiato su in server
@@ -34,11 +41,15 @@ IP: 192.168.113.253
 User: Max
 Psw: Massimo2026
 
+E' un IP interno per cui non raggiungibile
+da nessuno.
+
 https://github.com/maxdpo/mumla-iw2dpo/tree/Android12
 
 ANSWER :
 
-Ho integrato l’invio FTP partendo dal codice attuale del branch Android12, 
+Ho integrato l’invio FTP partendo dal codice attuale 
+del branch Android12, 
 cioè dal tuo commit “Installed a crash logger”. 
 Il client FTP è scritto in Java standard, senza librerie esterne, 
 quindi non aggiunge dipendenze alla build.
@@ -90,19 +101,20 @@ dell’errore. Se invece la build va ma sul server non arriva nemmeno il file
 mumla_start, dimmelo e controlliamo la rete.
 
 
+--------------------------------------------------------
+17/10/2026
+Ho scelto questa soluzione che hai citato tu.
+Te la riscrivo qui sotto :
+-----------------------------------------------------
+12/10/2026
+Installato un crash logger
+app/src/main/java/se/lublin/mumla/app/MumlaApplication.java
 
-18/10/2026
-Tentativo risoluzione BUG
-Working in progress
-
-
-
-
-
-
-
-
-
+-----------------------------------------------------
+12/10/2026
+Android12 Branck
+This has been created for solve issues
+in Android 12 POC
 
 
 

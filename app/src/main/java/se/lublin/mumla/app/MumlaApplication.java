@@ -45,7 +45,9 @@ public class MumlaApplication extends Application implements SharedPreferences.O
             writeLog("start", "=== AVVIO APP (test invio FTP) ===\n" + deviceInfo() + "\n" + networkInfo());
         }
         // IW2DPO: invio al server FTP dei log non ancora inviati (in background)
-        new Thread(() -> FtpLogUploader.uploadPending(this, localLogDir()), "ftp-log-upload").start();
+        if (FtpLogUploader.FTP_ENABLED) {
+            new Thread(() -> FtpLogUploader.uploadPending(this, localLogDir()), "ftp-log-upload").start();
+        }
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         applyTheme(preferences);
         preferences.registerOnSharedPreferenceChangeListener(this);
@@ -100,7 +102,7 @@ public class MumlaApplication extends Application implements SharedPreferences.O
      * per verificare che il collegamento FTP funzioni. Mettere false quando
      * non serve piu'.
      */
-    private static final boolean FTP_STARTUP_TEST = true;
+    private static final boolean FTP_STARTUP_TEST = false;
 
     private File localLogDir() {
         File base = getExternalFilesDir(null);
@@ -149,9 +151,11 @@ public class MumlaApplication extends Application implements SharedPreferences.O
                 writeLog("crash", sw.toString());
                 // Tentativo di invio immediato al server FTP (max 10 secondi),
                 // altrimenti il file verra' inviato al prossimo avvio.
-                Thread up = new Thread(() -> FtpLogUploader.uploadPending(this, localLogDir()), "ftp-crash-upload");
-                up.start();
-                up.join(10000);
+                if (FtpLogUploader.FTP_ENABLED) {
+                    Thread up = new Thread(() -> FtpLogUploader.uploadPending(this, localLogDir()), "ftp-crash-upload");
+                    up.start();
+                    up.join(10000);
+                }
             } catch (Throwable ignored) {
                 // il logger non deve mai bloccare la chiusura
             }
