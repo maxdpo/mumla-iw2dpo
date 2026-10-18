@@ -263,10 +263,32 @@ public class ChannelListFragment extends HumlaServiceFragment implements OnChann
         inflater.inflate(R.menu.fragment_channel_list, menu);
 
         MenuItem searchItem = menu.findItem(R.id.menu_search);
-        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        // IW2DPO fix Hytera P50 PRO: il firmware Hytera non pubblica il servizio
+        // di sistema "search" (SearchManager). Su Android standard getSystemService()
+        // restituisce sempre il SearchManager; sull'Hytera lancia
+        // IllegalStateException(ServiceNotFoundException) e l'app va in crash
+        // appena si apre la lista canali (cioe' subito dopo aver selezionato il server).
+        // Se il servizio manca, si nasconde solo il pulsante "Cerca" e si prosegue.
+        SearchManager searchManager = null;
+        try {
+            searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        } catch (Throwable t) {
+            Log.w("ChannelListFragment", "SearchManager non disponibile su questo dispositivo: ricerca disattivata", t);
+        }
+        if (searchManager == null || searchItem == null) {
+            if (searchItem != null) searchItem.setVisible(false);
+            return;
+        }
 
         final SearchView searchView = (SearchView)MenuItemCompat.getActionView(searchItem);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+        try {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+        } catch (Throwable t) {
+            Log.w("ChannelListFragment", "getSearchableInfo fallito: ricerca disattivata", t);
+            searchItem.setVisible(false);
+            return;
+        }
         searchView.setOnSuggestionListener(new SearchView.OnSuggestionListener() {
             @Override
             public boolean onSuggestionSelect(int i) {
