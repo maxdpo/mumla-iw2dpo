@@ -1,300 +1,210 @@
 package se.lublin.mumla.app;
 
-import static androidx.appcompat.app.AppCompatDelegate.setApplicationLocales;
-import static androidx.core.os.LocaleListCompat.forLanguageTags;
-import static androidx.core.os.LocaleListCompat.getEmptyLocaleList;
-import static se.lublin.mumla.Settings.PREF_LANGUAGE;
-import static se.lublin.mumla.Settings.PREF_THEME;
-
-import android.app.ActivityManager;
-import android.app.Application;
-import android.app.ApplicationExitInfo;
-import android.content.ContentValues;
-import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.provider.MediaStore;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.preference.PreferenceManager;
+import javax.net.SocketFactory;
 
-public class MumlaApplication extends Application implements SharedPreferences.OnSharedPreferenceChangeListener {
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        // IW2DPO: registrazione crash su file (Download/MumlaLog)
-        installCrashLogger();
-        saveLastExitReasons();
-        if (FTP_STARTUP_TEST) {
-            writeLog("start", "=== AVVIO APP (test invio FTP) ===\n" + deviceInfo() + "\n" + networkInfo());
-        }
-        // IW2DPO: invio al server FTP dei log non ancora inviati (in background)
-        if (FtpLogUploader.FTP_ENABLED) {
-            new Thread(() -> FtpLogUploader.uploadPending(this, localLogDir()), "ftp-log-upload").start();
-        }
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
-        applyTheme(preferences);
-        preferences.registerOnSharedPreferenceChangeListener(this);
-    }
+/**
+ * IW2DPO: client FTP minimale (solo Java standard, nessuna libreria esterna)
+ * per inviare i file di log a un server FTP nella LAN Wi-Fi.
+ *
+ * Modalita' passiva, trasferimento binario, FTP in chiaro (senza TLS).
+ */
+public final class FtpLogUploader {
 
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences preferences, @Nullable String key) {
-        if (key == null) {
-            return;
-        }
-        switch (key) {
-            case PREF_LANGUAGE:
-                String language = preferences.getString(PREF_LANGUAGE, "system");
-                setApplicationLocales(language.equals("system") ? getEmptyLocaleList() : forLanguageTags(language));
-                break;
-            case PREF_THEME:
-                applyTheme(preferences);
-                break;
-        }
-    }
+    // ---------------------------------------------------------------
+    // INTERRUTTORE GENERALE
+    // false = client FTP sospeso: nessuna connessione, nessun invio.
+    // Per riattivarlo in futuro (debug) mettere true e ricompilare.
+    // ---------------------------------------------------------------
+    public static final boolean FTP_ENABLED = false;
 
-    private static void applyTheme(SharedPreferences preferences) {
-        // The "system" and "force*" values are new (see preference_notranslate.xml).
-        // We let other (older) value result in system default theme, and write that
-        // to the preference store.
-        switch (preferences.getString(PREF_THEME, "system")) {
-            case "forceLight":
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                break;
-            case "forceDark":
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                break;
-            case "system":
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                break;
-            default:
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-                preferences.edit().putString(PREF_THEME, "system").apply();
-                break;
-        }
-    }
+    // ---------------------------------------------------------------
+    // CONFIGURAZIONE SERVER FTP  (modificare qui se cambiano i dati)
+    // ---------------------------------------------------------------
+    public static final String FTP_HOST = "192.168.113.253";
+    public static final int    FTP_PORT = 21;
+    public static final String FTP_USER = "Max";
+    public static final String FTP_PASS = "Massimo2026";
+    /** Cartella remota (viene creata se possibile; se non si puo', si usa la radice). */
+    public static final String FTP_DIR  = "MumlaLog";
 
-    // ======================================================================
-    // IW2DPO crash logger
-    // Salva i crash in:  Download/MumlaLog/            (Android 10+)
-    //            e in:   Android/data/<package>/files/MumlaLog/
-    // ======================================================================
+    private static final int CONNECT_TIMEOUT_MS = 5000;
+    private static final int READ_TIMEOUT_MS    = 10000;
 
-    private static final String LOG_DIR = "MumlaLog";
+    private FtpLogUploader() { }
+
     /**
-     * true = ad ogni avvio invia anche un piccolo file "mumla_start_...txt"
-     * per verificare che il collegamento FTP funzioni. Mettere false quando
-     * non serve piu'.
+     * Invia tutti i .txt presenti in localDir che non sono ancora stati inviati.
+     * Quelli inviati con successo vengono spostati in localDir/sent.
+     * Da chiamare SEMPRE fuori dal thread principale.
      */
-    private static final boolean FTP_STARTUP_TEST = false;
-
-    private File localLogDir() {
-        File base = getExternalFilesDir(null);
-        if (base == null) base = getFilesDir();
-        return new File(base, LOG_DIR);
-    }
-
-    private String networkInfo() {
-        StringBuilder sb = new StringBuilder("Reti attive:\n");
-        try {
-            android.net.ConnectivityManager cm =
-                    (android.net.ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
-            for (android.net.Network n : cm.getAllNetworks()) {
-                android.net.NetworkCapabilities c = cm.getNetworkCapabilities(n);
-                android.net.LinkProperties lp = cm.getLinkProperties(n);
-                String type = c == null ? "?" :
-                        c.hasTransport(android.net.NetworkCapabilities.TRANSPORT_WIFI) ? "WIFI" :
-                        c.hasTransport(android.net.NetworkCapabilities.TRANSPORT_CELLULAR) ? "CELLULARE" : "ALTRO";
-                sb.append("  ").append(type).append(": ")
-                  .append(lp == null ? "?" : lp.getLinkAddresses()).append('\n');
-            }
-            sb.append("Server FTP: ").append(FtpLogUploader.FTP_HOST).append(':')
-              .append(FtpLogUploader.FTP_PORT).append('\n');
-        } catch (Throwable t) {
-            sb.append("  errore: ").append(t).append('\n');
-        }
-        return sb.toString();
-    }
-    private static final String PREF_LAST_EXIT_TS = "iw2dpo_last_exit_ts";
-
-    private void installCrashLogger() {
-        final Thread.UncaughtExceptionHandler previous = Thread.getDefaultUncaughtExceptionHandler();
-        Thread.setDefaultUncaughtExceptionHandler((thread, ex) -> {
+    public static synchronized void uploadPending(Context ctx, File localDir) {
+        if (!FTP_ENABLED) return;
+        if (localDir == null || !localDir.isDirectory()) return;
+        File[] files = localDir.listFiles((d, n) -> n.endsWith(".txt"));
+        if (files == null || files.length == 0) return;
+        File sentDir = new File(localDir, "sent");
+        if (!sentDir.exists()) sentDir.mkdirs();
+        for (File f : files) {
             try {
-                StringWriter sw = new StringWriter();
-                PrintWriter pw = new PrintWriter(sw);
-                pw.println("=== CRASH JAVA ===");
-                pw.println(deviceInfo());
-                pw.println("Thread: " + thread.getName());
-                pw.println();
-                ex.printStackTrace(pw);
-                pw.println();
-                pw.println("=== LOGCAT (ultime righe di questo processo) ===");
-                pw.print(readOwnLogcat());
-                pw.flush();
-                writeLog("crash", sw.toString());
-                // Tentativo di invio immediato al server FTP (max 10 secondi),
-                // altrimenti il file verra' inviato al prossimo avvio.
-                if (FtpLogUploader.FTP_ENABLED) {
-                    Thread up = new Thread(() -> FtpLogUploader.uploadPending(this, localLogDir()), "ftp-crash-upload");
-                    up.start();
-                    up.join(10000);
+                if (upload(ctx, f)) {
+                    File dest = new File(sentDir, f.getName());
+                    if (!f.renameTo(dest)) f.delete();
                 }
             } catch (Throwable ignored) {
-                // il logger non deve mai bloccare la chiusura
+                // il server non e' raggiungibile: si riprova al prossimo avvio
             }
-            if (previous != null) {
-                previous.uncaughtException(thread, ex);
-            } else {
-                android.os.Process.killProcess(android.os.Process.myPid());
-                System.exit(10);
+        }
+    }
+
+    /** Invia un singolo file. Restituisce true se il server ha confermato (226). */
+    public static boolean upload(Context ctx, File file) throws IOException {
+        if (!FTP_ENABLED) return false;
+        byte[] data = readAll(file);
+        SocketFactory sf = wifiSocketFactory(ctx);
+
+        Socket ctrl = sf.createSocket();
+        try {
+            ctrl.connect(new InetSocketAddress(FTP_HOST, FTP_PORT), CONNECT_TIMEOUT_MS);
+            ctrl.setSoTimeout(READ_TIMEOUT_MS);
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(ctrl.getInputStream(), StandardCharsets.UTF_8));
+            OutputStream out = ctrl.getOutputStream();
+
+            expect(readReply(in), 220);
+            int code = cmd(in, out, "USER " + FTP_USER);
+            if (code == 331) code = cmd(in, out, "PASS " + FTP_PASS);
+            expect(code, 230);
+            expect(cmd(in, out, "TYPE I"), 200);
+
+            if (FTP_DIR != null && !FTP_DIR.isEmpty()) {
+                cmd(in, out, "MKD " + FTP_DIR);          // errore ignorato se esiste gia'
+                cmd(in, out, "CWD " + FTP_DIR);          // se fallisce si resta nella radice
             }
-        });
+
+            // Modalita' passiva
+            String pasv = readReplyLine(in, out, "PASV");
+            if (!pasv.startsWith("227")) throw new IOException("PASV rifiutato: " + pasv);
+            int dataPort = parsePasvPort(pasv);
+
+            Socket dataSock = sf.createSocket();
+            try {
+                // Si usa sempre l'IP del server (evita problemi con IP errati nella risposta PASV)
+                dataSock.connect(new InetSocketAddress(FTP_HOST, dataPort), CONNECT_TIMEOUT_MS);
+                code = cmd(in, out, "STOR " + file.getName());
+                if (code != 150 && code != 125) throw new IOException("STOR rifiutato: " + code);
+                OutputStream dout = dataSock.getOutputStream();
+                dout.write(data);
+                dout.flush();
+            } finally {
+                try { dataSock.close(); } catch (IOException ignored) { }
+            }
+            expect(readReply(in), 226);
+            try { cmd(in, out, "QUIT"); } catch (IOException ignored) { }
+            return true;
+        } finally {
+            try { ctrl.close(); } catch (IOException ignored) { }
+        }
     }
 
     /**
-     * Android 11+ (API 30): all'avvio legge i motivi delle chiusure precedenti.
-     * Cattura anche crash nativi (librerie audio opus/celt/speex) e ANR,
-     * che il gestore Java sopra non vede.
+     * Se il P50 PRO ha anche i dati mobili attivi, Android potrebbe instradare
+     * il traffico sulla rete cellulare (soprattutto se il Wi-Fi non ha Internet).
+     * Qui si forza l'uso della rete Wi-Fi, dove si trova il server FTP.
      */
-    private void saveLastExitReasons() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.R) return;
+    private static SocketFactory wifiSocketFactory(Context ctx) {
         try {
-            ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
-            if (am == null) return;
-            List<ApplicationExitInfo> infos = am.getHistoricalProcessExitReasons(getPackageName(), 0, 5);
-            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-            long lastSaved = prefs.getLong(PREF_LAST_EXIT_TS, 0);
-            long newest = lastSaved;
-            StringBuilder sb = new StringBuilder();
-            for (ApplicationExitInfo info : infos) {
-                if (info.getTimestamp() <= lastSaved) continue;
-                int r = info.getReason();
-                if (r != ApplicationExitInfo.REASON_CRASH
-                        && r != ApplicationExitInfo.REASON_CRASH_NATIVE
-                        && r != ApplicationExitInfo.REASON_ANR
-                        && r != ApplicationExitInfo.REASON_INITIALIZATION_FAILURE
-                        && r != ApplicationExitInfo.REASON_PERMISSION_CHANGE
-                        && r != ApplicationExitInfo.REASON_SIGNALED
-                        && r != ApplicationExitInfo.REASON_LOW_MEMORY) {
-                    continue;
-                }
-                newest = Math.max(newest, info.getTimestamp());
-                sb.append("----------------------------------------\n");
-                sb.append("Quando:      ").append(new Date(info.getTimestamp())).append('\n');
-                sb.append("Motivo:      ").append(reasonName(r)).append(" (").append(r).append(")\n");
-                sb.append("Processo:    ").append(info.getProcessName()).append('\n');
-                sb.append("Status:      ").append(info.getStatus()).append('\n');
-                sb.append("Descrizione: ").append(info.getDescription()).append('\n');
-                if (r == ApplicationExitInfo.REASON_ANR) {
-                    try (InputStream is = info.getTraceInputStream()) {
-                        if (is != null) {
-                            sb.append("\nTraccia ANR:\n");
-                            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-                            String line;
-                            int n = 0;
-                            while ((line = br.readLine()) != null && n++ < 400) {
-                                sb.append(line).append('\n');
-                            }
-                        }
-                    } catch (Throwable ignored) { }
-                }
-            }
-            if (sb.length() > 0) {
-                writeLog("exit", "=== CHIUSURE PRECEDENTI DELL'APP ===\n" + deviceInfo() + "\n" + sb);
-                prefs.edit().putLong(PREF_LAST_EXIT_TS, newest).apply();
-            }
-        } catch (Throwable ignored) { }
-    }
-
-    private static String reasonName(int r) {
-        switch (r) {
-            case 4:  return "CRASH (eccezione Java)";
-            case 5:  return "CRASH_NATIVE (libreria nativa)";
-            case 6:  return "ANR (app bloccata)";
-            case 7:  return "INITIALIZATION_FAILURE";
-            case 8:  return "PERMISSION_CHANGE";
-            case 3:  return "LOW_MEMORY";
-            case 2:  return "SIGNALED";
-            default: return "altro";
-        }
-    }
-
-    private String deviceInfo() {
-        String version = "?";
-        try {
-            version = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-        } catch (Throwable ignored) { }
-        return "App:     " + getPackageName() + " " + version + "\n"
-                + "Device:  " + Build.MANUFACTURER + " " + Build.MODEL + "\n"
-                + "Android: " + Build.VERSION.RELEASE + " (API " + Build.VERSION.SDK_INT + ")\n"
-                + "Build:   " + Build.DISPLAY + "\n"
-                + "Data:    " + new Date() + "\n";
-    }
-
-    private static String readOwnLogcat() {
-        StringBuilder sb = new StringBuilder();
-        try {
-            java.lang.Process p = Runtime.getRuntime().exec(new String[]{
-                    "logcat", "-d", "-v", "threadtime", "-t", "800",
-                    "--pid=" + android.os.Process.myPid()});
-            BufferedReader br = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            String line;
-            while ((line = br.readLine()) != null) {
-                sb.append(line).append('\n');
-            }
-        } catch (Throwable t) {
-            sb.append("logcat non disponibile: ").append(t).append('\n');
-        }
-        return sb.toString();
-    }
-
-    private void writeLog(String prefix, String text) {
-        String ts = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(new Date());
-        String name = "mumla_" + prefix + "_" + ts + ".txt";
-        byte[] data = text.getBytes(StandardCharsets.UTF_8);
-
-        // 1) Cartella pubblica Download/MumlaLog (visibile da qualsiasi file manager)
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q && !"start".equals(prefix)) {
-            try {
-                ContentValues v = new ContentValues();
-                v.put(MediaStore.MediaColumns.DISPLAY_NAME, name);
-                v.put(MediaStore.MediaColumns.MIME_TYPE, "text/plain");
-                v.put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS + "/" + LOG_DIR);
-                Uri uri = getContentResolver().insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, v);
-                if (uri != null) {
-                    try (OutputStream os = getContentResolver().openOutputStream(uri)) {
-                        if (os != null) os.write(data);
+            ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
+            if (cm != null) {
+                for (Network n : cm.getAllNetworks()) {
+                    NetworkCapabilities caps = cm.getNetworkCapabilities(n);
+                    if (caps != null && caps.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                        return n.getSocketFactory();
                     }
                 }
-            } catch (Throwable ignored) { }
-        }
-
-        // 2) Copia nella cartella dell'app (Android/data/<package>/files/MumlaLog):
-        //    da qui i file vengono inviati al server FTP.
-        try {
-            File dir = localLogDir();
-            if (dir.exists() || dir.mkdirs()) {
-                try (FileOutputStream fos = new FileOutputStream(new File(dir, name))) {
-                    fos.write(data);
-                }
             }
         } catch (Throwable ignored) { }
+        return SocketFactory.getDefault();
+    }
+
+    // ---------------------------------------------------------------
+    // Protocollo FTP
+    // ---------------------------------------------------------------
+
+    private static int cmd(BufferedReader in, OutputStream out, String line) throws IOException {
+        send(out, line);
+        return readReply(in);
+    }
+
+    private static String readReplyLine(BufferedReader in, OutputStream out, String line) throws IOException {
+        send(out, line);
+        return readFullReply(in);
+    }
+
+    private static void send(OutputStream out, String line) throws IOException {
+        out.write((line + "\r\n").getBytes(StandardCharsets.UTF_8));
+        out.flush();
+    }
+
+    private static int readReply(BufferedReader in) throws IOException {
+        String r = readFullReply(in);
+        try {
+            return Integer.parseInt(r.substring(0, 3));
+        } catch (Exception e) {
+            throw new IOException("Risposta FTP non valida: " + r);
+        }
+    }
+
+    /** Legge una risposta anche multi-riga ("230-..." ... "230 ..."); restituisce l'ultima riga. */
+    private static String readFullReply(BufferedReader in) throws IOException {
+        String line = in.readLine();
+        if (line == null) throw new IOException("Connessione FTP chiusa dal server");
+        if (line.length() >= 4 && line.charAt(3) == '-') {
+            String code = line.substring(0, 3);
+            String l;
+            while ((l = in.readLine()) != null) {
+                if (l.startsWith(code + " ")) return l;
+            }
+            throw new IOException("Connessione FTP chiusa dal server");
+        }
+        return line;
+    }
+
+    private static void expect(int code, int wanted) throws IOException {
+        if (code != wanted) throw new IOException("Risposta FTP " + code + ", attesa " + wanted);
+    }
+
+    /** "227 Entering Passive Mode (h1,h2,h3,h4,p1,p2)" -> p1*256+p2 */
+    private static int parsePasvPort(String reply) throws IOException {
+        int a = reply.indexOf('(');
+        int b = reply.indexOf(')', a + 1);
+        if (a < 0 || b < 0) throw new IOException("Risposta PASV non valida: " + reply);
+        String[] p = reply.substring(a + 1, b).split(",");
+        if (p.length != 6) throw new IOException("Risposta PASV non valida: " + reply);
+        return Integer.parseInt(p[4].trim()) * 256 + Integer.parseInt(p[5].trim());
+    }
+
+    private static byte[] readAll(File f) throws IOException {
+        try (InputStream is = new FileInputStream(f)) {
+            byte[] buf = new byte[(int) f.length()];
+            int off = 0, n;
+            while (off < buf.length && (n = is.read(buf, off, buf.length - off)) > 0) off += n;
+            return buf;
+        }
     }
 }

@@ -1,3 +1,9 @@
+19/10/2026
+Error in copy and paste
+files for remove FTP client
+----------------------------------------------
+
+
 18/10/2026
 Ha funzionato !
 Questa versione sospende il client FTP
