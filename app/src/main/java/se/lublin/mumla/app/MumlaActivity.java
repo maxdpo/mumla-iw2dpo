@@ -495,10 +495,48 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    // IW2DPO: manopola superiore Hytera P50 Pro (rilevata con PocKeyTester).
+    // Rotazione oraria = KEYCODE_F5 (volume +), antioraria = KEYCODE_F6 (volume -).
+    private static final int KNOB_VOLUME_UP = KeyEvent.KEYCODE_F5;
+    private static final int KNOB_VOLUME_DOWN = KeyEvent.KEYCODE_F6;
+
+    private static boolean isKnobVolumeKey(int keyCode) {
+        return keyCode == KNOB_VOLUME_UP || keyCode == KNOB_VOLUME_DOWN;
+    }
+
+    /**
+     * IW2DPO: regola il volume dello stesso stream audio usato da Mumla per la
+     * ricezione (STREAM_MUSIC, oppure STREAM_VOICE_CALL in modalita' cornetta),
+     * cosi' la manopola agisce esattamente sull'audio in ascolto.
+     */
+    private boolean adjustListenVolume(int keyCode) {
+        final int direction = keyCode == KNOB_VOLUME_UP
+                ? AudioManager.ADJUST_RAISE : AudioManager.ADJUST_LOWER;
+        final AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        if (am == null) {
+            return false;
+        }
+        final int stream = mSettings.isHandsetMode()
+                ? AudioManager.STREAM_VOICE_CALL : AudioManager.STREAM_MUSIC;
+        try {
+            // FLAG_SHOW_UI mostra la barra del volume di sistema a ogni scatto.
+            am.adjustStreamVolume(stream, direction, AudioManager.FLAG_SHOW_UI);
+        } catch (SecurityException e) {
+            // Es. modalita' Non disturbare: il sistema puo' rifiutare la modifica.
+            Log.w(TAG, "Knob volume change refused", e);
+        }
+        return true;
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (mService != null && keyCode == mSettings.getPushToTalkKey()) {
             mService.onTalkKeyDown();
+            return true;
+        }
+        // Il controllo PTT viene prima: se F5/F6 fossero scelti come tasto PTT,
+        // restano al PTT. Ogni scatto (anche ripetuto) cambia il volume di un passo.
+        if (isKnobVolumeKey(keyCode) && adjustListenVolume(keyCode)) {
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -508,6 +546,10 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (mService != null && keyCode == mSettings.getPushToTalkKey()) {
             mService.onTalkKeyUp();
+            return true;
+        }
+        // Consuma anche il rilascio di F5/F6, cosi' nessun altro componente lo interpreta.
+        if (isKnobVolumeKey(keyCode)) {
             return true;
         }
         return super.onKeyUp(keyCode, event);
