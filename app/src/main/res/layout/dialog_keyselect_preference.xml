@@ -5,6 +5,7 @@
     android:padding="24dp">
 
     <TextView
+        android:id="@+id/key_select_message_view"
         android:text="@string/pressKey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

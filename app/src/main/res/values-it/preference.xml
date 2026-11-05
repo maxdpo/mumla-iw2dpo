@@ -1,107 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2014 Andrew Comminos
+  ~ Copyright (C) 2022 Allan Nordhøy
+  ~
+  ~ This program is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ This program is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  -->
+
 <resources>
-    <!--Theme names-->
-    <!--Hot corner-->
-    <!--About-->
-    <string name="about">Info su</string>
-    <string name="acknowledgementsSum">Vedi chi ha contribuito a Mumla (collegamento web)</string>
-    <string name="licenses">Licenze</string>
-    <string name="authentication">Autenticazione</string>
-    <string name="audioInputVolume">Volume microfono</string>
-    <string name="general">Generale</string>
-    <string name="theme">Tema</string>
-    <string name="advancedAudio">Avanzato</string>
-    <string name="forceTcp">Solo TCP</string>
-    <string name="audio">Audio</string>
-    <string name="chatNotifications">Notifiche chat</string>
-    <string name="certificateGenerate">Genera certificato</string>
-    <string name="disableOpus">Evita codec Opus</string>
-    <string name="useTts">Sintesi vocale</string>
-    <string name="autoReconnect">Riconnessione automatica</string>
-    <string name="useTor">Connetti tramite Tor</string>
-    <string name="inputQuality">Qualità input microfono</string>
-    <string name="loadImages">Immagini esterne</string>
-    <string name="clearServerCertificates">Pulisci certificati server</string>
-    <string name="inputMethodVoice">Attività vocale</string>
-    <string name="hot_corner_top_right">in alto a destra ↗</string>
-    <string name="hot_corner_bottom_right">in basso a destra ↘</string>
-    <string name="pttSound">Suono push-to-talk</string>
-    <string name="version">Versione</string>
-    <string name="pref_export_certificate_title">Esporta certificato</string>
-    <string name="pref_import_certificate_title">Importa certificato</string>
-    <string name="pref_certificate_title">Certificato</string>
-    <string name="theme_light">Chiaro</string>
-    <string name="hot_corner_none">Spento</string>
-    <string name="hot_corner_bottom_left">↙ in basso a sinistra</string>
-    <string name="inputMethodContinuous">Continuo</string>
-    <string name="acknowledgements">Contributori</string>
-    <string name="theme_dark">Scuro</string>
-    <string name="pttKey">Tasto push-to-talk</string>
+    <string name="inputMethodVoice">Voice activity</string>
     <string name="inputMethodPtt">Push-to-talk</string>
-    <string name="hot_corner_top_left">↖ in alto a sinistra</string>
-    <string name="audioInputMethodSum">Il modo in cui si attiva la trasmissione dell\'audio.</string>
-    <string name="audioInputMethod">Modalità di trasmissione</string>
-    <string name="inputQualitySum">Velocità preferita per la trasmissione dei dati (in bit al secondo).</string>
-    <string name="pressKey">Usa un tasto fisico per il push-to-talk.</string>
-    <string name="forceTcpSum">Disattiva UDP per la comunicazione.</string>
-    <string name="audioInputVolumeSum">Livello a cui normalizzare l\'audio.</string>
-    <string name="certificateGenerateSum">Genera un certificato Mumla autofirmato. Raccomandato per i principianti.</string>
-    <string name="useTtsSum">Leggere ad alta voce i messaggi in arrivo utilizzando la sintesi vocale.</string>
-    <string name="detectionThresholdSum">Livello minimo del volume per il rilevamento della voce (quando la modalità di trasmissione è \"Attività vocale\").</string>
-    <string name="detectionThreshold">Soglia di rilevamento</string>
-    <string name="pttKeySum">Usa un pulsante fisico per trasmettere l\'audio.</string>
-    <string name="hotCornerSum">Premere un angolo schermo, in tutto Android, per trasmettere l\'audio.</string>
-    <string name="appearance">Aspetto</string>
-    <string name="themeSum">Cambia l\'aspetto dell\'app.</string>
-    <string name="defaultUsername">Nome utente predefinito</string>
-    <string name="audioSampleRateSum">Frequenza di campionamento audio preferita. Alcuni dispositivi supportano meno frequenze.</string>
-    <string name="defaultUsernameSum">Nome precompilato usato quando si aggiunge un server o ci si connette a un server pubblico.</string>
+    <string name="inputMethodContinuous">Continuous</string>
+
+    <!-- Theme names -->
+    <string name="theme_system">System default</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+
+    <!-- Language -->
+    <string name="language_system">System default</string>
+
+    <!-- Hot corner -->
+    <string name="hot_corner_none">Off</string>
+    <string name="hot_corner_top_left">↖ top left</string>
+    <string name="hot_corner_bottom_left">↙ bottom Left</string>
+    <string name="hot_corner_top_right">Top right ↗</string>
+    <string name="hot_corner_bottom_right">bottom right ↘</string>
+
+    <!-- About -->
+    <string name="about">About</string>
+    <string name="acknowledgements">Contributors</string>
+    <string name="acknowledgementsSum">See who contributed to Mumla (web link)</string>
+    <string name="licenses">Licenses</string>
+
+    <string name="authentication">Authentication</string>
+    <string name="audioInputMethodSum">How audio transmission is activated.</string>
+    <string name="audioInputMethod">Transmit mode</string>
+    <string name="audioInputVolume">Microphone volume</string>
+    <string name="audioInputVolumeSum">Level to normalize audio to.</string>
+    <string name="detectionThreshold">Detection threshold</string>
+    <string name="detectionThresholdSum">Minimum volume level for detecting voice (when transmit mode is \"Voice activity\").</string>
+    <string name="pttKey">Push-to-talk key</string>
+    <string name="pttKeySum">Use a physical button to transmit audio.</string>
+    <string name="hotCorner">Push-to-talk corner</string>
+    <string name="hotCornerSum">Press a screen corner to transmit audio throughout Android.</string>
+    <string name="general">General</string>
+    <string name="appearance">Appearance</string>
+    <string name="themeSum">Change the look of the app.</string>
+    <string name="theme">Theme</string>
+    <string name="language">Language</string>
+    <string name="advancedAudio">Advanced</string>
+    <string name="forceTcp">Only TCP</string>
+    <string name="forceTcpSum">Turns off UDP for communication.</string>
+    <string name="audio">Audio</string>
+    <string name="audioSampleRate">Input sample rate</string>
+    <string name="audioSampleRateSum">Preferred audio sample rate. Some devices support fewer rates.</string>
+    <string name="chatNotifications">Chat notifications</string>
+    <string name="chatNotificationsSum">Shown for new chat messages.</string>
+    <string name="defaultUsername">Default username</string>
+    <string name="defaultUsernameSum">Prefilled name used when adding a server, or connecting to a public server.</string>
     <string name="defaultUsernameDefault">Mumla_User</string>
-    <string name="chatNotificationsSum">Mostrate per nuovi messaggi.</string>
-    <string name="voiceActivitySettings">Impostazioni attività vocale</string>
-    <string name="disableOpusSum">Disattiva il supporto Opus per i server Mumble 1.2.4.</string>
-    <string name="shortTtsMessages">Messaggi sintesi vocale abbreviati</string>
-    <string name="shortTtsMessagesSum">Accorcia i messaggi leggendo solo i nomi dei domini dei collegamenti.</string>
-    <string name="autoReconnectSum">Ristabilisce la connessione al server quando viene persa.</string>
-    <string name="autoconnectEnabled">Connessione/riconnessione automatica</string>
-    <string name="autoconnectEnabledSum">Si connette all\'ultimo server usato appena Mumla si avvia, e controlla ogni 60 secondi che la connessione sia ancora attiva, riconnettendosi da sola se cade. Consuma più batteria mentre è attiva, perché mantiene l\'app in esecuzione in background per sorvegliare la connessione.</string>
-    <string name="autoconnectReconnecting">Riconnessione automatica in corso…</string>
-    <string name="useTorSum">Richiede l\'app Orbot.</string>
-    <string name="loadImagesSum">Scarica e mostra le immagini in chat.</string>
-    <string name="halfDuplex">Audio a senso unico</string>
-    <string name="clearServerCertificatesSum">Rimuovere tutti i certificati server attendibili da Mumla.</string>
-    <string name="halfDuplexSum">Disattiva altre riproduzioni durante il push-to-talk, per evitare loop/feedback audio.</string>
-    <string name="releaseBeep">Beep di fine trasmissione</string>
-    <string name="releaseBeepSum">Trasmette un breve tono al canale quando rilasci il pulsante PTT, per segnalare che il canale è libero. Utile in modalità half-duplex (es. radio POC).</string>
-    <string name="releaseBeepVolume">Volume beep di fine trasmissione</string>
-    <string name="releaseBeepVolumeSum">Intensità del beep di fine trasmissione, in percentuale del fondo scala.</string>
-    <string name="handsetModeSum">Usa l\'altoparlante anteriore e il sensore di prossimità per simulare una telefonata tradizionale.</string>
-    <string name="pressKeyInfo">L\'app deve essere aperta (a causa di restrizioni Android).</string>
-    <string name="preprocessor_enabled">Pre-elaborazione dell\'input</string>
-    <string name="pttSoundSum">Riprodurre un suono alla pressione del pulsante push-to-talk.</string>
-    <string name="handsetMode">Cornetta</string>
-    <string name="pref_export_certificate_summary">Esporta nella memoria esterna.</string>
-    <string name="preprocessor_enabled_sum">Sopprime il rumore ambientale e normalizza il volume dell\'audio.</string>
-    <string name="pref_import_certificate_summary">Importa dalla memoria esterna.</string>
-    <string name="pref_start_up_in_pinned_mode">Modalità canali fissati</string>
-    <string name="pttSettings">Impostazioni push-to-talk</string>
-    <string name="pttButtonHeightSum">Cambia la lunghezza verticale del pulsante push-to-talk.</string>
-    <string name="audio_per_packet">Audio per pacchetto</string>
-    <string name="audio_per_packet_sum">Lunghezza dell\'audio per pacchetto vocale.</string>
-    <string name="stay_awake">Resta sveglio</string>
-    <string name="stay_awake_sum">Mantiene lo schermo acceso quando Mumla è aperto.</string>
-    <string name="pref_certificate_summary">Valore predefinito da utilizzare per la connessione a un server.</string>
-    <string name="pref_show_user_count_summary">Mostra il numero di utenti nelle stanze del canale.</string>
-    <string name="pref_show_user_count">Mostra numero utenti del canale</string>
-    <string name="pref_start_upIn_pinned_mode_sum">Attiva la modalità \"Canali fissati\" dopo la connessione (nasconde i canali che non sono fissati).</string>
-    <string name="audioSampleRate">Frequenza di campionamento input</string>
-    <string name="hotCorner">Angolo push-to-talk</string>
-    <string name="hidePtt">Nascondi pulsante push-to-talk</string>
-    <string name="hidePttSum">Utile solo se si usa l\'angolo push-to-talk o il tasto fisico.</string>
-    <string name="togglePtt">Pulsante Push-to-talk bloccato</string>
-    <string name="togglePttSum">La pressione del pulsante push-to-talk attiva o disattiva la trasmissione. Non è necessario tenerlo premuto.</string>
-    <string name="pttButtonHeight">Altezza pulsante push-to-talk</string>
-    <string name="theme_system">Predefinito di sistema</string>
-    <string name="language_system">Predefinito di sistema</string>
-    <string name="language">Lingua</string>
+    <string name="certificateGenerate">Generate certificate</string>
+    <string name="certificateGenerateSum">Generates a new self-signed Mumla certificate. Recommended for beginners.</string>
+    <string name="pttSettings">Push-to-talk settings</string>
+    <string name="volumeKeySettings">Volume keys</string>
+    <string name="volumeUpKey">Vol-up-key</string>
+    <string name="volumeUpKeySum">Use a physical button (or knob) to increase the listening volume.</string>
+    <string name="volumeDownKey">Vol-down-key</string>
+    <string name="volumeDownKeySum">Use a physical button (or knob) to decrease the listening volume.</string>
+    <string name="pressVolumeUpKey">Press the physical key (or turn the knob) you want to use to increase the volume.</string>
+    <string name="pressVolumeDownKey">Press the physical key (or turn the knob) you want to use to decrease the volume.</string>
+    <string name="voiceActivitySettings">Voice activity settings</string>
+    <string name="disableOpus">Avoid Opus codec</string>
+    <string name="disableOpusSum">Turn off Opus support for Mumble 1.2.4 servers.</string>
+    <string name="echoCancellationMethod">Echo Cancellation</string>
+    <string name="echoCancellationMethodSum">Reduce echo from your device\'s speaker while talking. Quality depends on the device.</string>
+    <string name="echoCancellationDisabled">Disabled</string>
+    <string name="echoCancellationSystem">System</string>
+    <string name="hidePtt">Hide push-to-talk button</string>
+    <string name="hidePttSum">Only useful if you use Push-to-talk corner or physical key.</string>
+    <string name="useTts">Text-to-speech</string>
+    <string name="useTtsSum">Read incoming message aloud using speech synthesis.</string>
+    <string name="shortTtsMessages">Shortened text-to-speech messages</string>
+    <string name="shortTtsMessagesSum">Shorten the messages by only reading the domain names of links.</string>
+    <string name="togglePtt">Sticky Push-to-talk button</string>
+    <string name="togglePttSum">Push-to-talk button toggles transmission on/off. No need to hold it.</string>
+    <string name="autoReconnect">Auto-reconnect</string>
+    <string name="autoReconnectSum">Re-establishes connection to server when lost.</string>
+    <string name="autoconnectEnabled">Automatic connect/reconnect</string>
+    <string name="autoconnectEnabledSum">Connects to the last used server as soon as Mumla starts, and checks every 60 seconds that the connection is still up, reconnecting on its own if it drops. Uses more battery while active, since it keeps the app running in the background to watch the connection.</string>
+    <string name="autoconnectReconnecting">Automatic reconnection in progress…</string>
+    <string name="useTor">Connect via Tor</string>
+    <string name="useTorSum">Requires the Orbot app.</string>
+    <string name="inputQuality">Microphone input quality</string>
+    <string name="inputQualitySum">Preferred rate of data transmitted (in bits per second).</string>
+    <string name="pttButtonHeight">Push-to-talk button height</string>
+    <string name="pttButtonHeightSum">Change the vertical length of the push-to-talk button.</string>
+    <string name="pressKey">Press a physical key to use it for push-to-talk.</string>
+    <string name="pressKeyInfo">The app must be open to use this (due to Android restrictions).</string>
+    <string name="loadImagesSum">Downloads and shows pictures in chat.</string>
+    <string name="loadImages">External images</string>
+    <string name="clearServerCertificates">Clear server certificates</string>
+    <string name="clearServerCertificatesSum">Remove all trusted server certificates from Mumla.</string>
+    <string name="version">Version</string>
+    <string name="halfDuplex">One-way audio</string>
+    <string name="halfDuplexSum">Mutes other playback during push-to-talk to avoid audio loops/feedback.</string>
+    <string name="releaseBeep">Transmission end beep</string>
+    <string name="releaseBeepSum">Transmits a short tone to the channel when you release the talk button, signalling that the channel is free. Useful for half-duplex PTT operation (e.g. POC radios).</string>
+    <string name="releaseBeepVolume">Transmission end beep volume</string>
+    <string name="releaseBeepVolumeSum">Loudness of the transmission end beep, as a percentage of full scale.</string>
+    <string name="handsetMode">Handset</string>
+    <string name="handsetModeSum">Uses the front speaker and proximity sensor to simulate a traditional phone call.</string>
+    <string name="pttSound">Push-to-talk sound</string>
+    <string name="pttSoundSum">Play sound effect when pressing the push-to-talk button.</string>
+    <string name="preprocessor_enabled">Input pre-processing</string>
+    <string name="preprocessor_enabled_sum">Suppresses ambient noise and normalizes audio volume.</string>
+    <string name="audio_per_packet">Audio per packet</string>
+    <string name="audio_per_packet_sum">The length of audio per voice packet.</string>
+    <string name="stay_awake">Stay awake</string>
+    <string name="stay_awake_sum">Keeps the screen on when Mumla is open.</string>
+    <string name="pref_certificate_title">Certificate</string>
+    <string name="pref_certificate_summary">The default to use when connecting to a server.</string>
+    <string name="pref_import_certificate_title">Import certificate</string>
+    <string name="pref_import_certificate_summary">Import one from external storage.</string>
+    <string name="pref_export_certificate_title">Export certificate</string>
+    <string name="pref_export_certificate_summary">Exports one to external storage.</string>
+    <string name="pref_show_user_count">Show channel user count</string>
+    <string name="pref_show_user_count_summary">Shows the number of users in channel subtrees.</string>
+    <string name="pref_start_up_in_pinned_mode">Pinned channels mode</string>
+    <string name="pref_start_upIn_pinned_mode_sum">Enables \"Pinned channels\" mode after connecting (hides channels that are not pinned).</string>
 </resources>

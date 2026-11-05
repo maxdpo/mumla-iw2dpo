@@ -58,6 +58,11 @@ public class Settings {
     public static final String PREF_PUSH_KEY = "talkKey";
     public static final Integer DEFAULT_PUSH_KEY = -1;
 
+    // IW2DPO: tasti volume configurabili (0 = nessun tasto)
+    public static final String PREF_VOLUME_UP_KEY = "volumeUpKey";
+    public static final String PREF_VOLUME_DOWN_KEY = "volumeDownKey";
+    public static final int DEFAULT_VOLUME_KEY = 0;
+
     public static final String PREF_HOT_CORNER_KEY = "hotCorner";
     public static final String ARRAY_HOT_CORNER_NONE = "none";
     public static final String ARRAY_HOT_CORNER_TOP_LEFT = "topLeft";
@@ -244,6 +249,14 @@ public class Settings {
 
     public int getPushToTalkKey() {
         return preferences.getInt(PREF_PUSH_KEY, DEFAULT_PUSH_KEY);
+    }
+
+    public int getVolumeUpKey() {
+        return preferences.getInt(PREF_VOLUME_UP_KEY, DEFAULT_VOLUME_KEY);
+    }
+
+    public int getVolumeDownKey() {
+        return preferences.getInt(PREF_VOLUME_DOWN_KEY, DEFAULT_VOLUME_KEY);
     }
 
     public String getHotCorner() {

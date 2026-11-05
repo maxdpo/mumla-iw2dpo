@@ -73,6 +73,13 @@
     <string name="certificateGenerate">Generate certificate</string>
     <string name="certificateGenerateSum">Generates a new self-signed Mumla certificate. Recommended for beginners.</string>
     <string name="pttSettings">Push-to-talk settings</string>
+    <string name="volumeKeySettings">Volume keys</string>
+    <string name="volumeUpKey">Vol-up-key</string>
+    <string name="volumeUpKeySum">Use a physical button (or knob) to increase the listening volume.</string>
+    <string name="volumeDownKey">Vol-down-key</string>
+    <string name="volumeDownKeySum">Use a physical button (or knob) to decrease the listening volume.</string>
+    <string name="pressVolumeUpKey">Press the physical key (or turn the knob) you want to use to increase the volume.</string>
+    <string name="pressVolumeDownKey">Press the physical key (or turn the knob) you want to use to decrease the volume.</string>
     <string name="voiceActivitySettings">Voice activity settings</string>
     <string name="disableOpus">Avoid Opus codec</string>
     <string name="disableOpusSum">Turn off Opus support for Mumble 1.2.4 servers.</string>

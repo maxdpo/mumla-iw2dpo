@@ -495,23 +495,27 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
-    // IW2DPO: manopola superiore Hytera P50 Pro (rilevata con PocKeyTester).
-    // Rotazione oraria = KEYCODE_F5 (volume +), antioraria = KEYCODE_F6 (volume -).
-    private static final int KNOB_VOLUME_UP = KeyEvent.KEYCODE_F5;
-    private static final int KNOB_VOLUME_DOWN = KeyEvent.KEYCODE_F6;
+    /**
+     * IW2DPO: tasti volume configurabili da Impostazioni > Audio
+     * ("Vol-up-key" / "Vol-down-key"). Nessun codice tasto e' cablato:
+     * ogni radio POC (Hytera, Inrico, Retevis, ...) usa il proprio.
+     * Valore 0 = nessun tasto assegnato (funzione disattivata).
+     */
+    private boolean isVolumeUpKey(int keyCode) {
+        final int k = mSettings.getVolumeUpKey();
+        return k > 0 && keyCode == k;
+    }
 
-    private static boolean isKnobVolumeKey(int keyCode) {
-        return keyCode == KNOB_VOLUME_UP || keyCode == KNOB_VOLUME_DOWN;
+    private boolean isVolumeDownKey(int keyCode) {
+        final int k = mSettings.getVolumeDownKey();
+        return k > 0 && keyCode == k;
     }
 
     /**
      * IW2DPO: regola il volume dello stesso stream audio usato da Mumla per la
-     * ricezione (STREAM_MUSIC, oppure STREAM_VOICE_CALL in modalita' cornetta),
-     * cosi' la manopola agisce esattamente sull'audio in ascolto.
+     * ricezione (STREAM_MUSIC, oppure STREAM_VOICE_CALL in modalita' cornetta).
      */
-    private boolean adjustListenVolume(int keyCode) {
-        final int direction = keyCode == KNOB_VOLUME_UP
-                ? AudioManager.ADJUST_RAISE : AudioManager.ADJUST_LOWER;
+    private boolean adjustListenVolume(boolean raise) {
         final AudioManager am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         if (am == null) {
             return false;
@@ -520,10 +524,12 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
                 ? AudioManager.STREAM_VOICE_CALL : AudioManager.STREAM_MUSIC;
         try {
             // FLAG_SHOW_UI mostra la barra del volume di sistema a ogni scatto.
-            am.adjustStreamVolume(stream, direction, AudioManager.FLAG_SHOW_UI);
+            am.adjustStreamVolume(stream,
+                    raise ? AudioManager.ADJUST_RAISE : AudioManager.ADJUST_LOWER,
+                    AudioManager.FLAG_SHOW_UI);
         } catch (SecurityException e) {
             // Es. modalita' Non disturbare: il sistema puo' rifiutare la modifica.
-            Log.w(TAG, "Knob volume change refused", e);
+            Log.w(TAG, "Volume key change refused", e);
         }
         return true;
     }
@@ -534,9 +540,12 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
             mService.onTalkKeyDown();
             return true;
         }
-        // Il controllo PTT viene prima: se F5/F6 fossero scelti come tasto PTT,
-        // restano al PTT. Ogni scatto (anche ripetuto) cambia il volume di un passo.
-        if (isKnobVolumeKey(keyCode) && adjustListenVolume(keyCode)) {
+        // Il PTT ha la precedenza: se lo stesso tasto fosse assegnato anche al
+        // volume, resta al PTT. Ogni scatto (anche ripetuto) cambia il volume di un passo.
+        if (isVolumeUpKey(keyCode) && adjustListenVolume(true)) {
+            return true;
+        }
+        if (isVolumeDownKey(keyCode) && adjustListenVolume(false)) {
             return true;
         }
         return super.onKeyDown(keyCode, event);
@@ -548,8 +557,8 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
             mService.onTalkKeyUp();
             return true;
         }
-        // Consuma anche il rilascio di F5/F6, cosi' nessun altro componente lo interpreta.
-        if (isKnobVolumeKey(keyCode)) {
+        // Consuma anche il rilascio dei tasti volume, cosi' nessun altro componente lo interpreta.
+        if (isVolumeUpKey(keyCode) || isVolumeDownKey(keyCode)) {
             return true;
         }
         return super.onKeyUp(keyCode, event);

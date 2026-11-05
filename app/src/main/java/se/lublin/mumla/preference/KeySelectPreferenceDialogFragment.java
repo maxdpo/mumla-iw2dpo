@@ -52,6 +52,13 @@ public class KeySelectPreferenceDialogFragment extends PreferenceDialogFragmentC
 
         mValueView = view.findViewById(R.id.key_select_value_view);
         KeySelectDialogPreference preference = (KeySelectDialogPreference) getPreference();
+        // IW2DPO: testo istruzioni specifico (PTT / Vol-up / Vol-down) se definito
+        // con android:dialogMessage nell'XML delle impostazioni.
+        TextView messageView = view.findViewById(R.id.key_select_message_view);
+        CharSequence message = preference.getDialogMessage();
+        if (messageView != null && message != null && message.length() > 0) {
+            messageView.setText(message);
+        }
         mCurrentValue = requireNonNull(preference.getSharedPreferences())
                 .getInt(preference.getKey(), 0);
         updateValueView();

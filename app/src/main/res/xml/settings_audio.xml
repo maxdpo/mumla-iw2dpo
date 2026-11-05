@@ -117,6 +117,25 @@
             android:text="%"
             app:iconSpaceReserved="false"/>
     </PreferenceCategory>
+
+    <!-- IW2DPO: tasti volume configurabili (autodetect come per il PTT) -->
+    <PreferenceCategory android:title="@string/volumeKeySettings"
+        android:key="volume_key_settings"
+        app:iconSpaceReserved="false">
+        <se.lublin.mumla.preference.KeySelectDialogPreference
+            android:key="volumeUpKey"
+            android:title="@string/volumeUpKey"
+            android:summary="@string/volumeUpKeySum"
+            android:dialogMessage="@string/pressVolumeUpKey"
+            app:iconSpaceReserved="false"/>
+        <se.lublin.mumla.preference.KeySelectDialogPreference
+            android:key="volumeDownKey"
+            android:title="@string/volumeDownKey"
+            android:summary="@string/volumeDownKeySum"
+            android:dialogMessage="@string/pressVolumeDownKey"
+            app:iconSpaceReserved="false"/>
+    </PreferenceCategory>
+
     <PreferenceCategory android:title="@string/advancedAudio"
         app:iconSpaceReserved="false">
 
