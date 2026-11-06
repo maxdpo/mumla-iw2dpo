@@ -1,8 +1,10 @@
+Default transmit mode: Push-to-talk
+Nov 6 2026
+-----------------------------------------------
+
 Added programmable Vol-up-key Vol-Down-key
 Nov 5 2026
 -----------------------------------------------
-
-
 
 19/10/2026
 Error in copy and paste
