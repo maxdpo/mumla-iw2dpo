@@ -116,6 +116,15 @@
             android:defaultValue="7"
             android:text="%"
             app:iconSpaceReserved="false"/>
+        <ListPreference
+            android:dependency="release_beep_enabled"
+            android:key="release_beep_sound"
+            android:title="@string/releaseBeepSound"
+            android:summary="@string/releaseBeepSoundSum"
+            android:entries="@array/releaseBeepSoundNames"
+            android:entryValues="@array/releaseBeepSoundValues"
+            android:defaultValue="dtmf"
+            app:iconSpaceReserved="false"/>
     </PreferenceCategory>
 
     <!-- IW2DPO: tasti volume configurabili (autodetect come per il PTT) -->

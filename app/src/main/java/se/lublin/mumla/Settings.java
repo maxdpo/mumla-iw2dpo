@@ -156,6 +156,12 @@ public class Settings {
     public static final String PREF_RELEASE_BEEP_VOLUME = "release_beep_volume";
     public static final int DEFAULT_RELEASE_BEEP_VOLUME = 40;
 
+    /** IW2DPO: TX end beep sound, "dtmf" or "single_tone". */
+    public static final String PREF_RELEASE_BEEP_SOUND = "release_beep_sound";
+    public static final String ARRAY_RELEASE_BEEP_SOUND_DTMF = "dtmf";
+    public static final String ARRAY_RELEASE_BEEP_SOUND_SINGLE_TONE = "single_tone";
+    public static final String DEFAULT_RELEASE_BEEP_SOUND = ARRAY_RELEASE_BEEP_SOUND_DTMF;
+
     public static final String PREF_HANDSET_MODE = "handset_mode";
     public static final boolean DEFAULT_HANDSET_MODE = false;
 
@@ -402,6 +408,10 @@ public class Settings {
 
     public int getReleaseBeepVolume() {
         return preferences.getInt(PREF_RELEASE_BEEP_VOLUME, DEFAULT_RELEASE_BEEP_VOLUME);
+    }
+
+    public String getReleaseBeepSound() {
+        return preferences.getString(PREF_RELEASE_BEEP_SOUND, DEFAULT_RELEASE_BEEP_SOUND);
     }
 
     public boolean isHandsetMode() {

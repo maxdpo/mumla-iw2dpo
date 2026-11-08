@@ -25,6 +25,19 @@
         <item>@string/inputMethodContinuous</item>
     </string-array>
 
+    <!-- IW2DPO: TX end beep sound -->
+    <string-array
+        name="releaseBeepSoundNames">
+        <item>@string/releaseBeepSoundDtmf</item>
+        <item>@string/releaseBeepSoundSingleTone</item>
+    </string-array>
+
+    <string-array
+        name="releaseBeepSoundValues">
+        <item>dtmf</item>
+        <item>single_tone</item>
+    </string-array>
+
     <string-array
         name="audioInputValues">
         <item>voiceActivity</item>

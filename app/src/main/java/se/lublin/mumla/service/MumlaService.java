@@ -562,6 +562,9 @@ public class MumlaService extends HumlaService implements
             case Settings.PREF_RELEASE_BEEP_VOLUME:
                 changedExtras.putInt(EXTRAS_RELEASE_BEEP_VOLUME, mSettings.getReleaseBeepVolume());
                 break;
+            case Settings.PREF_RELEASE_BEEP_SOUND:
+                changedExtras.putString(EXTRAS_RELEASE_BEEP_SOUND, mSettings.getReleaseBeepSound());
+                break;
             case Settings.PREF_PTT_SOUND:
                 mPTTSoundEnabled = mSettings.isPttSoundEnabled();
                 break;
