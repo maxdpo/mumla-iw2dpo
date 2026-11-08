@@ -87,7 +87,7 @@
     <!-- IW2DPO: automatic connect/reconnect to whichever server was last used
          successfully (tracked automatically, no server picker needed here). -->
     <CheckBoxPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:key="autoconnect_enabled"
         android:title="@string/autoconnectEnabled"
         android:summary="@string/autoconnectEnabledSum"

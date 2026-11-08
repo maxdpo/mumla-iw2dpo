@@ -116,7 +116,7 @@
     <string name="halfDuplex">One-way audio</string>
     <string name="halfDuplexSum">Mutes other playback during push-to-talk to avoid audio loops/feedback.</string>
     <string name="releaseBeep">TX end beep</string>
-    <string name="releaseBeepSum">Transmits a short tone to the channel when you release the talk button, signalling that the channel is free. Useful for half-duplex PTT operation (e.g. POC radios).</string>
+    <string name="releaseBeepSum">End TX tone</string>
     <string name="releaseBeepVolume">TX end beep volume</string>
     <string name="releaseBeepVolumeSum">Loudness of the TX end beep, as a percentage of full scale.</string>
     <string name="releaseBeepSound">TX end beep sound</string>

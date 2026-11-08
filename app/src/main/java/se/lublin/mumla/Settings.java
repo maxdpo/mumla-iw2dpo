@@ -101,7 +101,7 @@ public class Settings {
     /** IW2DPO: connect automatically to the last used server on app launch, and keep watching
      * the connection, reconnecting on its own if it drops. */
     public static final String PREF_AUTOCONNECT_ENABLED = "autoconnect_enabled";
-    public static final boolean DEFAULT_AUTOCONNECT_ENABLED = false;
+    public static final boolean DEFAULT_AUTOCONNECT_ENABLED = true;
 
     /** IW2DPO: database ID of the server we last successfully connected to, kept up to date
      * automatically (not user-facing) so we know what to log back into. */
