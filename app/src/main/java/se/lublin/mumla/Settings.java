@@ -81,7 +81,7 @@ public class Settings {
     public static final String DEFAULT_RATE = "48000";
 
     public static final String PREF_INPUT_QUALITY = "input_bitrate";
-    public static final int DEFAULT_INPUT_QUALITY = 40000;
+    public static final int DEFAULT_INPUT_QUALITY = 20000;
 
     public static final String PREF_AMPLITUDE_BOOST = "inputVolume";
     public static final Integer DEFAULT_AMPLITUDE_BOOST = 100;
@@ -160,7 +160,7 @@ public class Settings {
     public static final String PREF_RELEASE_BEEP_SOUND = "release_beep_sound";
     public static final String ARRAY_RELEASE_BEEP_SOUND_DTMF = "dtmf";
     public static final String ARRAY_RELEASE_BEEP_SOUND_SINGLE_TONE = "single_tone";
-    public static final String DEFAULT_RELEASE_BEEP_SOUND = ARRAY_RELEASE_BEEP_SOUND_DTMF;
+    public static final String DEFAULT_RELEASE_BEEP_SOUND = ARRAY_RELEASE_BEEP_SOUND_SINGLE_TONE;
 
     public static final String PREF_HANDSET_MODE = "handset_mode";
     public static final boolean DEFAULT_HANDSET_MODE = false;

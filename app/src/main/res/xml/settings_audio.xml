@@ -123,7 +123,7 @@
             android:summary="@string/releaseBeepSoundSum"
             android:entries="@array/releaseBeepSoundNames"
             android:entryValues="@array/releaseBeepSoundValues"
-            android:defaultValue="dtmf"
+            android:defaultValue="single_tone"
             app:iconSpaceReserved="false"/>
     </PreferenceCategory>
 
@@ -165,7 +165,7 @@
             app:multiplier="1000"
             app:max="96"
             app:min="8"
-            android:defaultValue="40"
+            android:defaultValue="20"
             android:text=" bps"
             app:iconSpaceReserved="false"/>
 
