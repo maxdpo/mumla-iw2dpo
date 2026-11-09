@@ -1,5 +1,5 @@
 
-
+Hide PTT button ON by default
 Input pre-processing OFF by default
 When STAY AWAKE is OFF timer = 5 min
 Defaults: TX end beep SINGLE TONE, mic quality 20000 bps
