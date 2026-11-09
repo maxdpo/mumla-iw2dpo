@@ -182,7 +182,7 @@
             android:key="preprocessor_enabled"
             android:title="@string/preprocessor_enabled"
             android:summary="@string/preprocessor_enabled_sum"
-            android:defaultValue="true"
+            android:defaultValue="false"
             app:iconSpaceReserved="false"/>
 
         <ListPreference

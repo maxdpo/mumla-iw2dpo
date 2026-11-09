@@ -169,7 +169,7 @@ public class Settings {
     public static final boolean DEFAULT_PTT_SOUND = false;
 
     public static final String PREF_PREPROCESSOR_ENABLED = "preprocessor_enabled";
-    public static final boolean DEFAULT_PREPROCESSOR_ENABLED = true;
+    public static final boolean DEFAULT_PREPROCESSOR_ENABLED = false; // IW2DPO: Input pre-processing OFF di default
 
     public static final String PREF_ECHO_CANCELLATION_METHOD = "echo_cancellation_method";
     public static final String DEFAULT_ECHO_CANCELLATION_METHOD = "none";
