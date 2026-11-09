@@ -83,6 +83,8 @@ import info.guardianproject.netcipher.proxy.OrbotHelper;
 import se.lublin.humla.IHumlaService;
 import se.lublin.humla.IHumlaSession;
 import se.lublin.humla.model.Server;
+import se.lublin.humla.model.IUser;
+import se.lublin.humla.model.TalkState;
 import se.lublin.humla.net.HumlaConnection;
 import se.lublin.humla.protobuf.Mumble;
 import se.lublin.humla.util.HumlaException;
@@ -124,6 +126,8 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     private IMumlaService mService;
     private MumlaDatabase mDatabase;
     private Settings mSettings;
+    /** IW2DPO: Stay awake con timeout di 5 minuti dall'ultima attivita'. */
+    private StayAwakeTimer mStayAwakeTimer;
 
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
@@ -194,6 +198,15 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     }
 
     private final HumlaObserver mObserver = new HumlaObserver() {
+        /** IW2DPO: chiunque parli (PTT locale o voce in arrivo) fa ripartire lo stay awake. */
+        @Override
+        public void onUserTalkStateUpdated(IUser user) {
+            if (mStayAwakeTimer != null && user != null
+                    && user.getTalkState() == TalkState.TALKING) {
+                mStayAwakeTimer.poke();
+            }
+        }
+
         @Override
         public void onConnected() {
             if (mSettings.shouldStartUpInPinnedMode()) {
@@ -435,6 +448,8 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         // cold start (no service running yet) and auto-connect would silently never happen.
         int bindFlags = mPendingAutoConnect ? Context.BIND_AUTO_CREATE : 0;
         bindService(connectIntent, mConnection, bindFlags);
+        // IW2DPO: rientro in Mumla -> riparte il conteggio dei 5 minuti di stay awake
+        setStayAwake(mSettings.shouldStayAwake());
     }
 
     @Override
@@ -453,6 +468,8 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
             mService.setSuppressNotifications(false);
         }
         unbindService(mConnection);
+        // IW2DPO: Mumla non visibile -> ferma il timer e toglie il flag
+        if (mStayAwakeTimer != null) mStayAwakeTimer.stop();
     }
 
     @Override
@@ -800,11 +817,18 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     }
 
     private void setStayAwake(boolean stayAwake) {
-        if (stayAwake) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        } else {
-            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        // IW2DPO: FLAG_KEEP_SCREEN_ON con timer di 5 minuti dall'ultima attivita'
+        if (mStayAwakeTimer == null) {
+            mStayAwakeTimer = new StayAwakeTimer(getWindow());
         }
+        mStayAwakeTimer.setEnabled(stayAwake);
+    }
+
+    /** IW2DPO: ogni tocco o tasto premuto fa ripartire i 5 minuti di stay awake. */
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        if (mStayAwakeTimer != null) mStayAwakeTimer.poke();
     }
 
     /**

@@ -8,8 +8,34 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import se.lublin.mumla.R;
+import se.lublin.mumla.Settings;
+import se.lublin.mumla.app.StayAwakeTimer;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    /** IW2DPO: stesso stay awake di 5 minuti anche nella schermata Impostazioni. */
+    private StayAwakeTimer mStayAwakeTimer;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mStayAwakeTimer == null) {
+            mStayAwakeTimer = new StayAwakeTimer(getWindow());
+        }
+        mStayAwakeTimer.setEnabled(Settings.getInstance(this).shouldStayAwake());
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mStayAwakeTimer != null) mStayAwakeTimer.stop();
+    }
+
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        if (mStayAwakeTimer != null) mStayAwakeTimer.poke();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
