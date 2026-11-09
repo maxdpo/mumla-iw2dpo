@@ -83,7 +83,7 @@
             android:title="@string/pttSound"
             app:iconSpaceReserved="false"/>
         <CheckBoxPreference
-            android:defaultValue="false"
+            android:defaultValue="true"
             android:key="hidePtt"
             android:summary="@string/hidePttSum"
             android:title="@string/hidePtt"

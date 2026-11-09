@@ -72,7 +72,7 @@ public class Settings {
     public static final String DEFAULT_HOT_CORNER = ARRAY_HOT_CORNER_NONE;
 
     public static final String PREF_PUSH_BUTTON_HIDE_KEY = "hidePtt";
-    public static final Boolean DEFAULT_PUSH_BUTTON_HIDE = false;
+    public static final Boolean DEFAULT_PUSH_BUTTON_HIDE = true; // IW2DPO: pulsante PTT nascosto di default
 
     public static final String PREF_PTT_TOGGLE = "togglePtt";
     public static final Boolean DEFAULT_PTT_TOGGLE = false;
