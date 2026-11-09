@@ -1,3 +1,16 @@
+
+
+Input pre-processing OFF by default
+When STAY AWAKE is OFF timer = 5 min
+Defaults: TX end beep SINGLE TONE, mic quality 20000 bps
+Autoconnect ON by default, short TX end beep description
+Add TX end beep sound menu, rename to TX end beep
+Default transmit mode: Push-to-talk
+Update humla: DTMF 0 roger beep
+Added programmable Vol-up, Vol Down keys
+
+Last mod after Hytera P50 qualified
+
 Default transmit mode: Push-to-talk
 Nov 6 2026
 -----------------------------------------------
