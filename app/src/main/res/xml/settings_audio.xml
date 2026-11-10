@@ -94,6 +94,14 @@
             android:summary="@string/togglePttSum"
             android:title="@string/togglePtt"
             app:iconSpaceReserved="false"/>
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/pttDebounceNames"
+            android:entryValues="@array/pttDebounceValues"
+            android:key="ptt_debounce"
+            android:title="@string/pttDebounce"
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false"/>
         <CheckBoxPreference
             android:defaultValue="false"
             android:key="half_duplex"

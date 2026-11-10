@@ -168,6 +168,10 @@ public class Settings {
     public static final String PREF_PTT_SOUND = "ptt_sound";
     public static final boolean DEFAULT_PTT_SOUND = false;
 
+    /** IW2DPO: PTT release debouncing delay in ms ("0" = OFF, "500", "2000"). */
+    public static final String PREF_PTT_DEBOUNCE = "ptt_debounce";
+    public static final String DEFAULT_PTT_DEBOUNCE = "0";
+
     public static final String PREF_PREPROCESSOR_ENABLED = "preprocessor_enabled";
     public static final boolean DEFAULT_PREPROCESSOR_ENABLED = false; // IW2DPO: Input pre-processing OFF di default
 
@@ -420,6 +424,15 @@ public class Settings {
 
     public boolean isPttSoundEnabled() {
         return preferences.getBoolean(PREF_PTT_SOUND, DEFAULT_PTT_SOUND);
+    }
+
+    /** IW2DPO: @return PTT release debouncing delay in ms, 0 = OFF. */
+    public int getPttDebounceMs() {
+        try {
+            return Integer.parseInt(preferences.getString(PREF_PTT_DEBOUNCE, DEFAULT_PTT_DEBOUNCE));
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
     public boolean isPreprocessorEnabled() {

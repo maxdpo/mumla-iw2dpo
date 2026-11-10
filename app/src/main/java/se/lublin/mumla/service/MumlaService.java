@@ -28,6 +28,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Looper;
 import android.os.PowerManager;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
@@ -137,6 +138,21 @@ public class MumlaService extends HumlaService implements
     };
 
     private BroadcastReceiver mTalkReceiver;
+
+    /** IW2DPO: PTT release debouncing. */
+    private final Handler mPttDebounceHandler = new Handler(Looper.getMainLooper());
+    /** IW2DPO: last known physical state of the PTT button. */
+    private boolean mPttKeyDown = false;
+    /** IW2DPO: runs after the debounce delay and re-checks the PTT button state. */
+    private final Runnable mPttReleaseRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (!mPttKeyDown) {
+                handleTalkKeyUp(); // still released after the delay: confirm release
+            }
+            // else: PTT pressed again during the delay (bounce): keep transmitting
+        }
+    };
 
     private HumlaObserver mObserver = new HumlaObserver() {
         @Override
@@ -374,6 +390,7 @@ public class MumlaService extends HumlaService implements
 
     @Override
     public void onDestroy() {
+        mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable); // IW2DPO
         if (mReconnectWatchdogHandler != null) {
             mReconnectWatchdogHandler.removeCallbacks(mReconnectWatchdogRunnable);
         }
@@ -713,6 +730,9 @@ public class MumlaService extends HumlaService implements
      */
     @Override
     public void onTalkKeyDown() {
+        // IW2DPO: a press during the debounce delay cancels the pending release
+        mPttKeyDown = true;
+        mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
         if(isConnectionEstablished()
                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
             if (!mSettings.isPushToTalkToggle() && !isTalking()) {
@@ -727,6 +747,19 @@ public class MumlaService extends HumlaService implements
      */
     @Override
     public void onTalkKeyUp() {
+        mPttKeyDown = false;
+        // IW2DPO: PTT release debouncing (only on release, only in hold-to-talk mode)
+        int debounceMs = mSettings.getPttDebounceMs();
+        if (debounceMs > 0 && !mSettings.isPushToTalkToggle() && isTalking()) {
+            mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
+            mPttDebounceHandler.postDelayed(mPttReleaseRunnable, debounceMs);
+            return;
+        }
+        handleTalkKeyUp();
+    }
+
+    /** IW2DPO: original PTT release logic, run immediately or after the debounce delay. */
+    private void handleTalkKeyUp() {
         if(isConnectionEstablished()
                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
             if (mSettings.isPushToTalkToggle()) {

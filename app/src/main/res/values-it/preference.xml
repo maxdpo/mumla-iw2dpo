@@ -120,6 +120,7 @@
     <string name="releaseBeepVolume">TX end beep volume</string>
     <string name="releaseBeepVolumeSum">Loudness of the TX end beep, as a percentage of full scale.</string>
     <string name="releaseBeepSound">TX end beep sound</string>
+    <string name="pttDebounce">Debouncing</string>
     <string name="releaseBeepSoundSum">Sound transmitted at the end of transmission: DTMF (\"0\", 150 ms) or single tone (600 Hz, 200 ms).</string>
     <string name="releaseBeepSoundDtmf">DTMF</string>
     <string name="releaseBeepSoundSingleTone">SINGLE TONE</string>

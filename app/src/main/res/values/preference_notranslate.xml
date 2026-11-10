@@ -32,6 +32,18 @@
         <item>@string/releaseBeepSoundSingleTone</item>
     </string-array>
 
+    <!-- IW2DPO: PTT release debouncing -->
+    <string-array name="pttDebounceNames">
+        <item>OFF</item>
+        <item>500 mSec</item>
+        <item>2000 mSec</item>
+    </string-array>
+    <string-array name="pttDebounceValues" translatable="false">
+        <item>0</item>
+        <item>500</item>
+        <item>2000</item>
+    </string-array>
+
     <string-array
         name="releaseBeepSoundValues">
         <item>dtmf</item>
