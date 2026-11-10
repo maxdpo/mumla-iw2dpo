@@ -1,4 +1,6 @@
 
+
+debouncing for PTT key menu added
 Hide PTT button ON by default
 Input pre-processing OFF by default
 When STAY AWAKE is OFF timer = 5 min
