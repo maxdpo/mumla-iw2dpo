@@ -168,7 +168,7 @@ public class Settings {
     public static final String PREF_PTT_SOUND = "ptt_sound";
     public static final boolean DEFAULT_PTT_SOUND = false;
 
-    /** IW2DPO: PTT release debouncing delay in ms ("0" = OFF, "500", "2000"). */
+    /** IW2DPO: PTT release debouncing delay in ms ("0" = OFF, "100", "500"). */
     public static final String PREF_PTT_DEBOUNCE = "ptt_debounce";
     public static final String DEFAULT_PTT_DEBOUNCE = "0";
 
