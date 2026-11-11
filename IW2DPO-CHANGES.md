@@ -1,5 +1,7 @@
 
 
+
+Wake display on RX/PTT: screen turns ON when someone talks
 debouncing for PTT key menu added
 Hide PTT button ON by default
 Input pre-processing OFF by default

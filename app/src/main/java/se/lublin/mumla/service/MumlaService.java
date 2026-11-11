@@ -102,6 +102,11 @@ public class MumlaService extends HumlaService implements
     private MumlaOverlay mChannelOverlay;
     /** Proximity lock for handset mode. */
     private PowerManager.WakeLock mProximityLock;
+    /** IW2DPO: wake lock che ACCENDE il display quando arriva/parte una comunicazione
+     * (RX da altri utenti o PTT locale) e lo tiene acceso per SCREEN_WAKE_TIMEOUT_MS. */
+    private PowerManager.WakeLock mScreenWakeLock;
+    /** IW2DPO: display acceso per 5 minuti dall'ultima attivita' vocale. */
+    public static final long SCREEN_WAKE_TIMEOUT_MS = 5 * 60 * 1000L;
     /** Play sound when push to talk key is pressed */
     private boolean mPTTSoundEnabled;
     /** Try to shorten spoken messages when using TTS */
@@ -334,6 +339,14 @@ public class MumlaService extends HumlaService implements
                 Log.d(TAG, "exception in onUserTalkStateUpdated: " + e);
             }
 
+            // IW2DPO: qualcuno parla (RX dal canale oppure il nostro PTT):
+            // accende il display e lo tiene acceso per 5 minuti.
+            if (user != null && (user.getTalkState() == TalkState.TALKING
+                    || user.getTalkState() == TalkState.SHOUTING
+                    || user.getTalkState() == TalkState.WHISPERING)) {
+                wakeScreen();
+            }
+
             if (isConnectionEstablished() &&
                     user.getSession() == selfSession &&
                     getTransmitMode() == Constants.TRANSMIT_PUSH_TO_TALK &&
@@ -391,6 +404,10 @@ public class MumlaService extends HumlaService implements
     @Override
     public void onDestroy() {
         mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable); // IW2DPO
+        // IW2DPO: rilascia il wake lock del display
+        if (mScreenWakeLock != null && mScreenWakeLock.isHeld()) {
+            mScreenWakeLock.release();
+        }
         if (mReconnectWatchdogHandler != null) {
             mReconnectWatchdogHandler.removeCallbacks(mReconnectWatchdogRunnable);
         }
@@ -459,6 +476,32 @@ public class MumlaService extends HumlaService implements
     /** IW2DPO: true if the given server is the last one we successfully connected to. */
     private boolean isLastUsedServer(Server server) {
         return server != null && server.getId() == mSettings.getLastServerId();
+    }
+
+    /**
+     * IW2DPO: accende il display (anche se e' in sleep) e lo tiene acceso per
+     * {@link #SCREEN_WAKE_TIMEOUT_MS} (5 minuti) dall'ultima attivita' vocale.
+     * Chiamato sia in ricezione (qualcuno parla sul canale) sia col PTT.
+     * FLAG_KEEP_SCREEN_ON da solo non basta: non riaccende uno schermo gia' spento
+     * e funziona solo con l'Activity in primo piano. Questo wake lock invece
+     * vive nel Service e funziona anche a schermo spento.
+     */
+    @SuppressWarnings("deprecation")
+    private void wakeScreen() {
+        try {
+            if (mScreenWakeLock == null) {
+                PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
+                if (pm == null) return;
+                mScreenWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK
+                        | PowerManager.ACQUIRE_CAUSES_WAKEUP
+                        | PowerManager.ON_AFTER_RELEASE, "Mumla:VoiceWake");
+                mScreenWakeLock.setReferenceCounted(false);
+            }
+            // Ogni nuova chiamata fa ripartire da zero i 5 minuti.
+            mScreenWakeLock.acquire(SCREEN_WAKE_TIMEOUT_MS);
+        } catch (RuntimeException e) {
+            Log.w(TAG, "wakeScreen() failed", e);
+        }
     }
 
     @Override
@@ -732,6 +775,7 @@ public class MumlaService extends HumlaService implements
     public void onTalkKeyDown() {
         // IW2DPO: a press during the debounce delay cancels the pending release
         mPttKeyDown = true;
+        wakeScreen(); // IW2DPO: il PTT accende subito il display (5 minuti)
         mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
         if(isConnectionEstablished()
                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
