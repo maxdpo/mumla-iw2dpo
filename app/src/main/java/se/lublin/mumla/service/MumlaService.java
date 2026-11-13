@@ -495,9 +495,10 @@ public class MumlaService extends HumlaService implements
             if (mScreenWakeLock == null) {
                 PowerManager pm = (PowerManager) getSystemService(POWER_SERVICE);
                 if (pm == null) return;
+                // IW2DPO: niente ON_AFTER_RELEASE: al rilascio faceva ripartire il timeout
+                // di sistema e lo schermo restava acceso 1 min + 1 min = 2 minuti.
                 mScreenWakeLock = pm.newWakeLock(PowerManager.SCREEN_BRIGHT_WAKE_LOCK
-                        | PowerManager.ACQUIRE_CAUSES_WAKEUP
-                        | PowerManager.ON_AFTER_RELEASE, "Mumla:VoiceWake");
+                        | PowerManager.ACQUIRE_CAUSES_WAKEUP, "Mumla:VoiceWake");
                 mScreenWakeLock.setReferenceCounted(false);
             }
             if (mSettings != null && mSettings.shouldStayAwake()) {

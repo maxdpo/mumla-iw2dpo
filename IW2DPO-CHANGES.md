@@ -1,6 +1,8 @@
 
 
 
+Fix: screen ON 1 minute (was 2: removed ON_AFTER_RELEASE)
+Side menu header: title "Mumla" + row "VER : 13-11-2026-2"
 Wake display on RX/PTT: screen turns ON when someone talks
 Stay awake fix: checked = screen always ON (no timeout),
 unchecked (default) = screen ON for 1 minute after last activity

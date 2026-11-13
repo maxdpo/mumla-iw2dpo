@@ -21,4 +21,7 @@
     <string name="app_name">Mumla</string>
     <string name="notification_message">%1$s: %2$s</string>
     <string name="certificate_export_format">mumla_%s.p12</string>
+    <!-- IW2DPO: titolo e versione mostrati in alto nel menu laterale -->
+    <string name="drawer_title_iw2dpo">Mumla</string>
+    <string name="drawer_version_iw2dpo">VER : 13-11-2026-2</string>
 </resources>
