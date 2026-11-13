@@ -1,6 +1,8 @@
 
 
 
+Version 13-11-2026-3: "Settings" moved to top of side menu,
+"Audio" moved to top of Settings
 Fix: screen ON 1 minute (was 2: removed ON_AFTER_RELEASE)
 Side menu header: title "Mumla" + row "VER : 13-11-2026-2"
 Wake display on RX/PTT: screen turns ON when someone talks

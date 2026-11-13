@@ -98,6 +98,7 @@ public class DrawerAdapter extends ArrayAdapter<DrawerAdapter.DrawerRow> {
         super(context, 0);
         mProvider = provider;
         add(new DrawerAdapter.DrawerHeader(HEADER_CONNECTED_SERVER, context.getString(R.string.drawer_not_connected)));
+        add(new DrawerAdapter.DrawerItem(ITEM_SETTINGS, context.getString(R.string.action_settings), R.drawable.ic_action_settings)); // IW2DPO: Settings in alto
         add(new DrawerAdapter.DrawerItem(ITEM_SERVER, context.getString(R.string.drawer_server), R.drawable.ic_action_channels));
         add(new DrawerAdapter.DrawerItem(ITEM_PINNED_CHANNELS, context.getString(R.string.drawer_pinned), R.drawable.ic_action_comment));
         add(new DrawerAdapter.DrawerItem(ITEM_INFO, context.getString(R.string.information), R.drawable.ic_action_info_dark));
@@ -106,8 +107,6 @@ public class DrawerAdapter extends ArrayAdapter<DrawerAdapter.DrawerRow> {
         add(new DrawerAdapter.DrawerItem(ITEM_FAVOURITES, context.getString(R.string.drawer_favorites), R.drawable.ic_action_favourite_on));
 //        add(new DrawerAdapter.DrawerItem(ITEM_LAN, context.getString(R.string.drawer_lan), R.drawable.ic_action_fullscreen)); // Coming soon, TODO
         add(new DrawerAdapter.DrawerItem(ITEM_PUBLIC, context.getString(R.string.drawer_public), R.drawable.ic_action_search));
-        add(new DrawerAdapter.DrawerHeader(HEADER_GENERAL, context.getString(R.string.general)));
-        add(new DrawerAdapter.DrawerItem(ITEM_SETTINGS, context.getString(R.string.action_settings), R.drawable.ic_action_settings));
     }
 
     @Override
