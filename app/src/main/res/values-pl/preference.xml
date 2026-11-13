@@ -83,7 +83,6 @@
     <string name="audio_per_packet">Audio na pakiet</string>
     <string name="audio_per_packet_sum">Długość audio na pakiet głosowy.</string>
     <string name="stay_awake">Nie usypiaj</string>
-    <string name="stay_awake_sum">Pozostawia ekran włączony, gdy Mumla jest otwarta.</string>
     <string name="pref_certificate_title">Certyfikat</string>
     <string name="pref_certificate_summary">Domyślny używany podczas łączenia się z serwerem.</string>
     <string name="pref_import_certificate_title">Importuj certyfikat</string>

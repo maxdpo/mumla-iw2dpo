@@ -81,7 +81,6 @@
     <string name="preprocessor_enabled_sum">Mengecilkan suara lingkungan sekitar dan menormalisasi volume audio.</string>
     <string name="audio_per_packet_sum">Lama audio per voice packet.</string>
     <string name="stay_awake">Layar tetap menyala</string>
-    <string name="stay_awake_sum">Memastikan layar device tetap menyala selama aplikasi Mumla dibuka.</string>
     <string name="pref_certificate_title">Sertifikat Keamanan</string>
     <string name="pref_certificate_summary">Sertifikat keamanan default yang digunakan ketika menyambung ke server.</string>
     <string name="pref_import_certificate_title">Impor sertifikat keamanan</string>

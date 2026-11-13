@@ -19,7 +19,6 @@
     <string name="audio_per_packet">ஒரு பொட்டலத்திற்கு ஒலி</string>
     <string name="audio_per_packet_sum">குரல் பொட்டலத்திற்கு ஒலியின் நீளம்.</string>
     <string name="stay_awake">விழித்திருங்கள்</string>
-    <string name="stay_awake_sum">மும்லாவை திறந்திருக்கும்போது திரையை வைத்திருங்கள்.</string>
     <string name="pref_certificate_title">சான்றிதழ்</string>
     <string name="pref_certificate_summary">சேவையகத்துடன் இணைக்கும்போது பயன்படுத்த வேண்டிய இயல்புநிலை.</string>
     <string name="pref_import_certificate_title">இறக்குமதி சான்றிதழ்</string>

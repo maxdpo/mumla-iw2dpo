@@ -13,7 +13,7 @@ import se.lublin.mumla.app.StayAwakeTimer;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    /** IW2DPO: stesso stay awake di 5 minuti anche nella schermata Impostazioni. */
+    /** IW2DPO: stesso stay awake (sempre / 1 minuto) anche nella schermata Impostazioni. */
     private StayAwakeTimer mStayAwakeTimer;
 
     @Override

@@ -79,5 +79,4 @@
     <string name="audio_per_packet">パケット当たりの音声</string>
     <string name="audio_per_packet_sum">音声パケットあたりの音声の長さ。</string>
     <string name="stay_awake">画面をオフにしない</string>
-    <string name="stay_awake_sum">Mumla が開かれているときは、画面をオフにしません。</string>
 </resources>

@@ -87,7 +87,6 @@
     <string name="audio_per_packet">封包音訊長度</string>
     <string name="audio_per_packet_sum">每個封包的音訊長度。</string>
     <string name="stay_awake">螢幕恆亮</string>
-    <string name="stay_awake_sum">當使用 Mumla 時保持螢幕亮起。</string>
     <string name="pref_certificate_title">憑證</string>
     <string name="pref_certificate_summary">連線至伺服器時預設使用的憑證。</string>
     <string name="pref_import_certificate_title">匯入憑證</string>

@@ -63,7 +63,6 @@
     <string name="pttSoundSum">Bas konuş düğmesine basıldığında ses efekti oynat.</string>
     <string name="preprocessor_enabled">Giriş ön işlemesi</string>
     <string name="stay_awake">Uyanık kal</string>
-    <string name="stay_awake_sum">Mumla açıkken ekranı açık tutar.</string>
     <string name="pref_certificate_summary">Bir sunucuya bağlanırken kullanılacak öntanımlı olan.</string>
     <string name="pref_import_certificate_title">Sertifikayı içe aktar</string>
     <string name="pref_import_certificate_summary">Harici depolama alanından içe aktarın.</string>

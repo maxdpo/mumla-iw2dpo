@@ -69,7 +69,6 @@
     <string name="loadImagesSum">Завантажувати і показувати зображення в чаті.</string>
     <string name="loadImages">Зовнішні зображення</string>
     <string name="clearServerCertificatesSum">Видалити всі довірені серверні сертифікати з Mumla.</string>
-    <string name="stay_awake_sum">Тримати дисплей увімкненим, коли Mumla відкрита.</string>
     <string name="pref_import_certificate_summary">Імпортувати із зовнішнього сховища.</string>
     <string name="pref_show_user_count_summary">Показувати кількість користувачів у дереві каналів.</string>
     <string name="pref_start_upIn_pinned_mode_sum">Показувати тільки закріплені канали після підключення до сервера (приховує інші канали).</string>

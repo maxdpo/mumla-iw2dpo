@@ -56,7 +56,6 @@
     <string name="pttSoundSum">Reprodueix l\'efecte de so en prémer el botó PTT.</string>
     <string name="preprocessor_enabled">Preprocessament d\'entrada</string>
     <string name="preprocessor_enabled_sum">Suprimeix el soroll ambiental i normalitza el volum d\'àudio.</string>
-    <string name="stay_awake_sum">Manté la pantalla encesa quan Mumla està obert.</string>
     <string name="pref_import_certificate_summary">Importa\'n un des del emmagatzematge extern.</string>
     <string name="pref_start_upIn_pinned_mode_sum">Activa el mode \"Canals fixats\" després de connectar-se (amaga els canals que no estan fixats).</string>
     <string name="hot_corner_none">Desactivat</string>

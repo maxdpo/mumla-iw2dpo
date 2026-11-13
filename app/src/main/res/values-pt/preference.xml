@@ -82,7 +82,6 @@
     <string name="audio_per_packet">Áudio por pacote</string>
     <string name="inputMethodPtt">Pressione para falar</string>
     <string name="pref_import_certificate_title">Importar certificado</string>
-    <string name="stay_awake_sum">Mantém a tela ligada quando o Mumla está aberto.</string>
     <string name="pref_start_upIn_pinned_mode_sum">Ativa o modo \"Canais fixados\" depois de conectar (esconde canais que não estão fixados).</string>
     <string name="defaultUsernameDefault">Usuario_Mumla</string>
     <string name="pref_start_up_in_pinned_mode">Modo de canais fixados</string>

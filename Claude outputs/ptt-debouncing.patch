@@ -1,0 +1,169 @@
+diff --git a/app/src/main/java/se/lublin/mumla/Settings.java b/app/src/main/java/se/lublin/mumla/Settings.java
+index 5038322..eaf3b1b 100644
+--- a/app/src/main/java/se/lublin/mumla/Settings.java
++++ b/app/src/main/java/se/lublin/mumla/Settings.java
+@@ -168,6 +168,10 @@ public class Settings {
+     public static final String PREF_PTT_SOUND = "ptt_sound";
+     public static final boolean DEFAULT_PTT_SOUND = false;
+ 
++    /** IW2DPO: PTT release debouncing delay in ms ("0" = OFF, "500", "2000"). */
++    public static final String PREF_PTT_DEBOUNCE = "ptt_debounce";
++    public static final String DEFAULT_PTT_DEBOUNCE = "0";
++
+     public static final String PREF_PREPROCESSOR_ENABLED = "preprocessor_enabled";
+     public static final boolean DEFAULT_PREPROCESSOR_ENABLED = false; // IW2DPO: Input pre-processing OFF di default
+ 
+@@ -422,6 +426,15 @@ public class Settings {
+         return preferences.getBoolean(PREF_PTT_SOUND, DEFAULT_PTT_SOUND);
+     }
+ 
++    /** IW2DPO: @return PTT release debouncing delay in ms, 0 = OFF. */
++    public int getPttDebounceMs() {
++        try {
++            return Integer.parseInt(preferences.getString(PREF_PTT_DEBOUNCE, DEFAULT_PTT_DEBOUNCE));
++        } catch (NumberFormatException e) {
++            return 0;
++        }
++    }
++
+     public boolean isPreprocessorEnabled() {
+         return preferences.getBoolean(PREF_PREPROCESSOR_ENABLED, DEFAULT_PREPROCESSOR_ENABLED);
+     }
+diff --git a/app/src/main/java/se/lublin/mumla/service/MumlaService.java b/app/src/main/java/se/lublin/mumla/service/MumlaService.java
+index f0ec36f..5195b3b 100644
+--- a/app/src/main/java/se/lublin/mumla/service/MumlaService.java
++++ b/app/src/main/java/se/lublin/mumla/service/MumlaService.java
+@@ -28,6 +28,7 @@ import android.os.Build;
+ import android.os.Bundle;
+ import android.os.Handler;
+ import android.os.IBinder;
++import android.os.Looper;
+ import android.os.PowerManager;
+ import android.speech.tts.TextToSpeech;
+ import android.util.Log;
+@@ -138,6 +139,21 @@ public class MumlaService extends HumlaService implements
+ 
+     private BroadcastReceiver mTalkReceiver;
+ 
++    /** IW2DPO: PTT release debouncing. */
++    private final Handler mPttDebounceHandler = new Handler(Looper.getMainLooper());
++    /** IW2DPO: last known physical state of the PTT button. */
++    private boolean mPttKeyDown = false;
++    /** IW2DPO: runs after the debounce delay and re-checks the PTT button state. */
++    private final Runnable mPttReleaseRunnable = new Runnable() {
++        @Override
++        public void run() {
++            if (!mPttKeyDown) {
++                handleTalkKeyUp(); // still released after the delay: confirm release
++            }
++            // else: PTT pressed again during the delay (bounce): keep transmitting
++        }
++    };
++
+     private HumlaObserver mObserver = new HumlaObserver() {
+         @Override
+         public void onConnecting() {
+@@ -374,6 +390,7 @@ public class MumlaService extends HumlaService implements
+ 
+     @Override
+     public void onDestroy() {
++        mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable); // IW2DPO
+         if (mReconnectWatchdogHandler != null) {
+             mReconnectWatchdogHandler.removeCallbacks(mReconnectWatchdogRunnable);
+         }
+@@ -713,6 +730,9 @@ public class MumlaService extends HumlaService implements
+      */
+     @Override
+     public void onTalkKeyDown() {
++        // IW2DPO: a press during the debounce delay cancels the pending release
++        mPttKeyDown = true;
++        mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
+         if(isConnectionEstablished()
+                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
+             if (!mSettings.isPushToTalkToggle() && !isTalking()) {
+@@ -727,6 +747,19 @@ public class MumlaService extends HumlaService implements
+      */
+     @Override
+     public void onTalkKeyUp() {
++        mPttKeyDown = false;
++        // IW2DPO: PTT release debouncing (only on release, only in hold-to-talk mode)
++        int debounceMs = mSettings.getPttDebounceMs();
++        if (debounceMs > 0 && !mSettings.isPushToTalkToggle() && isTalking()) {
++            mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
++            mPttDebounceHandler.postDelayed(mPttReleaseRunnable, debounceMs);
++            return;
++        }
++        handleTalkKeyUp();
++    }
++
++    /** IW2DPO: original PTT release logic, run immediately or after the debounce delay. */
++    private void handleTalkKeyUp() {
+         if(isConnectionEstablished()
+                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
+             if (mSettings.isPushToTalkToggle()) {
+diff --git a/app/src/main/res/values-it/preference.xml b/app/src/main/res/values-it/preference.xml
+index 7703230..56abb09 100644
+--- a/app/src/main/res/values-it/preference.xml
++++ b/app/src/main/res/values-it/preference.xml
+@@ -120,6 +120,7 @@
+     <string name="releaseBeepVolume">TX end beep volume</string>
+     <string name="releaseBeepVolumeSum">Loudness of the TX end beep, as a percentage of full scale.</string>
+     <string name="releaseBeepSound">TX end beep sound</string>
++    <string name="pttDebounce">Debouncing</string>
+     <string name="releaseBeepSoundSum">Sound transmitted at the end of transmission: DTMF (\"0\", 150 ms) or single tone (600 Hz, 200 ms).</string>
+     <string name="releaseBeepSoundDtmf">DTMF</string>
+     <string name="releaseBeepSoundSingleTone">SINGLE TONE</string>
+diff --git a/app/src/main/res/values/preference.xml b/app/src/main/res/values/preference.xml
+index 46b975a..f44459c 100644
+--- a/app/src/main/res/values/preference.xml
++++ b/app/src/main/res/values/preference.xml
+@@ -120,6 +120,7 @@
+     <string name="releaseBeepVolume">TX end beep volume</string>
+     <string name="releaseBeepVolumeSum">Loudness of the TX end beep, as a percentage of full scale.</string>
+     <string name="releaseBeepSound">TX end beep sound</string>
++    <string name="pttDebounce">Debouncing</string>
+     <string name="releaseBeepSoundSum">Sound transmitted at the end of transmission: DTMF (\"0\", 150 ms) or single tone (600 Hz, 200 ms).</string>
+     <string name="releaseBeepSoundDtmf">DTMF</string>
+     <string name="releaseBeepSoundSingleTone">SINGLE TONE</string>
+diff --git a/app/src/main/res/values/preference_notranslate.xml b/app/src/main/res/values/preference_notranslate.xml
+index fb3410c..b1e6e88 100644
+--- a/app/src/main/res/values/preference_notranslate.xml
++++ b/app/src/main/res/values/preference_notranslate.xml
+@@ -32,6 +32,18 @@
+         <item>@string/releaseBeepSoundSingleTone</item>
+     </string-array>
+ 
++    <!-- IW2DPO: PTT release debouncing -->
++    <string-array name="pttDebounceNames">
++        <item>OFF</item>
++        <item>500 mSec</item>
++        <item>2000 mSec</item>
++    </string-array>
++    <string-array name="pttDebounceValues" translatable="false">
++        <item>0</item>
++        <item>500</item>
++        <item>2000</item>
++    </string-array>
++
+     <string-array
+         name="releaseBeepSoundValues">
+         <item>dtmf</item>
+diff --git a/app/src/main/res/xml/settings_audio.xml b/app/src/main/res/xml/settings_audio.xml
+index 398295e..9c7037c 100644
+--- a/app/src/main/res/xml/settings_audio.xml
++++ b/app/src/main/res/xml/settings_audio.xml
+@@ -94,6 +94,14 @@
+             android:summary="@string/togglePttSum"
+             android:title="@string/togglePtt"
+             app:iconSpaceReserved="false"/>
++        <ListPreference
++            android:defaultValue="0"
++            android:entries="@array/pttDebounceNames"
++            android:entryValues="@array/pttDebounceValues"
++            android:key="ptt_debounce"
++            android:title="@string/pttDebounce"
++            app:useSimpleSummaryProvider="true"
++            app:iconSpaceReserved="false"/>
+         <CheckBoxPreference
+             android:defaultValue="false"
+             android:key="half_duplex"

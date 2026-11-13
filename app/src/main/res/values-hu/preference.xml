@@ -83,7 +83,6 @@
     <string name="audio_per_packet">Hang csomagonként</string>
     <string name="audio_per_packet_sum">A hang hossza hangcsomagonként.</string>
     <string name="stay_awake">Maradjon ébren</string>
-    <string name="stay_awake_sum">Bekapcsolva tartja a képernyőt, amíg a Mumla nyitva van.</string>
     <string name="pref_certificate_title">Tanúsítvány</string>
     <string name="pref_export_certificate_title">Tanúsítvány exportálása</string>
     <string name="pref_export_certificate_summary">Tanúsítvány exportálása fájlba.</string>

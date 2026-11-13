@@ -79,7 +79,6 @@
     <string name="audio_per_packet"> Trames audio par paquet</string>
     <string name="audio_per_packet_sum">Durée de la trame audio par paquet.</string>
     <string name="stay_awake">Rester activé</string>
-    <string name="stay_awake_sum">Maintient l\'écran allumé lorsque Mumla est ouvert.</string>
     <string name="pref_certificate_title">Certificat</string>
     <string name="pref_export_certificate_title">Exporter un certificat</string>
     <string name="pref_show_user_count">Afficher le nombre d\'utilisateurs du canal</string>

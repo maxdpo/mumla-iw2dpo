@@ -126,7 +126,7 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     private IMumlaService mService;
     private MumlaDatabase mDatabase;
     private Settings mSettings;
-    /** IW2DPO: Stay awake con timeout di 5 minuti dall'ultima attivita'. */
+    /** IW2DPO: Stay awake: sempre acceso se selezionato, altrimenti 1 minuto dall'ultima attivita'. */
     private StayAwakeTimer mStayAwakeTimer;
 
     private ActionBarDrawerToggle mDrawerToggle;
@@ -448,7 +448,7 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         // cold start (no service running yet) and auto-connect would silently never happen.
         int bindFlags = mPendingAutoConnect ? Context.BIND_AUTO_CREATE : 0;
         bindService(connectIntent, mConnection, bindFlags);
-        // IW2DPO: rientro in Mumla -> riparte il conteggio dei 5 minuti di stay awake
+        // IW2DPO: rientro in Mumla -> riparte lo stay awake (sempre / 1 minuto)
         setStayAwake(mSettings.shouldStayAwake());
     }
 
@@ -817,14 +817,14 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     }
 
     private void setStayAwake(boolean stayAwake) {
-        // IW2DPO: FLAG_KEEP_SCREEN_ON con timer di 5 minuti dall'ultima attivita'
+        // IW2DPO: FLAG_KEEP_SCREEN_ON: sempre se selezionato, altrimenti timer di 1 minuto
         if (mStayAwakeTimer == null) {
             mStayAwakeTimer = new StayAwakeTimer(getWindow());
         }
         mStayAwakeTimer.setEnabled(stayAwake);
     }
 
-    /** IW2DPO: ogni tocco o tasto premuto fa ripartire i 5 minuti di stay awake. */
+    /** IW2DPO: ogni tocco o tasto premuto fa ripartire il minuto di stay awake. */
     @Override
     public void onUserInteraction() {
         super.onUserInteraction();

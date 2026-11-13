@@ -83,7 +83,6 @@
     <string name="preprocessor_enabled_sum">Dämpar omgivningsljud och normaliserar volymen.</string>
     <string name="audio_per_packet_sum">Ställer in hur lång inspelning som skickas per datapaket.</string>
     <string name="stay_awake">Håll vaken</string>
-    <string name="stay_awake_sum">Håller skärmen påslagen när Mumla är öppen.</string>
     <string name="pref_certificate_summary">Ändrar förvalt certifikat för anslutning till en server.</string>
     <string name="pref_import_certificate_title">Importera certifikat</string>
     <string name="audio_per_packet">Ljudlängd per paket</string>

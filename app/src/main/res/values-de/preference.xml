@@ -79,7 +79,6 @@
     <string name="audio_per_packet">Audio pro Paket</string>
     <string name="audio_per_packet_sum">Die Länge des Audios pro Sprachpaket.</string>
     <string name="stay_awake">Wach bleiben</string>
-    <string name="stay_awake_sum">Den Bildschirm aktiv lassen, wenn Mumla geöffnet ist.</string>
     <string name="pttButtonHeight">Höhe der Zum Sprechen drücken-Taste</string>
     <string name="pttButtonHeightSum">Höhe der Zum Sprechen drücken-Taste ändern.</string>
     <string name="pref_start_upIn_pinned_mode_sum">\"Angeheftete Kanäle\"-Modus nach dem Verbinden aktivieren (versteckt Kanäle, die nicht angeheftet sind).</string>

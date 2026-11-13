@@ -83,7 +83,6 @@
     <string name="audio_per_packet">Звук на пакет</string>
     <string name="audio_per_packet_sum">Длина аудиозаписи в голосовом пакете.</string>
     <string name="stay_awake">Держать экран включенным</string>
-    <string name="stay_awake_sum">Не выключать экран, пока открыта Mumla.</string>
     <string name="pref_certificate_title">Сертификат</string>
     <string name="pref_certificate_summary">Используется по умолчанию при подключении к серверу.</string>
     <string name="pref_import_certificate_title">Импортировать сертификат</string>

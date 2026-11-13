@@ -30,7 +30,6 @@
         android:key="stay_awake"
         android:defaultValue="false"
         android:title="@string/stay_awake"
-        android:summary="@string/stay_awake_sum"
         app:iconSpaceReserved="false" />
 
     <CheckBoxPreference

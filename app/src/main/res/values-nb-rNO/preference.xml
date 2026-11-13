@@ -31,7 +31,6 @@
     <string name="handsetModeSum">Bruker fronthøyttaleren og nærhetssensor for å simulere en tradisjonell telefonsamtale.</string>
     <string name="pttSound">Trykk-for-å-snakke -lyd</string>
     <string name="audio_per_packet_sum">Lengden for lyd per stemmepakke.</string>
-    <string name="stay_awake_sum">Beholder skjermen påslått når Mumla er åpent.</string>
     <string name="pref_certificate_summary">Forvalget å bruke ved tilkobling til en tjener.</string>
     <string name="stay_awake">Forbli påslått</string>
     <string name="pref_export_certificate_title">Eksporter sertifikat</string>

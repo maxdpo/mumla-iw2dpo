@@ -50,7 +50,6 @@
     <string name="preprocessor_enabled_sum">Καταστέλλει τον θόρυβο του περιβάλλοντος και ομαλοποιεί το επίπεδο ήχου.</string>
     <string name="audio_per_packet">Ήχος ανά πακέτο</string>
     <string name="stay_awake">Κρατήστε τη συσκευή ξύπνια</string>
-    <string name="stay_awake_sum">Διατηρεί την οθόνη ενεργή όταν το Mumla είναι ανοιχτό.</string>
     <string name="pref_certificate_title">Πιστοποιητικό</string>
     <string name="pref_certificate_summary">Η προεπιλεγμένη χρήση κατά τη σύνδεση σε ένα διακομιστή.</string>
     <string name="pref_export_certificate_title">Εξαγωγή πιστοποιητικού</string>

@@ -83,7 +83,6 @@
     <string name="audio_per_packet">每数据包音频</string>
     <string name="audio_per_packet_sum">每个数据包的音频长度。</string>
     <string name="stay_awake">保持亮屏</string>
-    <string name="stay_awake_sum">当 Mumla 打开时，保持屏幕常亮。</string>
     <string name="pref_certificate_title">证书</string>
     <string name="pref_certificate_summary">连接服务器时使用的默认证书。</string>
     <string name="pref_import_certificate_title">导入证书</string>
