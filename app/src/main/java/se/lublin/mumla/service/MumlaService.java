@@ -30,6 +30,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.PowerManager;
+import android.os.SystemClock;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.widget.Toast;
@@ -46,6 +47,7 @@ import java.util.List;
 
 import se.lublin.humla.Constants;
 import se.lublin.humla.HumlaService;
+import se.lublin.humla.audio.MicGate;
 import se.lublin.humla.exception.AudioException;
 import se.lublin.humla.model.IMessage;
 import se.lublin.humla.model.IUser;
@@ -153,21 +155,21 @@ public class MumlaService extends HumlaService implements
     private boolean mPttReleasePending = false;
     /** IW2DPO: local "ready / not ready to talk" tones played on PTT press. */
     private LocalTonePlayer mLocalTonePlayer;
-    /** IW2DPO: number of local tones still playing (mic TX is blocked while > 0). */
+    /** IW2DPO: number of local tones still playing (mic gate closed while > 0). */
     private int mLocalTonesPlaying = 0;
-    /** IW2DPO: PTT asked to start TX while a local tone was playing: start when it ends. */
-    private boolean mTalkStartPending = false;
-    /** IW2DPO: called on the main thread when a local tone has finished on the speaker. */
+    /** IW2DPO: mic gate kept closed after the beep has ended on the loudspeaker
+     * (covers mic capture latency and room echo). */
+    public static final long MIC_GATE_TAIL_MS = 200;
+    /** IW2DPO: safety limit, the mic gate is never closed longer than this per beep. */
+    public static final long MIC_GATE_MAX_MS = 3000;
+    /** IW2DPO: called on the main thread when a local tone has finished on the speaker:
+     * the mic gate reopens after {@link #MIC_GATE_TAIL_MS}. */
     private final Runnable mLocalToneDoneRunnable = new Runnable() {
         @Override
         public void run() {
             if (mLocalTonesPlaying > 0) mLocalTonesPlaying--;
-            if (mLocalTonesPlaying == 0 && mTalkStartPending) {
-                mTalkStartPending = false;
-                if (isConnectionEstablished() && !isTalking()
-                        && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
-                    setTalkingState(true); // beep over: now open the mic (start TX)
-                }
+            if (mLocalTonesPlaying == 0) {
+                MicGate.closeUntil(SystemClock.uptimeMillis() + MIC_GATE_TAIL_MS);
             }
         }
     };
@@ -412,6 +414,7 @@ public class MumlaService extends HumlaService implements
         mTalkReceiver = new TalkBroadcastReceiver(this);
 
         mLocalTonePlayer = new LocalTonePlayer(); // IW2DPO
+        MicGate.open(); // IW2DPO
 
         // IW2DPO: start the reconnect watchdog. checkAutoReconnect() itself does nothing
         // unless the user has enabled automatic connect/reconnect and has used a server
@@ -431,7 +434,7 @@ public class MumlaService extends HumlaService implements
     public void onDestroy() {
         mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable); // IW2DPO
         mPttDebounceHandler.removeCallbacks(mLocalToneDoneRunnable); // IW2DPO
-        mTalkStartPending = false;
+        MicGate.open(); // IW2DPO
         if (mLocalTonePlayer != null) { // IW2DPO
             mLocalTonePlayer.release();
             mLocalTonePlayer = null;
@@ -833,22 +836,11 @@ public class MumlaService extends HumlaService implements
         }
         if(isConnectionEstablished()
                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
-            if (!mSettings.isPushToTalkToggle() && !isTalking() && !mTalkStartPending) {
-                startTalkingAfterLocalTone(); // Start talking (after the local beep)
+            if (!mSettings.isPushToTalkToggle() && !isTalking()) {
+                // Start talking. IW2DPO: while the local beep plays the mic gate is
+                // closed, so silence is transmitted instead of the beep.
+                setTalkingState(true);
             }
-        }
-    }
-
-    /**
-     * IW2DPO: starts TX now, or - if a local tone is playing - when the tone has finished,
-     * so the beep coming out of the loudspeaker is not picked up by the mic and sent
-     * to the channel.
-     */
-    private void startTalkingAfterLocalTone() {
-        if (mLocalTonesPlaying > 0) {
-            mTalkStartPending = true;
-        } else {
-            setTalkingState(true);
         }
     }
 
@@ -861,8 +853,7 @@ public class MumlaService extends HumlaService implements
         mPttKeyDown = false;
         // IW2DPO: PTT release debouncing (only on release, only in hold-to-talk mode)
         int debounceMs = mSettings.getPttDebounceMs();
-        if (debounceMs > 0 && !mSettings.isPushToTalkToggle()
-                && (isTalking() || mTalkStartPending)) {
+        if (debounceMs > 0 && !mSettings.isPushToTalkToggle() && isTalking()) {
             mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
             mPttDebounceHandler.postDelayed(mPttReleaseRunnable, debounceMs);
             mPttReleasePending = true;
@@ -883,18 +874,24 @@ public class MumlaService extends HumlaService implements
         }
         mLocalTonePlayer.setHandsetMode(mSettings.isHandsetMode());
         final int volume = mSettings.getLocalTonesVolume();
-        // When the tone has finished, continue on the main thread (opens a pending TX).
+        // When the tone has finished, continue on the main thread (reopens the mic gate).
         final Runnable onDone = () -> mPttDebounceHandler.post(mLocalToneDoneRunnable);
         // isConnected(): state CONNECTED = connected AND synchronized with the server.
         if (isConnected()) {
             if (!mSettings.isPushToTalkToggle() || !isTalking()) {
-                mLocalTonesPlaying++;
+                closeMicGateForTone();
                 mLocalTonePlayer.playReady(volume, onDone);
             }
         } else {
-            mLocalTonesPlaying++;
+            closeMicGateForTone();
             mLocalTonePlayer.playNotReady(volume, onDone);
         }
+    }
+
+    /** IW2DPO: closes the mic gate BEFORE the beep starts (TX = silence while it plays). */
+    private void closeMicGateForTone() {
+        mLocalTonesPlaying++;
+        MicGate.closeUntil(SystemClock.uptimeMillis() + MIC_GATE_MAX_MS);
     }
 
     /** IW2DPO: original PTT release logic, run immediately or after the debounce delay. */
@@ -902,16 +899,7 @@ public class MumlaService extends HumlaService implements
         if(isConnectionEstablished()
                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
             if (mSettings.isPushToTalkToggle()) {
-                // Toggle talk state (IW2DPO: TX start waits for the local beep)
-                if (mTalkStartPending) {
-                    mTalkStartPending = false; // toggled off before TX started
-                } else if (isTalking()) {
-                    setTalkingState(false);
-                } else {
-                    startTalkingAfterLocalTone();
-                }
-            } else if (mTalkStartPending) {
-                mTalkStartPending = false; // released during the beep: TX never started
+                setTalkingState(!isTalking()); // Toggle talk state
             } else if (isTalking()) {
                 setTalkingState(false); // Stop talking
             }

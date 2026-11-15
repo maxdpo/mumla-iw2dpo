@@ -20,6 +20,7 @@ package se.lublin.mumla.service;
 import android.media.AudioAttributes;
 import android.media.AudioFormat;
 import android.media.AudioManager;
+import android.media.AudioTimestamp;
 import android.media.AudioTrack;
 import android.util.Log;
 
@@ -40,9 +41,10 @@ import java.util.concurrent.Executors;
  * background thread, so the PTT key handler never blocks.
  *
  * The optional "onDone" callback runs (on the player thread) when the tone has really
- * finished on the loudspeaker: playback head at the end + {@link #TAIL_MS}. MumlaService
- * uses it to keep the microphone (TX) closed while the local beep is playing, so the beep
- * is not picked up by the mic and sent to the channel.
+ * finished on the loudspeaker: playback head at the end, then the AudioTrack timestamp
+ * (= sample presented at the speaker, includes output latency) at the end, then
+ * {@link #TAIL_MS}. MumlaService uses it to keep the mic gate closed while the local beep
+ * is playing, so the beep is not picked up by the mic and sent to the channel.
  */
 public class LocalTonePlayer {
     private static final String TAG = LocalTonePlayer.class.getName();
@@ -50,8 +52,10 @@ public class LocalTonePlayer {
     private static final int SAMPLE_RATE = 48000;
     /** Short fade in/out on every tone segment to avoid clicks. */
     private static final int FADE_MS = 3;
-    /** Extra wait after the last sample: audio output latency + acoustic decay. */
-    private static final int TAIL_MS = 80;
+    /** Extra wait after the last sample has left the loudspeaker (acoustic decay). */
+    private static final int TAIL_MS = 30;
+    /** Max wait for the output latency (AudioTrack timestamp) after the playback head end. */
+    private static final int OUTPUT_LATENCY_MAX_MS = 250;
 
     /** READY TO TALK: {frequency Hz, duration ms} */
     private static final int[][] READY_TONES = {
@@ -164,6 +168,16 @@ public class LocalTonePlayer {
             final long deadline = System.currentTimeMillis() + durationMs + 500;
             while (track.getPlaybackHeadPosition() < pcm.length
                     && System.currentTimeMillis() < deadline) {
+                Thread.sleep(5);
+            }
+            // Wait until the last sample has really been presented at the loudspeaker
+            // (output latency). If the device gives no timestamp, wait the max time.
+            final AudioTimestamp ts = new AudioTimestamp();
+            final long latencyDeadline = System.currentTimeMillis() + OUTPUT_LATENCY_MAX_MS;
+            while (System.currentTimeMillis() < latencyDeadline) {
+                if (track.getTimestamp(ts) && ts.framePosition >= pcm.length) {
+                    break;
+                }
                 Thread.sleep(5);
             }
             Thread.sleep(TAIL_MS);

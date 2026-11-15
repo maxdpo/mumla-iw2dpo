@@ -1,3 +1,17 @@
+Version 15-11-2026-3 (branch "tones")
+Side menu: "VER : 15-11-2026-3"
+FIX: local PTT beep was still transmitted to the channel.
+ Cause: Humla keeps the mic AudioRecord running between transmissions,
+ so buffered mic audio was sent when TX started (delaying TX did not help).
+ Fix: new MIC GATE in humla-iw2dpo (branch "tones"):
+  - humla: audio/MicGate.java (new), protocol/AudioHandler.java:
+    while the gate is closed every mic frame is replaced with SILENCE
+  - mumla: gate closed before the beep starts, reopened 200 ms after the
+    beep has really left the loudspeaker (AudioTrack timestamp)
+  - TX starts immediately again (as before 15-11-2026-2)
+ libraries/humla submodule updated to humla-iw2dpo branch "tones"
+-----------------------------------------------
+
 Version 15-11-2026-2 (branch "tones")
 Side menu: "VER : 15-11-2026-2"
 Mic TX blocked while the local PTT tone is playing:
