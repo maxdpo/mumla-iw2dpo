@@ -168,6 +168,14 @@ public class Settings {
     public static final String PREF_PTT_SOUND = "ptt_sound";
     public static final boolean DEFAULT_PTT_SOUND = false;
 
+    /** IW2DPO: local tones on PTT press (ready / not ready to talk), local loudspeaker only. */
+    public static final String PREF_LOCAL_TONES = "local_tones_enabled";
+    public static final boolean DEFAULT_LOCAL_TONES = true;
+
+    /** IW2DPO: local tones level, percentage (1-100) of full scale. */
+    public static final String PREF_LOCAL_TONES_VOLUME = "local_tones_volume";
+    public static final int DEFAULT_LOCAL_TONES_VOLUME = 50;
+
     /** IW2DPO: PTT release debouncing delay in ms ("0" = OFF, "100", "500"). */
     public static final String PREF_PTT_DEBOUNCE = "ptt_debounce";
     public static final String DEFAULT_PTT_DEBOUNCE = "0";
@@ -424,6 +432,16 @@ public class Settings {
 
     public boolean isPttSoundEnabled() {
         return preferences.getBoolean(PREF_PTT_SOUND, DEFAULT_PTT_SOUND);
+    }
+
+    /** IW2DPO: @return true if the local ready / not ready tones are played on PTT press. */
+    public boolean isLocalTonesEnabled() {
+        return preferences.getBoolean(PREF_LOCAL_TONES, DEFAULT_LOCAL_TONES);
+    }
+
+    /** IW2DPO: @return local tones level, 1-100 % of full scale. */
+    public int getLocalTonesVolume() {
+        return preferences.getInt(PREF_LOCAL_TONES_VOLUME, DEFAULT_LOCAL_TONES_VOLUME);
     }
 
     /** IW2DPO: @return PTT release debouncing delay in ms, 0 = OFF. */

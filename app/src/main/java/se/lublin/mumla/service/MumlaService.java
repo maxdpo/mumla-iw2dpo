@@ -149,10 +149,15 @@ public class MumlaService extends HumlaService implements
     private final Handler mPttDebounceHandler = new Handler(Looper.getMainLooper());
     /** IW2DPO: last known physical state of the PTT button. */
     private boolean mPttKeyDown = false;
+    /** IW2DPO: true while a debounced PTT release is waiting to be confirmed. */
+    private boolean mPttReleasePending = false;
+    /** IW2DPO: local "ready / not ready to talk" tones played on PTT press. */
+    private LocalTonePlayer mLocalTonePlayer;
     /** IW2DPO: runs after the debounce delay and re-checks the PTT button state. */
     private final Runnable mPttReleaseRunnable = new Runnable() {
         @Override
         public void run() {
+            mPttReleasePending = false;
             if (!mPttKeyDown) {
                 handleTalkKeyUp(); // still released after the delay: confirm release
             }
@@ -388,6 +393,8 @@ public class MumlaService extends HumlaService implements
 
         mTalkReceiver = new TalkBroadcastReceiver(this);
 
+        mLocalTonePlayer = new LocalTonePlayer(); // IW2DPO
+
         // IW2DPO: start the reconnect watchdog. checkAutoReconnect() itself does nothing
         // unless the user has enabled automatic connect/reconnect and has used a server
         // at least once before, so this is a no-op for everyone else.
@@ -405,6 +412,10 @@ public class MumlaService extends HumlaService implements
     @Override
     public void onDestroy() {
         mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable); // IW2DPO
+        if (mLocalTonePlayer != null) { // IW2DPO
+            mLocalTonePlayer.release();
+            mLocalTonePlayer = null;
+        }
         // IW2DPO: rilascia il wake lock del display
         if (mScreenWakeLock != null && mScreenWakeLock.isHeld()) {
             mScreenWakeLock.release();
@@ -790,10 +801,16 @@ public class MumlaService extends HumlaService implements
      */
     @Override
     public void onTalkKeyDown() {
+        // IW2DPO: a new press (not a key auto-repeat, not a bounce during the debounce delay)
+        final boolean freshPress = !mPttKeyDown && !mPttReleasePending;
         // IW2DPO: a press during the debounce delay cancels the pending release
         mPttKeyDown = true;
         wakeScreen(); // IW2DPO: il PTT accende subito il display
         mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
+        mPttReleasePending = false;
+        if (freshPress) {
+            playLocalTone();
+        }
         if(isConnectionEstablished()
                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
             if (!mSettings.isPushToTalkToggle() && !isTalking()) {
@@ -814,9 +831,32 @@ public class MumlaService extends HumlaService implements
         if (debounceMs > 0 && !mSettings.isPushToTalkToggle() && isTalking()) {
             mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
             mPttDebounceHandler.postDelayed(mPttReleaseRunnable, debounceMs);
+            mPttReleasePending = true;
             return;
         }
         handleTalkKeyUp();
+    }
+
+    /**
+     * IW2DPO: plays the local tone on the radio loudspeaker when PTT is pressed.
+     * READY TO TALK = connected to a server (communication possible);
+     * NOT READY TO TALK = not connected / server unavailable.
+     * In toggle PTT mode the "ready" tone is played only on the press that starts TX.
+     */
+    private void playLocalTone() {
+        if (mLocalTonePlayer == null || mSettings == null || !mSettings.isLocalTonesEnabled()) {
+            return;
+        }
+        mLocalTonePlayer.setHandsetMode(mSettings.isHandsetMode());
+        final int volume = mSettings.getLocalTonesVolume();
+        // isConnected(): state CONNECTED = connected AND synchronized with the server.
+        if (isConnected()) {
+            if (!mSettings.isPushToTalkToggle() || !isTalking()) {
+                mLocalTonePlayer.playReady(volume);
+            }
+        } else {
+            mLocalTonePlayer.playNotReady(volume);
+        }
     }
 
     /** IW2DPO: original PTT release logic, run immediately or after the debounce delay. */

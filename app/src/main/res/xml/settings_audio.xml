@@ -82,6 +82,23 @@
             android:summary="@string/pttSoundSum"
             android:title="@string/pttSound"
             app:iconSpaceReserved="false"/>
+        <!-- IW2DPO: local tones on PTT press (ready / not ready to talk) -->
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="local_tones_enabled"
+            android:summary="@string/localTonesSum"
+            android:title="@string/localTones"
+            app:iconSpaceReserved="false"/>
+        <se.lublin.mumla.preference.SeekBarDialogPreference
+            android:dependency="local_tones_enabled"
+            android:key="local_tones_volume"
+            android:title="@string/localTonesVolume"
+            android:summary="@string/localTonesVolumeSum"
+            app:max="100"
+            app:min="1"
+            android:defaultValue="50"
+            android:text="%"
+            app:iconSpaceReserved="false"/>
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="hidePtt"

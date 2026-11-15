@@ -1,5 +1,21 @@
-
-
+Branch "tones" - 15-11-2026
+Local tones on PTT press (radio loudspeaker only, not transmitted):
+ READY TO TALK (connected to a server):
+   1568 Hz 40 ms, 1046 Hz 40 ms, 1568 Hz 40 ms, 1318 Hz 40 ms
+ NOT READY TO TALK (no server / server unavailable):
+   300 Hz 1000 ms
+New in Settings > Audio (PTT section):
+ "Local tones" checkbox (ON by default)
+ "Local tones level" 1-100 % (default 50 %)
+Files:
+ app/src/main/java/se/lublin/mumla/service/LocalTonePlayer.java (new)
+ app/src/main/java/se/lublin/mumla/service/MumlaService.java
+ app/src/main/java/se/lublin/mumla/Settings.java
+ app/src/main/res/xml/settings_audio.xml
+ app/src/main/res/values/preference.xml
+ app/src/main/res/values-it/preference.xml
+humla-iw2dpo: no changes needed
+-----------------------------------------------
 
 Version 13-11-2026-3: "Settings" moved to top of side menu,
 "Audio" moved to top of Settings
