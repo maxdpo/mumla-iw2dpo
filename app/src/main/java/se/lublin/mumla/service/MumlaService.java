@@ -153,6 +153,24 @@ public class MumlaService extends HumlaService implements
     private boolean mPttReleasePending = false;
     /** IW2DPO: local "ready / not ready to talk" tones played on PTT press. */
     private LocalTonePlayer mLocalTonePlayer;
+    /** IW2DPO: number of local tones still playing (mic TX is blocked while > 0). */
+    private int mLocalTonesPlaying = 0;
+    /** IW2DPO: PTT asked to start TX while a local tone was playing: start when it ends. */
+    private boolean mTalkStartPending = false;
+    /** IW2DPO: called on the main thread when a local tone has finished on the speaker. */
+    private final Runnable mLocalToneDoneRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (mLocalTonesPlaying > 0) mLocalTonesPlaying--;
+            if (mLocalTonesPlaying == 0 && mTalkStartPending) {
+                mTalkStartPending = false;
+                if (isConnectionEstablished() && !isTalking()
+                        && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
+                    setTalkingState(true); // beep over: now open the mic (start TX)
+                }
+            }
+        }
+    };
     /** IW2DPO: runs after the debounce delay and re-checks the PTT button state. */
     private final Runnable mPttReleaseRunnable = new Runnable() {
         @Override
@@ -412,6 +430,8 @@ public class MumlaService extends HumlaService implements
     @Override
     public void onDestroy() {
         mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable); // IW2DPO
+        mPttDebounceHandler.removeCallbacks(mLocalToneDoneRunnable); // IW2DPO
+        mTalkStartPending = false;
         if (mLocalTonePlayer != null) { // IW2DPO
             mLocalTonePlayer.release();
             mLocalTonePlayer = null;
@@ -813,9 +833,22 @@ public class MumlaService extends HumlaService implements
         }
         if(isConnectionEstablished()
                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
-            if (!mSettings.isPushToTalkToggle() && !isTalking()) {
-                setTalkingState(true); // Start talking
+            if (!mSettings.isPushToTalkToggle() && !isTalking() && !mTalkStartPending) {
+                startTalkingAfterLocalTone(); // Start talking (after the local beep)
             }
+        }
+    }
+
+    /**
+     * IW2DPO: starts TX now, or - if a local tone is playing - when the tone has finished,
+     * so the beep coming out of the loudspeaker is not picked up by the mic and sent
+     * to the channel.
+     */
+    private void startTalkingAfterLocalTone() {
+        if (mLocalTonesPlaying > 0) {
+            mTalkStartPending = true;
+        } else {
+            setTalkingState(true);
         }
     }
 
@@ -828,7 +861,8 @@ public class MumlaService extends HumlaService implements
         mPttKeyDown = false;
         // IW2DPO: PTT release debouncing (only on release, only in hold-to-talk mode)
         int debounceMs = mSettings.getPttDebounceMs();
-        if (debounceMs > 0 && !mSettings.isPushToTalkToggle() && isTalking()) {
+        if (debounceMs > 0 && !mSettings.isPushToTalkToggle()
+                && (isTalking() || mTalkStartPending)) {
             mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
             mPttDebounceHandler.postDelayed(mPttReleaseRunnable, debounceMs);
             mPttReleasePending = true;
@@ -849,13 +883,17 @@ public class MumlaService extends HumlaService implements
         }
         mLocalTonePlayer.setHandsetMode(mSettings.isHandsetMode());
         final int volume = mSettings.getLocalTonesVolume();
+        // When the tone has finished, continue on the main thread (opens a pending TX).
+        final Runnable onDone = () -> mPttDebounceHandler.post(mLocalToneDoneRunnable);
         // isConnected(): state CONNECTED = connected AND synchronized with the server.
         if (isConnected()) {
             if (!mSettings.isPushToTalkToggle() || !isTalking()) {
-                mLocalTonePlayer.playReady(volume);
+                mLocalTonesPlaying++;
+                mLocalTonePlayer.playReady(volume, onDone);
             }
         } else {
-            mLocalTonePlayer.playNotReady(volume);
+            mLocalTonesPlaying++;
+            mLocalTonePlayer.playNotReady(volume, onDone);
         }
     }
 
@@ -864,7 +902,16 @@ public class MumlaService extends HumlaService implements
         if(isConnectionEstablished()
                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
             if (mSettings.isPushToTalkToggle()) {
-                setTalkingState(!isTalking()); // Toggle talk state
+                // Toggle talk state (IW2DPO: TX start waits for the local beep)
+                if (mTalkStartPending) {
+                    mTalkStartPending = false; // toggled off before TX started
+                } else if (isTalking()) {
+                    setTalkingState(false);
+                } else {
+                    startTalkingAfterLocalTone();
+                }
+            } else if (mTalkStartPending) {
+                mTalkStartPending = false; // released during the beep: TX never started
             } else if (isTalking()) {
                 setTalkingState(false); // Stop talking
             }

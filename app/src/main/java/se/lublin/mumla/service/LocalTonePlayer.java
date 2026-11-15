@@ -38,6 +38,11 @@ import java.util.concurrent.Executors;
  *
  * Tones are synthesized as PCM 16 bit and played with a static {@link AudioTrack} on a
  * background thread, so the PTT key handler never blocks.
+ *
+ * The optional "onDone" callback runs (on the player thread) when the tone has really
+ * finished on the loudspeaker: playback head at the end + {@link #TAIL_MS}. MumlaService
+ * uses it to keep the microphone (TX) closed while the local beep is playing, so the beep
+ * is not picked up by the mic and sent to the channel.
  */
 public class LocalTonePlayer {
     private static final String TAG = LocalTonePlayer.class.getName();
@@ -45,6 +50,8 @@ public class LocalTonePlayer {
     private static final int SAMPLE_RATE = 48000;
     /** Short fade in/out on every tone segment to avoid clicks. */
     private static final int FADE_MS = 3;
+    /** Extra wait after the last sample: audio output latency + acoustic decay. */
+    private static final int TAIL_MS = 80;
 
     /** READY TO TALK: {frequency Hz, duration ms} */
     private static final int[][] READY_TONES = {
@@ -70,22 +77,38 @@ public class LocalTonePlayer {
     }
 
     /** @param volumePercent 1-100, percentage of full scale. */
-    public void playReady(int volumePercent) {
-        play(READY_TONES, volumePercent);
+    public void playReady(int volumePercent, Runnable onDone) {
+        play(READY_TONES, volumePercent, onDone);
     }
 
     /** @param volumePercent 1-100, percentage of full scale. */
-    public void playNotReady(int volumePercent) {
-        play(NOT_READY_TONES, volumePercent);
+    public void playNotReady(int volumePercent, Runnable onDone) {
+        play(NOT_READY_TONES, volumePercent, onDone);
     }
 
-    private void play(final int[][] tones, int volumePercent) {
+    private void play(final int[][] tones, int volumePercent, final Runnable onDone) {
         final int volume = Math.max(1, Math.min(100, volumePercent));
         final int usage = mUsage;
         try {
-            mExecutor.execute(() -> playBlocking(tones, volume, usage));
+            mExecutor.execute(() -> {
+                try {
+                    playBlocking(tones, volume, usage);
+                } finally {
+                    runDone(onDone);
+                }
+            });
         } catch (Exception e) {
             Log.w(TAG, "Local tone not played", e);
+            runDone(onDone);
+        }
+    }
+
+    private static void runDone(Runnable onDone) {
+        if (onDone == null) return;
+        try {
+            onDone.run();
+        } catch (Exception e) {
+            Log.w(TAG, "Local tone onDone failed", e);
         }
     }
 
@@ -135,9 +158,15 @@ public class LocalTonePlayer {
                 mTrack = track;
             }
             track.play();
-            // Wait for the end of the sequence (+ small margin), then release.
+            // Wait until the last sample has been played (playback head at the end),
+            // with a safety timeout, then the tail for output latency.
             final long durationMs = (pcm.length * 1000L) / SAMPLE_RATE;
-            Thread.sleep(durationMs + 60);
+            final long deadline = System.currentTimeMillis() + durationMs + 500;
+            while (track.getPlaybackHeadPosition() < pcm.length
+                    && System.currentTimeMillis() < deadline) {
+                Thread.sleep(5);
+            }
+            Thread.sleep(TAIL_MS);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         } catch (Exception e) {

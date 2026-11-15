@@ -1,4 +1,14 @@
-Branch "tones" - 15-11-2026
+Version 15-11-2026-2 (branch "tones")
+Side menu: "VER : 15-11-2026-2"
+Mic TX blocked while the local PTT tone is playing:
+ TX (mic) starts only when the local beep has finished on the loudspeaker
+ (+80 ms), so the beep is no longer transmitted to the channel.
+ PTT released during the beep = nothing transmitted.
+Files: LocalTonePlayer.java, MumlaService.java, strings_notranslate.xml
+-----------------------------------------------
+
+Version 15-11-2026-1 (branch "tones")
+Side menu: "VER : 15-11-2026-1"
 Local tones on PTT press (radio loudspeaker only, not transmitted):
  READY TO TALK (connected to a server):
    1568 Hz 40 ms, 1046 Hz 40 ms, 1568 Hz 40 ms, 1318 Hz 40 ms
