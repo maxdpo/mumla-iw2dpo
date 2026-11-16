@@ -1,3 +1,15 @@
+What to do next :
+ - set as default debouncing as active and at 100 mSec
+ - reduce the default local tones at 6% or better change the whole range
+   (half strenght is more than enought)
+ - fix the audio block delay after tones has been terminated
+ - change the version to Version 16-11-2026-1
+ - create a DOC folder for general documentation
+ 
+
+
+
+
 Version 15-11-2026-3 (branch "tones")
 Side menu: "VER : 15-11-2026-3"
 FIX: local PTT beep was still transmitted to the channel.
