@@ -9,6 +9,12 @@ What to do next :
 
 
 
+Version 16-11-2026-2 (branch "tones")
+Side menu: "VER : 16-11-2026-2"
+Mic mute after the "ready to talk" tones restored, reduced to 100 ms
+(was 200 ms in 15-11-2026-3, 0 ms in 16-11-2026-1). File: MumlaService.java
+-----------------------------------------------
+
 Version 16-11-2026-1 (branch "tones")
 Side menu: "VER : 16-11-2026-1"
 Removed the extra 200 ms mic mute after the "ready to talk" tones

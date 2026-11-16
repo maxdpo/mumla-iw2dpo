@@ -157,16 +157,20 @@ public class MumlaService extends HumlaService implements
     private LocalTonePlayer mLocalTonePlayer;
     /** IW2DPO: number of local tones still playing (mic gate closed while > 0). */
     private int mLocalTonesPlaying = 0;
+    /** IW2DPO: mic gate kept closed after the beep has ended on the loudspeaker
+     * (covers mic capture latency and room echo). 16-11-2026-2: 100 ms (was 200 ms). */
+    public static final long MIC_GATE_TAIL_MS = 100;
     /** IW2DPO: safety limit, the mic gate is never closed longer than this per beep. */
     public static final long MIC_GATE_MAX_MS = 3000;
     /** IW2DPO: called on the main thread when a local tone has finished on the speaker:
-     * the mic gate reopens immediately (16-11-2026-1: no extra 200 ms pause). */
+     * the mic gate reopens after {@link #MIC_GATE_TAIL_MS}. */
     private final Runnable mLocalToneDoneRunnable = new Runnable() {
         @Override
         public void run() {
             if (mLocalTonesPlaying > 0) mLocalTonesPlaying--;
             if (mLocalTonesPlaying == 0) {
-                MicGate.open(); // beep over: voice goes out from now on
+                // beep over: voice goes out after MIC_GATE_TAIL_MS (100 ms)
+                MicGate.closeUntil(SystemClock.uptimeMillis() + MIC_GATE_TAIL_MS);
             }
         }
     };
