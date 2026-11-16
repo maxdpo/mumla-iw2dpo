@@ -19,7 +19,9 @@ package se.lublin.mumla.servers;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,11 +31,22 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 import se.lublin.humla.model.Server;
@@ -52,6 +65,20 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
     private DatabaseProvider mDatabaseProvider;
     private GridView mServerGrid;
     private ServerAdapter<Server> mServerAdapter;
+
+    /** IW2DPO: default name of the servers backup file (export / import). */
+    private static final String SERVERS_BACKUP_FILE = "mumla-servers.json";
+    private static final String TAG = "FavouriteServerList";
+
+    /** IW2DPO: "Export servers": the user chooses where to save the backup file. */
+    private final ActivityResultLauncher<String> mExportLauncher = registerForActivityResult(
+            new ActivityResultContracts.CreateDocument("application/json"),
+            uri -> { if (uri != null) exportServers(uri); });
+
+    /** IW2DPO: "Import servers": the user chooses the backup file to load. */
+    private final ActivityResultLauncher<String[]> mImportLauncher = registerForActivityResult(
+            new ActivityResultContracts.OpenDocument(),
+            uri -> { if (uri != null) importServers(uri); });
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +132,13 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
             ServerEditFragment.createServerEditDialog(getActivity(), null, ServerEditFragment.Action.CONNECT_ACTION, true)
                     .show(getFragmentManager(), "serverInfo");
             return true;
+        } else if (itemId == R.id.menu_export_servers) { // IW2DPO
+            mExportLauncher.launch(SERVERS_BACKUP_FILE);
+            return true;
+        } else if (itemId == R.id.menu_import_servers) { // IW2DPO
+            mImportLauncher.launch(new String[]{"application/json", "text/plain",
+                    "application/octet-stream"});
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -153,6 +187,92 @@ public class FavouriteServerListFragment extends Fragment implements OnItemClick
     public List<Server> getServers() {
         List<Server> servers = mDatabaseProvider.getDatabase().getServers();
         return servers;
+    }
+
+    /**
+     * IW2DPO: writes all favourite servers (label, address, port, username, password)
+     * to a JSON file chosen by the user, e.g. in Download. The file survives an app
+     * uninstall / reinstall and can be loaded again with "Import servers".
+     */
+    private void exportServers(Uri uri) {
+        try {
+            JSONArray array = new JSONArray();
+            for (Server s : getServers()) {
+                JSONObject o = new JSONObject();
+                o.put("label", s.getName());
+                o.put("address", s.getHost());
+                o.put("port", s.getPort());
+                o.put("username", s.getUsername());
+                o.put("password", s.getPassword() == null ? "" : s.getPassword());
+                array.put(o);
+            }
+            JSONObject root = new JSONObject();
+            root.put("app", "mumla-iw2dpo");
+            root.put("version", 1);
+            root.put("servers", array);
+            try (OutputStream out = requireContext().getContentResolver().openOutputStream(uri, "wt")) {
+                if (out == null) throw new java.io.IOException("Cannot open " + uri);
+                out.write(root.toString(2).getBytes(StandardCharsets.UTF_8));
+            }
+            Toast.makeText(getActivity(), getString(R.string.servers_exported_iw2dpo, array.length()),
+                    Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Log.e(TAG, "Export servers failed", e);
+            Toast.makeText(getActivity(), getString(R.string.servers_export_failed_iw2dpo, e.getMessage()),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * IW2DPO: loads the servers from a file written by "Export servers". Servers already
+     * present (same address, port and username) are not added twice.
+     */
+    private void importServers(Uri uri) {
+        try {
+            String text;
+            try (InputStream in = requireContext().getContentResolver().openInputStream(uri)) {
+                if (in == null) throw new java.io.IOException("Cannot open " + uri);
+                ByteArrayOutputStream buf = new ByteArrayOutputStream();
+                byte[] b = new byte[4096];
+                int n;
+                while ((n = in.read(b)) > 0) buf.write(b, 0, n);
+                text = new String(buf.toByteArray(), StandardCharsets.UTF_8);
+            }
+            JSONArray array = new JSONObject(text).getJSONArray("servers");
+            List<Server> existing = getServers();
+            int added = 0, skipped = 0;
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject o = array.getJSONObject(i);
+                String host = o.optString("address", "").trim();
+                if (host.isEmpty()) continue;
+                int port = o.optInt("port", 0);
+                String username = o.optString("username", "");
+                boolean duplicate = false;
+                for (Server e : existing) {
+                    if (host.equalsIgnoreCase(e.getHost()) && port == e.getPort()
+                            && username.equals(e.getUsername())) {
+                        duplicate = true;
+                        break;
+                    }
+                }
+                if (duplicate) {
+                    skipped++;
+                    continue;
+                }
+                Server server = new Server(-1, o.optString("label", host), host, port,
+                        username, o.optString("password", ""));
+                mDatabaseProvider.getDatabase().addServer(server);
+                existing.add(server);
+                added++;
+            }
+            updateServers();
+            Toast.makeText(getActivity(), getString(R.string.servers_imported_iw2dpo, added, skipped),
+                    Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Log.e(TAG, "Import servers failed", e);
+            Toast.makeText(getActivity(), getString(R.string.servers_import_failed_iw2dpo, e.getMessage()),
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

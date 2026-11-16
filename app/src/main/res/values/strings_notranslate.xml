@@ -25,5 +25,12 @@
     <string name="drawer_title_iw2dpo">Mumla</string>
     <!-- IW2DPO: popup at start when the Push-to-talk key is not set -->
     <string name="ptt_key_not_set_iw2dpo">Set PTT KEY first</string>
-    <string name="drawer_version_iw2dpo">VER : 16-11-2026-4</string>
+    <!-- IW2DPO: servers backup (Favourites menu) -->
+    <string name="export_servers_iw2dpo">Export servers</string>
+    <string name="import_servers_iw2dpo">Import servers</string>
+    <string name="servers_exported_iw2dpo">%1$d servers exported</string>
+    <string name="servers_export_failed_iw2dpo">Export failed: %1$s</string>
+    <string name="servers_imported_iw2dpo">%1$d servers imported, %2$d already present</string>
+    <string name="servers_import_failed_iw2dpo">Import failed: %1$s</string>
+    <string name="drawer_version_iw2dpo">VER : 16-11-2026-5</string>
 </resources>

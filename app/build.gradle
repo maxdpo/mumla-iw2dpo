@@ -106,6 +106,21 @@ android {
         }
     }
 
+    // IW2DPO: fixed signing key for the debug/beta builds made by GitHub Actions.
+    // Without it every CI run signs with a NEW random debug key, so Android refuses to
+    // install the new APK over the old one: the app must be uninstalled and all its data
+    // (servers, PTT key, settings) is lost. With the same key every time, new versions
+    // install as an update and keep all the data.
+    // (Test key only: it is public in this repository, do not use it for releases.)
+    signingConfigs {
+        debug {
+            storeFile file('iw2dpo-debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
     buildTypes {
         // signingConfig beta will override
         release {

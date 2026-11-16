@@ -1,13 +1,29 @@
 What to do next :
- - DONE set as default debouncing as active and at 100 mSec
- - DONE reduce the default local tones at 7% or better change the whole range
-   (half strenght is more than enought)
- - change the version to Version 16-11-2026-1
- - DONE create a DOC folder for general documentation
- - add server stored in a file for avoid add server every APP Update
- - create a POP UP WINDOWS if PTT KEY is not setted
+- DONE set as default debouncing as active and at 100 mSec
+- DONE reduce the default local tones at 7% or better change the whole range
+- DONE create a DOC folder for general documentation
+- DONE create a POP UP WINDOWS if PTT KEY is not setted
+- add server stored in a file for avoid add server every APP Update
+- change the version to Version 16-11-2026-4 > 5
 
 
+
+
+Version 16-11-2026-5 (branch "tones")
+Side menu: "VER : 16-11-2026-5"
+Servers no longer lost when a new APP version is installed:
+ 1) FIXED SIGNING KEY for the GitHub Actions debug/beta builds
+    (app/iw2dpo-debug.keystore + signingConfigs.debug in app/build.gradle).
+    Before, every build had a new random key: Android refused the update, the
+    app had to be uninstalled and ALL data (servers, PTT key, settings) was lost.
+    Now new versions install over the old one and keep all data.
+    NOTE: the FIRST install of this version still needs one uninstall.
+ 2) Favourites menu (3 dots): "Export servers" / "Import servers"
+    JSON file (default mumla-servers.json, e.g. in Download) with label,
+    address, port, username, password. Import skips servers already present.
+Files: app/build.gradle, app/iw2dpo-debug.keystore (new),
+ FavouriteServerListFragment.java, fragment_server_list.xml, strings_notranslate.xml
+-----------------------------------------------
 
 Version 16-11-2026-4 (branch "tones")
 Side menu: "VER : 16-11-2026-4"
