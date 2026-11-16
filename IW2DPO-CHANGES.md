@@ -2,13 +2,19 @@ What to do next :
  - set as default debouncing as active and at 100 mSec
  - reduce the default local tones at 6% or better change the whole range
    (half strenght is more than enought)
- - fix the audio block delay after tones has been terminated
  - change the version to Version 16-11-2026-1
  - create a DOC folder for general documentation
  
 
 
 
+
+Version 16-11-2026-1 (branch "tones")
+Side menu: "VER : 16-11-2026-1"
+Removed the extra 200 ms mic mute after the "ready to talk" tones
+(see DOC/PTT_Sequence.pdf): the mic gate now reopens as soon as the
+beep has finished on the loudspeaker. File: MumlaService.java
+-----------------------------------------------
 
 Version 15-11-2026-3 (branch "tones")
 Side menu: "VER : 15-11-2026-3"
