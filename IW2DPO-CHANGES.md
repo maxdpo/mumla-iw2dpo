@@ -1,13 +1,23 @@
 What to do next :
- - set as default debouncing as active and at 100 mSec
- - reduce the default local tones at 6% or better change the whole range
+ - DONE set as default debouncing as active and at 100 mSec
+ - DONE reduce the default local tones at 7% or better change the whole range
    (half strenght is more than enought)
  - change the version to Version 16-11-2026-1
- - create a DOC folder for general documentation
+ - DONE create a DOC folder for general documentation
  - add server stored in a file for avoid add server every APP Update
+ - create a POP UP WINDOWS if PTT KEY is not setted
 
 
 
+Version 16-11-2026-4 (branch "tones")
+Side menu: "VER : 16-11-2026-4"
+Settings > Audio defaults (new installations / after "clear data"):
+ - Debouncing: ON, 100 ms (was OFF)
+ - Local tones level: 7 % (was 50 %)
+Popup "Set PTT KEY first" at Mumla start when the Push-to-talk key is not set
+ (buttons: OK, Settings).
+Files: Settings.java, settings_audio.xml, MumlaActivity.java, strings_notranslate.xml
+-----------------------------------------------
 
 Version 16-11-2026-3 (branch "tones")
 Side menu: "VER : 16-11-2026-3"

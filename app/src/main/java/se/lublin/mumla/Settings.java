@@ -174,11 +174,11 @@ public class Settings {
 
     /** IW2DPO: local tones level, percentage (1-100) of full scale. */
     public static final String PREF_LOCAL_TONES_VOLUME = "local_tones_volume";
-    public static final int DEFAULT_LOCAL_TONES_VOLUME = 50;
+    public static final int DEFAULT_LOCAL_TONES_VOLUME = 7; // IW2DPO 16-11-2026-4: 7 %
 
     /** IW2DPO: PTT release debouncing delay in ms ("0" = OFF, "100", "500"). */
     public static final String PREF_PTT_DEBOUNCE = "ptt_debounce";
-    public static final String DEFAULT_PTT_DEBOUNCE = "0";
+    public static final String DEFAULT_PTT_DEBOUNCE = "100"; // IW2DPO 16-11-2026-4: ON, 100 ms
 
     public static final String PREF_PREPROCESSOR_ENABLED = "preprocessor_enabled";
     public static final boolean DEFAULT_PREPROCESSOR_ENABLED = false; // IW2DPO: Input pre-processing OFF di default

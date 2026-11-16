@@ -23,5 +23,7 @@
     <string name="certificate_export_format">mumla_%s.p12</string>
     <!-- IW2DPO: titolo e versione mostrati in alto nel menu laterale -->
     <string name="drawer_title_iw2dpo">Mumla</string>
-    <string name="drawer_version_iw2dpo">VER : 16-11-2026-3</string>
+    <!-- IW2DPO: popup at start when the Push-to-talk key is not set -->
+    <string name="ptt_key_not_set_iw2dpo">Set PTT KEY first</string>
+    <string name="drawer_version_iw2dpo">VER : 16-11-2026-4</string>
 </resources>

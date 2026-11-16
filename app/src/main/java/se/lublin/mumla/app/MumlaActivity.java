@@ -429,7 +429,24 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
                 mPendingAutoConnect = mSettings.isAutoconnectEnabled()
                         && mSettings.getLastServerId() >= 0;
             }
+            // IW2DPO: PTT key not set yet (e.g. new installation): ask to set it.
+            if (mSettings.getPushToTalkKey() == Settings.DEFAULT_PUSH_KEY) {
+                showPttKeyNotSetDialog();
+            }
         }
+    }
+
+    /**
+     * IW2DPO: popup shown at Mumla start when the Push-to-talk key is not set
+     * (Settings > Audio > Push-to-talk key).
+     */
+    private void showPttKeyNotSetDialog() {
+        new MaterialAlertDialogBuilder(this)
+                .setMessage(R.string.ptt_key_not_set_iw2dpo)
+                .setPositiveButton(android.R.string.ok, null)
+                .setNeutralButton(R.string.action_settings, (DialogInterface dialog, int which) ->
+                        startActivity(new Intent(MumlaActivity.this, SettingsActivity.class)))
+                .show();
     }
 
     @Override

@@ -96,7 +96,7 @@
             android:summary="@string/localTonesVolumeSum"
             app:max="100"
             app:min="1"
-            android:defaultValue="50"
+            android:defaultValue="7"
             android:text="%"
             app:iconSpaceReserved="false"/>
         <CheckBoxPreference
@@ -112,7 +112,7 @@
             android:title="@string/togglePtt"
             app:iconSpaceReserved="false"/>
         <ListPreference
-            android:defaultValue="0"
+            android:defaultValue="100"
             android:entries="@array/pttDebounceNames"
             android:entryValues="@array/pttDebounceValues"
             android:key="ptt_debounce"
