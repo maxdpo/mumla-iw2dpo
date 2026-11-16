@@ -4,10 +4,16 @@ What to do next :
    (half strenght is more than enought)
  - change the version to Version 16-11-2026-1
  - create a DOC folder for general documentation
- 
+ - add server stored in a file for avoid add server every APP Update
 
 
 
+
+Version 16-11-2026-3 (branch "tones")
+Side menu: "VER : 16-11-2026-3"
+Mic mute after the "ready to talk" tones back to the original 200 ms
+(was 100 ms in 16-11-2026-2). File: MumlaService.java
+-----------------------------------------------
 
 Version 16-11-2026-2 (branch "tones")
 Side menu: "VER : 16-11-2026-2"
