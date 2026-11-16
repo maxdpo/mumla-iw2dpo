@@ -19,6 +19,50 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- IW2DPO 16-11-2026-6: most used radio settings first -->
+    <se.lublin.mumla.preference.KeySelectDialogPreference
+        android:key="talkKey"
+        android:summary="@string/pttKeySum"
+        android:title="@string/pttKey"
+        app:iconSpaceReserved="false"/>
+    <se.lublin.mumla.preference.KeySelectDialogPreference
+        android:key="volumeUpKey"
+        android:title="@string/volumeUpKey"
+        android:summary="@string/volumeUpKeySum"
+        android:dialogMessage="@string/pressVolumeUpKey"
+        app:iconSpaceReserved="false"/>
+    <se.lublin.mumla.preference.KeySelectDialogPreference
+        android:key="volumeDownKey"
+        android:title="@string/volumeDownKey"
+        android:summary="@string/volumeDownKeySum"
+        android:dialogMessage="@string/pressVolumeDownKey"
+        app:iconSpaceReserved="false"/>
+    <!-- IW2DPO: local tones on PTT press (ready / not ready to talk) -->
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="local_tones_enabled"
+        android:summary="@string/localTonesSum"
+        android:title="@string/localTones"
+        app:iconSpaceReserved="false"/>
+    <se.lublin.mumla.preference.SeekBarDialogPreference
+        android:dependency="local_tones_enabled"
+        android:key="local_tones_volume"
+        android:title="@string/localTonesVolume"
+        android:summary="@string/localTonesVolumeSum"
+        app:max="100"
+        app:min="1"
+        android:defaultValue="7"
+        android:text="%"
+        app:iconSpaceReserved="false"/>
+    <ListPreference
+        android:defaultValue="100"
+        android:entries="@array/pttDebounceNames"
+        android:entryValues="@array/pttDebounceValues"
+        android:key="ptt_debounce"
+        android:title="@string/pttDebounce"
+        app:useSimpleSummaryProvider="true"
+        app:iconSpaceReserved="false"/>
+
     <ListPreference
         android:defaultValue="ptt"
         android:entries="@array/audioInputNames"
@@ -58,15 +102,10 @@
             app:iconSpaceReserved="false"/>
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/pttSettings"
+    <!-- IW2DPO 16-11-2026-6: "Push-to-talk settings" title removed -->
+    <PreferenceCategory
         android:key="ptt_settings"
         app:iconSpaceReserved="false">
-        <se.lublin.mumla.preference.KeySelectDialogPreference
-            android:key="talkKey"
-            android:summary="@string/pttKeySum"
-            android:title="@string/pttKey"
-            app:iconSpaceReserved="false"/>
-
         <ListPreference
             android:defaultValue="none"
             android:entries="@array/hotCornerNames"
@@ -82,23 +121,6 @@
             android:summary="@string/pttSoundSum"
             android:title="@string/pttSound"
             app:iconSpaceReserved="false"/>
-        <!-- IW2DPO: local tones on PTT press (ready / not ready to talk) -->
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="local_tones_enabled"
-            android:summary="@string/localTonesSum"
-            android:title="@string/localTones"
-            app:iconSpaceReserved="false"/>
-        <se.lublin.mumla.preference.SeekBarDialogPreference
-            android:dependency="local_tones_enabled"
-            android:key="local_tones_volume"
-            android:title="@string/localTonesVolume"
-            android:summary="@string/localTonesVolumeSum"
-            app:max="100"
-            app:min="1"
-            android:defaultValue="7"
-            android:text="%"
-            app:iconSpaceReserved="false"/>
         <CheckBoxPreference
             android:defaultValue="true"
             android:key="hidePtt"
@@ -110,14 +132,6 @@
             android:key="togglePtt"
             android:summary="@string/togglePttSum"
             android:title="@string/togglePtt"
-            app:iconSpaceReserved="false"/>
-        <ListPreference
-            android:defaultValue="100"
-            android:entries="@array/pttDebounceNames"
-            android:entryValues="@array/pttDebounceValues"
-            android:key="ptt_debounce"
-            android:title="@string/pttDebounce"
-            app:useSimpleSummaryProvider="true"
             app:iconSpaceReserved="false"/>
         <CheckBoxPreference
             android:defaultValue="false"
@@ -149,24 +163,6 @@
             android:entries="@array/releaseBeepSoundNames"
             android:entryValues="@array/releaseBeepSoundValues"
             android:defaultValue="single_tone"
-            app:iconSpaceReserved="false"/>
-    </PreferenceCategory>
-
-    <!-- IW2DPO: tasti volume configurabili (autodetect come per il PTT) -->
-    <PreferenceCategory android:title="@string/volumeKeySettings"
-        android:key="volume_key_settings"
-        app:iconSpaceReserved="false">
-        <se.lublin.mumla.preference.KeySelectDialogPreference
-            android:key="volumeUpKey"
-            android:title="@string/volumeUpKey"
-            android:summary="@string/volumeUpKeySum"
-            android:dialogMessage="@string/pressVolumeUpKey"
-            app:iconSpaceReserved="false"/>
-        <se.lublin.mumla.preference.KeySelectDialogPreference
-            android:key="volumeDownKey"
-            android:title="@string/volumeDownKey"
-            android:summary="@string/volumeDownKeySum"
-            android:dialogMessage="@string/pressVolumeDownKey"
             app:iconSpaceReserved="false"/>
     </PreferenceCategory>
 

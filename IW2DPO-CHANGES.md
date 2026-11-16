@@ -9,6 +9,15 @@ What to do next :
 
 
 
+Version 16-11-2026-6 (branch "tones")
+Side menu: "VER : 16-11-2026-6"
+Settings > Audio reordered (cosmetic). First items, in this order:
+ Push-to-talk key, Vol-up-key, Vol-down-key, Local tones,
+ Local tones level, Debouncing. Then the other settings as before.
+ "Push-to-talk settings" heading removed; "Volume keys" section removed
+ (its two keys are now at the top). File: settings_audio.xml
+-----------------------------------------------
+
 Version 16-11-2026-5 (branch "tones")
 Side menu: "VER : 16-11-2026-5"
 Servers no longer lost when a new APP version is installed:
