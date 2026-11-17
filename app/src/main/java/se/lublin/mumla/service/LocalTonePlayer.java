@@ -68,10 +68,10 @@ public class LocalTonePlayer {
     private static final int[][] NOT_READY_TONES = {
             {300, 1000},
     };
-    /** IW2DPO 17-11-2026-1: NOT READY tone level = 2 x "Local tones level" (+6 dB),
-     * because the 300 Hz tone sounds too low on the radio loudspeaker.
-     * Always capped at full scale (no clipping). */
-    private static final double NOT_READY_GAIN = 2.0;
+    /** IW2DPO 17-11-2026-2: NOT READY tone level = 4 x "Local tones level" (+12 dB;
+     * was 2 x in 17-11-2026-1), because the 300 Hz tone sounds too low on the radio
+     * loudspeaker. Always capped at full scale (no clipping). */
+    private static final double NOT_READY_GAIN = 4.0;
     private static final double READY_GAIN = 1.0;
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
