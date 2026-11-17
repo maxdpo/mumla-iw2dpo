@@ -32,5 +32,19 @@
     <string name="servers_export_failed_iw2dpo">Export failed: %1$s</string>
     <string name="servers_imported_iw2dpo">%1$d servers imported, %2$d already present</string>
     <string name="servers_import_failed_iw2dpo">Import failed: %1$s</string>
-    <string name="drawer_version_iw2dpo">VER : 17-11-2026-2</string>
+    <!-- IW2DPO: KEYLOCK screen -->
+    <string name="keylock_title_iw2dpo">KEYLOCK</string>
+    <string name="keylock_wrong_code_iw2dpo">Wrong code</string>
+    <string name="keylock_mode_iw2dpo">Screen lock (KEYLOCK)</string>
+    <string-array name="keylockModeNames_iw2dpo">
+        <item>Auto (only radios with touch screen)</item>
+        <item>Always on</item>
+        <item>Off</item>
+    </string-array>
+    <string-array name="keylockModeValues_iw2dpo">
+        <item>auto</item>
+        <item>on</item>
+        <item>off</item>
+    </string-array>
+    <string name="drawer_version_iw2dpo">VER : 17-11-2026-3</string>
 </resources>

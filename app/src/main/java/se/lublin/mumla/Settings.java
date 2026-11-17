@@ -177,6 +177,13 @@ public class Settings {
     public static final int DEFAULT_LOCAL_TONES_VOLUME = 7; // IW2DPO 16-11-2026-4: 7 %
 
     /** IW2DPO: PTT release debouncing delay in ms ("0" = OFF, "100", "500"). */
+    /** IW2DPO: KEYLOCK screen: "auto" (only radios with touch screen), "on", "off". */
+    public static final String PREF_KEYLOCK_MODE = "keylock_mode";
+    public static final String KEYLOCK_MODE_AUTO = "auto";
+    public static final String KEYLOCK_MODE_ON = "on";
+    public static final String KEYLOCK_MODE_OFF = "off";
+    public static final String DEFAULT_KEYLOCK_MODE = KEYLOCK_MODE_AUTO;
+
     public static final String PREF_PTT_DEBOUNCE = "ptt_debounce";
     public static final String DEFAULT_PTT_DEBOUNCE = "100"; // IW2DPO 16-11-2026-4: ON, 100 ms
 
@@ -432,6 +439,11 @@ public class Settings {
 
     public boolean isPttSoundEnabled() {
         return preferences.getBoolean(PREF_PTT_SOUND, DEFAULT_PTT_SOUND);
+    }
+
+    /** IW2DPO: @return KEYLOCK mode: "auto", "on" or "off". */
+    public String getKeylockMode() {
+        return preferences.getString(PREF_KEYLOCK_MODE, DEFAULT_KEYLOCK_MODE);
     }
 
     /** IW2DPO: @return true if the local ready / not ready tones are played on PTT press. */

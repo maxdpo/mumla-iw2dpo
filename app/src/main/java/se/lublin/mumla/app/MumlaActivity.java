@@ -37,6 +37,7 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -299,6 +300,9 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         }
     };
 
+    /** IW2DPO: KEYLOCK screen for radios with touch screen. */
+    private KeylockController mKeylock;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mSettings = Settings.getInstance(this);
@@ -330,6 +334,11 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         });
 
         setStayAwake(mSettings.shouldStayAwake());
+
+        // IW2DPO: KEYLOCK screen (only radios with touch screen): locked at startup.
+        mKeylock = new KeylockController(this);
+        mKeylock.setEnabled(KeylockController.isEnabledFor(this, mSettings));
+        mKeylock.lock();
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.registerOnSharedPreferenceChangeListener(this);
@@ -467,6 +476,17 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         bindService(connectIntent, mConnection, bindFlags);
         // IW2DPO: rientro in Mumla -> riparte lo stay awake (sempre / 1 minuto)
         setStayAwake(mSettings.shouldStayAwake());
+        // IW2DPO: KEYLOCK setting may have been changed in Settings > General
+        if (mKeylock != null) {
+            mKeylock.setEnabled(KeylockController.isEnabledFor(this, mSettings));
+        }
+    }
+
+    /** IW2DPO: every touch on the Mumla screen restarts the 1 minute KEYLOCK timer. */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (mKeylock != null) mKeylock.onUserActivity();
+        return super.dispatchTouchEvent(ev);
     }
 
     @Override
@@ -493,6 +513,7 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
     protected void onDestroy() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.unregisterOnSharedPreferenceChangeListener(this);
+        if (mKeylock != null) mKeylock.release(); // IW2DPO
         mDatabase.close();
         super.onDestroy();
     }
@@ -580,6 +601,11 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
             return true;
         }
         if (isVolumeDownKey(keyCode) && adjustListenVolume(false)) {
+            return true;
+        }
+        // IW2DPO: KEYLOCK active -> PTT and volume keys work (handled above, or by the
+        // system for volume), the Menu key is blocked.
+        if (mKeylock != null && mKeylock.isLocked() && keyCode == KeyEvent.KEYCODE_MENU) {
             return true;
         }
         return super.onKeyDown(keyCode, event);

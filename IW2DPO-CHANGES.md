@@ -9,6 +9,19 @@ What to do next :
 
 
 
+Version 17-11-2026-3 (branch "master")
+Side menu: "VER : 17-11-2026-3"
+KEYLOCK screen for POC radios with touch screen:
+ - "KEYLOCK" title + 3x4 keypad (1-9, #, 0, *) covering the whole Mumla screen
+ - locked at app start and after 1 minute without touches on the screen
+ - unlocked with code 1234 ("*" or "#" clear what was typed; wrong code = toast)
+ - while locked: PTT and volume keys work; touches, Back and Menu are blocked
+ - Settings > General > "Screen lock (KEYLOCK)": Auto (default, only radios
+   that report a touch screen) / Always on / Off
+Files: app/KeylockController.java (new), MumlaActivity.java, Settings.java,
+ settings_general.xml, strings_notranslate.xml
+-----------------------------------------------
+
 Version 17-11-2026-2 (branch "tones")
 Side menu: "VER : 17-11-2026-2"
 NOT READY TO TALK tone (300 Hz) level doubled again: 4 x "Local tones level"

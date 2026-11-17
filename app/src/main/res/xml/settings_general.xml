@@ -19,6 +19,16 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!-- IW2DPO: KEYLOCK screen (code 1234), auto = only radios with touch screen -->
+    <ListPreference
+        android:defaultValue="auto"
+        android:entries="@array/keylockModeNames_iw2dpo"
+        android:entryValues="@array/keylockModeValues_iw2dpo"
+        android:key="keylock_mode"
+        android:title="@string/keylock_mode_iw2dpo"
+        app:useSimpleSummaryProvider="true"
+        app:iconSpaceReserved="false" />
+
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="chatNotify"
