@@ -68,6 +68,11 @@ public class LocalTonePlayer {
     private static final int[][] NOT_READY_TONES = {
             {300, 1000},
     };
+    /** IW2DPO 17-11-2026-1: NOT READY tone level = 2 x "Local tones level" (+6 dB),
+     * because the 300 Hz tone sounds too low on the radio loudspeaker.
+     * Always capped at full scale (no clipping). */
+    private static final double NOT_READY_GAIN = 2.0;
+    private static final double READY_GAIN = 1.0;
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
     private final Object mLock = new Object();
@@ -82,21 +87,22 @@ public class LocalTonePlayer {
 
     /** @param volumePercent 1-100, percentage of full scale. */
     public void playReady(int volumePercent, Runnable onDone) {
-        play(READY_TONES, volumePercent, onDone);
+        play(READY_TONES, volumePercent, READY_GAIN, onDone);
     }
 
     /** @param volumePercent 1-100, percentage of full scale. */
     public void playNotReady(int volumePercent, Runnable onDone) {
-        play(NOT_READY_TONES, volumePercent, onDone);
+        play(NOT_READY_TONES, volumePercent, NOT_READY_GAIN, onDone);
     }
 
-    private void play(final int[][] tones, int volumePercent, final Runnable onDone) {
+    private void play(final int[][] tones, int volumePercent, final double gain,
+                      final Runnable onDone) {
         final int volume = Math.max(1, Math.min(100, volumePercent));
         final int usage = mUsage;
         try {
             mExecutor.execute(() -> {
                 try {
-                    playBlocking(tones, volume, usage);
+                    playBlocking(tones, volume, gain, usage);
                 } finally {
                     runDone(onDone);
                 }
@@ -117,13 +123,14 @@ public class LocalTonePlayer {
     }
 
     /** Synthesizes the tone sequence (exposed for tests). */
-    static short[] synthesize(int[][] tones, int volumePercent) {
+    static short[] synthesize(int[][] tones, int volumePercent, double gain) {
         int total = 0;
         for (int[] tone : tones) {
             total += (tone[1] * SAMPLE_RATE) / 1000;
         }
         final short[] pcm = new short[total];
-        final double amplitude = Short.MAX_VALUE * (volumePercent / 100.0);
+        final double level = Math.min(1.0, (volumePercent / 100.0) * gain); // max full scale
+        final double amplitude = Short.MAX_VALUE * level;
         final int fade = Math.max(1, (FADE_MS * SAMPLE_RATE) / 1000);
         int pos = 0;
         for (int[] tone : tones) {
@@ -139,8 +146,8 @@ public class LocalTonePlayer {
         return pcm;
     }
 
-    private void playBlocking(int[][] tones, int volume, int usage) {
-        final short[] pcm = synthesize(tones, volume);
+    private void playBlocking(int[][] tones, int volume, double gain, int usage) {
+        final short[] pcm = synthesize(tones, volume, gain);
         AudioTrack track = null;
         try {
             // API 21 constructor (minSdk 21; AudioTrack.Builder needs API 23).
