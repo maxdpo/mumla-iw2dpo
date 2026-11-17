@@ -9,6 +9,13 @@ What to do next :
 
 
 
+Version 17-11-2026-1 (branch "tones")
+Side menu: "VER : 17-11-2026-1"
+NOT READY TO TALK tone (300 Hz, 1 s) level doubled (x2 = +6 dB) compared
+to "Local tones level" (e.g. 7 % -> 14 %), capped at full scale (no clipping).
+READY TO TALK tones unchanged. File: LocalTonePlayer.java
+-----------------------------------------------
+
 Version 16-11-2026-6 (branch "tones")
 Side menu: "VER : 16-11-2026-6"
 Settings > Audio reordered (cosmetic). First items, in this order:
