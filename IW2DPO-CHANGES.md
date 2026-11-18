@@ -9,6 +9,13 @@ What to do next :
 
 
 
+Version 18-11-2026-2 (branch "master")
+Side menu: "VER : 18-11-2026-2"
+KEYLOCK screen: "KEYLOCK" text removed from the top box (it was cut on the
+radio screen). The top box now shows only the typed digits (● ● _ _) and is
+smaller, so the keypad buttons are bigger. File: KeylockController.java
+-----------------------------------------------
+
 Version 18-11-2026-1 (branch "master")
 Side menu: "VER : 18-11-2026-1"
 Settings > General:

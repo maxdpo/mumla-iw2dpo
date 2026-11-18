@@ -42,7 +42,8 @@ import se.lublin.mumla.R;
 import se.lublin.mumla.Settings;
 
 /**
- * IW2DPO: KEYLOCK screen for POC radios with a touch screen.
+ * IW2DPO: KEYLOCK screen for POC radios with a touch screen
+ * (top box with the typed digits + 3 x 4 keypad).
  *
  * <ul>
  *   <li>Locked at app start and after {@link #AUTO_LOCK_MS} without touches.</li>
@@ -212,25 +213,22 @@ public class KeylockController {
         root.setFocusable(false);
         root.setTranslationZ(dp(100)); // above the toolbar and the drawer
 
-        // Title box: "KEYLOCK" + typed digits
+        // Top box: only the typed digits ("● ● _ _").
+        // IW2DPO 18-11-2026-2: "KEYLOCK" text removed (it was cut on small screens),
+        // box made smaller so the keypad gets more room.
         LinearLayout title = new LinearLayout(ctx);
         title.setOrientation(LinearLayout.VERTICAL);
         title.setGravity(Gravity.CENTER);
         title.setBackgroundColor(primary);
-        TextView label = new TextView(ctx);
-        label.setText(R.string.keylock_title_iw2dpo);
-        label.setTextColor(onPrimary);
-        label.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
-        label.setGravity(Gravity.CENTER);
         mCodeView = new TextView(ctx);
         mCodeView.setTextColor(onPrimary);
-        mCodeView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 22);
+        mCodeView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 26);
         mCodeView.setTypeface(Typeface.MONOSPACE);
         mCodeView.setGravity(Gravity.CENTER);
-        title.addView(label);
+        mCodeView.setIncludeFontPadding(false);
         title.addView(mCodeView);
         LinearLayout.LayoutParams titleLp = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.3f);
+                ViewGroup.LayoutParams.MATCH_PARENT, 0, 0.6f);
         titleLp.setMargins(dp(4), dp(4), dp(4), dp(8));
         root.addView(title, titleLp);
 
