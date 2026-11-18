@@ -19,14 +19,23 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <!-- IW2DPO: KEYLOCK screen (code 1234), auto = only radios with touch screen -->
+    <!-- IW2DPO: KEYLOCK screen, auto = only radios with touch screen (default off) -->
     <ListPreference
-        android:defaultValue="auto"
+        android:defaultValue="off"
         android:entries="@array/keylockModeNames_iw2dpo"
         android:entryValues="@array/keylockModeValues_iw2dpo"
         android:key="keylock_mode"
         android:title="@string/keylock_mode_iw2dpo"
         app:useSimpleSummaryProvider="true"
+        app:iconSpaceReserved="false" />
+
+    <!-- IW2DPO: KEYLOCK unlock code, 4 digits (default 1234) -->
+    <EditTextPreference
+        android:defaultValue="1234"
+        android:key="keylock_code"
+        android:title="@string/keylock_code_iw2dpo"
+        android:summary="@string/keylock_code_sum_iw2dpo"
+        android:dialogMessage="@string/keylock_code_dialog_iw2dpo"
         app:iconSpaceReserved="false" />
 
     <CheckBoxPreference

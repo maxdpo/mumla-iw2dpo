@@ -46,17 +46,16 @@ import se.lublin.mumla.Settings;
  *
  * <ul>
  *   <li>Locked at app start and after {@link #AUTO_LOCK_MS} without touches.</li>
- *   <li>Unlocked by typing {@link #UNLOCK_CODE} on the on-screen keypad
- *       ("*" or "#" clear what was typed).</li>
+ *   <li>Unlocked by typing the 4-digit code (Settings > General > "KEYLOCK CODE",
+ *       default 1234) on the on-screen keypad ("*" or "#" clear what was typed).</li>
  *   <li>While locked the keypad covers the whole Mumla screen and eats every touch;
  *       hardware keys (PTT, volume) are NOT intercepted, so they keep working.
  *       Back and Menu are blocked.</li>
- *   <li>Active only on radios with a touch screen (Settings > General >
- *       "Screen lock (KEYLOCK)": Auto / On / Off).</li>
+ *   <li>Settings > General > "Screen lock (KEYLOCK)": Auto (only radios with a
+ *       touch screen) / On / Off (default).</li>
  * </ul>
  */
 public class KeylockController {
-    public static final String UNLOCK_CODE = "1234";
     public static final long AUTO_LOCK_MS = 60_000;
 
     private static final String[][] KEYS = {
@@ -75,6 +74,8 @@ public class KeylockController {
     private TextView mCodeView;
     private boolean mEnabled;
     private boolean mLocked;
+    /** Current unlock code, re-read from Settings every time the screen locks. */
+    private String mCode = Settings.DEFAULT_KEYLOCK_CODE;
 
     public KeylockController(AppCompatActivity activity) {
         mActivity = activity;
@@ -125,6 +126,7 @@ public class KeylockController {
     public void lock() {
         if (!mEnabled) return;
         mHandler.removeCallbacks(mAutoLock);
+        mCode = Settings.getInstance(mActivity).getKeylockCode();
         if (mOverlay == null) build();
         mTyped.setLength(0);
         updateCode();
@@ -166,8 +168,8 @@ public class KeylockController {
             return;
         }
         mTyped.append(key);
-        if (mTyped.length() >= UNLOCK_CODE.length()) {
-            if (UNLOCK_CODE.contentEquals(mTyped)) {
+        if (mTyped.length() >= mCode.length()) {
+            if (mCode.contentEquals(mTyped)) {
                 unlock();
                 return;
             }
@@ -181,7 +183,7 @@ public class KeylockController {
     private void updateCode() {
         if (mCodeView == null) return;
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < UNLOCK_CODE.length(); i++) {
+        for (int i = 0; i < mCode.length(); i++) {
             if (i > 0) sb.append(' ');
             sb.append(i < mTyped.length() ? '●' : '_');
         }

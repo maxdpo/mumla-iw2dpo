@@ -36,6 +36,10 @@
     <string name="keylock_title_iw2dpo">KEYLOCK</string>
     <string name="keylock_wrong_code_iw2dpo">Wrong code</string>
     <string name="keylock_mode_iw2dpo">Screen lock (KEYLOCK)</string>
+    <string name="keylock_code_iw2dpo">KEYLOCK CODE</string>
+    <string name="keylock_code_sum_iw2dpo">4-digit code to unlock the KEYLOCK screen (default 1234)</string>
+    <string name="keylock_code_dialog_iw2dpo">Enter 4 digits (0-9)</string>
+    <string name="keylock_code_invalid_iw2dpo">The KEYLOCK code must be exactly 4 digits</string>
     <string-array name="keylockModeNames_iw2dpo">
         <item>Auto (only radios with touch screen)</item>
         <item>Always on</item>
@@ -46,5 +50,5 @@
         <item>on</item>
         <item>off</item>
     </string-array>
-    <string name="drawer_version_iw2dpo">VER : 17-11-2026-3</string>
+    <string name="drawer_version_iw2dpo">VER : 18-11-2026-1</string>
 </resources>

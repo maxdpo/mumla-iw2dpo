@@ -9,6 +9,16 @@ What to do next :
 
 
 
+Version 18-11-2026-1 (branch "master")
+Side menu: "VER : 18-11-2026-1"
+Settings > General:
+ - "Screen lock (KEYLOCK)" default now OFF (was Auto)
+ - new "KEYLOCK CODE": 4-digit unlock code (default 1234); numeric keyboard,
+   only exactly 4 digits accepted. Used from the next time the screen locks.
+Files: KeylockController.java, GeneralSettingsFragment.java, Settings.java,
+ settings_general.xml, strings_notranslate.xml
+-----------------------------------------------
+
 Version 17-11-2026-3 (branch "master")
 Side menu: "VER : 17-11-2026-3"
 KEYLOCK screen for POC radios with touch screen:

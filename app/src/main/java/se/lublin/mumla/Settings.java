@@ -182,7 +182,11 @@ public class Settings {
     public static final String KEYLOCK_MODE_AUTO = "auto";
     public static final String KEYLOCK_MODE_ON = "on";
     public static final String KEYLOCK_MODE_OFF = "off";
-    public static final String DEFAULT_KEYLOCK_MODE = KEYLOCK_MODE_AUTO;
+    public static final String DEFAULT_KEYLOCK_MODE = KEYLOCK_MODE_OFF; // IW2DPO 18-11-2026-1: OFF
+
+    /** IW2DPO: KEYLOCK unlock code, exactly 4 digits. */
+    public static final String PREF_KEYLOCK_CODE = "keylock_code";
+    public static final String DEFAULT_KEYLOCK_CODE = "1234";
 
     public static final String PREF_PTT_DEBOUNCE = "ptt_debounce";
     public static final String DEFAULT_PTT_DEBOUNCE = "100"; // IW2DPO 16-11-2026-4: ON, 100 ms
@@ -444,6 +448,17 @@ public class Settings {
     /** IW2DPO: @return KEYLOCK mode: "auto", "on" or "off". */
     public String getKeylockMode() {
         return preferences.getString(PREF_KEYLOCK_MODE, DEFAULT_KEYLOCK_MODE);
+    }
+
+    /** IW2DPO: @return the 4-digit KEYLOCK code ("1234" if not set or not valid). */
+    public String getKeylockCode() {
+        String code = preferences.getString(PREF_KEYLOCK_CODE, DEFAULT_KEYLOCK_CODE);
+        return isValidKeylockCode(code) ? code : DEFAULT_KEYLOCK_CODE;
+    }
+
+    /** IW2DPO: @return true if the code is exactly 4 digits (0-9). */
+    public static boolean isValidKeylockCode(String code) {
+        return code != null && code.matches("[0-9]{4}");
     }
 
     /** IW2DPO: @return true if the local ready / not ready tones are played on PTT press. */
