@@ -10,6 +10,17 @@ What to do next :
 
 
 
+Version 19-11-2026-3 (branch "bluetooth")
+Side menu: "VER : 19-11-2026-3"
+READY TO TALK tone not heard on the Bluetooth speaker-microphone (UNIWA BM001).
+Cause: with a Bluetooth headset Humla plays the RX audio on STREAM_VOICE_CALL over
+Bluetooth SCO, but the local tones were played as MEDIA, which is not sent over SCO.
+Fix: when Bluetooth SCO is active (or in handset mode) the local tones (READY /
+NOT READY TO TALK, TX TIMEOUT) are played on the voice-call route, so they come out
+of the Bluetooth speaker like the RX audio. Without Bluetooth: unchanged.
+Files: service/MumlaService.java, strings_notranslate.xml, IW2DPO-CHANGES.md
+-----------------------------------------------
+
 Version 19-11-2026-2 (branch "bluetooth")
 Side menu: "VER : 19-11-2026-2"
 External Bluetooth speaker-microphone (UNIWA BM001, Inrico B01/B02 and clones):

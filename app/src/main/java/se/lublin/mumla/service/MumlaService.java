@@ -976,7 +976,7 @@ public class MumlaService extends HumlaService implements
         if (mLocalTonePlayer == null || mSettings == null || !mSettings.isLocalTonesEnabled()) {
             return;
         }
-        mLocalTonePlayer.setHandsetMode(mSettings.isHandsetMode());
+        mLocalTonePlayer.setHandsetMode(useVoiceCallToneRoute()); // IW2DPO 19-11-2026-3
         final int volume = mSettings.getLocalTonesVolume();
         // When the tone has finished, continue on the main thread (reopens the mic gate).
         final Runnable onDone = () -> mPttDebounceHandler.post(mLocalToneDoneRunnable);
@@ -990,6 +990,41 @@ public class MumlaService extends HumlaService implements
             closeMicGateForTone();
             mLocalTonePlayer.playNotReady(volume, onDone);
         }
+    }
+
+    /**
+     * IW2DPO 19-11-2026-3: route of the local tones (READY / NOT READY TO TALK, TX TIMEOUT).
+     * When a Bluetooth headset / speaker-microphone (UNIWA BM001...) is in use, Humla
+     * plays the RX audio on STREAM_VOICE_CALL over Bluetooth SCO. A tone played as MEDIA
+     * is NOT sent over SCO, so it was not heard on the Bluetooth microphone. In that case
+     * the tones are played on the voice-call route too (same as handset mode), so they
+     * come out of the Bluetooth speaker exactly like the RX audio.
+     */
+    private boolean useVoiceCallToneRoute() {
+        return mSettings.isHandsetMode() || isBluetoothScoActive();
+    }
+
+    /** IW2DPO 19-11-2026-3: true if Bluetooth SCO (headset audio) is currently active. */
+    @SuppressWarnings("deprecation")
+    private boolean isBluetoothScoActive() {
+        try {
+            if (usingBluetoothSco()) {
+                return true;
+            }
+        } catch (Exception ignored) {
+            // not connected / not synchronized yet
+        }
+        final AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
+        if (am == null) {
+            return false;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            android.media.AudioDeviceInfo dev = am.getCommunicationDevice();
+            if (dev != null && dev.getType() == android.media.AudioDeviceInfo.TYPE_BLUETOOTH_SCO) {
+                return true;
+            }
+        }
+        return am.isBluetoothScoOn();
     }
 
     /** IW2DPO: closes the mic gate BEFORE the beep starts (TX = silence while it plays). */
@@ -1041,7 +1076,7 @@ public class MumlaService extends HumlaService implements
         mTxTimeoutActive = true;
         setTalkingState(false);
         if (mLocalTonePlayer != null) {
-            mLocalTonePlayer.setHandsetMode(mSettings.isHandsetMode());
+            mLocalTonePlayer.setHandsetMode(useVoiceCallToneRoute()); // IW2DPO 19-11-2026-3
             // played even if "Local tones" is off: it is an alarm
             mLocalTonePlayer.playTxTimeout(mSettings.getLocalTonesVolume(), null);
         }
