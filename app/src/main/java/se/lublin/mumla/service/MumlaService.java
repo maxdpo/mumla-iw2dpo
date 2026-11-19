@@ -155,6 +155,60 @@ public class MumlaService extends HumlaService implements
     private boolean mPttReleasePending = false;
     /** IW2DPO: local "ready / not ready to talk" tones played on PTT press. */
     private LocalTonePlayer mLocalTonePlayer;
+    /** IW2DPO 19-11-2026-2: Bluetooth speaker-microphone (UNIWA BM001...) PTT and volume keys. */
+    private BluetoothPttMic mBtPttMic;
+    private final BluetoothPttMic.Listener mBtPttMicListener = new BluetoothPttMic.Listener() {
+        @Override
+        public void onBtPttDown() {
+            onTalkKeyDown();
+        }
+
+        @Override
+        public void onBtPttUp() {
+            onTalkKeyUp();
+        }
+
+        @Override
+        public void onBtVolume(boolean raise) {
+            // Any key closes the TX TIMEOUT popup (same as the radio keys in MumlaActivity)
+            if (mTxTimeoutActive) {
+                clearTxTimeout();
+                return;
+            }
+            final AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
+            if (am == null) {
+                return;
+            }
+            try {
+                am.adjustStreamVolume(getAudioStream(),
+                        raise ? AudioManager.ADJUST_RAISE : AudioManager.ADJUST_LOWER,
+                        AudioManager.FLAG_SHOW_UI);
+            } catch (SecurityException e) {
+                Log.w(TAG, "BT mic volume change refused", e);
+            }
+        }
+
+        @Override
+        public int getConfiguredPttKey() {
+            return mSettings.getPushToTalkKey();
+        }
+
+        @Override
+        public int getConfiguredVolumeUpKey() {
+            return mSettings.getVolumeUpKey();
+        }
+
+        @Override
+        public int getConfiguredVolumeDownKey() {
+            return mSettings.getVolumeDownKey();
+        }
+
+        @Override
+        public int getAudioStream() {
+            return mSettings.isHandsetMode()
+                    ? AudioManager.STREAM_VOICE_CALL : AudioManager.STREAM_MUSIC;
+        }
+    };
     /** IW2DPO: number of local tones still playing (mic gate closed while > 0). */
     private int mLocalTonesPlaying = 0;
     /** IW2DPO: mic gate kept closed after the beep has ended on the loudspeaker
@@ -432,6 +486,10 @@ public class MumlaService extends HumlaService implements
         mLocalTonePlayer = new LocalTonePlayer(); // IW2DPO
         MicGate.open(); // IW2DPO
 
+        // IW2DPO 19-11-2026-2: PTT / V+ / V- keys of the Bluetooth speaker-microphone
+        mBtPttMic = new BluetoothPttMic(this, mBtPttMicListener);
+        mBtPttMic.start();
+
         // IW2DPO: start the reconnect watchdog. checkAutoReconnect() itself does nothing
         // unless the user has enabled automatic connect/reconnect and has used a server
         // at least once before, so this is a no-op for everyone else.
@@ -452,6 +510,10 @@ public class MumlaService extends HumlaService implements
         mPttDebounceHandler.removeCallbacks(mLocalToneDoneRunnable); // IW2DPO
         mPttDebounceHandler.removeCallbacks(mTxTimeoutRunnable); // IW2DPO 19-11-2026-1
         mTxTimeoutListener = null;
+        if (mBtPttMic != null) { // IW2DPO 19-11-2026-2
+            mBtPttMic.stop();
+            mBtPttMic = null;
+        }
         MicGate.open(); // IW2DPO
         if (mLocalTonePlayer != null) { // IW2DPO
             mLocalTonePlayer.release();
@@ -650,6 +712,7 @@ public class MumlaService extends HumlaService implements
                 setProximitySensorOn(isConnectionEstablished() && mSettings.isHandsetMode());
                 changedExtras.putInt(HumlaService.EXTRAS_AUDIO_STREAM, mSettings.isHandsetMode() ?
                                      AudioManager.STREAM_VOICE_CALL : AudioManager.STREAM_MUSIC);
+                if (mBtPttMic != null) mBtPttMic.updateAudioStream(); // IW2DPO 19-11-2026-2
                 break;
             case Settings.PREF_THRESHOLD:
                 changedExtras.putFloat(HumlaService.EXTRAS_DETECTION_THRESHOLD,

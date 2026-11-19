@@ -10,6 +10,37 @@ What to do next :
 
 
 
+Version 19-11-2026-2 (branch "bluetooth")
+Side menu: "VER : 19-11-2026-2"
+External Bluetooth speaker-microphone (UNIWA BM001, Inrico B01/B02 and clones):
+PTT and V+ / V- keys now work (audio RX/TX already worked).
+Cause: these microphones do not send their keys to the foreground Activity
+(MumlaActivity.onKeyDown never saw them):
+ - the PTT key is sent as text over Bluetooth SPP (serial port):
+   "+PTT=P" pressed / "+PTT=R" released (also "+PTTS=P/R")
+ - V+ / V- (and Play/Pause) are sent over AVRCP to the active MEDIA SESSION;
+   Mumla had none, so the keys were lost.
+Fix (new service/BluetoothPttMic.java, started/stopped by MumlaService):
+ - SPP reader: connects to the paired microphone (name with PTT / BM001 /
+   UNIWA / B01 / B02 / MIC, or audio device with SPP), secure then insecure
+   RFCOMM, retries every 5 s, PTT press/release -> onTalkKeyDown/Up (same
+   path as the radio PTT: debouncing, local tones, TX TIMEOUT all apply).
+   PTT is released automatically if the microphone disconnects.
+   SOS (+PTTE) and group keys (+PTTB1/2) are ignored.
+ - active MediaSession: VOLUME_UP/DOWN -> RX volume (same stream as Mumla,
+   with system volume bar); key equal to the configured PTT / Vol-up /
+   Vol-down key -> same function; other media keys are consumed.
+ - Settings > PTT / Vol-up / Vol-down key dialogs also capture the keys
+   of the Bluetooth microphone (media session).
+ - works also with Mumla in background / screen off.
+ - Android 12: asks once for the "Nearby devices" permission
+   (BLUETOOTH_CONNECT, added to the manifest).
+ - debug: adb logcat -s BtPttMic shows every SPP line and media key received.
+Files: service/BluetoothPttMic.java (new), service/MumlaService.java,
+ app/MumlaActivity.java, preference/KeySelectPreferenceDialogFragment.java,
+ AndroidManifest.xml, strings_notranslate.xml, IW2DPO-CHANGES.md
+-----------------------------------------------
+
 Version 19-11-2026-1 (branch "master")
 Side menu: "VER : 19-11-2026-1"
 Settings > Audio > new "TX TIMEOUT": OFF / 1 MIN / 2 MIN (default) / 5 MIN

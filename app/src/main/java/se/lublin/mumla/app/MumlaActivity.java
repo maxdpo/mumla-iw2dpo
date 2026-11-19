@@ -136,6 +136,9 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
 
     private static final int PERMISSIONS_REQUEST_RECORD_AUDIO = 1;
     private static final int PERMISSIONS_REQUEST_POST_NOTIFICATIONS = 2;
+    /** IW2DPO 19-11-2026-2: Bluetooth speaker-microphone PTT (SPP) needs BLUETOOTH_CONNECT. */
+    private static final int PERMISSIONS_REQUEST_BLUETOOTH_CONNECT = 3;
+    private static boolean sBtConnectAsked = false;
     private Server mServerPendingPerm = null;
     private boolean mPermPostNotificationsAsked = false;
     /** IW2DPO: true right after a fresh app launch if we should auto-connect to the
@@ -490,6 +493,7 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         bindService(connectIntent, mConnection, bindFlags);
         // IW2DPO: rientro in Mumla -> riparte lo stay awake (sempre / 1 minuto)
         setStayAwake(mSettings.shouldStayAwake());
+        requestBluetoothConnectPermission(); // IW2DPO 19-11-2026-2
         // IW2DPO: KEYLOCK setting may have been changed in Settings > General
         if (mKeylock != null) {
             mKeylock.setEnabled(KeylockController.isEnabledFor(this, mSettings));
@@ -803,6 +807,25 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         connectTask.execute(server);
     }
 
+
+    /**
+     * IW2DPO 19-11-2026-2: Android 12+ needs the runtime permission "Nearby devices"
+     * (BLUETOOTH_CONNECT) to read the PTT key of the Bluetooth speaker-microphone
+     * (UNIWA BM001...) over the serial port (SPP). Asked once per app start; the
+     * service retries the connection every 5 s, so no restart is needed after granting.
+     */
+    private void requestBluetoothConnectPermission() {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S || sBtConnectAsked) {
+            return;
+        }
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT)
+                != PackageManager.PERMISSION_GRANTED) {
+            sBtConnectAsked = true;
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.BLUETOOTH_CONNECT},
+                    PERMISSIONS_REQUEST_BLUETOOTH_CONNECT);
+        }
+    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,

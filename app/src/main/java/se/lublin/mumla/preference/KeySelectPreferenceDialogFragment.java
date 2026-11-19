@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceDialogFragmentCompat;
 
 import se.lublin.mumla.R;
+import se.lublin.mumla.service.BluetoothPttMic;
 
 public class KeySelectPreferenceDialogFragment extends PreferenceDialogFragmentCompat implements OnKeyListener {
     private TextView mValueView;
@@ -62,6 +63,21 @@ public class KeySelectPreferenceDialogFragment extends PreferenceDialogFragmentC
         mCurrentValue = requireNonNull(preference.getSharedPreferences())
                 .getInt(preference.getKey(), 0);
         updateValueView();
+
+        // IW2DPO 19-11-2026-2: keys of a Bluetooth speaker-microphone (AVRCP media keys)
+        // do not reach this dialog as normal key events: capture them from the media session.
+        BluetoothPttMic.setKeyCaptureListener(keyCode -> {
+            if (mValueView != null && keyCode != KeyEvent.KEYCODE_BACK) {
+                mCurrentValue = keyCode;
+                updateValueView();
+            }
+        });
+    }
+
+    @Override
+    public void onDestroyView() {
+        BluetoothPttMic.setKeyCaptureListener(null); // IW2DPO 19-11-2026-2
+        super.onDestroyView();
     }
 
 
@@ -94,6 +110,7 @@ public class KeySelectPreferenceDialogFragment extends PreferenceDialogFragmentC
 
     @Override
     public void onDialogClosed(boolean positiveResult) {
+        BluetoothPttMic.setKeyCaptureListener(null); // IW2DPO 19-11-2026-2
         if (positiveResult) {
             KeySelectDialogPreference preference = (KeySelectDialogPreference) getPreference();
             if (preference.callChangeListener(mCurrentValue)) {
