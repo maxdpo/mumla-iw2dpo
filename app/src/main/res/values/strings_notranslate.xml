@@ -50,5 +50,20 @@
         <item>on</item>
         <item>off</item>
     </string-array>
-    <string name="drawer_version_iw2dpo">VER : 18-11-2026-2</string>
+    <!-- IW2DPO 19-11-2026-1: TX TIMEOUT -->
+    <string name="tx_timeout_iw2dpo">TX TIMEOUT</string>
+    <string name="tx_timeout_popup_iw2dpo">TX TIMEOUT</string>
+    <string-array name="txTimeoutNames_iw2dpo">
+        <item>OFF</item>
+        <item>1 MIN</item>
+        <item>2 MIN</item>
+        <item>5 MIN</item>
+    </string-array>
+    <string-array name="txTimeoutValues_iw2dpo">
+        <item>0</item>
+        <item>60</item>
+        <item>120</item>
+        <item>300</item>
+    </string-array>
+    <string name="drawer_version_iw2dpo">VER : 19-11-2026-1</string>
 </resources>

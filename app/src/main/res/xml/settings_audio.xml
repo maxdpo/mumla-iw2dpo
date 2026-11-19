@@ -62,6 +62,16 @@
         android:title="@string/pttDebounce"
         app:useSimpleSummaryProvider="true"
         app:iconSpaceReserved="false"/>
+    <!-- IW2DPO 19-11-2026-1: TX TIMEOUT (PTT held too long -> TX cut off) -->
+    <ListPreference
+        android:defaultValue="120"
+        android:entries="@array/txTimeoutNames_iw2dpo"
+        android:entryValues="@array/txTimeoutValues_iw2dpo"
+        android:key="tx_timeout"
+        android:title="@string/tx_timeout_iw2dpo"
+        android:dialogTitle="@string/tx_timeout_iw2dpo"
+        app:useSimpleSummaryProvider="true"
+        app:iconSpaceReserved="false"/>
 
     <ListPreference
         android:defaultValue="ptt"

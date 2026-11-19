@@ -191,6 +191,10 @@ public class Settings {
     public static final String PREF_PTT_DEBOUNCE = "ptt_debounce";
     public static final String DEFAULT_PTT_DEBOUNCE = "100"; // IW2DPO 16-11-2026-4: ON, 100 ms
 
+    /** IW2DPO 19-11-2026-1: TX TIMEOUT, max continuous PTT transmission in seconds, 0 = OFF. */
+    public static final String PREF_TX_TIMEOUT = "tx_timeout";
+    public static final String DEFAULT_TX_TIMEOUT = "120"; // 2 minutes
+
     public static final String PREF_PREPROCESSOR_ENABLED = "preprocessor_enabled";
     public static final boolean DEFAULT_PREPROCESSOR_ENABLED = false; // IW2DPO: Input pre-processing OFF di default
 
@@ -475,6 +479,15 @@ public class Settings {
     public int getPttDebounceMs() {
         try {
             return Integer.parseInt(preferences.getString(PREF_PTT_DEBOUNCE, DEFAULT_PTT_DEBOUNCE));
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+    }
+
+    /** IW2DPO 19-11-2026-1: @return TX TIMEOUT in seconds, 0 = OFF. */
+    public int getTxTimeoutSec() {
+        try {
+            return Integer.parseInt(preferences.getString(PREF_TX_TIMEOUT, DEFAULT_TX_TIMEOUT));
         } catch (NumberFormatException e) {
             return 0;
         }

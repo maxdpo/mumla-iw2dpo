@@ -174,6 +174,21 @@ public class MumlaService extends HumlaService implements
             }
         }
     };
+    /** IW2DPO 19-11-2026-1: true after a TX TIMEOUT until any key is pressed
+     * (popup "TX TIMEOUT" shown, PTT does not transmit). */
+    private boolean mTxTimeoutActive = false;
+    /** IW2DPO 19-11-2026-1: the PTT press that closed the TX TIMEOUT popup must not
+     * transmit, and its release must not toggle TX. */
+    private boolean mPttSwallowRelease = false;
+    private TxTimeoutListener mTxTimeoutListener;
+    /** IW2DPO 19-11-2026-1: fires when PTT has been transmitting for longer than
+     * Settings > Audio > TX TIMEOUT. */
+    private final Runnable mTxTimeoutRunnable = new Runnable() {
+        @Override
+        public void run() {
+            onTxTimeout();
+        }
+    };
     /** IW2DPO: runs after the debounce delay and re-checks the PTT button state. */
     private final Runnable mPttReleaseRunnable = new Runnable() {
         @Override
@@ -435,6 +450,8 @@ public class MumlaService extends HumlaService implements
     public void onDestroy() {
         mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable); // IW2DPO
         mPttDebounceHandler.removeCallbacks(mLocalToneDoneRunnable); // IW2DPO
+        mPttDebounceHandler.removeCallbacks(mTxTimeoutRunnable); // IW2DPO 19-11-2026-1
+        mTxTimeoutListener = null;
         MicGate.open(); // IW2DPO
         if (mLocalTonePlayer != null) { // IW2DPO
             mLocalTonePlayer.release();
@@ -832,6 +849,19 @@ public class MumlaService extends HumlaService implements
         wakeScreen(); // IW2DPO: il PTT accende subito il display
         mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
         mPttReleasePending = false;
+        // IW2DPO 19-11-2026-1: after a TX TIMEOUT the PTT does not transmit.
+        // PTT still held (auto-repeat): ignored. A new PTT press closes the popup
+        // (like any other key) and is swallowed: the NEXT press transmits again.
+        if (mTxTimeoutActive) {
+            if (freshPress) {
+                mPttSwallowRelease = true;
+                clearTxTimeout();
+            }
+            return;
+        }
+        if (mPttSwallowRelease) {
+            return; // same press that closed the popup, still held
+        }
         if (freshPress) {
             playLocalTone();
         }
@@ -841,6 +871,7 @@ public class MumlaService extends HumlaService implements
                 // Start talking. IW2DPO: while the local beep plays the mic gate is
                 // closed, so silence is transmitted instead of the beep.
                 setTalkingState(true);
+                startTxTimeout(); // IW2DPO 19-11-2026-1
             }
         }
     }
@@ -852,6 +883,15 @@ public class MumlaService extends HumlaService implements
     @Override
     public void onTalkKeyUp() {
         mPttKeyDown = false;
+        // IW2DPO 19-11-2026-1: release after a TX TIMEOUT, or release of the press that
+        // closed the popup: nothing to do (TX is already off, no toggle).
+        if (mTxTimeoutActive) {
+            return;
+        }
+        if (mPttSwallowRelease) {
+            mPttSwallowRelease = false;
+            return;
+        }
         // IW2DPO: PTT release debouncing (only on release, only in hold-to-talk mode)
         int debounceMs = mSettings.getPttDebounceMs();
         if (debounceMs > 0 && !mSettings.isPushToTalkToggle() && isTalking()) {
@@ -901,10 +941,74 @@ public class MumlaService extends HumlaService implements
                 && Settings.ARRAY_INPUT_METHOD_PTT.equals(mSettings.getInputMethod())) {
             if (mSettings.isPushToTalkToggle()) {
                 setTalkingState(!isTalking()); // Toggle talk state
+                // IW2DPO 19-11-2026-1: TX TIMEOUT also in toggle mode
+                if (isTalking()) startTxTimeout(); else stopTxTimeout();
             } else if (isTalking()) {
                 setTalkingState(false); // Stop talking
             }
         }
+        stopTxTimeout(); // IW2DPO 19-11-2026-1 (no-op if a toggle TX was just started)
+    }
+
+    /** IW2DPO 19-11-2026-1: (re)starts the TX TIMEOUT timer if enabled (not OFF). */
+    private void startTxTimeout() {
+        mPttDebounceHandler.removeCallbacks(mTxTimeoutRunnable);
+        final int sec = mSettings.getTxTimeoutSec();
+        if (sec > 0) {
+            mPttDebounceHandler.postDelayed(mTxTimeoutRunnable, sec * 1000L);
+        }
+    }
+
+    /** IW2DPO 19-11-2026-1: TX ended normally, the TX TIMEOUT timer is cancelled. */
+    private void stopTxTimeout() {
+        if (isTalking()) return; // toggle mode: TX still on, keep the timer
+        mPttDebounceHandler.removeCallbacks(mTxTimeoutRunnable);
+    }
+
+    /**
+     * IW2DPO 19-11-2026-1: PTT transmitting for longer than TX TIMEOUT:
+     * TX is cut off, 4 x 300 Hz 500 ms beeps (500 ms pause) on the local loudspeaker,
+     * popup "TX TIMEOUT" shown until any key is pressed.
+     */
+    private void onTxTimeout() {
+        if (!isTalking()) return;
+        Log.i(TAG, "TX TIMEOUT: transmission cut off");
+        mPttDebounceHandler.removeCallbacks(mPttReleaseRunnable);
+        mPttReleasePending = false;
+        mTxTimeoutActive = true;
+        setTalkingState(false);
+        if (mLocalTonePlayer != null) {
+            mLocalTonePlayer.setHandsetMode(mSettings.isHandsetMode());
+            // played even if "Local tones" is off: it is an alarm
+            mLocalTonePlayer.playTxTimeout(mSettings.getLocalTonesVolume(), null);
+        }
+        wakeScreen();
+        notifyTxTimeoutListener();
+    }
+
+    private void notifyTxTimeoutListener() {
+        if (mTxTimeoutListener != null) {
+            mTxTimeoutListener.onTxTimeoutChanged(mTxTimeoutActive);
+        }
+    }
+
+    @Override
+    public boolean isTxTimeoutActive() {
+        return mTxTimeoutActive;
+    }
+
+    @Override
+    public void clearTxTimeout() {
+        if (!mTxTimeoutActive) return;
+        mTxTimeoutActive = false;
+        // PTT still held (popup closed by another key): TX restarts only after a release
+        if (mPttKeyDown) mPttSwallowRelease = true;
+        notifyTxTimeoutListener();
+    }
+
+    @Override
+    public void setTxTimeoutListener(TxTimeoutListener listener) {
+        mTxTimeoutListener = listener;
     }
 
     @Override

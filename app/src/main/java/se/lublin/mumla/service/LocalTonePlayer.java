@@ -72,6 +72,14 @@ public class LocalTonePlayer {
      * was 2 x in 17-11-2026-1), because the 300 Hz tone sounds too low on the radio
      * loudspeaker. Always capped at full scale (no clipping). */
     private static final double NOT_READY_GAIN = 4.0;
+    /** IW2DPO 19-11-2026-1: TX TIMEOUT alert: 4 x (300 Hz 500 ms), 500 ms pause between
+     * them (frequency 0 = silence). Same level as NOT READY TO TALK (300 Hz). */
+    private static final int[][] TX_TIMEOUT_TONES = {
+            {300, 500}, {0, 500},
+            {300, 500}, {0, 500},
+            {300, 500}, {0, 500},
+            {300, 500},
+    };
     private static final double READY_GAIN = 1.0;
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
@@ -93,6 +101,11 @@ public class LocalTonePlayer {
     /** @param volumePercent 1-100, percentage of full scale. */
     public void playNotReady(int volumePercent, Runnable onDone) {
         play(NOT_READY_TONES, volumePercent, NOT_READY_GAIN, onDone);
+    }
+
+    /** IW2DPO 19-11-2026-1: TX TIMEOUT alert. @param volumePercent 1-100. */
+    public void playTxTimeout(int volumePercent, Runnable onDone) {
+        play(TX_TIMEOUT_TONES, volumePercent, NOT_READY_GAIN, onDone);
     }
 
     private void play(final int[][] tones, int volumePercent, final double gain,

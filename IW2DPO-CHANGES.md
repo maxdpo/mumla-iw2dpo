@@ -5,9 +5,28 @@ What to do next :
 - DONE create a POP UP WINDOWS if PTT KEY is not setted
 - add server stored in a file for avoid add server every APP Update
 - change the version to Version 16-11-2026-4 > 5
+- DONE add TX TIMEOUT menu
 
 
 
+
+Version 19-11-2026-1 (branch "master")
+Side menu: "VER : 19-11-2026-1"
+Settings > Audio > new "TX TIMEOUT": OFF / 1 MIN / 2 MIN (default) / 5 MIN
+(right after "Debouncing"). When the PTT transmits continuously for longer
+than the setting (also in toggle PTT mode):
+ - TX is cut off
+ - local loudspeaker only: 300 Hz 500 ms, pause 500 ms (x 4 beeps, 3.5 s),
+   same level as the NOT READY TO TALK tone; played even if "Local tones" is off
+ - popup "TX TIMEOUT" (red box, over the whole screen, also over KEYLOCK)
+   until any key is pressed (or the popup is touched)
+ - while the popup is shown the PTT does not transmit; the PTT press that
+   closes the popup does not transmit either: the next press transmits.
+   PTT kept held after the timeout: no TX until it is released.
+Files: Settings.java, service/MumlaService.java, service/IMumlaService.java,
+ service/LocalTonePlayer.java, app/MumlaActivity.java,
+ app/TxTimeoutPopup.java (new), settings_audio.xml, strings_notranslate.xml
+-----------------------------------------------
 
 Version 18-11-2026-2 (branch "master")
 Side menu: "VER : 18-11-2026-2"

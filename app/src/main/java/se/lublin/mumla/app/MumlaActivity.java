@@ -158,6 +158,9 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
             mService.setSuppressNotifications(true);
             mService.registerObserver(mObserver);
             mService.clearChatNotifications(); // Clear chat notifications on resume.
+            // IW2DPO 19-11-2026-1: TX TIMEOUT popup (also if it happened while in background)
+            mService.setTxTimeoutListener(mTxTimeoutListener);
+            mTxTimeoutPopup.setShown(mService.isTxTimeoutActive());
             mDrawerAdapter.notifyDataSetChanged();
 
             for (HumlaServiceFragment fragment : mServiceFragments)
@@ -302,6 +305,11 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
 
     /** IW2DPO: KEYLOCK screen for radios with touch screen. */
     private KeylockController mKeylock;
+    /** IW2DPO 19-11-2026-1: "TX TIMEOUT" popup, shown until any key is pressed. */
+    private TxTimeoutPopup mTxTimeoutPopup;
+    private final IMumlaService.TxTimeoutListener mTxTimeoutListener = active -> {
+        if (mTxTimeoutPopup != null) mTxTimeoutPopup.setShown(active);
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -339,6 +347,12 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
         mKeylock = new KeylockController(this);
         mKeylock.setEnabled(KeylockController.isEnabledFor(this, mSettings));
         mKeylock.lock();
+
+        // IW2DPO 19-11-2026-1: TX TIMEOUT popup (created after KEYLOCK, so it is on top)
+        mTxTimeoutPopup = new TxTimeoutPopup(this, () -> {
+            if (mService != null) mService.clearTxTimeout();
+            else mTxTimeoutPopup.setShown(false);
+        });
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         preferences.registerOnSharedPreferenceChangeListener(this);
@@ -503,6 +517,7 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
             }
             mService.unregisterObserver(mObserver);
             mService.setSuppressNotifications(false);
+            mService.setTxTimeoutListener(null); // IW2DPO 19-11-2026-1
         }
         unbindService(mConnection);
         // IW2DPO: Mumla non visibile -> ferma il timer e toglie il flag
@@ -591,6 +606,16 @@ public class MumlaActivity extends AppCompatActivity implements ListView.OnItemC
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // IW2DPO 19-11-2026-1: TX TIMEOUT popup shown -> any key (not the PTT, handled
+        // by MumlaService below) closes it; the key does nothing else.
+        if (mTxTimeoutPopup != null && mTxTimeoutPopup.isShown()
+                && keyCode != mSettings.getPushToTalkKey()) {
+            if (event.getRepeatCount() == 0) {
+                if (mService != null) mService.clearTxTimeout();
+                else mTxTimeoutPopup.setShown(false);
+            }
+            return true;
+        }
         if (mService != null && keyCode == mSettings.getPushToTalkKey()) {
             mService.onTalkKeyDown();
             return true;
