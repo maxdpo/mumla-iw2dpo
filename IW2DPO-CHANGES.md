@@ -3,11 +3,18 @@ What to do next :
 - DONE reduce the default local tones at 7% or better change the whole range
 - DONE create a DOC folder for general documentation
 - DONE create a POP UP WINDOWS if PTT KEY is not setted
-- add server stored in a file for avoid add server every APP Update
-- change the version to Version 16-11-2026-4 > 5
+- DONE add server stored in a file for avoid add server every APP Update (three dots export/import)
 - DONE add TX TIMEOUT menu
 
+Version is stored here :
+".......\app\src\main\res\values\strings_notranslate.xml"
 
+
+
+Version 22-11-2026-1 (branch "bluetooth")
+Compiled with Android Studio Rabbit 2 | 2026.2.2 Patch 1
+apk is stored here : C:\mumla-iw2dpo\app\build\outputs\apk\beta\debug
+Now compatible with Android Smartphones
 
 
 Version 19-11-2026-3 (branch "bluetooth")

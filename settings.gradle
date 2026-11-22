@@ -22,3 +22,7 @@
 
 
 include ':libraries:humla', ':app'
+
+// IW2DPO: usa la copia locale di Humla invece del submodule vuoto libraries/humla
+project(':libraries:humla').projectDir = new File('C:/humla-iw2dpo')
+
