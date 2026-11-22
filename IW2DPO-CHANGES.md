@@ -9,6 +9,19 @@ What to do next :
 Version is stored here :
 ".......\app\src\main\res\values\strings_notranslate.xml"
 
+In case a MERGE is done perform these three steps for SYNC
+Android studio :
+Opne Android studio and then choose :
+
+- File → Sync Project with Gradle Files
+- Build → Select Build Variant, to check it was set to betaDebug
+- Build → Generate App Bundles or APKs → Generate APKs
+
+
+Version 22-11-2026-2 (branch "master")
+Branch changed from bluettoth to master.
+Version done only for test the branch change.
+No modifications done in the code
 
 
 Version 22-11-2026-1 (branch "bluetooth")
