@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="audioInputNames">
+        <item>@string/inputMethodVoice</item>
+        <item>@string/inputMethodPtt</item>
+        <item>@string/inputMethodContinuous</item>
+    </string-array>
+    <string-array name="audioInputValues">
+        <item>voiceActivity</item>
+        <item>ptt</item>
+        <item>continuous</item>
+    </string-array>
+    <string-array name="audioSampleRateValues">
+        
+        
+        
+        
+        
+        <item>48000</item>
+        <item>44100</item>
+        <item>16000</item>
+        <item>8000</item>
+    </string-array>
+    <string-array name="audio_per_packet_names">
+        <item>10ms</item>
+        <item>20ms</item>
+        <item>40ms</item>
+        <item>60ms</item>
+    </string-array>
+    <string-array name="audio_per_packet_values">
+        <item>1</item>
+        <item>2</item>
+        <item>4</item>
+        <item>6</item>
+    </string-array>
+    <string-array name="echoCancellationNames">
+        <item>@string/echoCancellationDisabled</item>
+        <item>@string/echoCancellationSystem</item>
+    </string-array>
+    <string-array name="echoCancellationValues">
+        <item>none</item>
+        <item>system</item>
+    </string-array>
+    <string-array name="hotCornerNames">
+        <item>@string/hot_corner_none</item>
+        <item>@string/hot_corner_top_left</item>
+        <item>@string/hot_corner_bottom_left</item>
+        <item>@string/hot_corner_top_right</item>
+        <item>@string/hot_corner_bottom_right</item>
+    </string-array>
+    <string-array name="hotCornerValues">
+        <item>none</item>
+        <item>topLeft</item>
+        <item>bottomLeft</item>
+        <item>topRight</item>
+        <item>bottomRight</item>
+    </string-array>
+    <string-array name="keylockModeNames_iw2dpo">
+        <item>Auto (only radios with touch screen)</item>
+        <item>Always on</item>
+        <item>Off</item>
+    </string-array>
+    <string-array name="keylockModeValues_iw2dpo">
+        <item>auto</item>
+        <item>on</item>
+        <item>off</item>
+    </string-array>
+    <string-array name="languageValues">
+        <item>ar</item>
+        <item>ca</item>
+        <item>cs</item>
+        <item>de</item>
+        <item>el</item>
+        <item>en</item>
+        <item>es</item>
+        <item>fi</item>
+        <item>fr</item>
+        <item>hu</item>
+        <item>in</item>
+        <item>it</item>
+        <item>ja</item>
+        <item>nb-NO</item>
+        <item>nl</item>
+        <item>pl</item>
+        <item>pt</item>
+        <item>pt-BR</item>
+        <item>ru</item>
+        <item>sv</item>
+        <item>ta</item>
+        <item>th</item>
+        <item>tr</item>
+        <item>uk</item>
+        <item>zh-CN</item>
+    </string-array>
+    <string-array name="pttDebounceNames">
+        <item>OFF</item>
+        <item>100 mSec</item>
+        <item>500 mSec</item>
+    </string-array>
+    <string-array name="pttDebounceValues" translatable="false">
+        <item>0</item>
+        <item>100</item>
+        <item>500</item>
+    </string-array>
+    <string-array name="releaseBeepSoundNames">
+        <item>@string/releaseBeepSoundDtmf</item>
+        <item>@string/releaseBeepSoundSingleTone</item>
+    </string-array>
+    <string-array name="releaseBeepSoundValues">
+        <item>dtmf</item>
+        <item>single_tone</item>
+    </string-array>
+    <string-array name="themeNames">
+        <item>@string/theme_system</item>
+        <item>@string/theme_light</item>
+        <item>@string/theme_dark</item>
+    </string-array>
+    <string-array name="themeValues">
+        <item>system</item>
+        <item>forceLight</item>
+        <item>forceDark</item>
+    </string-array>
+    <string-array name="txTimeoutNames_iw2dpo">
+        <item>OFF</item>
+        <item>1 MIN</item>
+        <item>2 MIN</item>
+        <item>5 MIN</item>
+    </string-array>
+    <string-array name="txTimeoutValues_iw2dpo">
+        <item>0</item>
+        <item>60</item>
+        <item>120</item>
+        <item>300</item>
+    </string-array>
+    <attr format="reference" name="cardStyle"/>
+    <attr format="reference" name="popupOverlay"/>
+    <attr format="color" name="pttPressed"/>
+    <color name="hot_corner_highlight">#ff2079ab</color>
+    <color name="ic_launcher_background">#09194B</color>
+    <color name="md_theme_dark_onPrimary">#1795c2</color>
+    <color name="md_theme_dark_primary">#001b2b</color>
+    <color name="md_theme_dark_primary_lighter">#002b45</color>
+    <color name="md_theme_dark_primary_lighter_more">#0093eb</color>
+    <color name="md_theme_light_onPrimary">#ffffff</color>
+    <color name="md_theme_light_primary">#3949ab</color>
+    <color name="md_theme_light_primary_darker">#212b64</color>
+    <color name="ripple_talk_state_disabled">#ff666666</color>
+    <color name="ripple_talk_state_off">#ffffffff</color>
+    <color name="ripple_talk_state_on">#ffcc0000</color>
+    <color name="ripple_talk_state_server_deafened">#ff0099cc</color>
+    <color name="ripple_talk_state_server_muted">#ff0099cc</color>
+    <color name="ripple_talk_state_suppressed">#ff669900</color>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_small">8dp</dimen>
+    <plurals name="notification_unread_many">
+        <item quantity="one">%d new message</item>
+        <item quantity="other">%d new messages</item>
+    </plurals>
+    <plurals name="search_channel_users">
+        <item quantity="one">%d user</item>
+        <item quantity="other">%d users</item>
+    </plurals>
+    <string name="about">About</string>
+    <string name="accessAdd">Add Access Token</string>
+    <string name="acknowledgements">Contributors</string>
+    <string name="acknowledgementsSum">See who contributed to Mumla (web link)</string>
+    <string name="acknowledgements_link">https://gitlab.com/quite/mumla/-/graphs/master</string>
+    <string name="action_settings">Settings</string>
+    <string name="add">Add</string>
+    <string name="addFavorite">Add Favorite</string>
+    <string name="advancedAudio">Advanced</string>
+    <string name="allow">Allow</string>
+    <string name="app_name">Mumla Beta IW2DPO</string>
+    <string name="app_news">What\'s New</string>
+    <string name="app_news_footer_on_startup">These news can be viewed again from the About page.</string>
+    <string name="app_news_items_v3_7_0">• A lot of work was done to update Mumla for Android 15 and 16 (API 35 &amp; 36).\n
+• As a consequence Android 5.0 (API 21) or later is now required.\n
+• Theming was modernized to support system light/dark modes.\n
+• The settings screen had to be adapted to newer APIs.\n
+• Added in-app language preference.\n</string>
+    <string name="app_news_items_v3_7_1">• Minor release with mostly translation updates, thank you all translators!\n</string>
+    <string name="app_news_items_v3_7_2">• Fix potential crash on startup.\n
+• Add some translations, thank you all translators!\n</string>
+    <string name="app_news_items_v3_7_3">• Make PTT hot corner visible on Android 12 and later, and on dark and light background\n
+• Make the Back-button ask to disconnect from server again on Android 16+\n</string>
+    <string name="app_news_summary">View the latest updates</string>
+    <string name="appearance">Appearance</string>
+    <string name="attempting_reconnect">Error: %s.\n\nReconnecting…</string>
+    <string name="audio">Audio</string>
+    <string name="audioInputMethod">Transmit mode</string>
+    <string name="audioInputMethodSum">How audio transmission is activated.</string>
+    <string name="audioInputVolume">Microphone volume</string>
+    <string name="audioInputVolumeSum">Level to normalize audio to.</string>
+    <string name="audioSampleRate">Input sample rate</string>
+    <string name="audioSampleRateSum">Preferred audio sample rate. Some devices support fewer rates.</string>
+    <string name="audio_bandwidth">Audio bandwidth</string>
+    <string name="audio_per_packet">Audio per packet</string>
+    <string name="audio_per_packet_sum">The length of audio per voice packet.</string>
+    <string name="authentication">Authentication</string>
+    <string name="autoReconnect">Auto-reconnect</string>
+    <string name="autoReconnectSum">Re-establishes connection to server when lost.</string>
+    <string name="autoconnectEnabled">Automatic connect/reconnect</string>
+    <string name="autoconnectEnabledSum">Connects to the last used server as soon as Mumla starts, and checks every 60 seconds that the connection is still up, reconnecting on its own if it drops. Uses more battery while active, since it keeps the app running in the background to watch the connection.</string>
+    <string name="autoconnectReconnecting">Automatic reconnection in progress…</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="cancel_reconnect">Cancel reconnect</string>
+    <string name="cancelled">Canceled</string>
+    <string name="certificateGenerate">Generate certificate</string>
+    <string name="certificateGenerateSum">Generates a new self-signed Mumla certificate. Recommended for beginners.</string>
+    <string name="certificate_export_format">mumla_%s.p12</string>
+    <string name="certificate_import_success">Imported certificate %s.</string>
+    <string name="certificate_info">Subject:\n%1$s\n\nValid from:\n%2$s\n\nValid to:\n%3$s\n\nDigest (SHA-1):\n%4$s\n\nDigest (SHA-256):\n%5$s</string>
+    <string name="certificate_load_failed">Could not store certificate.</string>
+    <string name="certificates">Certificates</string>
+    <string name="change_requires_reconnect">Reconnect to use new settings.</string>
+    <string name="channel">Channel</string>
+    <string name="channel_add">Add Channel</string>
+    <string name="channel_edit">Edit Channel</string>
+    <string name="channel_join">Join</string>
+    <string name="channel_menu_pin">Pin</string>
+    <string name="channel_menu_view_description">View Description</string>
+    <string name="chat">Chat</string>
+    <string name="chatNotifications">Chat notifications</string>
+    <string name="chatNotificationsSum">Shown for new chat messages.</string>
+    <string name="chat_message_to">%1$s → %2$s</string>
+    <string name="chat_message_tts_short_link">(Link to %1$s)</string>
+    <string name="clearChat">Clear Chat</string>
+    <string name="clearServerCertificates">Clear server certificates</string>
+    <string name="clearServerCertificatesSum">Remove all trusted server certificates from Mumla.</string>
+    <string name="close">Close</string>
+    <string name="comment_edit_source">Edit source</string>
+    <string name="comment_view">View</string>
+    <string name="comment_view_source">View source</string>
+    <string name="confirm">Confirm</string>
+    <string name="confirm_delete_channel">Are you sure you want to delete this channel?</string>
+    <string name="confirm_delete_server">Are you sure you want to delete this server?</string>
+    <string name="confirm_reset_comment">Are you sure you want to reset the comment of user %s?</string>
+    <string name="connect">Connect</string>
+    <string name="connectToServer">Connect to Server</string>
+    <string name="connected">Connected</string>
+    <string name="connecting">Connecting</string>
+    <string name="connecting_to_server">Connecting to %s…</string>
+    <string name="connectionRefused">Connection refused</string>
+    <string name="context_channel_link">Link</string>
+    <string name="context_channel_shout">Set Voice Target</string>
+    <string name="context_channel_unlink_all">Unlink All</string>
+    <string name="control_channel">Control channel</string>
+    <string name="copyright">Copyright © Daniel Lublin mumla@lublin.se\nCopyright © 2014–2017 Andrew Comminos\nhttps://mumla-app.gitlab.io</string>
+    <string name="country">Country</string>
+    <string name="current_chat_target">Current chat target</string>
+    <string name="deafen">Deafen</string>
+    <string name="decrypt_certificate">Decrypt Certificate</string>
+    <string name="defaultUsername">Default username</string>
+    <string name="defaultUsernameDefault">Mumla_User</string>
+    <string name="defaultUsernameSum">Prefilled name used when adding a server, or connecting to a public server.</string>
+    <string name="default_">Default</string>
+    <string name="delete">Delete</string>
+    <string name="description">Description</string>
+    <string name="detectionThreshold">Detection threshold</string>
+    <string name="detectionThresholdSum">Minimum volume level for detecting voice (when transmit mode is \"Voice activity\").</string>
+    <string name="disableOpus">Avoid Opus codec</string>
+    <string name="disableOpusSum">Turn off Opus support for Mumble 1.2.4 servers.</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="disconnectSure">Are you sure you want to disconnect from %s?</string>
+    <string name="donate_dialog_message_goog">Thank you for using Mumla! Please consider making a small donation to help keep Mumla alive — and to remove this message.</string>
+    <string name="donate_dialog_negativebutton_goog">Later</string>
+    <string name="donate_dialog_positivebutton_goog">Support Mumla</string>
+    <string name="donate_dialog_title_goog">Enjoying Mumla?</string>
+    <string name="donate_foss">Donate</string>
+    <string name="donate_purchase_pending_goog">Your donation is pending and may be ready at a later restart. Thank you!</string>
+    <string name="donate_thanks_goog">Thank you for your support!</string>
+    <string name="donation_thanks">Thank you for the donation.</string>
+    <string name="drawer_close">Close Drawer</string>
+    <string name="drawer_favorites">Favorites</string>
+    <string name="drawer_header_servers">Servers</string>
+    <string name="drawer_not_connected">Not Connected</string>
+    <string name="drawer_open">Open Drawer</string>
+    <string name="drawer_pinned">Pinned Channels</string>
+    <string name="drawer_public">Public Servers</string>
+    <string name="drawer_server">All Channels</string>
+    <string name="drawer_title_iw2dpo">Mumla</string>
+    <string name="drawer_tokens">Access Tokens</string>
+    <string name="drawer_version_iw2dpo">VER : 22-11-2026-4</string>
+    <string name="echoCancellationDisabled">Disabled</string>
+    <string name="echoCancellationMethod">Echo Cancellation</string>
+    <string name="echoCancellationMethodSum">Reduce echo from your device\'s speaker while talking. Quality depends on the device.</string>
+    <string name="echoCancellationSystem">System</string>
+    <string name="edit">Edit</string>
+    <string name="error_fetching_servers">Could not fetch servers.\nAre you connected to the Internet?</string>
+    <string name="error_writing_to_storage">Could not write to external storage.</string>
+    <string name="expand">Expand</string>
+    <string name="export_servers_iw2dpo">Export servers</string>
+    <string name="export_success">Certificate exported to %s.</string>
+    <string name="externalStorageUnavailable">External storage unavailable, cannot load certificate</string>
+    <string name="first_run_generate_certificate">Generating a certificate is highly recommended, and necessary for connection to some servers.</string>
+    <string name="first_run_generate_certificate_title">Welcome to Mumla</string>
+    <string name="forceTcp">Only TCP</string>
+    <string name="forceTcpSum">Turns off UDP for communication.</string>
+    <string name="general">General</string>
+    <string name="generate">Generate</string>
+    <string name="generateCertFailure">Could not generate certificate.</string>
+    <string name="generateCertProgress">Generating certificate…</string>
+    <string name="generateCertSuccess">Your certificate has been set and saved as %s</string>
+    <string name="grant_perm_draw_over_apps">Please grant permission to display over other apps.</string>
+    <string name="grant_perm_microphone">Please grant microphone permission.</string>
+    <string name="grant_perm_notifications">Please grant permission to send notifications.</string>
+    <string name="grant_perm_storage">Please grant external storage permission.</string>
+    <string name="halfDuplex">One-way audio</string>
+    <string name="halfDuplexSum">Mutes other playback during push-to-talk to avoid audio loops/feedback.</string>
+    <string name="handsetMode">Handset</string>
+    <string name="handsetModeSum">Uses the front speaker and proximity sensor to simulate a traditional phone call.</string>
+    <string name="hidePtt">Hide push-to-talk button</string>
+    <string name="hidePttSum">Only useful if you use Push-to-talk corner or physical key.</string>
+    <string name="hint_reason">Reason</string>
+    <string name="hotCorner">Push-to-talk corner</string>
+    <string name="hotCornerSum">Press a screen corner to transmit audio throughout Android.</string>
+    <string name="hot_corner_bottom_left">↙ bottom Left</string>
+    <string name="hot_corner_bottom_right">bottom right ↘</string>
+    <string name="hot_corner_none">Off</string>
+    <string name="hot_corner_top_left">↖ top left</string>
+    <string name="hot_corner_top_right">Top right ↗</string>
+    <string name="image_confirm_send">Send this image?</string>
+    <string name="import_servers_iw2dpo">Import servers</string>
+    <string name="incoming_tone_iw2dpo">Incoming audio beep</string>
+    <string name="incoming_tone_sum_iw2dpo">Double beep (2300 Hz) when the channel becomes active (someone starts talking)</string>
+    <string name="information">Information</string>
+    <string name="inputMethodContinuous">Continuous</string>
+    <string name="inputMethodPtt">Push-to-talk</string>
+    <string name="inputMethodVoice">Voice activity</string>
+    <string name="inputQuality">Microphone input quality</string>
+    <string name="inputQualitySum">Preferred rate of data transmitted (in bits per second).</string>
+    <string name="invalid_certificate">Invalid certificate could not be loaded.</string>
+    <string name="invalid_host">Invalid host</string>
+    <string name="invalid_password">Wrong password.</string>
+    <string name="invalid_port_range">Invalid port (1-65535)</string>
+    <string name="keylock_code_dialog_iw2dpo">Enter 4 digits (0-9)</string>
+    <string name="keylock_code_invalid_iw2dpo">The KEYLOCK code must be exactly 4 digits</string>
+    <string name="keylock_code_iw2dpo">KEYLOCK CODE</string>
+    <string name="keylock_code_sum_iw2dpo">4-digit code to unlock the KEYLOCK screen (default 1234)</string>
+    <string name="keylock_mode_iw2dpo">Screen lock (KEYLOCK)</string>
+    <string name="keylock_title_iw2dpo">KEYLOCK</string>
+    <string name="keylock_wrong_code_iw2dpo">Wrong code</string>
+    <string name="language">Language</string>
+    <string name="language_system">System default</string>
+    <string name="license_apache2">Apache License Version 2.0</string>
+    <string name="license_apache2_link">https://www.apache.org/licenses/LICENSE-2.0.html</string>
+    <string name="license_gplv3">GNU General Public License v3.0</string>
+    <string name="license_gplv3_link">https://www.gnu.org/licenses/gpl-3.0.html</string>
+    <string name="licenses">Licenses</string>
+    <string name="loadImages">External images</string>
+    <string name="loadImagesSum">Downloads and shows pictures in chat.</string>
+    <string name="localTones">Local tones</string>
+    <string name="localTonesSum">Local tones on PTT press: ready to talk (connected to a server) or not ready (server unavailable).</string>
+    <string name="localTonesVolume">Local tones level</string>
+    <string name="localTonesVolumeSum">Loudness of the local tones, as a percentage of full scale.</string>
+    <string name="messageReceived">New message</string>
+    <string name="messageToChannel">Type message to channel \'%s\'</string>
+    <string name="messageToUser">Type a message to user \'%s\'</string>
+    <string name="mumble_url_parse_failed">Mumble URL is not valid.</string>
+    <string name="mumlaConnected">Mumla connected</string>
+    <string name="mumlaConnecting">Mumla connecting…</string>
+    <string name="mumlaDisconnected">Mumla disconnected</string>
+    <string name="mute">Mute</string>
+    <string name="name">Name</string>
+    <string name="no_certificate">No Certificate</string>
+    <string name="no_ptt_key">No Key</string>
+    <string name="no_servers">Press \'Add\' from the action bar to add a server first.</string>
+    <string name="notification_message">%1$s: %2$s</string>
+    <string name="offline">Offline</string>
+    <string name="online">Online</string>
+    <string name="orbot_not_installed">The Orbot app is not installed. Not using Tor.</string>
+    <string name="orbot_tor_failed">Could not connect to local Tor proxy on port %d (SOCKS).\n\nPlease ensure the Orbot app is running.</string>
+    <string name="overlay">Overlay</string>
+    <string name="password">Password</string>
+    <string name="perm_denied">Permission denied.</string>
+    <string name="position">Position</string>
+    <string name="pref_certificate_summary">The default to use when connecting to a server.</string>
+    <string name="pref_certificate_title">Certificate</string>
+    <string name="pref_export_certificate_summary">Exports one to external storage.</string>
+    <string name="pref_export_certificate_title">Export certificate</string>
+    <string name="pref_import_certificate_summary">Import one from external storage.</string>
+    <string name="pref_import_certificate_title">Import certificate</string>
+    <string name="pref_show_user_count">Show channel user count</string>
+    <string name="pref_show_user_count_summary">Shows the number of users in channel subtrees.</string>
+    <string name="pref_start_upIn_pinned_mode_sum">Enables \"Pinned channels\" mode after connecting (hides channels that are not pinned).</string>
+    <string name="pref_start_up_in_pinned_mode">Pinned channels mode</string>
+    <string name="preprocessor_enabled">Input pre-processing</string>
+    <string name="preprocessor_enabled_sum">Suppresses ambient noise and normalizes audio volume.</string>
+    <string name="pressKey">Press a physical key to use it for push-to-talk.</string>
+    <string name="pressKeyInfo">The app must be open to use this (due to Android restrictions).</string>
+    <string name="pressVolumeDownKey">Press the physical key (or turn the knob) you want to use to decrease the volume.</string>
+    <string name="pressVolumeUpKey">Press the physical key (or turn the knob) you want to use to increase the volume.</string>
+    <string name="project_link">https://mumla-app.gitlab.io</string>
+    <string name="ptt">Push-to-talk</string>
+    <string name="pttButtonHeight">Push-to-talk button height</string>
+    <string name="pttButtonHeightSum">Change the vertical length of the push-to-talk button.</string>
+    <string name="pttDebounce">Debouncing</string>
+    <string name="pttKey">Push-to-talk key</string>
+    <string name="pttKeySum">Use a physical button to transmit audio.</string>
+    <string name="pttSettings">Push-to-talk settings</string>
+    <string name="pttSound">Push-to-talk sound</string>
+    <string name="pttSoundSum">Play sound effect when pressing the push-to-talk button.</string>
+    <string name="ptt_key_not_set_iw2dpo">Set PTT KEY first</string>
+    <string name="quickConnect">Quick Connect</string>
+    <string name="reconnect">Reconnect</string>
+    <string name="reconnect_dialog_message">You are already connected to a server. Connect to this server instead?</string>
+    <string name="releaseBeep">TX end beep</string>
+    <string name="releaseBeepSound">TX end beep sound</string>
+    <string name="releaseBeepSoundDtmf">DTMF</string>
+    <string name="releaseBeepSoundSingleTone">SINGLE TONE</string>
+    <string name="releaseBeepSoundSum">Sound transmitted at the end of transmission: DTMF (\"0\", 150 ms) or single tone (600 Hz, 200 ms).</string>
+    <string name="releaseBeepSum">End TX tone</string>
+    <string name="releaseBeepVolume">TX end beep volume</string>
+    <string name="releaseBeepVolumeSum">Loudness of the TX end beep, as a percentage of full scale.</string>
+    <string name="remove">Remove</string>
+    <string name="reset_key">Reset Key</string>
+    <string name="save">Save</string>
+    <string name="search">Search</string>
+    <string name="searchHint">Search channels and users</string>
+    <string name="search_country">Country</string>
+    <string name="search_name">Name</string>
+    <string name="send_message">Send message</string>
+    <string name="server_host">Address</string>
+    <string name="server_info_codec">Codec: %s</string>
+    <string name="server_info_current_bandwidth">Current %.1f kbit/s</string>
+    <string name="server_info_host">Remote host %1$s (port %2$d)</string>
+    <string name="server_info_latency">%.2f ms latency</string>
+    <string name="server_info_max_bandwidth">Maximum %.1f kbit/s</string>
+    <string name="server_info_protocol">Protocol %s.</string>
+    <string name="server_info_version">%1$s (%2$s)</string>
+    <string name="server_label">Label</string>
+    <string name="server_match">Find Server</string>
+    <string name="server_match_description">Mumla can automatically find you an empty server, optimizing for location, version, and latency.</string>
+    <string name="server_match_expand_country">Couldn\'t find any optimal servers in your country. Search worldwide?</string>
+    <string name="server_match_found">Server found</string>
+    <string name="server_match_info">Name: %1$s\nHost: %2$s:%3$d\nUsers: %4$d / %5$d\nVersion: %6$s \nCountry: %7$s \nLatency: %8$d ms</string>
+    <string name="server_match_not_found">Couldn\'t find server</string>
+    <string name="server_match_progress">Finding a server…</string>
+    <string name="server_password">Password</string>
+    <string name="server_port">Port</string>
+    <string name="server_username">Username</string>
+    <string name="servers_export_failed_iw2dpo">Export failed: %1$s</string>
+    <string name="servers_exported_iw2dpo">%1$d servers exported</string>
+    <string name="servers_import_failed_iw2dpo">Import failed: %1$s</string>
+    <string name="servers_imported_iw2dpo">%1$d servers imported, %2$d already present</string>
+    <string name="share">Share</string>
+    <string name="shareMessage">Join this Mumble server with Mumla. %s</string>
+    <string name="shortTtsMessages">Shortened text-to-speech messages</string>
+    <string name="shortTtsMessagesSum">Shorten the messages by only reading the domain names of links.</string>
+    <string name="shout_configure">Configure Voice Target</string>
+    <string name="shout_failed">Could not create voice target.</string>
+    <string name="shout_include_linked">Shout to linked channels</string>
+    <string name="shout_include_subchannels">Shout to subchannels</string>
+    <string name="shout_target">Shouting to %s</string>
+    <string name="sort">Sort</string>
+    <string name="sortBy">Sort by…</string>
+    <string name="status_notify_muted">Muted.</string>
+    <string name="status_notify_muted_and_deafened">Muted and deafened.</string>
+    <string name="stay_awake">Stay awake</string>
+    <string name="tcp_encryption_mode">Encrypted with 256 bit AES-256-SHA</string>
+    <string name="temporary">Temporary</string>
+    <string name="theme">Theme</string>
+    <string name="themeSum">Change the look of the app.</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_system">System default</string>
+    <string name="togglePtt">Sticky Push-to-talk button</string>
+    <string name="togglePttSum">Push-to-talk button toggles transmission on/off. No need to hold it.</string>
+    <string name="trust_add_failed">Could not add certificate to trust store.</string>
+    <string name="trust_added">Added certificate to trust store</string>
+    <string name="trust_cleared">Trust database cleared</string>
+    <string name="tts_failed">Could not start TTS</string>
+    <string name="tx_timeout_iw2dpo">TX TIMEOUT</string>
+    <string name="tx_timeout_popup_iw2dpo">TX TIMEOUT</string>
+    <string name="udp_encryption_mode">Encrypted with 128 bit OCB-AES-128</string>
+    <string name="unknown">Unknown</string>
+    <string name="untrusted_certificate">Untrusted Certificate</string>
+    <string name="useTor">Connect via Tor</string>
+    <string name="useTorSum">Requires the Orbot app.</string>
+    <string name="useTts">Text-to-speech</string>
+    <string name="useTtsSum">Read incoming message aloud using speech synthesis.</string>
+    <string name="user">User</string>
+    <string name="user_menu_ban">Ban</string>
+    <string name="user_menu_change_comment">Change Comment</string>
+    <string name="user_menu_deafen">Deafen</string>
+    <string name="user_menu_ignore_messages">Ignore Messages</string>
+    <string name="user_menu_kick">Kick</string>
+    <string name="user_menu_local_mute">Local Mute</string>
+    <string name="user_menu_move">Move</string>
+    <string name="user_menu_mute">Mute</string>
+    <string name="user_menu_priority_speaker">Priority Speaker</string>
+    <string name="user_menu_register">Register</string>
+    <string name="user_menu_reset_comment">Reset Comment</string>
+    <string name="user_menu_view_comment">View Comment</string>
+    <string name="version">Version</string>
+    <string name="voiceActivitySettings">Voice activity settings</string>
+    <string name="voice_channel">Voice channel</string>
+    <string name="volumeDownKey">Vol-down-key</string>
+    <string name="volumeDownKeySum">Use a physical button (or knob) to decrease the listening volume.</string>
+    <string name="volumeKeySettings">Volume keys</string>
+    <string name="volumeUpKey">Vol-up-key</string>
+    <string name="volumeUpKeySum">Use a physical button (or knob) to increase the listening volume.</string>
+    <style name="App.Widget.ActionMode" parent="Widget.AppCompat.ActionMode">
+    </style>
+    <style name="Base.Theme.Mumla" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        <item name="pttPressed">@color/md_theme_light_primary_darker</item>
+        
+        <item name="popupOverlay">@style/ThemeOverlay.Material3.Light</item>
+        
+        <item name="windowActionModeOverlay">true</item>
+        
+        <item name="actionModeStyle">@style/App.Widget.ActionMode</item>
+    </style>
+    <style name="Theme.Mumla" parent="Base.Theme.Mumla"/>
+    <style name="TweakedAppBarLayout" parent="">
+        
+        <item name="android:background">?attr/colorPrimary</item>
+        
+        <item name="android:theme">@style/ThemeOverlay.Material3.Dark.ActionBar</item>
+    </style>
+    <declare-styleable name="SeekBarDialogPreference">
+        <attr format="integer" name="max"/>
+        <attr format="integer" name="min"/>
+        <attr format="integer" name="multiplier"/>
+        <attr format="string" name="android:text"/>
+        <attr name="android:defaultValue"/>
+    </declare-styleable>
+</resources>

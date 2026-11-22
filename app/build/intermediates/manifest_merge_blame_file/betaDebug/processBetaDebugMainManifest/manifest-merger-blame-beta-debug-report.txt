@@ -1,0 +1,440 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="se.lublin.mumla.beta"
+4    android:installLocation="auto"
+5    android:versionCode="29922946"
+6    android:versionName="c59dd55-IW2DPO-autoconnect-beta4-debug" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="21"
+10        android:targetSdkVersion="36" />
+11
+12    <uses-feature
+12-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:21:5-23:36
+13        android:name="android.hardware.microphone"
+13-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:22:9-51
+14        android:required="false" />
+14-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:23:9-33
+15
+16    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+16-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:25:5-77
+16-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:25:22-74
+17    <uses-permission
+17-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:26:5-115
+18        android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE"
+18-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:26:22-85
+19        android:minSdkVersion="34" />
+19-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:26:86-112
+20    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+20-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:27:5-71
+20-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:27:22-68
+21    <uses-permission android:name="android.permission.INTERNET" />
+21-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:28:5-67
+21-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:28:22-64
+22    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+22-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:29:5-79
+22-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:29:22-76
+23    <uses-permission
+23-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:30:5-108
+24        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+24-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:30:22-78
+25        android:maxSdkVersion="29" />
+25-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:30:79-105
+26    <uses-permission
+26-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:31:5-107
+27        android:name="android.permission.READ_EXTERNAL_STORAGE"
+27-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:31:22-77
+28        android:maxSdkVersion="32" />
+28-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:31:78-104
+29    <uses-permission android:name="android.permission.WAKE_LOCK" />
+29-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:32:5-68
+29-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:32:22-65
+30    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+30-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:33:5-78
+30-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:33:22-75
+31    <uses-permission android:name="android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS" />
+31-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:34:5-89
+31-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:34:22-86
+32    <uses-permission android:name="android.permission.VIBRATE" />
+32-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:35:5-66
+32-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:35:22-63
+33    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+33-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:36:5-80
+33-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:36:22-77
+34    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- IW2DPO 19-11-2026-2: Bluetooth speaker-microphone PTT key over SPP (Android 12+) -->
+34-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:37:5-68
+34-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:37:22-65
+35    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+35-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:39:5-76
+35-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:39:22-73
+36    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+36-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:40:5-75
+36-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:40:22-72
+37    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+37-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:41:5-77
+37-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:41:22-74
+38
+39    <queries>
+39-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:43:5-46:15
+40
+41        <!-- We're using guardianproject's OrbotHelper to check if Orbot is installed -->
+42        <package android:name="org.torproject.android" />
+42-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:45:9-58
+42-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:45:18-55
+43    </queries>
+44
+45    <permission
+45-->[androidx.core:core:1.13.0] C:\Users\max\.gradle\caches\8.13\transforms\0a442df3b823586b7b45366d3f7198cf\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+46        android:name="se.lublin.mumla.beta.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+46-->[androidx.core:core:1.13.0] C:\Users\max\.gradle\caches\8.13\transforms\0a442df3b823586b7b45366d3f7198cf\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+47        android:protectionLevel="signature" />
+47-->[androidx.core:core:1.13.0] C:\Users\max\.gradle\caches\8.13\transforms\0a442df3b823586b7b45366d3f7198cf\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+48
+49    <uses-permission android:name="se.lublin.mumla.beta.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+49-->[androidx.core:core:1.13.0] C:\Users\max\.gradle\caches\8.13\transforms\0a442df3b823586b7b45366d3f7198cf\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+49-->[androidx.core:core:1.13.0] C:\Users\max\.gradle\caches\8.13\transforms\0a442df3b823586b7b45366d3f7198cf\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
+50
+51    <application
+51-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:48:5-167:19
+52        android:name="se.lublin.mumla.app.MumlaApplication"
+52-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:49:9-45
+53        android:allowBackup="true"
+53-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:50:9-35
+54        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+54-->[androidx.core:core:1.13.0] C:\Users\max\.gradle\caches\8.13\transforms\0a442df3b823586b7b45366d3f7198cf\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+55        android:debuggable="true"
+56        android:extractNativeLibs="true"
+57        android:icon="@mipmap/ic_launcher"
+57-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:51:9-43
+58        android:label="@string/app_name"
+58-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:52:9-41
+59        android:localeConfig="@xml/local_config"
+59-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:55:9-49
+60        android:requestLegacyExternalStorage="true"
+60-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:54:9-52
+61        android:theme="@style/Theme.Mumla" >
+61-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:53:9-43
+62        <provider
+62-->C:\mumla-iw2dpo\app\src\beta\AndroidManifest.xml:4:9-7:40
+63            android:name="se.lublin.mumla.channel.ChannelSearchProvider"
+63-->C:\mumla-iw2dpo\app\src\beta\AndroidManifest.xml:5:13-73
+64            android:authorities="se.lublin.mumla.beta.channel.ChannelSearchProvider"
+64-->C:\mumla-iw2dpo\app\src\beta\AndroidManifest.xml:6:13-85
+65            android:exported="false" />
+65-->C:\mumla-iw2dpo\app\src\beta\AndroidManifest.xml:7:13-37
+66        <!-- requestLegacyExternalStorage still true: we keep using old code if Android < 30 -->
+67        <activity
+67-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:58:9-86:20
+68            android:name="se.lublin.mumla.preference.SettingsActivity"
+68-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:59:13-56
+69            android:exported="false" >
+69-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:60:13-37
+70            <intent-filter>
+70-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:61:13-65:29
+71                <action android:name="se.lublin.mumla.app.PREFS_GENERAL" />
+71-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:62:17-76
+71-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:62:25-73
+72
+73                <category android:name="android.intent.category.DEFAULT" />
+73-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+73-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+74            </intent-filter>
+75            <intent-filter>
+75-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:66:13-70:29
+76                <action android:name="se.lublin.mumla.app.PREFS_AUTHENTICATION" />
+76-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:67:17-83
+76-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:67:25-80
+77
+78                <category android:name="android.intent.category.DEFAULT" />
+78-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+78-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+79            </intent-filter>
+80            <intent-filter>
+80-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:71:13-75:29
+81                <action android:name="se.lublin.mumla.app.PREFS_AUDIO" />
+81-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:72:17-74
+81-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:72:25-71
+82
+83                <category android:name="android.intent.category.DEFAULT" />
+83-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+83-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+84            </intent-filter>
+85            <intent-filter>
+85-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:76:13-80:29
+86                <action android:name="se.lublin.mumla.app.PREFS_APPEARANCE" />
+86-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:77:17-79
+86-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:77:25-76
+87
+88                <category android:name="android.intent.category.DEFAULT" />
+88-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+88-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+89            </intent-filter>
+90            <intent-filter>
+90-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:81:13-85:29
+91                <action android:name="se.lublin.mumla.app.PREFS_ABOUT" />
+91-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:82:17-74
+91-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:82:25-71
+92
+93                <category android:name="android.intent.category.DEFAULT" />
+93-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+93-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+94            </intent-filter>
+95        </activity>
+96
+97        <service
+97-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:88:9-92:58
+98            android:name="se.lublin.mumla.service.MumlaService"
+98-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:89:13-49
+99            android:enabled="true"
+99-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:91:13-35
+100            android:exported="true"
+100-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:90:13-36
+101            android:foregroundServiceType="microphone" />
+101-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:92:13-55
+102
+103        <activity
+103-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:94:9-120:20
+104            android:name="se.lublin.mumla.app.MumlaActivity"
+104-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:95:13-46
+105            android:exported="true"
+105-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:98:13-36
+106            android:label="@string/app_name"
+106-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:96:13-45
+107            android:launchMode="singleTop" >
+107-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:97:13-43
+108            <intent-filter>
+108-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:99:13-103:29
+109                <action android:name="android.intent.action.MAIN" />
+109-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:100:17-69
+109-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:100:25-66
+110
+111                <category android:name="android.intent.category.LAUNCHER" />
+111-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:102:17-77
+111-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:102:27-74
+112            </intent-filter>
+113            <intent-filter>
+113-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:104:13-106:29
+114                <action android:name="android.intent.action.SEARCH" />
+114-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:105:17-71
+114-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:105:25-68
+115            </intent-filter>
+116
+117            <meta-data
+117-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:108:13-110:54
+118                android:name="android.app.searchable"
+118-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:109:17-54
+119                android:resource="@xml/searchable" />
+119-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:110:17-51
+120
+121            <intent-filter>
+121-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:112:13-119:29
+122                <action android:name="android.intent.action.VIEW" />
+122-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:113:17-69
+122-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:113:25-66
+123
+124                <category android:name="android.intent.category.DEFAULT" />
+124-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+124-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+125                <category android:name="android.intent.category.BROWSABLE" />
+125-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:116:17-78
+125-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:116:27-75
+126
+127                <data android:scheme="mumble" />
+127-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:118:17-49
+127-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:118:23-46
+128            </intent-filter>
+129        </activity>
+130        <activity
+130-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:122:9-130:20
+131            android:name="se.lublin.mumla.preference.CertificateSelectActivity"
+131-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:123:13-65
+132            android:exported="true"
+132-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:125:13-36
+133            android:theme="@style/Theme.Mumla" >
+133-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:124:13-47
+134            <intent-filter>
+134-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:126:13-129:29
+135                <action android:name="se.lublin.mumla.app.CERTIFICATE_SELECT" />
+135-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:127:17-81
+135-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:127:25-78
+136
+137                <category android:name="android.intent.category.DEFAULT" />
+137-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+137-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+138            </intent-filter>
+139        </activity>
+140        <activity
+140-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:131:9-139:20
+141            android:name="se.lublin.mumla.preference.CertificateImportActivity"
+141-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:132:13-65
+142            android:exported="true"
+142-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:134:13-36
+143            android:theme="@style/Theme.Mumla" >
+143-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:133:13-47
+144            <intent-filter>
+144-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:135:13-138:29
+145                <action android:name="se.lublin.mumla.app.CERTIFICATE_IMPORT" />
+145-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:136:17-81
+145-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:136:25-78
+146
+147                <category android:name="android.intent.category.DEFAULT" />
+147-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+147-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+148            </intent-filter>
+149        </activity>
+150        <activity
+150-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:140:9-148:20
+151            android:name="se.lublin.mumla.preference.CertificateExportActivity"
+151-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:141:13-65
+152            android:exported="true"
+152-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:143:13-36
+153            android:theme="@style/Theme.Mumla" >
+153-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:142:13-47
+154            <intent-filter>
+154-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:144:13-147:29
+155                <action android:name="se.lublin.mumla.app.CERTIFICATE_EXPORT" />
+155-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:145:17-81
+155-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:145:25-78
+156
+157                <category android:name="android.intent.category.DEFAULT" />
+157-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+157-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+158            </intent-filter>
+159        </activity>
+160        <activity
+160-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:149:9-157:20
+161            android:name="se.lublin.mumla.preference.CertificateGenerateActivity"
+161-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:150:13-67
+162            android:exported="true"
+162-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:152:13-36
+163            android:theme="@style/Theme.Mumla" >
+163-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:151:13-47
+164            <intent-filter>
+164-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:153:13-156:29
+165                <action android:name="se.lublin.mumla.app.CERTIFICATE_GENERATE" />
+165-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:154:17-83
+165-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:154:25-80
+166
+167                <category android:name="android.intent.category.DEFAULT" />
+167-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+167-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+168            </intent-filter>
+169        </activity>
+170        <activity
+170-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:158:9-166:20
+171            android:name="se.lublin.mumla.preference.ServerCertificateClearActivity"
+171-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:159:13-70
+172            android:exported="true"
+172-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:161:13-36
+173            android:theme="@style/Theme.Mumla" >
+173-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:160:13-47
+174            <intent-filter>
+174-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:162:13-165:29
+175                <action android:name="se.lublin.mumla.app.CLEAR_SERVER_CERTIFICATES" />
+175-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:163:17-88
+175-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:163:25-85
+176
+177                <category android:name="android.intent.category.DEFAULT" />
+177-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:17-76
+177-->C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:64:27-73
+178            </intent-filter>
+179        </activity>
+180
+181        <service
+181-->[:libraries:humla] C:\humla-iw2dpo\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:30:9-37:19
+182            android:name="se.lublin.humla.HumlaService"
+182-->[:libraries:humla] C:\humla-iw2dpo\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:31:13-56
+183            android:exported="true" >
+183-->[:libraries:humla] C:\humla-iw2dpo\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:32:13-36
+184            <intent-filter>
+184-->[:libraries:humla] C:\humla-iw2dpo\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:33:13-36:29
+185                <action android:name="se.lublin.humla.ACTION_CONNECT" />
+185-->[:libraries:humla] C:\humla-iw2dpo\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:34:17-73
+185-->[:libraries:humla] C:\humla-iw2dpo\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:34:25-70
+186                <action android:name="se.lublin.humla.ACTION_DISCONNECT" />
+186-->[:libraries:humla] C:\humla-iw2dpo\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:35:17-76
+186-->[:libraries:humla] C:\humla-iw2dpo\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:35:25-73
+187            </intent-filter>
+188        </service>
+189
+190        <provider
+190-->[androidx.emoji2:emoji2:1.3.0] C:\Users\max\.gradle\caches\8.13\transforms\0cbe343614403bb23b063726add83b65\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+191            android:name="androidx.startup.InitializationProvider"
+191-->[androidx.emoji2:emoji2:1.3.0] C:\Users\max\.gradle\caches\8.13\transforms\0cbe343614403bb23b063726add83b65\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:25:13-67
+192            android:authorities="se.lublin.mumla.beta.androidx-startup"
+192-->[androidx.emoji2:emoji2:1.3.0] C:\Users\max\.gradle\caches\8.13\transforms\0cbe343614403bb23b063726add83b65\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:26:13-68
+193            android:exported="false" >
+193-->[androidx.emoji2:emoji2:1.3.0] C:\Users\max\.gradle\caches\8.13\transforms\0cbe343614403bb23b063726add83b65\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:27:13-37
+194            <meta-data
+194-->[androidx.emoji2:emoji2:1.3.0] C:\Users\max\.gradle\caches\8.13\transforms\0cbe343614403bb23b063726add83b65\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+195                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+195-->[androidx.emoji2:emoji2:1.3.0] C:\Users\max\.gradle\caches\8.13\transforms\0cbe343614403bb23b063726add83b65\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:30:17-75
+196                android:value="androidx.startup" />
+196-->[androidx.emoji2:emoji2:1.3.0] C:\Users\max\.gradle\caches\8.13\transforms\0cbe343614403bb23b063726add83b65\transformed\jetified-emoji2-1.3.0\AndroidManifest.xml:31:17-49
+197            <meta-data
+197-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\max\.gradle\caches\8.13\transforms\7f422d072582d65d4bebf07b8951c54d\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+198                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+198-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\max\.gradle\caches\8.13\transforms\7f422d072582d65d4bebf07b8951c54d\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+199                android:value="androidx.startup" />
+199-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\max\.gradle\caches\8.13\transforms\7f422d072582d65d4bebf07b8951c54d\transformed\jetified-lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+200            <meta-data
+200-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+201                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+201-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+202                android:value="androidx.startup" />
+202-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+203        </provider>
+204
+205        <uses-library
+205-->[androidx.window:window:1.0.0] C:\Users\max\.gradle\caches\8.13\transforms\e9e1f5088b6592cc31da205b7484c65e\transformed\jetified-window-1.0.0\AndroidManifest.xml:25:9-27:40
+206            android:name="androidx.window.extensions"
+206-->[androidx.window:window:1.0.0] C:\Users\max\.gradle\caches\8.13\transforms\e9e1f5088b6592cc31da205b7484c65e\transformed\jetified-window-1.0.0\AndroidManifest.xml:26:13-54
+207            android:required="false" />
+207-->[androidx.window:window:1.0.0] C:\Users\max\.gradle\caches\8.13\transforms\e9e1f5088b6592cc31da205b7484c65e\transformed\jetified-window-1.0.0\AndroidManifest.xml:27:13-37
+208        <uses-library
+208-->[androidx.window:window:1.0.0] C:\Users\max\.gradle\caches\8.13\transforms\e9e1f5088b6592cc31da205b7484c65e\transformed\jetified-window-1.0.0\AndroidManifest.xml:28:9-30:40
+209            android:name="androidx.window.sidecar"
+209-->[androidx.window:window:1.0.0] C:\Users\max\.gradle\caches\8.13\transforms\e9e1f5088b6592cc31da205b7484c65e\transformed\jetified-window-1.0.0\AndroidManifest.xml:29:13-51
+210            android:required="false" />
+210-->[androidx.window:window:1.0.0] C:\Users\max\.gradle\caches\8.13\transforms\e9e1f5088b6592cc31da205b7484c65e\transformed\jetified-window-1.0.0\AndroidManifest.xml:30:13-37
+211
+212        <receiver
+212-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+213            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+213-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+214            android:directBootAware="false"
+214-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+215            android:enabled="true"
+215-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+216            android:exported="true"
+216-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+217            android:permission="android.permission.DUMP" >
+217-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+218            <intent-filter>
+218-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+219                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+219-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+219-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+220            </intent-filter>
+221            <intent-filter>
+221-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+222                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+222-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+222-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+223            </intent-filter>
+224            <intent-filter>
+224-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+225                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+225-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+225-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+226            </intent-filter>
+227            <intent-filter>
+227-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+228                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+228-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+228-->[androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\max\.gradle\caches\8.13\transforms\4406a9fbde36da215b72289a02691bd5\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
+229            </intent-filter>
+230        </receiver>
+231    </application>
+232
+233</manifest>

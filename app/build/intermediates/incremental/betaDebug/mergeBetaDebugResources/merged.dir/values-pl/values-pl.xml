@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns2="http://schemas.android.com/tools">
+    <plurals name="mtrl_badge_content_description">
+    <item quantity="one">%d nowe powiadomienie</item>
+    <item quantity="few">%d nowe powiadomienia</item>
+    <item quantity="many">%d nowych powiadomień</item>
+    <item quantity="other">%d nowego powiadomienia</item>
+  </plurals>
+    <plurals name="notification_unread_many">
+        <item quantity="one">%d nowa wiadomość</item>
+        <item quantity="few">%d nowe wiadomości</item>
+        <item quantity="many">%d nowych wiadomości</item>
+        <item quantity="other">%d nowych wiadomości</item>
+    </plurals>
+    <plurals name="search_channel_users">
+        <item quantity="one">%d użytkownik</item>
+        <item quantity="few">%d użytkowników</item>
+        <item quantity="many">%d użytkowników</item>
+        <item quantity="other">%d użytkowników</item>
+    </plurals>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Przejdź na stronę główną"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Przejdź wyżej"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Więcej opcji"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Gotowe"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Pokaż wszystko"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Wybierz aplikację"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"WYŁ."</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"WŁ."</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"Delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"Enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Funkcyjny+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"spacja"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Szukaj…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Wyczyść zapytanie"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Zapytanie"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Szukaj"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Wyślij zapytanie"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Wyszukiwanie głosowe"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Udostępnij przez:"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Udostępnij przez: <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Zwiń"</string>
+    <string name="about">O programie</string>
+    <string name="accessAdd">Dodaj token dostępu</string>
+    <string name="acknowledgements">Współtwórcy</string>
+    <string name="acknowledgementsSum">Zobacz, kto przyczynił się do powstania Mumli (łącze internetowe)</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="add">Dodaj</string>
+    <string name="addFavorite">Dodaj do ulubionych</string>
+    <string name="advancedAudio">Zaawansowane</string>
+    <string name="allow">Zezwól</string>
+    <string name="app_news">Co nowego</string>
+    <string name="app_news_footer_on_startup">Wiadomości te można ponownie przejrzeć na stronie „O programie”.</string>
+    <string name="app_news_items_v3_7_0">• Dużo pracy włożono w aktualizację Mumli dla Androida 15 i 16 (API 35 i 36).\n
+• W związku z tym wymagany jest Android 5.0 (API 21) lub nowszy.\n
+• Zmodernizowano motyw, aby obsługiwał jasny/ciemny tryb systemu.\n
+• Ekran ustawień musiał zostać dostosowany do nowszych interfejsów API.\n
+• Dodano preferencje językowe w aplikacji.\n</string>
+    <string name="app_news_items_v3_7_1">• Drobne wydanie zawierające głównie aktualizacje tłumaczeń, dziękujemy wszystkim tłumaczom!\n</string>
+    <string name="app_news_items_v3_7_2">• Naprawiono potencjalny błąd powodujący awarię podczas uruchamiania.\n• Dodano kilka tłumaczeń, dziękujemy wszystkim tłumaczom!\n</string>
+    <string name="app_news_items_v3_7_3">• Uwidoczniono narożnik PTT na urządzeniach z systemem Android 12 i nowszych, a także na ciemnym i jasnym tle.\n• Sprawiono, aby przycisk Wstecz ponownie prosił o rozłączenie z serwerem w systemie Android 16+.\n</string>
+    <string name="app_news_summary">Zobacz najnowsze aktualizacje</string>
+    <string name="appearance">Wygląd</string>
+    <string name="attempting_reconnect">Błąd: %s.\n\nPonowne połączenie…</string>
+    <string name="audio">Audio</string>
+    <string name="audioInputMethod">Tryb przekazywania</string>
+    <string name="audioInputMethodSum">Sposób aktywacji przekazywania audio.</string>
+    <string name="audioInputVolume">Głośność mikrofonu</string>
+    <string name="audioInputVolumeSum">Poziom, do którego normalizować audio.</string>
+    <string name="audioSampleRate">Częstotliwość próbkowania wejścia</string>
+    <string name="audioSampleRateSum">Preferowana częstotliwość próbkowania audio. Niektóre urządzenia obsługują mniej częstotliwości.</string>
+    <string name="audio_bandwidth">Przepustowość audio</string>
+    <string name="audio_max_bandwidth">Maksymalna przepustowość sieci serwera to tylko %1$d kbit/s. Dostosowywanie jakości audio do %2$d kbit/s (%3$d ms).</string>
+    <string name="audio_per_packet">Audio na pakiet</string>
+    <string name="audio_per_packet_sum">Długość audio na pakiet głosowy.</string>
+    <string name="authentication">Uwierzytelnianie</string>
+    <string name="autoReconnect">Automatyczne wznowienie połączenia</string>
+    <string name="autoReconnectSum">W przypadku utraty połączenia ponownie nawiązuje połączenie z serwerem.</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="bottomsheet_action_collapse">Zwiń planszę dolną</string>
+    <string name="bottomsheet_action_expand">Rozwiń planszę dolną</string>
+    <string name="bottomsheet_action_expand_halfway">Rozwiń do połowy</string>
+    <string name="bottomsheet_drag_handle_content_description">Uchwyt do przeciągania</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Odbierz"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Wideo"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Odrzuć"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Rozłącz"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Połączenie przychodzące"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Trwa połączenie"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Filtruję połączenie przychodzące"</string>
+    <string name="cancel_reconnect">Anuluj ponowne połączenie</string>
+    <string name="cancelled">Anulowano</string>
+    <string name="certificateGenerate">Wygeneruj certyfikat</string>
+    <string name="certificateGenerateSum">Generuje nowy samopodpisany certyfikat Mumli. Zalecane dla początkujących.</string>
+    <string name="certificate_import_success">Zaimportowany certyfikat %s.</string>
+    <string name="certificate_info">Podmiot:\n%1$s\n\nWażny od:\n%2$s\n\nWażny do:\n%3$s\n\nSkrót (SHA-1):\n%4$s\n\nSkrót (SHA-256):\n%5$s</string>
+    <string name="certificate_load_failed">Nie udało się zapisać certyfikatu.</string>
+    <string name="certificates">Certyfikaty</string>
+    <string name="change_requires_reconnect">Połącz ponownie, aby użyć nowych ustawień.</string>
+    <string name="channel">Kanał</string>
+    <string name="channel_add">Dodaj kanał</string>
+    <string name="channel_edit">Edytuj kanał</string>
+    <string name="channel_join">Dołącz</string>
+    <string name="channel_menu_pin">Przypnij</string>
+    <string name="channel_menu_view_description">Wyświetl opis</string>
+    <string name="character_counter_content_description">%1$d z %2$d znaków</string>
+    <string name="character_counter_overflowed_content_description">Przekroczono limit znaków (%1$d z %2$d)</string>
+    <string name="chat">Czat</string>
+    <string name="chatNotifications">Powiadomienia na czacie</string>
+    <string name="chatNotificationsSum">Wyświetlane dla nowych wiadomości czatu.</string>
+    <string name="chat_message_to">%1$s → %2$s</string>
+    <string name="chat_message_tts_short_link">(Łącze do %1$s)</string>
+    <string name="chat_notify_connected">%s podłączony.</string>
+    <string name="chat_notify_disconnected">%s rozłączony.</string>
+    <string name="chat_notify_kick">%3$s został wyrzucony z serwera przez %1$s: %2$s.</string>
+    <string name="chat_notify_kick_ban">%3$s został wyrzucony i zbanowany z serwera przez %1$s: %2$s.</string>
+    <string name="chat_notify_kick_ban_self">Zostałeś wyrzucony i zbanowany z serwera przez %1$s: %2$s.</string>
+    <string name="chat_notify_kick_self">Zostałeś wyrzucony z serwera przez %1$s: %2$s.</string>
+    <string name="chat_notify_muted">Wyciszony.</string>
+    <string name="chat_notify_muted_deafened">Wyciszony i ogłuszony.</string>
+    <string name="chat_notify_now_muted">%s jest teraz wyciszony.</string>
+    <string name="chat_notify_now_muted_deafened">%s jest teraz wyciszony i ogłuszony.</string>
+    <string name="chat_notify_now_unmuted">%s nie jest teraz wyciszony.</string>
+    <string name="chat_notify_self_recording_started">Nagrywanie rozpoczęto</string>
+    <string name="chat_notify_self_recording_stopped">Nagrywanie zatrzymano</string>
+    <string name="chat_notify_unmuted">Nie jest wyciszony.</string>
+    <string name="chat_notify_user_joined_channel">%s wszedł na kanał.</string>
+    <string name="chat_notify_user_joined_channel_by">%1$s przeniesiono z %2$s przez %3$s.</string>
+    <string name="chat_notify_user_left_channel">%1$s przeniesiono do %2$s.</string>
+    <string name="chat_notify_user_left_channel_by">%1$s przeniesiono do %2$s przez %3$s.</string>
+    <string name="chat_notify_user_recording_started">%s rozpoczął nagrywanie.</string>
+    <string name="chat_notify_user_recording_stopped">%s zatrzymał nagrywanie.</string>
+    <string name="clearChat">Wyczyść czat</string>
+    <string name="clearServerCertificates">Wyczyść certyfikaty serwera</string>
+    <string name="clearServerCertificatesSum">Usuń wszystkie certyfikaty zaufanych serwerów z Mumli.</string>
+    <string name="clear_text_end_icon_content_description">Wyczyść tekst</string>
+    <string name="close">Zamknij</string>
+    <string name="comment_edit_source">Edytuj źródło</string>
+    <string name="comment_view">Widok</string>
+    <string name="comment_view_source">Widok źródła</string>
+    <string name="confirm">Potwierdź</string>
+    <string name="confirm_delete_channel">Czy na pewno chcesz usunąć ten kanał?</string>
+    <string name="confirm_delete_server">Czy na pewno chcesz usunąć ten serwer?</string>
+    <string name="confirm_reset_comment">Czy na pewno chcesz zresetować komentarz użytkownika %s?</string>
+    <string name="connect">Połącz</string>
+    <string name="connectToServer">Połącz z serwerem</string>
+    <string name="connected">Połączono</string>
+    <string name="connecting">Łączenie</string>
+    <string name="connecting_to_server">Łączenie z %s…</string>
+    <string name="connectionRefused">Połączenie odrzucone</string>
+    <string name="context_channel_link">Złącz</string>
+    <string name="context_channel_shout">Ustaw cel głosu</string>
+    <string name="context_channel_unlink_all">Rozłącz wszystkie</string>
+    <string name="control_channel">Kanał sterowania</string>
+    <string msgid="6083905920877235314" name="copy">"Kopiuj"</string>
+    <string name="country">Kraj</string>
+    <string name="current_chat_target">Bieżący cel czatu</string>
+    <string name="deafen">Ogłusz</string>
+    <string name="decrypt_certificate">Odszyfruj certyfikat</string>
+    <string name="defaultUsername">Domyślna nazwa użytkownika</string>
+    <string name="defaultUsernameDefault">Użytkownik_Mumli</string>
+    <string name="defaultUsernameSum">Wstępnie wypełniona nazwa używana podczas dodawania serwera lub łączenia się z serwerem publicznym.</string>
+    <string name="default_">Domyślny</string>
+    <string name="delete">Usuń</string>
+    <string name="deny_reason_channel_full">Kanał jest pełny.</string>
+    <string name="deny_reason_channel_name">Odmowa: nieprawidłowa nazwa kanału.</string>
+    <string name="deny_reason_channel_nesting">Osiągnięto limit zagnieżdżania kanałów.</string>
+    <string name="deny_reason_invalid_username">Nieprawidłowa nazwa użytkownika.</string>
+    <string name="deny_reason_no_certificate">Potrzebujesz certyfikatu do wykonania tej operacji.</string>
+    <string name="deny_reason_no_operation_temp">Odmowa: operacja niedozwolona na kanale tymczasowym.</string>
+    <string name="deny_reason_other">Powód: %s</string>
+    <string name="deny_reason_text_too_long">Odmowa: wiadomość tekstowa jest za długa.</string>
+    <string name="description">Opis</string>
+    <string name="detectionThreshold">Próg wykrywania</string>
+    <string name="detectionThresholdSum">Minimalny poziom głośności do wykrywania głosu (gdy tryb przekazywania to „Aktywność głosowa”).</string>
+    <string name="disableOpus">Unikaj kodeka Opus</string>
+    <string name="disableOpusSum">Wyłącz obsługę Opus dla serwerów Mumble 1.2.4.</string>
+    <string name="disconnect">Rozłącz</string>
+    <string name="disconnectSure">Czy na pewno chcesz się rozłączyć z %s?</string>
+    <string name="donate_dialog_message_goog">Dziękujemy za korzystanie z Mumli! Prosimy o rozważenie przekazania niewielkiej darowizny, która pomoże utrzymać Mumlę przy życiu i usunąć ten komunikat.</string>
+    <string name="donate_dialog_negativebutton_goog">Później</string>
+    <string name="donate_dialog_positivebutton_goog">Wesprzyj Mumlę</string>
+    <string name="donate_dialog_title_goog">Podoba Ci się Mumla?</string>
+    <string name="donate_foss">Przekaż darowiznę</string>
+    <string name="donate_purchase_pending_goog">Twoja darowizna jest w trakcie realizacji i może być gotowa po ponownym uruchomieniu. Dziękujemy!</string>
+    <string name="donate_thanks_goog">Dziękujemy za wsparcie!</string>
+    <string name="donation_thanks">Dziękujemy za darowiznę.</string>
+    <string name="drawer_close">Zamknij szufladę</string>
+    <string name="drawer_favorites">Ulubione</string>
+    <string name="drawer_header_servers">Serwery</string>
+    <string name="drawer_not_connected">Brak połączenia</string>
+    <string name="drawer_open">Otwórz szufladę</string>
+    <string name="drawer_pinned">Przypięte kanały</string>
+    <string name="drawer_public">Serwery publiczne</string>
+    <string name="drawer_server">Wszystkie kanały</string>
+    <string name="drawer_tokens">Tokeny dostępu</string>
+    <string name="echoCancellationDisabled">Wyłączone</string>
+    <string name="echoCancellationMethod">Usuwanie echa</string>
+    <string name="echoCancellationMethodSum">Zredukuj echo z głośnika urządzenia podczas rozmowy. Jakość zależy od urządzenia.</string>
+    <string name="echoCancellationSystem">Systemowe</string>
+    <string name="edit">Edytuj</string>
+    <string name="error_a11y_label">Błąd: nieprawidłowe</string>
+    <string name="error_fetching_servers">Nie udało się pobrać serwerów.
+\nCzy masz połączenie z internetem\?</string>
+    <string name="error_icon_content_description">Błąd</string>
+    <string name="error_writing_to_storage">Nie udało się zapisać w pamięci zewnętrznej.</string>
+    <string name="expand">Rozwiń</string>
+    <string msgid="2427401033573778270" name="expand_button_title">"Zaawansowane"</string>
+    <string name="export_success">Certyfikat wyeksportowany do %s.</string>
+    <string name="exposed_dropdown_menu_content_description">Pokaż menu</string>
+    <string name="externalStorageUnavailable">Pamięć zewnętrzna niedostępna, nie można załadować certyfikatu</string>
+    <string name="first_run_generate_certificate">Generowanie certyfikatu jest bardzo zalecane i konieczne do połączenia z niektórymi serwerami.</string>
+    <string name="first_run_generate_certificate_title">Witaj w Mumli</string>
+    <string name="forceTcp">Tylko TCP</string>
+    <string name="forceTcpSum">Wyłącza UDP do komunikacji.</string>
+    <string name="general">Ogólne</string>
+    <string name="generate">Wygeneruj</string>
+    <string name="generateCertFailure">Nie udało się wygenerować certyfikatu.</string>
+    <string name="generateCertProgress">Generowanie certyfikatu…</string>
+    <string name="generateCertSuccess">Twój certyfikat został ustawiony i zapisany jako %s</string>
+    <string name="grant_perm_draw_over_apps">Proszę udzielić pozwolenia na wyświetlanie w innych aplikacjach.</string>
+    <string name="grant_perm_microphone">Proszę udzielić pozwolenia na mikrofon.</string>
+    <string name="grant_perm_notifications">Proszę udzielić pozwolenia na wysyłanie powiadomień.</string>
+    <string name="grant_perm_storage">Proszę udzielić pozwolenia na pamięć zewnętrzną.</string>
+    <string name="halfDuplex">Jednokierunkowe audio</string>
+    <string name="halfDuplexSum">Wycisza inne odtwarzanie podczas korzystania z funkcji „Naciśnij i mów”, aby uniknąć pętli audio/sprzężenia zwrotnego.</string>
+    <string name="handsetMode">Słuchawka</string>
+    <string name="handsetModeSum">Używa przedniego głośnika i czujnika zbliżeniowego do symulacji tradycyjnego połączenia telefonicznego.</string>
+    <string name="hidePtt">Ukryj przycisk funkcji „Naciśnij i mów”</string>
+    <string name="hidePttSum">Przydatne tylko wtedy, gdy używasz narożnika funkcji „Naciśnij i mów” lub przycisku sprzętowego.</string>
+    <string name="hint_reason">Przyczyna</string>
+    <string name="hotCorner">Narożnik funkcji „Naciśnij i mów”</string>
+    <string name="hotCornerSum">Naciśnij narożnik ekranu, aby przekazywać audio w całym systemie Android.</string>
+    <string name="hot_corner_bottom_left">↙ Lewy dolny</string>
+    <string name="hot_corner_bottom_right">Prawy dolny ↘</string>
+    <string name="hot_corner_none">Wyłączony</string>
+    <string name="hot_corner_top_left">↖ Lewy górny</string>
+    <string name="hot_corner_top_right">Prawy górny ↗</string>
+    <string name="icon_content_description">Ikona okna</string>
+    <string name="image_confirm_send">Wysłać ten obraz\?</string>
+    <string name="information">Informacje</string>
+    <string name="inputMethodContinuous">Ciągły</string>
+    <string name="inputMethodPtt">Naciśnij i mów</string>
+    <string name="inputMethodVoice">Aktywność głosowa</string>
+    <string name="inputQuality">Jakość wejściowa mikrofonu</string>
+    <string name="inputQualitySum">Preferowana szybkość przesyłania danych (w bitach na sekundę).</string>
+    <string name="invalid_certificate">Nieprawidłowy certyfikat nie mógł zostać załadowany.</string>
+    <string name="invalid_host">Nieprawidłowy host</string>
+    <string name="invalid_password">Błędne hasło.</string>
+    <string name="invalid_port_range">Nieprawidłowy port (1-65535)</string>
+    <string name="item_view_role_description">Karta</string>
+    <string name="language">Język</string>
+    <string name="language_system">Domyślny systemowy</string>
+    <string name="licenses">Licencje</string>
+    <string name="loadImages">Obrazy zewnętrzne</string>
+    <string name="loadImagesSum">Pobiera i wyświetla obrazy na czacie.</string>
+    <string name="m3_loading_indicator_content_description">Wczytuję</string>
+    <string name="material_clock_toggle_content_description">Wybierz: przed południem czy po południu</string>
+    <string name="material_hour_24h_suffix">%1$s godz.</string>
+    <string name="material_hour_selection">Wybierz godzinę</string>
+    <string name="material_hour_suffix">%1$s</string>
+    <string name="material_minute_selection">Wybierz minuty</string>
+    <string name="material_minute_suffix">%1$s minut</string>
+    <string name="material_slider_range_end">Koniec zakresu</string>
+    <string name="material_slider_range_start">Początek zakresu</string>
+    <string name="material_slider_value">Wartość</string>
+    <string name="material_timepicker_am">AM</string>
+    <string name="material_timepicker_clock_mode_description">Aby wprowadzić czas, włącz tryb zegara.</string>
+    <string name="material_timepicker_hour">Godzina</string>
+    <string name="material_timepicker_minute">Minuta</string>
+    <string name="material_timepicker_pm">PM</string>
+    <string name="material_timepicker_select_time">Określ czas</string>
+    <string name="material_timepicker_text_input_mode_description">Aby wprowadzić czas, włącz tryb wprowadzania tekstu.</string>
+    <string name="messageReceived">Nowa wiadomość</string>
+    <string name="messageToChannel">Wpisz wiadomość do kanału „%s”</string>
+    <string name="messageToUser">Wpisz wiadomość do użytkownika „%s”</string>
+    <string name="mtrl_badge_numberless_content_description">Nowe powiadomienie</string>
+    <string name="mtrl_checkbox_state_description_checked">Zaznaczono</string>
+    <string name="mtrl_checkbox_state_description_indeterminate">Częściowo zaznaczono</string>
+    <string name="mtrl_checkbox_state_description_unchecked">Nie zaznaczono</string>
+    <string name="mtrl_chip_close_icon_content_description">Usuń: (%1$s)</string>
+    <string name="mtrl_exceed_max_badge_number_content_description" ns2:ignore="PluralsCandidate">Liczba nowych powiadomień przekracza %1$d</string>
+    <string name="mtrl_picker_a11y_next_month">Zmień na następny miesiąc</string>
+    <string name="mtrl_picker_a11y_prev_month">Zmień na poprzedni miesiąc</string>
+    <string name="mtrl_picker_announce_current_range_selection">Wybrana data rozpoczęcia: %1$s – wybrana data zakończenia: %2$s</string>
+    <string name="mtrl_picker_announce_current_selection">Bieżący wybór: %1$s</string>
+    <string name="mtrl_picker_announce_current_selection_none">brak</string>
+    <string name="mtrl_picker_cancel">Anuluj</string>
+    <string name="mtrl_picker_confirm">OK</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">Wybierz datę</string>
+    <string name="mtrl_picker_date_header_unselected">Wybrana data</string>
+    <string name="mtrl_picker_day_of_week_column_header">%1$s</string>
+    <string name="mtrl_picker_end_date_description">Data zakończenia %1$s</string>
+    <string name="mtrl_picker_invalid_format">Nieprawidłowy format.</string>
+    <string name="mtrl_picker_invalid_format_example">Przykład: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">Użyj formatu: %1$s</string>
+    <string name="mtrl_picker_invalid_range">Nieprawidłowy zakres.</string>
+    <string name="mtrl_picker_navigate_to_current_year_description">Przejdź do bieżącego roku %1$d</string>
+    <string name="mtrl_picker_navigate_to_year_description">Przejdź do roku %1$d</string>
+    <string name="mtrl_picker_out_of_range">Poza zakresem: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">Data rozpoczęcia – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – data zakończenia</string>
+    <string name="mtrl_picker_range_header_selected">%1$s–%2$s</string>
+    <string name="mtrl_picker_range_header_title">Wybierz zakres</string>
+    <string name="mtrl_picker_range_header_unselected">Data rozpoczęcia – data zakończenia</string>
+    <string name="mtrl_picker_save">Zapisz</string>
+    <string name="mtrl_picker_start_date_description">Data rozpoczęcia %1$s</string>
+    <string name="mtrl_picker_text_input_date_hint">Data</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">Data zakończenia</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">Data rozpoczęcia</string>
+    <string name="mtrl_picker_text_input_day_abbr">d</string>
+    <string name="mtrl_picker_text_input_month_abbr">m</string>
+    <string name="mtrl_picker_text_input_year_abbr">r</string>
+    <string name="mtrl_picker_today_description">Dzisiaj %1$s</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">Włącz kalendarzowy tryb wprowadzania</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Przełącz na widok kalendarza</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">Włącz tekstowy tryb wprowadzania</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Przełącz na widok roku</string>
+    <string name="mtrl_picker_toggled_to_day_selection">Przełączono na widok Kalendarza</string>
+    <string name="mtrl_picker_toggled_to_year_selection">Przełączono na widok roku</string>
+    <string name="mtrl_timepicker_cancel">Anuluj</string>
+    <string name="mtrl_timepicker_confirm">OK</string>
+    <string name="mumble_url_parse_failed">Adres URL Mumble jest nieprawidłowy.</string>
+    <string name="mumlaConnected">Mumla połączona</string>
+    <string name="mumlaConnecting">Mumla łączy się…</string>
+    <string name="mumlaDisconnected">Mumla rozłączona</string>
+    <string name="mute">Wycisz</string>
+    <string name="name">Nazwa</string>
+    <string name="no_certificate">Brak certyfikatu</string>
+    <string name="no_ptt_key">Bez przycisku</string>
+    <string name="no_servers">Naciśnij „Dodaj” z paska akcji, aby najpierw dodać serwer.</string>
+    <string msgid="6573031135582639649" name="not_set">"Nie ustawiono"</string>
+    <string name="offline">Offline</string>
+    <string name="online">Online</string>
+    <string name="orbot_not_installed">Aplikacja Orbot nie jest zainstalowana. Nie używam sieci Tor.</string>
+    <string name="orbot_tor_failed">Nie udało się połączyć z lokalnym serwerem proxy sieci Tor na porcie %d (SOCKS).
+\n
+\nUpewnij się, że aplikacja Orbot jest uruchomiona.</string>
+    <string name="overlay">Nakładka</string>
+    <string name="password">Hasło</string>
+    <string name="password_toggle_content_description">Pokaż hasło</string>
+    <string name="perm_denied">Odmowa dostępu.</string>
+    <string name="position">Pozycja</string>
+    <string name="pref_certificate_summary">Domyślny używany podczas łączenia się z serwerem.</string>
+    <string name="pref_certificate_title">Certyfikat</string>
+    <string name="pref_export_certificate_summary">Eksportuje jeden do pamięci zewnętrznej.</string>
+    <string name="pref_export_certificate_title">Eksportuj certyfikat</string>
+    <string name="pref_import_certificate_summary">Zaimportuj jeden z pamięci zewnętrznej.</string>
+    <string name="pref_import_certificate_title">Importuj certyfikat</string>
+    <string name="pref_show_user_count">Wyświetl liczbę użytkowników kanału</string>
+    <string name="pref_show_user_count_summary">Wyświetla liczbę użytkowników w poddrzewach kanałów.</string>
+    <string name="pref_start_upIn_pinned_mode_sum">Włącza tryb „Przypięte kanały” po połączeniu (ukrywa kanały, które nie są przypięte).</string>
+    <string name="pref_start_up_in_pinned_mode">Tryb przypiętych kanałów</string>
+    <string msgid="6685851473431805375" name="preference_copied">"Skopiowano „<ns1:g id="SUMMARY">%1$s</ns1:g>” do schowka."</string>
+    <string name="preprocessor_enabled">Wstępne przetwarzanie wejścia</string>
+    <string name="preprocessor_enabled_sum">Tłumi hałas otoczenia i normalizuje głośność audio.</string>
+    <string name="pressKey">Naciśnij przycisk sprzętowy, aby użyć funkcji „Naciśnij i mów”.</string>
+    <string name="pressKeyInfo">Aplikacja musi być otwarta, aby z niej korzystać (ze względu na ograniczenia systemu Android).</string>
+    <string name="ptt">Naciśnij i mów</string>
+    <string name="pttButtonHeight">Wysokość przycisku funkcji „Naciśnij i mów”</string>
+    <string name="pttButtonHeightSum">Zmień pionową długość przycisku funkcji „Naciśnij i mów”.</string>
+    <string name="pttKey">Przycisk funkcji „Naciśnij i mów”</string>
+    <string name="pttKeySum">Użyj sprzętowego przycisku, aby przekazywać audio.</string>
+    <string name="pttSettings">Ustawienia funkcji „Naciśnij i mów”</string>
+    <string name="pttSound">Dźwięk funkcji „Naciśnij i mów”</string>
+    <string name="pttSoundSum">Odtwórz efekt dźwiękowy po naciśnięciu przycisku funkcji „Naciśnij i mów”.</string>
+    <string name="quickConnect">Szybkie połączenie</string>
+    <string name="reconnect">Połącz ponownie</string>
+    <string name="reconnect_dialog_message">Jesteś już połączony z serwerem. Czy zamiast tego połączyć się z tym serwerem?</string>
+    <string name="remove">Skasuj</string>
+    <string name="reset_key">Resetuj przycisk</string>
+    <string name="save">Zapisz</string>
+    <string name="search">Wyszukaj</string>
+    <string name="searchHint">Wyszukaj kanały i użytkowników</string>
+    <string name="search_country">Kraj</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Szukaj"</string>
+    <string name="search_name">Nazwa</string>
+    <string name="searchview_clear_text_content_description">Wyczyść tekst</string>
+    <string name="searchview_navigation_content_description">Wstecz</string>
+    <string name="send_message">Wyślij wiadomość</string>
+    <string name="server">Serwer</string>
+    <string name="server_host">Adres</string>
+    <string name="server_info_codec">Kodek: %s</string>
+    <string name="server_info_current_bandwidth">Obecnie: %.1f kbit/s</string>
+    <string name="server_info_host">Host zdalny: %1$s (port %2$d)</string>
+    <string name="server_info_latency">%.2f ms opóźnienia</string>
+    <string name="server_info_max_bandwidth">Maksymalnie: %.1f kbit/s</string>
+    <string name="server_info_protocol">Protokół: %s.</string>
+    <string name="server_info_version">%1$s (%2$s)</string>
+    <string name="server_label">Etykieta</string>
+    <string name="server_match">Znajdź serwer</string>
+    <string name="server_match_description">Mumla może automatycznie znaleźć Ci pusty serwer, optymalizując lokalizację, wersję i opóźnienie.</string>
+    <string name="server_match_expand_country">Nie udało się znaleźć optymalnych serwerów w Twoim kraju. Szukać na całym świecie\?</string>
+    <string name="server_match_found">Znaleziono serwer</string>
+    <string name="server_match_info">Nazwa: %1$s\nHost: %2$s:%3$d\nUżytkownicy: %4$d / %5$d\nWersja: %6$s \nKraj: %7$s \nOpóźnienie: %8$d ms</string>
+    <string name="server_match_not_found">Nie udało się znaleźć serwera</string>
+    <string name="server_match_progress">Znajdowanie serwera…</string>
+    <string name="server_password">Hasło</string>
+    <string name="server_port">Port</string>
+    <string name="server_username">Nazwa użytkownika</string>
+    <string name="share">Udostępnij</string>
+    <string name="shareMessage">Dołącz do tego serwera Mumble za pomocą Mumli. %s</string>
+    <string name="shortTtsMessages">Krótkie wiadomości funkcji „Tekst na mowę”</string>
+    <string name="shortTtsMessagesSum">Skróć wiadomości, czytając tylko nazwy domen łącz.</string>
+    <string name="shout_configure">Konfiguruj cel głosu</string>
+    <string name="shout_failed">Nie udało się utworzyć celu głosu.</string>
+    <string name="shout_include_linked">Krzycz do połączonych kanałów</string>
+    <string name="shout_include_subchannels">Krzycz do podkanałów</string>
+    <string name="shout_target">Krzyczenie do %s</string>
+    <string name="side_sheet_accessibility_pane_title">Arkusz boczny</string>
+    <string name="sort">Sortuj</string>
+    <string name="sortBy">Sortuj według…</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="status_notify_muted">Wyciszony.</string>
+    <string name="status_notify_muted_and_deafened">Wyciszony i ogłuszony.</string>
+    <string name="stay_awake">Nie usypiaj</string>
+    <string msgid="9167775378838880170" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string name="tcp_encryption_mode">Zaszyfrowany 256-bitowym AES-256-SHA</string>
+    <string name="temporary">Tymczasowy</string>
+    <string name="the_server">serwer</string>
+    <string name="theme">Motyw</string>
+    <string name="themeSum">Zmień wygląd aplikacji.</string>
+    <string name="theme_dark">Ciemny</string>
+    <string name="theme_light">Jasny</string>
+    <string name="theme_system">Domyślny systemowy</string>
+    <string name="togglePtt">Przycisk przełączania funkcji „Naciśnij i mów”</string>
+    <string name="togglePttSum">Przycisk funkcji „Naciśnij i mów” włącza i wyłącza transmisję. Nie trzeba go trzymać.</string>
+    <string name="trust_add_failed">Nie udało się dodać certyfikatu do magazynu zaufanych certyfikatów.</string>
+    <string name="trust_added">Dodano certyfikat do magazynu zaufanych certyfikatów</string>
+    <string name="trust_cleared">Wyczyszczono bazę danych zaufania</string>
+    <string name="tts_failed">Nie udało się uruchomić TTS</string>
+    <string name="udp_encryption_mode">Zaszyfrowany 128-bitowym OCB-AES-128</string>
+    <string name="unknown">Nieznany</string>
+    <string name="untrusted_certificate">Niezaufany certyfikat</string>
+    <string name="useTor">Połącz przez sieć Tor</string>
+    <string name="useTorSum">Wymaga aplikacji Orbot.</string>
+    <string name="useTts">Tekst na mowę</string>
+    <string name="useTtsSum">Czytaj na głos wiadomość przychodzącą za pomocą syntezy mowy.</string>
+    <string name="user">Użytkownik</string>
+    <string name="user_menu_ban">Zbanuj</string>
+    <string name="user_menu_change_comment">Zmień komentarz</string>
+    <string name="user_menu_deafen">Zagłusz</string>
+    <string name="user_menu_ignore_messages">Ignoruj wiadomości</string>
+    <string name="user_menu_kick">Wykop</string>
+    <string name="user_menu_local_mute">Wyciszenie lokalne</string>
+    <string name="user_menu_move">Przenieś</string>
+    <string name="user_menu_mute">Wycisz</string>
+    <string name="user_menu_priority_speaker">Mówca priorytetowy</string>
+    <string name="user_menu_register">Zarejestruj się</string>
+    <string name="user_menu_reset_comment">Resetuj komentarz</string>
+    <string name="user_menu_view_comment">Wyświetl komentarz</string>
+    <string msgid="3140233346420563315" name="v7_preference_off">"WYŁ."</string>
+    <string msgid="89551595707643515" name="v7_preference_on">"WŁ."</string>
+    <string name="version">Wersja</string>
+    <string name="voiceActivitySettings">Ustawienia aktywności głosowej</string>
+    <string name="voice_channel">Kanał głosowy</string>
+</resources>

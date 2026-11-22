@@ -1,0 +1,982 @@
+[
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_stat_notify.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_stat_notify.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_user_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_user_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_dialog_server_edit.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/dialog_server_edit.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/menu_fragment_server_list.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/menu/fragment_server_list.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_move.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_move.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_delete_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_delete_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_ptt_button_tint.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/ptt_button_tint.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_comment.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_comment.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_audio_on.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_audio_on.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/xml_settings_appearance.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/xml/settings_appearance.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_more_vert_black_24dp.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_more_vert_black_24dp.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/menu_context_channel.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/menu/context_channel.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/menu_fragment_public_server_list.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/menu/fragment_public_server_list.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_channel_user_row.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/channel_user_row.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_drawer_shadow.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/drawer_shadow.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/xml_settings_audio.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/xml/settings_audio.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_user_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_user_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_fragment_chat.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/fragment_chat.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_outline_circle_deafened.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/outline_circle_deafened.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_launcher_foreground.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-hdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_drawer_shadow.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/drawer_shadow.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_favourite_on.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_favourite_on.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_server_card.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/server_card.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-xxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_activity_settings.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/activity_settings.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_microphone_muted.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_microphone_muted.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_drawer.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_drawer.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_audio_muted.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_audio_muted.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/menu_popup_favourite_server.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/menu/popup_favourite_server.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_edit_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_edit_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/anim_fade_out.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/anim/fade_out.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_outline_circle_talking_off.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/outline_circle_talking_off.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_settings.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_settings.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_dialog_news.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/dialog_news.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_list_selector_focused.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/list_selector_focused.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_server_location.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_server_location.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_microphone_muted.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_microphone_muted.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_drawer.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_drawer.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_token_row.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/token_row.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_overlay_user_row.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/overlay_user_row.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_add_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_add_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_list_drawer_header.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/list_drawer_header.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_collapsed.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_collapsed.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_microphone.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_microphone.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_bad.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_bad.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_list_pressed.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/list_pressed.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_quick_connect.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_quick_connect.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_list_pressed.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/list_pressed.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_search.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_search.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_server_card.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/server_card.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_mumla.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-mdpi/ic_mumla.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_registered.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_registered.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_stat_notify.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_stat_notify.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_talking_off.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_talking_off.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "se.lublin.mumla.app-beta-47:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxxhdpi_ic_mumla.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-xxxhdpi/ic_mumla.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/menu_fragment_channel_list.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/menu/fragment_channel_list.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_certificate_info.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/certificate_info.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_activity_main.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/activity_main.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_microphone_muted.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_microphone_muted.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_mumla.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-xxhdpi/ic_mumla.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-anydpi-v24_ic_stat.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-anydpi-v24/ic_stat.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "se.lublin.mumla.app-beta-47:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_public_server_list_row.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/public_server_list_row.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout-sw600dp_fragment_channel.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout-sw600dp/fragment_channel.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_move.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_move.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_fullscreen.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_fullscreen.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_audio_muted.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_audio_muted.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_move.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_move.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/xml_preference_headers.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/xml/preference_headers.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_menu_moreoverflow_card_dark_pressed.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_menu_moreoverflow_card_dark_pressed.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_delete_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_delete_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_fragment_channel.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/fragment_channel.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_delete_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_delete_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_audio.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_audio.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_search.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_search.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "se.lublin.mumla.app-beta-47:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_list_pressed.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/list_pressed.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_server_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_server_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/xml_local_config.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/xml/local_config.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_fragment_channel_edit.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/fragment_channel_edit.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_fragment_channel_list.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/fragment_channel_list.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_add_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_add_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/menu_mumla.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/menu/mumla.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-xhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_audio.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_audio.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/xml_settings_general.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/xml/settings_general.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_microphone_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_microphone_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_overlay.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/overlay.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_carriage_return.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_carriage_return.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_drag_handle.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_drag_handle.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_list_longpressed.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/list_longpressed.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_fragment_public_server_list.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/fragment_public_server_list.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_expanded.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_expanded.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/menu_context_user.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/menu/context_user.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_expanded.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_expanded.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_audio_on.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_audio_on.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_more_vert_black_24dp.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_more_vert_black_24dp.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_talking_off.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_talking_off.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_collapsed.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_collapsed.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_save.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_save.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_server_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_server_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_sort.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_sort.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_list_selector_disabled.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/list_selector_disabled.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_stat_notify.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_stat_notify.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_menu_moreoverflow_card_dark_normal.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_menu_moreoverflow_card_dark_normal.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_collapsed.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_collapsed.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_fragment_server_list.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/fragment_server_list.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_favourite_on.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_favourite_on.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/menu_popup_public_server.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/menu/popup_public_server.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_headphones.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_headphones.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/anim_fade_in.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/anim/fade_in.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_comment.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_comment.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_list_selector_focused.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/list_selector_focused.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_quick_connect.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_quick_connect.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_channels.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_channels.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_audio_muted.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_audio_muted.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_settings.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_settings.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_microphone.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_microphone.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_headphones.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_headphones.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_match.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_match.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_microphone.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_microphone.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_list_selector_focused.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/list_selector_focused.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_more_vert_black_24dp.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_more_vert_black_24dp.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_server_list_row.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/server_list_row.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_fragment_server_info.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/fragment_server_info.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_dialog_comment.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/dialog_comment.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_registered.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_registered.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_drag_handle.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_drag_handle.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_microphone_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_microphone_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_outline_circle_server_muted.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/outline_circle_server_muted.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/xml_searchable.xml.flat",
+        "source": "se.lublin.mumla.app-beta-47:/xml/searchable.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_search.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_search.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_ptt_indicator_background.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/ptt_indicator_background.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_send.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_send.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_list_longpressed.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/list_longpressed.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxxhdpi_ic_more_vert_black_24dp.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxxhdpi/ic_more_vert_black_24dp.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_microphone_muted.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_microphone_muted.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_drag_handle.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_drag_handle.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_microphone_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_microphone_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_quick_connect.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_quick_connect.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "se.lublin.mumla.app-beta-47:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_menu_moreoverflow_card_dark_normal.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_menu_moreoverflow_card_dark_normal.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_ptt_overlay.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/ptt_overlay.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_dialog_server_search.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/dialog_server_search.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_favourite_on.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_favourite_on.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_menu_moreoverflow_card_dark_pressed.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_menu_moreoverflow_card_dark_pressed.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_server_location.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_server_location.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_chat.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_chat.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_list_chat_item.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/list_chat_item.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_add_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_add_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_sort.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_sort.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_sort.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_sort.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_dialog_progress.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/dialog_progress.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_delete_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_delete_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_headphones.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_headphones.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_list_drawer_headerlogo.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/list_drawer_headerlogo.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_edit_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_edit_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_add_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_add_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_add_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_add_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_quick_connect.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_quick_connect.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_menu_moreoverflow_card_dark_pressed.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_menu_moreoverflow_card_dark_pressed.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_launcher_foreground.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_error.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_error.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_chat.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_chat.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_registered.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_registered.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_expanded.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_expanded.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "se.lublin.mumla.app-beta-47:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_server_card.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/server_card.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_outline_circle_suppressed.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/outline_circle_suppressed.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_settings.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_settings.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_carriage_return.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_carriage_return.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_edit_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_edit_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_collapsed.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_collapsed.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_channels.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_channels.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_user_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_user_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_list_longpressed.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/list_longpressed.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-ldpi_ic_launcher_foreground.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-ldpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_fullscreen.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_fullscreen.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_more_vert_black_24dp.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_more_vert_black_24dp.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_fragment_tokens.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/fragment_tokens.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_outline_circle.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/outline_circle.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_mumla.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-xhdpi/ic_mumla.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_expanded.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_expanded.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-anydpi-v24_ic_mumla.xml.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-anydpi-v24/ic_mumla.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_server_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_server_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_audio.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_audio.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_ic_card_overflow.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/ic_card_overflow.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_add_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_add_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_send.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_send.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_delete_light.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_delete_light.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_mumla.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-hdpi/ic_mumla.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_channel_row.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/channel_row.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_nested_dropdown_item.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/nested_dropdown_item.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_list_selector_disabled.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/list_selector_disabled.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-ldpi_ic_mumla.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-ldpi/ic_mumla.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "se.lublin.mumla.app-beta-47:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_drawer.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_drawer.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_list_selector_disabled.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/list_selector_disabled.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "se.lublin.mumla.app-beta-42:/drawable-xxxhdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_microphone_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_microphone_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/menu_fragment_chat.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/menu/fragment_chat.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_move.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_move.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_comment.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_comment.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_user_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_user_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_audio.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_audio.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_channels.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_channels.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_user_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_user_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_talking_off.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_talking_off.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_save.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_save.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_ptt_corner.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/ptt_corner.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/xml_settings_authentication.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/xml/settings_authentication.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_menu_moreoverflow_card_dark_normal.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_menu_moreoverflow_card_dark_normal.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_outline_circle_talking_on.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/outline_circle_talking_on.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_drawer_shadow.9.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/drawer_shadow.9.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_overlay_background.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/overlay_background.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_chat.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_chat.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_audio_muted.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_audio_muted.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_info_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_info_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xxhdpi_ic_action_chat.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xxhdpi/ic_action_chat.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_list_drawer_item.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/list_drawer_item.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout-sw720dp_fragment_channel.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout-sw720dp/fragment_channel.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_send.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_send.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_talking_off.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_talking_off.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_dialog_keyselect_preference.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/dialog_keyselect_preference.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_outline_circle_server_deafened.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/outline_circle_server_deafened.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_carriage_return.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_carriage_return.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_info_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_info_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_drag_handle.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_drag_handle.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_info_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_info_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/menu_channel_menu.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/menu/channel_menu.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_action_fullscreen.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_action_fullscreen.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-xhdpi_ic_server_location.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-xhdpi/ic_server_location.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/layout_dialog_seekbar_preference.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/layout/dialog_seekbar_preference.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_ic_mumla.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/ic_mumla.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_delete_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_delete_dark.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_stat_notify.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_stat_notify.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable_outline_circle_muted.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable/outline_circle_muted.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_save.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_save.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/xml_settings_about.xml.flat",
+        "source": "se.lublin.mumla.app-main-50:/xml/settings_about.xml"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_microphone.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_microphone.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-mdpi_ic_action_headphones.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-mdpi/ic_action_headphones.png"
+    },
+    {
+        "merged": "se.lublin.mumla.app-betaDebug-46:/drawable-hdpi_ic_action_user_dark.png.flat",
+        "source": "se.lublin.mumla.app-main-50:/drawable-hdpi/ic_action_user_dark.png"
+    }
+]

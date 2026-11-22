@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns2="http://schemas.android.com/tools">
+    <plurals name="mtrl_badge_content_description">
+    <item quantity="one">%d ny notifikation</item>
+    <item quantity="other">%d nye notifikationer</item>
+  </plurals>
+    <plurals name="notification_unread_many">
+        <item quantity="one">%d ny besked</item>
+        <item quantity="other">%d nye beskeder</item>
+    </plurals>
+    <plurals name="search_channel_users">
+        <item quantity="one">%d bruger</item>
+        <item quantity="other">%d brugere</item>
+    </plurals>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Find hjem"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Gå op"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Flere valgmuligheder"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Udfør"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Se alle"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Vælg en app"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"FRA"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"TIL"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"slet"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Fn+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"mellemrum"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Søg…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Ryd forespørgsel"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Søgeforespørgsel"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Søg"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Indsend forespørgsel"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Talesøgning"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Del med"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Del med <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Skjul"</string>
+    <string name="action_settings">Indstillinger</string>
+    <string name="add">Tilføj</string>
+    <string name="addFavorite">Tilføj favorit</string>
+    <string name="allow">Tillad</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="bottomsheet_action_collapse">Skjul feltet i bunden</string>
+    <string name="bottomsheet_action_expand">Udvid feltet i bunden</string>
+    <string name="bottomsheet_action_expand_halfway">Udvid halvdelen</string>
+    <string name="bottomsheet_drag_handle_content_description">Håndtag</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Besvar"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Video"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Afvis"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Læg på"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Indgående opkald"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Igangværende opkald"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Et indgående opkald screenes"</string>
+    <string name="cancelled">Annulléret</string>
+    <string name="certificate_import_success">Importérede certifikat %s.</string>
+    <string name="certificates">Certifikater</string>
+    <string name="channel">Kanal</string>
+    <string name="channel_add">Tilføj kanal</string>
+    <string name="channel_edit">Redigér kanal</string>
+    <string name="channel_menu_view_description">Se beskrivelse</string>
+    <string name="character_counter_content_description">Du har brugt %1$d ud af %2$d tegn</string>
+    <string name="character_counter_overflowed_content_description">Du har brugt %1$d tegn og dermed overskredet tegnbegrænsningen på %2$d.</string>
+    <string name="chat">Chat</string>
+    <string name="chat_message_to">%1$s → %2$s</string>
+    <string name="chat_message_tts_short_link">(Link til %1$s)</string>
+    <string name="chat_notify_connected">%s forbundet.</string>
+    <string name="clearChat">Ryd chat</string>
+    <string name="clear_text_end_icon_content_description">Ryd tekst</string>
+    <string name="close">Luk</string>
+    <string name="comment_edit_source">Redigér kilde</string>
+    <string name="comment_view">Se</string>
+    <string name="comment_view_source">Se kilde</string>
+    <string name="confirm">Bekræft</string>
+    <string name="confirm_delete_channel">Er du sikker på, at du vil slette denne kanal\?</string>
+    <string name="confirm_delete_server">Er du sikker på, at du vil slette denne server\?</string>
+    <string name="connect">Forbind</string>
+    <string name="connectToServer">Forbind til server</string>
+    <string name="connected">Forbundet</string>
+    <string name="connecting">Forbinder</string>
+    <string name="connecting_to_server">Forbinder til %s…</string>
+    <string name="connectionRefused">Forbindelse nægtet</string>
+    <string name="context_channel_link">Link</string>
+    <string name="control_channel">Kontrollér kanal</string>
+    <string msgid="6083905920877235314" name="copy">"Kopiér"</string>
+    <string name="country">Land</string>
+    <string name="default_">Standard</string>
+    <string name="delete">Slet</string>
+    <string name="description">Beskrivelse</string>
+    <string name="donation_thanks">Tak for donationen.</string>
+    <string name="drawer_favorites">Favoritter</string>
+    <string name="drawer_header_servers">Servere</string>
+    <string name="drawer_not_connected">Ikke forbundet</string>
+    <string name="drawer_public">Offentlige servere</string>
+    <string name="drawer_server">Alle kanaler</string>
+    <string name="edit">Redigér</string>
+    <string name="error_a11y_label">Fejl: ugyldig</string>
+    <string name="error_icon_content_description">Fejl</string>
+    <string name="expand">Udvid</string>
+    <string msgid="2427401033573778270" name="expand_button_title">"Avanceret"</string>
+    <string name="export_success">Certifikat eksportéret til %s.</string>
+    <string name="exposed_dropdown_menu_content_description">Vis rullemenuen</string>
+    <string name="first_run_generate_certificate_title">Velkommen til Mumla</string>
+    <string name="generate">Generér</string>
+    <string name="generateCertFailure">Kunne ikke generére certifikat.</string>
+    <string name="generateCertProgress">Generérer certifikat…</string>
+    <string name="hint_reason">Begrundelse</string>
+    <string name="icon_content_description">Ikon for dialogboks</string>
+    <string name="information">Information</string>
+    <string name="invalid_certificate">Ugyldigt certifikat kunne ikke indlæses.</string>
+    <string name="invalid_password">Forkert adgangskode.</string>
+    <string name="item_view_role_description">Fane</string>
+    <string name="m3_loading_indicator_content_description">Indlæser</string>
+    <string name="material_clock_toggle_content_description">Vælg AM eller PM</string>
+    <string name="material_hour_24h_suffix">%1$s timer</string>
+    <string name="material_hour_selection">Vælg time</string>
+    <string name="material_hour_suffix">klokken %1$s</string>
+    <string name="material_minute_selection">Vælg minutter</string>
+    <string name="material_minute_suffix">%1$s minutter</string>
+    <string name="material_slider_range_end">Slut på interval</string>
+    <string name="material_slider_range_start">Start på interval</string>
+    <string name="material_slider_value">Værdi</string>
+    <string name="material_timepicker_am">AM</string>
+    <string name="material_timepicker_clock_mode_description">Skift til urtilstand for at angive klokkeslæt.</string>
+    <string name="material_timepicker_hour">Time</string>
+    <string name="material_timepicker_minute">Minut</string>
+    <string name="material_timepicker_pm">e.m.</string>
+    <string name="material_timepicker_select_time">Vælg tidspunkt</string>
+    <string name="material_timepicker_text_input_mode_description">Skift til teksttilstand for at angive klokkeslæt.</string>
+    <string name="messageReceived">Ny besked</string>
+    <string name="messageToChannel">Skriv en besked til kanal \'%s\'</string>
+    <string name="messageToUser">Skriv en besked til bruger \'%s\'</string>
+    <string name="mtrl_badge_numberless_content_description">Ny notifikation</string>
+    <string name="mtrl_checkbox_state_description_checked">Markeret</string>
+    <string name="mtrl_checkbox_state_description_indeterminate">Delvist markeret</string>
+    <string name="mtrl_checkbox_state_description_unchecked">Ikke markeret</string>
+    <string name="mtrl_chip_close_icon_content_description">Fjern %1$s</string>
+    <string name="mtrl_exceed_max_badge_number_content_description" ns2:ignore="PluralsCandidate">Flere end %1$d nye notifikationer</string>
+    <string name="mtrl_picker_a11y_next_month">Skift til næste måned</string>
+    <string name="mtrl_picker_a11y_prev_month">Skift til forrige måned</string>
+    <string name="mtrl_picker_announce_current_range_selection">Valg af startdato: %1$s – Valg af slutdato: %2$s</string>
+    <string name="mtrl_picker_announce_current_selection">Aktuelt valg: %1$s</string>
+    <string name="mtrl_picker_announce_current_selection_none">ingen</string>
+    <string name="mtrl_picker_cancel">Annuller</string>
+    <string name="mtrl_picker_confirm">OK</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">Vælg dato</string>
+    <string name="mtrl_picker_date_header_unselected">Valgt dato</string>
+    <string name="mtrl_picker_day_of_week_column_header">%1$s</string>
+    <string name="mtrl_picker_end_date_description">Slutdato %1$s</string>
+    <string name="mtrl_picker_invalid_format">Ugyldigt format.</string>
+    <string name="mtrl_picker_invalid_format_example">Eksempel: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">Brug: %1$s</string>
+    <string name="mtrl_picker_invalid_range">Ugyldigt interval.</string>
+    <string name="mtrl_picker_navigate_to_current_year_description">Gå til indeværende år %1$d</string>
+    <string name="mtrl_picker_navigate_to_year_description">Gå til år %1$d</string>
+    <string name="mtrl_picker_out_of_range">Uden for interval: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">Startdato – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – Slutdato</string>
+    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+    <string name="mtrl_picker_range_header_title">Vælg interval</string>
+    <string name="mtrl_picker_range_header_unselected">Startdato – Slutdato</string>
+    <string name="mtrl_picker_save">Gem</string>
+    <string name="mtrl_picker_start_date_description">Startdato %1$s</string>
+    <string name="mtrl_picker_text_input_date_hint">Dato</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">Slutdato</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">Startdato</string>
+    <string name="mtrl_picker_text_input_day_abbr">d</string>
+    <string name="mtrl_picker_text_input_month_abbr">m</string>
+    <string name="mtrl_picker_text_input_year_abbr">å</string>
+    <string name="mtrl_picker_today_description">I dag %1$s</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">Skift til input-tilstand for kalender</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Skift til kalendervisning</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">Skift til input-tilstand for tekst</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Skift til årsvisning</string>
+    <string name="mtrl_picker_toggled_to_day_selection">Skiftede til kalendervisning</string>
+    <string name="mtrl_picker_toggled_to_year_selection">Skiftede til årsvisning</string>
+    <string name="mtrl_timepicker_cancel">Annuller</string>
+    <string name="mtrl_timepicker_confirm">OK</string>
+    <string name="mumlaConnected">Mumla forbundet</string>
+    <string name="mumlaConnecting">Mumla forbinder…</string>
+    <string name="name">Navn</string>
+    <string name="no_certificate">Intet certifikat</string>
+    <string msgid="6573031135582639649" name="not_set">"Ikke angivet"</string>
+    <string name="offline">Offline</string>
+    <string name="online">Online</string>
+    <string name="password">Adgangskode</string>
+    <string name="password_toggle_content_description">Vis adgangskode</string>
+    <string name="perm_denied">Tilladelse nægtet.</string>
+    <string name="position">Position</string>
+    <string msgid="6685851473431805375" name="preference_copied">"\"<ns1:g id="SUMMARY">%1$s</ns1:g>\" blev kopieret til udklipsholderen."</string>
+    <string name="ptt">Tryk-for-snak</string>
+    <string name="reconnect_dialog_message">Du er allerede forbundet til en server. Forbind til denne server i stedet\?</string>
+    <string name="remove">Fjern</string>
+    <string name="reset_key">Nulstil nøgle</string>
+    <string name="save">Gem</string>
+    <string name="search">Søg</string>
+    <string name="search_country">Land</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Søg"</string>
+    <string name="search_name">Navn</string>
+    <string name="searchview_clear_text_content_description">Ryd tekst</string>
+    <string name="searchview_navigation_content_description">Tilbage</string>
+    <string name="send_message">Send besked</string>
+    <string name="server">Server</string>
+    <string name="server_host">Adresse</string>
+    <string name="server_info_current_bandwidth">Nuværende %.1f kbit/s</string>
+    <string name="server_info_max_bandwidth">Maksimum %.1f kbit/s</string>
+    <string name="server_info_protocol">Protokol %s.</string>
+    <string name="server_info_version">%1$s (%2$s)</string>
+    <string name="server_match">Find server</string>
+    <string name="server_match_expand_country">Kunne ikke finde nogle optimale servere i dit land. Søg verden over\?</string>
+    <string name="server_match_found">Server fundet</string>
+    <string name="server_match_not_found">Kunne ikke finde server</string>
+    <string name="server_match_progress">Finder en server…</string>
+    <string name="server_password">Adgangskode</string>
+    <string name="server_port">Port</string>
+    <string name="server_username">Brugernavn</string>
+    <string name="share">Del</string>
+    <string name="side_sheet_accessibility_pane_title">Felt i siden</string>
+    <string name="sort">Sortér</string>
+    <string name="sortBy">Sortér efter…</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string msgid="9167775378838880170" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string name="tcp_encryption_mode">Krypteret med 256 bit AES-256-SHA</string>
+    <string name="temporary">Midlertidigt</string>
+    <string name="udp_encryption_mode">Krypteret med 128 bit OCB-AES-128</string>
+    <string name="unknown">Ukendt</string>
+    <string name="user">Bruger</string>
+    <string name="user_menu_ignore_messages">Ignorér beskeder</string>
+    <string name="user_menu_move">Flyt</string>
+    <string name="user_menu_register">Registrér</string>
+    <string name="user_menu_reset_comment">Nulstil kommentar</string>
+    <string name="user_menu_view_comment">Se kommentar</string>
+    <string msgid="3140233346420563315" name="v7_preference_off">"FRA"</string>
+    <string msgid="89551595707643515" name="v7_preference_on">"TIL"</string>
+    <string name="voice_channel">Stemmekanal</string>
+</resources>

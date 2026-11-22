@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns2="http://schemas.android.com/tools">
+    <plurals name="mtrl_badge_content_description">
+    <item quantity="one">%d νέα ειδοποίηση</item>
+    <item quantity="other">%d νέες ειδοποιήσεις</item>
+  </plurals>
+    <plurals name="notification_unread_many">
+        <item quantity="one">%d νέο μήνυμα</item>
+        <item quantity="other">%d νέα μηνύματα</item>
+    </plurals>
+    <plurals name="search_channel_users">
+        <item quantity="one">%d χρήστης</item>
+        <item quantity="other">%d χρήστες</item>
+    </plurals>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Πλοήγηση στην αρχική σελίδα"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Πλοήγηση προς τα επάνω"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Περισσότερες επιλογές"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Τέλος"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Εμφάνιση όλων"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Επιλέξτε μια εφαρμογή"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"ΕΝΕΡΓΟΠΟΙΗΣΗ"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"διάστημα"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Αναζήτηση…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Διαγραφή ερωτήματος"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Ερώτημα αναζήτησης"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Αναζήτηση"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Υποβολή ερωτήματος"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Φωνητική αναζήτηση"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Κοινοποίηση σε"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Κοινοποίηση στην εφαρμογή <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Σύμπτυξη"</string>
+    <string name="about">Σχετικά με</string>
+    <string name="accessAdd">Προσθήκη διακριτικού κλειδιού πρόσβασης</string>
+    <string name="acknowledgements">Συνεισφέροντες</string>
+    <string name="acknowledgementsSum">Δείτε ποιοι συνέβαλαν στο Mumla (σύνδεσμος ιστού)</string>
+    <string name="action_settings">Ρυθμίσεις</string>
+    <string name="add">Προσθήκη</string>
+    <string name="addFavorite">Προσθήκη στα αγαπημένα</string>
+    <string name="advancedAudio">Επιλογές για προχωρημένος</string>
+    <string name="allow">Έγκριση</string>
+    <string name="appearance">Εμφάνιση</string>
+    <string name="attempting_reconnect">Σφάλμα: %s.
+\n
+\nΕπανασύνδεση…</string>
+    <string name="audio">Ήχος</string>
+    <string name="audioInputMethod">Λειτουργία μετάδοσης</string>
+    <string name="audioInputMethodSum">Πώς ενεργοποιείται η μετάδοση ήχου.</string>
+    <string name="audioInputVolume">Επίπεδο ήχου μικροφώνου</string>
+    <string name="audioInputVolumeSum">Επίπεδο για την ομαλοποίηση του ήχου.</string>
+    <string name="audioSampleRate">Ρυθμός δειγματοληψίας εισόδου</string>
+    <string name="audioSampleRateSum">Προτιμώμενος ρυθμός δειγματοληψίας ήχου. Ορισμένες συσκευές υποστηρίζουν λιγότερες τιμές.</string>
+    <string name="audio_bandwidth">Εύρος ζώνης ήχου</string>
+    <string name="audio_max_bandwidth">Το μέγιστο εύρος ζώνης δικτύου διακομιστή είναι μόνο %1$d kbit/s. Ρύθμιση της ποιότητας ήχου σε %2$d kbit/s (%3$d ms).</string>
+    <string name="audio_per_packet">Ήχος ανά πακέτο</string>
+    <string name="audio_per_packet_sum">Το μήκος του ήχου ανά πακέτο φωνής.</string>
+    <string name="authentication">Ταυτοποίηση</string>
+    <string name="autoReconnect">Αυτόματη επανασύνδεση</string>
+    <string name="autoReconnectSum">Αποκαθιστά τη σύνδεση με το διακομιστή όταν αυτή χαθεί.</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string name="bottomsheet_action_collapse">Σύμπτυξη του φύλλου κάτω μέρους</string>
+    <string name="bottomsheet_action_expand">Ανάπτυξη του φύλλου κάτω μέρους</string>
+    <string name="bottomsheet_action_expand_halfway">Ανάπτυξη μέχρι τη μέση</string>
+    <string name="bottomsheet_drag_handle_content_description">Λαβή μεταφοράς</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Απάντηση"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Βίντεο"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Απόρριψη"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Τερματισμός"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Εισερχόμενη κλήση"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Κλήση σε εξέλιξη"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Διαλογή εισερχόμενης κλήσης"</string>
+    <string name="cancel_reconnect">Ακύρωση επανασύνδεσης</string>
+    <string name="cancelled">Ακυρώθηκε</string>
+    <string name="certificateGenerate">Δημιουργία πιστοποιητικού</string>
+    <string name="certificateGenerateSum">Δημιουργεί ένα νέο πιστοποιητικό Mumla που έχει σχεδιαστεί με αυτο-υπογραφή. Συνιστάται για αρχάριους.</string>
+    <string name="certificate_import_success">Εισαγόμενο πιστοποιητικό %s.</string>
+    <string name="certificate_info">Θέμα:
+\n%1$s
+\n
+\nΙσχύει από:
+\n%2$s
+\n
+\nΈγκυρο για:
+\n%3$s
+\n
+\nDigest (Sha-1):
+\n%4$s
+\n
+\nDigest (Sha-256):
+\n%5$s</string>
+    <string name="certificate_load_failed">Δεν ήταν δυνατή η αποθήκευση του πιστοποιητικού.</string>
+    <string name="certificates">Πιστοποιητικά</string>
+    <string name="change_requires_reconnect">Επανασυνδεθείτε για να χρησιμοποιήσετε τις νέες ρυθμίσεις.</string>
+    <string name="channel">Κανάλι</string>
+    <string name="channel_add">Προσθήκη καναλιού</string>
+    <string name="channel_edit">Επεξεργασία Καναλιού</string>
+    <string name="channel_join">Εγγραφή</string>
+    <string name="channel_menu_pin">Καρφίτσωμα</string>
+    <string name="channel_menu_view_description">Περιγραφή προβολής</string>
+    <string name="character_counter_content_description">Εισήχθησαν %1$d από %2$d χαρακτήρες</string>
+    <string name="character_counter_overflowed_content_description">Υπέρβαση ορίου χαρακτήρων %1$d από %2$d</string>
+    <string name="chat">Συζήτηση</string>
+    <string name="chatNotifications">Ειδοποιήσεις συνομιλίας</string>
+    <string name="chatNotificationsSum">Εμφανίζονται για νέα μηνύματα συνομιλίας.</string>
+    <string name="chat_message_to">%1$s → %2$s</string>
+    <string name="chat_message_tts_short_link">(Σύνδεσμος προς %1$s)</string>
+    <string name="chat_notify_connected">Ο %s συνδέθηκε.</string>
+    <string name="chat_notify_disconnected">Ο %s αποσυνδέθηκε.</string>
+    <string name="chat_notify_kick">Ο %3$s πετάχτηκε από τον διακομιστή από τον %1$s: %2$s.</string>
+    <string name="chat_notify_kick_ban">Ο %3$s πετάχτηκε και του απαγορεύτηκε η είσοδος στον διακομιστή από τον %1$s: %2$s.</string>
+    <string name="chat_notify_kick_ban_self">Σας πέταξε και σας απαγόρεψε την είσοδο στον διακομιστή ο %1$s: %2$s.</string>
+    <string name="chat_notify_kick_self">Σας πέταξε από τον διακομιστή ο %1$s: %2$s.</string>
+    <string name="chat_notify_muted">Φιμωμένος.</string>
+    <string name="chat_notify_muted_deafened">Φιμώθηκε και κωφώθηκε.</string>
+    <string name="chat_notify_now_muted">Ο %s φιμώθηκε τώρα.</string>
+    <string name="chat_notify_now_muted_deafened">Ο %s είναι τώρα φιμωμένος και κωφωμένος.</string>
+    <string name="chat_notify_now_unmuted">Ο %s ξεφιμώθηκε τώρα.</string>
+    <string name="chat_notify_self_recording_started">Η εγγραφή ξεκίνησε</string>
+    <string name="chat_notify_self_recording_stopped">Η εγγραφή σταμάτησε</string>
+    <string name="chat_notify_unmuted">Ξεφιμώθηκε.</string>
+    <string name="chat_notify_user_joined_channel">Ο %s εισήλθε στο κανάλι.</string>
+    <string name="chat_notify_user_joined_channel_by">Ο %1$s μετακινήθηκε εδώ μέσα από το %2$s από τον %3$s.</string>
+    <string name="chat_notify_user_left_channel">Ο %1$s μετακινήθηκε στο %2$s.</string>
+    <string name="chat_notify_user_left_channel_by">Ο %1$s μετακινήθηκε στο %2$s από τον %3$s.</string>
+    <string name="chat_notify_user_recording_started">Ο %s ξεκίνησε να εγγράφει.</string>
+    <string name="chat_notify_user_recording_stopped">Ο %s σταμάτησε να εγγράφει.</string>
+    <string name="clearChat">Καθάρισμα συζήτησης</string>
+    <string name="clearServerCertificates">Εκκαθάριση πιστοποιητικών διακομιστή</string>
+    <string name="clearServerCertificatesSum">Καταργήστε όλα τα πιστοποιητικά αξιόπιστων διακομιστών από το Mumla.</string>
+    <string name="clear_text_end_icon_content_description">Διαγραφή κειμένου</string>
+    <string name="close">Κλείσιμο</string>
+    <string name="comment_edit_source">Επεξεργασία πηγής</string>
+    <string name="comment_view">Προβολή</string>
+    <string name="comment_view_source">Προβολή πηγής</string>
+    <string name="confirm">Επιβεβαίωση</string>
+    <string name="confirm_delete_channel">Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτό το κανάλι;</string>
+    <string name="confirm_delete_server">Είστε βέβαιοι ότι θέλετε να διαγράψετε αυτόν τον διακομιστή;</string>
+    <string name="confirm_reset_comment">Είστε βέβαιοι ότι θέλετε να επαναφέρετε το σχόλιο του χρήστη %s;</string>
+    <string name="connect">Σύνδεση</string>
+    <string name="connectToServer">Σύνδεση στο διακομιστή</string>
+    <string name="connected">Συνδέθηκε</string>
+    <string name="connecting">Σύνδεση σε εξέλιξη</string>
+    <string name="connecting_to_server">Γίνετε σύνδεση με %s…</string>
+    <string name="connectionRefused">Η σύνδεση αρνήθηκε</string>
+    <string name="context_channel_link">Σύνδεσμος</string>
+    <string name="context_channel_shout">Ορίστε τον φωνητικό στόχο</string>
+    <string name="context_channel_unlink_all">Αποσύνδεση όλων</string>
+    <string name="control_channel">Έλεγχος καναλιού</string>
+    <string msgid="6083905920877235314" name="copy">"Αντιγραφή"</string>
+    <string name="country">Χώρα</string>
+    <string name="current_chat_target">Τρέχων στόχος συνομιλίας</string>
+    <string name="deafen">Κώφωση</string>
+    <string name="decrypt_certificate">Αποκρυπτογράφηση πιστοποιητικού</string>
+    <string name="defaultUsername">Προεπιλεγμένο όνομα χρήστη</string>
+    <string name="defaultUsernameDefault">Mumla_User</string>
+    <string name="defaultUsernameSum">Προκαθορισμένο όνομα που χρησιμοποιείται κατά την προσθήκη ενός διακομιστή ή τη σύνδεση σε έναν δημόσιο διακομιστή.</string>
+    <string name="default_">Προκαθορισμένο</string>
+    <string name="delete">Διαγραφή</string>
+    <string name="deny_reason_channel_full">Το κανάλι είναι γεμάτο.</string>
+    <string name="deny_reason_channel_name">Απορρίφθηκε: Μη έγκυρο όνομα καναλιού.</string>
+    <string name="deny_reason_channel_nesting">Η ένθεση καναλιών έφτασε στο όριο.</string>
+    <string name="deny_reason_invalid_username">Μη έγκυρο όνομα χρήστη.</string>
+    <string name="deny_reason_no_certificate">Χρειάζεται ένα πιστοποιητικό για να εκτελέσετε αυτήν τη λειτουργία.</string>
+    <string name="deny_reason_no_operation_temp">Απορρίφθηκε: Η ενέργεια απαγορεύεται σε προσωρινό κανάλι.</string>
+    <string name="deny_reason_other">Λόγος: %s</string>
+    <string name="deny_reason_text_too_long">Απορρίφθηκε: Το μήνυμα κειμένου είναι πολύ μεγάλο.</string>
+    <string name="description">Περιγραφή</string>
+    <string name="detectionThreshold">Όριο ανίχνευσης</string>
+    <string name="detectionThresholdSum">Ελάχιστο επίπεδο έντασης για την ανίχνευση φωνής (όταν η λειτουργία μετάδοσης είναι \"φωνητική δραστηριότητα\").</string>
+    <string name="disableOpus">Αποφυγή του κωδικοποιητή Opus</string>
+    <string name="disableOpusSum">Απενεργοποιήστε την υποστήριξη Opus για διακομιστές Mumble 1.2.4.</string>
+    <string name="disconnect">Αποσύνδεση</string>
+    <string name="disconnectSure">Είστε βέβαιοι ότι θέλετε να αποσυνδεθείτε από το %s;</string>
+    <string name="donation_thanks">Σας ευχαριστούμε για τη δωρεά.</string>
+    <string name="drawer_close">Κλείσιμο συρταριού</string>
+    <string name="drawer_favorites">Αγαπημένα</string>
+    <string name="drawer_header_servers">Διακομιστές</string>
+    <string name="drawer_not_connected">Μη συνδεδεμένος</string>
+    <string name="drawer_open">Άνοιγμα συρταριού</string>
+    <string name="drawer_pinned">Καρφιτσωμένα κανάλια</string>
+    <string name="drawer_public">Δημόσιοι διακομιστές</string>
+    <string name="drawer_server">Όλα τα κανάλια</string>
+    <string name="drawer_tokens">Στοιχεία πρόσβασης</string>
+    <string name="edit">Επεξεργασία</string>
+    <string name="error_a11y_label">Σφάλμα: μη έγκυρο</string>
+    <string name="error_fetching_servers">Δεν μπόρεσα να φέρω διακομιστές.
+\nΕίστε συνδεδεμένοι στο Διαδίκτυο;</string>
+    <string name="error_icon_content_description">Σφάλμα</string>
+    <string name="error_writing_to_storage">Δεν ήταν δυνατή η εγγραφή σε εξωτερικό χώρος.</string>
+    <string name="expand">Επέκταση</string>
+    <string msgid="2427401033573778270" name="expand_button_title">"Σύνθετες"</string>
+    <string name="export_success">Πιστοποιητικό που εξάγεται σε %s.</string>
+    <string name="exposed_dropdown_menu_content_description">Εμφάνιση αναπτυσσόμενου μενού</string>
+    <string name="externalStorageUnavailable">Εξωτερικός χώρος αποθήκευσης μη διαθέσιμος, δεν μπορεί να φορτωθεί το πιστοποιητικό</string>
+    <string name="first_run_generate_certificate">Η δημιουργία πιστοποιητικού συνιστάται ιδιαίτερα και είναι απαραίτητη για σύνδεση με ορισμένους διακομιστές.</string>
+    <string name="first_run_generate_certificate_title">Καλώς ήλθατε στο Mumla</string>
+    <string name="forceTcp">Μόνο TCP</string>
+    <string name="forceTcpSum">Απενεργοποιεί το UDP για επικοινωνία.</string>
+    <string name="general">Γενικά</string>
+    <string name="generate">Δημιουργία</string>
+    <string name="generateCertFailure">Δεν ήταν δυνατή η δημιουργία πιστοποιητικού.</string>
+    <string name="generateCertProgress">Γίνεται δημιουργία πιστοποιητικού…</string>
+    <string name="generateCertSuccess">Το πιστοποιητικό σας έχει οριστεί και αποθηκευτεί ως %s</string>
+    <string name="grant_perm_draw_over_apps">Παρακαλούμε χορηγήστε άδεια για εμφάνιση πάνω από άλλες εφαρμογές.</string>
+    <string name="grant_perm_microphone">Παρακαλούμε χορηγήστε άδεια μικροφώνου.</string>
+    <string name="grant_perm_storage">Παρακαλούμε να χορηγήσετε άδεια σε εξωτερικό χώρο αποθήκευσης.</string>
+    <string name="halfDuplex">Μονόδρομος ήχος</string>
+    <string name="halfDuplexSum">Σίγαση άλλης αναπαραγωγής κατά τη διάρκεια του Πίεση-πλήκτρου-για-ομιλία για να αποφύγετε βρόχους ήχου/ανατροφοδότησης.</string>
+    <string name="handsetMode">Ακουστικό</string>
+    <string name="handsetModeSum">Χρησιμοποιεί το μπροστινό ηχείο και τον αισθητήρα εγγύτητας για να προσομοιώσει μια παραδοσιακή τηλεφωνική κλήση.</string>
+    <string name="hidePtt">Απόκρυψη του κουμπιού Πίεση-πλήκτρου-για-ομιλία</string>
+    <string name="hidePttSum">Μόνο χρήσιμο εάν χρησιμοποιείτε γωνία push-to-talk ή φυσικό κουμπί.</string>
+    <string name="hint_reason">Λόγος</string>
+    <string name="hotCorner">Γωνιά για Πίεση-πλήκτρου-για-ομιλία</string>
+    <string name="hotCornerSum">Πατήστε μια γωνία της οθόνης για να μεταδώσετε ήχο σε όλο το Android.</string>
+    <string name="hot_corner_bottom_left">↙ κάτω αριστερά</string>
+    <string name="hot_corner_bottom_right">κάτω δεξιά ↘</string>
+    <string name="hot_corner_none">Κλειστό</string>
+    <string name="hot_corner_top_left">↖ επάνω αριστερά</string>
+    <string name="hot_corner_top_right">Επάνω δεξιά ↗</string>
+    <string name="icon_content_description">Εικονίδιο παραθύρου διαλόγου</string>
+    <string name="image_confirm_send">Αποστολή αυτής της εικόνας;</string>
+    <string name="information">Πληροφορίες</string>
+    <string name="inputMethodContinuous">Συνεχής</string>
+    <string name="inputMethodPtt">Πίεση-πλήκτρου-για-ομιλία</string>
+    <string name="inputMethodVoice">Φωνητική δραστηριότητα</string>
+    <string name="inputQuality">Ποιότητα εισόδου μικροφώνου</string>
+    <string name="inputQualitySum">Προτιμώμενος ρυθμός δεδομένων που μεταδίδονται (σε bits ανά δευτερόλεπτο).</string>
+    <string name="invalid_certificate">Δεν ήταν δυνατή η φόρτωση μη έγκυρου πιστοποιητικού.</string>
+    <string name="invalid_host">Μη έγκυρος απομακρυσμένος κεντρικός υπολογιστής</string>
+    <string name="invalid_password">Λάθος κωδικός πρόσβασης.</string>
+    <string name="invalid_port_range">Μη έγκυρη θύρα (1-65535)</string>
+    <string name="item_view_role_description">Καρτέλα</string>
+    <string name="licenses">Άδειες</string>
+    <string name="loadImages">Εξωτερικές εικόνες</string>
+    <string name="loadImagesSum">Λαμβάνει και εμφανίζει εικόνες σε συνομιλία.</string>
+    <string name="m3_loading_indicator_content_description">Γίνεται φόρτωση</string>
+    <string name="material_clock_toggle_content_description">Επιλέξτε π.μ. ή μ.μ.</string>
+    <string name="material_hour_24h_suffix">%1$s ώρες</string>
+    <string name="material_hour_selection">Επιλογή ώρας</string>
+    <string name="material_hour_suffix">%1$s ακριβώς</string>
+    <string name="material_minute_selection">Επιλογή λεπτών</string>
+    <string name="material_minute_suffix">%1$s λεπτά</string>
+    <string name="material_slider_range_end">Τέλος εύρους</string>
+    <string name="material_slider_range_start">Αρχή εύρους</string>
+    <string name="material_slider_value">Τιμή</string>
+    <string name="material_timepicker_am">ΠΜ</string>
+    <string name="material_timepicker_clock_mode_description">Κάντε εναλλαγή στη λειτουργία ρολογιού, για την εισαγωγή της ώρας.</string>
+    <string name="material_timepicker_hour">Ώρα</string>
+    <string name="material_timepicker_minute">Λεπτό</string>
+    <string name="material_timepicker_pm">ΜΜ</string>
+    <string name="material_timepicker_select_time">Επιλέξτε ώρα</string>
+    <string name="material_timepicker_text_input_mode_description">Κάντε εναλλαγή στη λειτουργία εισαγωγής κειμένου, για την εισαγωγή της ώρας.</string>
+    <string name="messageReceived">Νέο μήνυμα</string>
+    <string name="messageToChannel">Πληκτρολογήστε ένα μήνυμα στο κανάλι \'%s\'</string>
+    <string name="messageToUser">Πληκτρολογήστε ένα μήνυμα στο χρήστη \'%s\'</string>
+    <string name="mtrl_badge_numberless_content_description">Νέα ειδοποίηση</string>
+    <string name="mtrl_checkbox_state_description_checked">Επιλεγμένο</string>
+    <string name="mtrl_checkbox_state_description_indeterminate">Έγινε μερικός έλεγχος</string>
+    <string name="mtrl_checkbox_state_description_unchecked">Μη επιλεγμένο</string>
+    <string name="mtrl_chip_close_icon_content_description">Κατάργηση %1$s</string>
+    <string name="mtrl_exceed_max_badge_number_content_description" ns2:ignore="PluralsCandidate">Πάνω από %1$d νέες ειδοποιήσεις</string>
+    <string name="mtrl_picker_a11y_next_month">Αλλαγή στον επόμενο μήνα</string>
+    <string name="mtrl_picker_a11y_prev_month">Αλλαγή στον προηγούμενο μήνα</string>
+    <string name="mtrl_picker_announce_current_range_selection">Επιλογή ημερομηνίας έναρξης: %1$s – Επιλογή ημερομηνίας λήξης: %2$s</string>
+    <string name="mtrl_picker_announce_current_selection">Τρέχουσα επιλογή: %1$s</string>
+    <string name="mtrl_picker_announce_current_selection_none">χωρίς επιλογή</string>
+    <string name="mtrl_picker_cancel">Ακύρωση</string>
+    <string name="mtrl_picker_confirm">ΟΚ</string>
+    <string name="mtrl_picker_date_header_selected">%1$s</string>
+    <string name="mtrl_picker_date_header_title">Επιλογή ημερομηνίας</string>
+    <string name="mtrl_picker_date_header_unselected">Επιλεγμένη ημερομηνία</string>
+    <string name="mtrl_picker_day_of_week_column_header">%1$s</string>
+    <string name="mtrl_picker_end_date_description">Ημερομηνία λήξης %1$s</string>
+    <string name="mtrl_picker_invalid_format">Μη έγκυρη μορφή.</string>
+    <string name="mtrl_picker_invalid_format_example">Παράδειγμα: %1$s</string>
+    <string name="mtrl_picker_invalid_format_use">Χρησιμοποιήστε: %1$s</string>
+    <string name="mtrl_picker_invalid_range">Μη έγκυρο εύρος.</string>
+    <string name="mtrl_picker_navigate_to_current_year_description">Πλοήγηση στο τρέχον έτος %1$d</string>
+    <string name="mtrl_picker_navigate_to_year_description">Πλοήγηση στο έτος %1$d</string>
+    <string name="mtrl_picker_out_of_range">Εκτός εύρους: %1$s</string>
+    <string name="mtrl_picker_range_header_only_end_selected">Ημερομηνία έναρξης – %1$s</string>
+    <string name="mtrl_picker_range_header_only_start_selected">%1$s – Ημερομηνία λήξης</string>
+    <string name="mtrl_picker_range_header_selected">%1$s – %2$s</string>
+    <string name="mtrl_picker_range_header_title">Επιλογή εύρους</string>
+    <string name="mtrl_picker_range_header_unselected">Ημερομηνία έναρξης – Ημερομηνία λήξης</string>
+    <string name="mtrl_picker_save">Αποθήκευση</string>
+    <string name="mtrl_picker_start_date_description">Ημερομηνία έναρξης %1$s</string>
+    <string name="mtrl_picker_text_input_date_hint">Ημερομηνία</string>
+    <string name="mtrl_picker_text_input_date_range_end_hint">Ημερομηνία λήξης</string>
+    <string name="mtrl_picker_text_input_date_range_start_hint">Ημερομηνία έναρξης</string>
+    <string name="mtrl_picker_text_input_day_abbr">η</string>
+    <string name="mtrl_picker_text_input_month_abbr">μ</string>
+    <string name="mtrl_picker_text_input_year_abbr">ε</string>
+    <string name="mtrl_picker_today_description">Σήμερα %1$s</string>
+    <string name="mtrl_picker_toggle_to_calendar_input_mode">Εναλλαγή στη λειτουργία εισαγωγής ημερολογίου</string>
+    <string name="mtrl_picker_toggle_to_day_selection">Εναλλαγή στην προβολή Ημερολόγιο</string>
+    <string name="mtrl_picker_toggle_to_text_input_mode">Εναλλαγή στη λειτουργία εισαγωγής κειμένου</string>
+    <string name="mtrl_picker_toggle_to_year_selection">Εναλλαγή στην προβολή έτους</string>
+    <string name="mtrl_picker_toggled_to_day_selection">Έγινε αλλαγή στην προβολή Ημερολογίου</string>
+    <string name="mtrl_picker_toggled_to_year_selection">Έγινε αλλαγή στην προβολή έτους</string>
+    <string name="mtrl_timepicker_cancel">Ακύρωση</string>
+    <string name="mtrl_timepicker_confirm">ΟΚ</string>
+    <string name="mumble_url_parse_failed">Το Mumble URL δεν ισχύει.</string>
+    <string name="mumlaConnected">Το Mumla συνδέθηκε</string>
+    <string name="mumlaConnecting">Το Mumla συνδέεται…</string>
+    <string name="mumlaDisconnected">Το Mumla αποσυνδέθηκε</string>
+    <string name="mute">φίμωση</string>
+    <string name="name">Όνομα</string>
+    <string name="no_certificate">Έλλειψη πιστοποιητικού</string>
+    <string name="no_servers">Πατήστε \'Προσθήκη\' από τη γραμμή δράσης για να προσθέσετε πρώτα ένα διακομιστή.</string>
+    <string msgid="6573031135582639649" name="not_set">"Δεν έχει οριστεί"</string>
+    <string name="offline">Αποσυνδεμένος</string>
+    <string name="online">Συνδεμένος</string>
+    <string name="orbot_not_installed">Η εφαρμογή Orbot δεν είναι εγκατεστημένη. Δεν χρησιμοποιείτε το Tor.</string>
+    <string name="orbot_tor_failed">Δεν ήταν δυνατή η σύνδεση με τον τοπικό διακομιστή μεσολάβησης στη θύρα %d (SOCKS).
+\n
+\nΒεβαιωθείτε ότι η εφαρμογή Orbot λειτουργεί.</string>
+    <string name="overlay">Εμφάνιση πάνω από άλλες εφαρμογές</string>
+    <string name="password">Κωδικός πρόσβασης</string>
+    <string name="password_toggle_content_description">Εμφάνιση κωδικού πρόσβασης</string>
+    <string name="perm_denied">Δεν επιτρέπεται η πρόσβαση.</string>
+    <string name="position">Θέση</string>
+    <string name="pref_certificate_summary">Η προεπιλεγμένη χρήση κατά τη σύνδεση σε ένα διακομιστή.</string>
+    <string name="pref_certificate_title">Πιστοποιητικό</string>
+    <string name="pref_export_certificate_summary">Εξαγωγή ενός σε εξωτερικό χώρο αποθήκευσης.</string>
+    <string name="pref_export_certificate_title">Εξαγωγή πιστοποιητικού</string>
+    <string name="pref_import_certificate_summary">Εισαγάγετε ένα από εξωτερικό χώρο αποθήκευσης.</string>
+    <string name="pref_import_certificate_title">Εισαγωγή πιστοποιητικού</string>
+    <string name="pref_show_user_count">Εμφάνιση μέτρησης χρηστών στο κανάλι</string>
+    <string name="pref_show_user_count_summary">Δείχνει τον αριθμό των χρηστών σε υποπεριοχές καναλιών.</string>
+    <string name="pref_start_upIn_pinned_mode_sum">Ενεργοποιεί τη λειτουργία \"καρφιτσωμένων καναλιών\" μετά τη σύνδεση (κρύβει κανάλια που δεν είναι καρφιτσωμένα).</string>
+    <string name="pref_start_up_in_pinned_mode">Λειτουργία καρφιτσωμένων καναλιών</string>
+    <string msgid="6685851473431805375" name="preference_copied">"Το \"<ns1:g id="SUMMARY">%1$s</ns1:g>\" αντιγράφηκε στο πρόχειρο."</string>
+    <string name="preprocessor_enabled">Προεπεξεργασία εισόδου</string>
+    <string name="preprocessor_enabled_sum">Καταστέλλει τον θόρυβο του περιβάλλοντος και ομαλοποιεί το επίπεδο ήχου.</string>
+    <string name="pressKey">Πατήστε ένα φυσικό πλήκτρο για να το χρησιμοποιήσετε για Πίεση-πλήκτρου-για-ομιλία.</string>
+    <string name="pressKeyInfo">Η εφαρμογή πρέπει να είναι ανοιχτή για να το χρησιμοποιήσετε (λόγω περιορισμών Android).</string>
+    <string name="ptt">Πίεση-πλήκτρου-για-ομιλία</string>
+    <string name="pttButtonHeight">Ύψος κουμπιού Πίεση-πλήκτρου-για-ομιλία</string>
+    <string name="pttButtonHeightSum">Αλλάξτε το κατακόρυφο μήκος του κουμπιού Πίεση-πλήκτρου-για-ομιλία.</string>
+    <string name="pttKey">Πλήκτρο για Πίεση-πλήκτρου-για-ομιλία</string>
+    <string name="pttKeySum">Χρησιμοποιήστε ένα φυσικό κουμπί για να μεταδώσετε ήχο.</string>
+    <string name="pttSettings">Ρυθμίσεις για Πίεση-πλήκτρου-για-ομιλία</string>
+    <string name="pttSound">Ήχος για Πίεση-πλήκτρου-για-ομιλία</string>
+    <string name="pttSoundSum">Παίξτε ηχητικό εφέ όταν πατάτε το κουμπί Πίεση-πλήκτρου-για-ομιλία.</string>
+    <string name="quickConnect">Γρήγορη σύνδεση</string>
+    <string name="reconnect">Επανασύνδεση</string>
+    <string name="reconnect_dialog_message">Είστε ήδη συνδεδεμένοι σε ένα διακομιστή. Θέλετε να συνδεθείτε σε αυτόν τον διακομιστή;</string>
+    <string name="remove">Αφαίρεση</string>
+    <string name="reset_key">Επαναφορά κλειδιού</string>
+    <string name="save">Αποθήκευση</string>
+    <string name="search">Αναζήτηση</string>
+    <string name="searchHint">Αναζήτηση καναλιών και χρηστών</string>
+    <string name="search_country">Χώρα</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Αναζήτηση"</string>
+    <string name="search_name">Όνομα</string>
+    <string name="searchview_clear_text_content_description">Διαγραφή κειμένου</string>
+    <string name="searchview_navigation_content_description">Πίσω</string>
+    <string name="send_message">Αποστολή μηνύματος</string>
+    <string name="server">Διακομιστής</string>
+    <string name="server_host">Διεύθυνση</string>
+    <string name="server_info_codec">Κωδικοποιητής: %s</string>
+    <string name="server_info_current_bandwidth">Τρέχων %.1f kbit/s</string>
+    <string name="server_info_host">Απομακρυσμένος κεντρικός υπολογιστής %1$s (θύρα %2$d)</string>
+    <string name="server_info_latency">%.2f ms καθυστέρηση</string>
+    <string name="server_info_max_bandwidth">Μέγιστα %.1f kbit/s</string>
+    <string name="server_info_protocol">Πρωτόκολλο %s.</string>
+    <string name="server_info_version">%1$s (%2$s)</string>
+    <string name="server_label">Επιγραφή</string>
+    <string name="server_match">Εύρεση διακομιστή</string>
+    <string name="server_match_description">Το Mumla μπορεί να βρει αυτόματα έναν κενό διακομιστή, βελτιστοποιώντας την τοποθεσία, την έκδοση και την καθυστέρηση.</string>
+    <string name="server_match_expand_country">Δεν μπόρεσαν να βρεθούν βέλτιστοι διακομιστές στη χώρα σας. Αναζήτηση παγκοσμίως;</string>
+    <string name="server_match_found">Διακομιστής ευρέθη</string>
+    <string name="server_match_info">Όνομα: %1$s
+\nΑπομακρυσμένος κεντρικός υπολογιστής: %2$s: %3$d
+\nΧρήστες: %4$d / %5$d
+\nΈκδοση: %6$s
+\nΧώρα: %7$s
+\nΚαθυστέρηση: %8$d ms</string>
+    <string name="server_match_not_found">Δεν ήταν δυνατή η εύρεση διακομιστή</string>
+    <string name="server_match_progress">Γίνεται εύρεση διακομιστή…</string>
+    <string name="server_password">Κωδικός πρόσβασης</string>
+    <string name="server_port">Θύρα</string>
+    <string name="server_username">Όνομα χρήστη</string>
+    <string name="share">Κοινοποίηση</string>
+    <string name="shareMessage">Εγγραφείτε σε αυτόν τον διακομιστή Mumble με το Mumla. %s</string>
+    <string name="shortTtsMessages">Μειωμένα μηνύματα κειμένου προς ομιλία</string>
+    <string name="shortTtsMessagesSum">Συντομεύστε τα μηνύματα διαβάζοντας μόνο τα ονόματα τομέα των συνδέσμων.</string>
+    <string name="shout_configure">Ρύθμιση παραμέτρων φωνητικού στόχου</string>
+    <string name="shout_failed">Δεν ήταν δυνατή η δημιουργία φωνητικού στόχου.</string>
+    <string name="shout_include_linked">Εκφώνηση σε συνδεδεμένα κανάλια</string>
+    <string name="shout_include_subchannels">Εκφώνηση σε υποκανάλια</string>
+    <string name="shout_target">Εκφώνηση στο %s</string>
+    <string name="side_sheet_accessibility_pane_title">Δευτερεύον φύλλο</string>
+    <string name="sort">Ταξινόμηση</string>
+    <string name="sortBy">Ταξινόμηση κατά…</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="status_notify_muted">Σιωπηλός.</string>
+    <string name="status_notify_muted_and_deafened">Φιμώθηκε και κωφώθηκε.</string>
+    <string name="stay_awake">Κρατήστε τη συσκευή ξύπνια</string>
+    <string msgid="9167775378838880170" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string name="tcp_encryption_mode">Κρυπτογραφημένο με 256 bit AES-256-SHA</string>
+    <string name="temporary">Προσωρινό</string>
+    <string name="the_server">του διακομιστή</string>
+    <string name="theme">Θέμα</string>
+    <string name="themeSum">Αλλάξτε την εμφάνιση της εφαρμογής.</string>
+    <string name="theme_dark">Σκοτεινό</string>
+    <string name="theme_light">Φωτεινό</string>
+    <string name="togglePtt">Πίεση-πλήκτρου-για-ομιλία</string>
+    <string name="togglePttSum">Ενεργοποιεί ή απενεργοποιεί το Πίεση-πλήκτρου-για-ομιλία για κάθε τύπο.</string>
+    <string name="trust_add_failed">Δεν ήταν δυνατή η προσθήκη πιστοποιητικού στο trust store.</string>
+    <string name="trust_added">Προστέθηκε πιστοποιητικό στο trust store</string>
+    <string name="trust_cleared">Καθαρίστηκε η βάση δεδομένων εμπιστοσύνης</string>
+    <string name="tts_failed">Δεν μπόρεσε να γίνει εκκίνηση το TTS</string>
+    <string name="udp_encryption_mode">Κρυπτογραφημένο με 128 bit OCB-AES-128</string>
+    <string name="unknown">Άγνωστο</string>
+    <string name="untrusted_certificate">Μη αξιόπιστο πιστοποιητικό</string>
+    <string name="useTor">Σύνδεση μέσω Tor</string>
+    <string name="useTorSum">Απαιτεί την εφαρμογή Orbot.</string>
+    <string name="useTts">Κείμενο σε ομιλία</string>
+    <string name="useTtsSum">Διαβάστε δυνατά το εισερχόμενο μήνυμα χρησιμοποιώντας τη σύνθεση ομιλίας.</string>
+    <string name="user">Χρήστης</string>
+    <string name="user_menu_ban">Απαγόρευση πρόσβασης</string>
+    <string name="user_menu_change_comment">Σχόλιο αλλαγής</string>
+    <string name="user_menu_deafen">Κώφωση</string>
+    <string name="user_menu_ignore_messages">Άγνοια μηνυμάτων</string>
+    <string name="user_menu_kick">Πέταγμα</string>
+    <string name="user_menu_local_mute">Τοπική σίγαση</string>
+    <string name="user_menu_move">Μετακίνηση</string>
+    <string name="user_menu_mute">Σίγαση</string>
+    <string name="user_menu_priority_speaker">Ομιλητής προτεραιότητας</string>
+    <string name="user_menu_register">Εγγραφή</string>
+    <string name="user_menu_reset_comment">Επαναφορά σχολίου</string>
+    <string name="user_menu_view_comment">Προβολή σχολίου</string>
+    <string msgid="3140233346420563315" name="v7_preference_off">"ΑΝΕΝΕΡΓΗ"</string>
+    <string msgid="89551595707643515" name="v7_preference_on">"ΕΝΕΡΓΗ"</string>
+    <string name="version">Έκδοση</string>
+    <string name="voiceActivitySettings">Ρυθμίσεις φωνητικής δραστηριότητας</string>
+    <string name="voice_channel">Κανάλι φωνής</string>
+</resources>

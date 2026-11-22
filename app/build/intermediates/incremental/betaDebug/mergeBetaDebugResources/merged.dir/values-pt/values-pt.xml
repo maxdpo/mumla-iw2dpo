@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <plurals name="notification_unread_many">
+        <item quantity="one">%d nova mensagem</item>
+        <item quantity="other">%d novas mensagens</item>
+    </plurals>
+    <plurals name="search_channel_users">
+        <item quantity="one">%d usuário</item>
+        <item quantity="other">%d usuários</item>
+    </plurals>
+    <string msgid="5976598919945601918" name="abc_action_bar_home_description">"Navegar para a página inicial"</string>
+    <string msgid="8388173803310557296" name="abc_action_bar_up_description">"Navegar para cima"</string>
+    <string msgid="3937310113216875497" name="abc_action_menu_overflow_description">"Mais opções"</string>
+    <string msgid="4692188335987374352" name="abc_action_mode_done">"Concluído"</string>
+    <string msgid="1189761859438369441" name="abc_activity_chooser_view_see_all">"Ver tudo"</string>
+    <string msgid="2165779757652331008" name="abc_activitychooserview_choose_application">"Selecionar um app"</string>
+    <string msgid="4215997306490295099" name="abc_capital_off">"DESATIVADO"</string>
+    <string msgid="884982626291842264" name="abc_capital_on">"ATIVADO"</string>
+    <string msgid="8833365367933412986" name="abc_menu_alt_shortcut_label">"Alt+"</string>
+    <string msgid="2223301931652355242" name="abc_menu_ctrl_shortcut_label">"Ctrl+"</string>
+    <string msgid="838001238306846836" name="abc_menu_delete_shortcut_label">"delete"</string>
+    <string msgid="7986526966204849475" name="abc_menu_enter_shortcut_label">"enter"</string>
+    <string msgid="375214403600139847" name="abc_menu_function_shortcut_label">"Function+"</string>
+    <string msgid="4192209724446364286" name="abc_menu_meta_shortcut_label">"Meta+"</string>
+    <string msgid="4741552369836443843" name="abc_menu_shift_shortcut_label">"Shift+"</string>
+    <string msgid="5473865519181928982" name="abc_menu_space_shortcut_label">"espaço"</string>
+    <string msgid="6180552449598693998" name="abc_menu_sym_shortcut_label">"Sym+"</string>
+    <string msgid="5520303668377388990" name="abc_prepend_shortcut_label">"Menu+"</string>
+    <string msgid="7208076849092622260" name="abc_search_hint">"Pesquisar…"</string>
+    <string msgid="3741173234950517107" name="abc_searchview_description_clear">"Limpar consulta"</string>
+    <string msgid="693312494995508443" name="abc_searchview_description_query">"Consulta de pesquisa"</string>
+    <string msgid="3417662926640357176" name="abc_searchview_description_search">"Pesquisar"</string>
+    <string msgid="1486535517437947103" name="abc_searchview_description_submit">"Enviar consulta"</string>
+    <string msgid="2293578557972875415" name="abc_searchview_description_voice">"Pesquisa por voz"</string>
+    <string msgid="8875138169939072951" name="abc_shareactionprovider_share_with">"Compartilhar com"</string>
+    <string msgid="9055268688411532828" name="abc_shareactionprovider_share_with_application">"Compartilhar com <ns1:g id="APPLICATION_NAME">%s</ns1:g>"</string>
+    <string msgid="1656852541809559762" name="abc_toolbar_collapse_description">"Recolher"</string>
+    <string name="about">Sobre</string>
+    <string name="accessAdd">Adicionar token de acesso</string>
+    <string name="acknowledgements">Contribuidores</string>
+    <string name="acknowledgementsSum">Veja quem contribuiu para o Mumla (link da web)</string>
+    <string name="action_settings">Opções</string>
+    <string name="add">Adicionar</string>
+    <string name="addFavorite">Adicionar aos favoritos</string>
+    <string name="advancedAudio">Avançado</string>
+    <string name="allow">Permitir</string>
+    <string name="appearance">Aparência</string>
+    <string name="attempting_reconnect">Erro: %s.
+\n
+\nReconectando…</string>
+    <string name="audio">Áudio</string>
+    <string name="audioInputMethod">Modo de transmissão</string>
+    <string name="audioInputMethodSum">Como a transmissão de áudio é ativada.</string>
+    <string name="audioInputVolume">Volume do microfone</string>
+    <string name="audioInputVolumeSum">Nível para normalizar o áudio.</string>
+    <string name="audioSampleRate">Taxa de amostragem de entrada</string>
+    <string name="audioSampleRateSum">Define a taxa preferencial de amostragem de áudio. Alguns dispositivos suportam menos taxas.</string>
+    <string name="audio_bandwidth">Largura de banda de áudio</string>
+    <string name="audio_per_packet">Áudio por pacote</string>
+    <string name="audio_per_packet_sum">A duração do áudio por pacote de voz.</string>
+    <string name="authentication">Autenticação</string>
+    <string name="autoReconnect">Reconectar automaticamente</string>
+    <string name="autoReconnectSum">Restabelece a conexão ao servidor quando for perdida.</string>
+    <string name="bluetooth">Bluetooth</string>
+    <string msgid="881409763997275156" name="call_notification_answer_action">"Atender"</string>
+    <string msgid="8793775615905189152" name="call_notification_answer_video_action">"Vídeo"</string>
+    <string msgid="3229508546291798546" name="call_notification_decline_action">"Recusar"</string>
+    <string msgid="2659457946726154263" name="call_notification_hang_up_action">"Desligar"</string>
+    <string msgid="6107532579223922871" name="call_notification_incoming_text">"Chamada recebida"</string>
+    <string msgid="8623827134497363134" name="call_notification_ongoing_text">"Chamada em andamento"</string>
+    <string msgid="59049573811482460" name="call_notification_screening_text">"Filtrando uma ligação recebida"</string>
+    <string name="cancel_reconnect">Cancelar reconexão</string>
+    <string name="cancelled">Cancelado</string>
+    <string name="certificateGenerate">Gerar certificado</string>
+    <string name="certificateGenerateSum">Gera um novo certificado Mumla autoassinado. Recomendado para iniciantes.</string>
+    <string name="certificate_import_success">O certificado %s foi importado.</string>
+    <string name="certificate_info">Assunto:
+\n%1$s
+\n
+\nVálido desde:
+\n%2$s
+\n
+\nVálido até:
+\n%3$s
+\n
+\nDigest (SHA-1):
+\n%4$s
+\n
+\nDigest (SHA-256):
+\n%5$s</string>
+    <string name="certificate_load_failed">Não foi possível armazenar o certificado.</string>
+    <string name="certificates">Certificados</string>
+    <string name="change_requires_reconnect">Reconecte-se para usar as novas configurações.</string>
+    <string name="channel">Canal</string>
+    <string name="channel_add">Adicionar canal</string>
+    <string name="channel_edit">Editar canal</string>
+    <string name="channel_join">Entrar</string>
+    <string name="channel_menu_pin">Fixar</string>
+    <string name="channel_menu_view_description">Ver descrição</string>
+    <string name="chat">Chat</string>
+    <string name="chatNotifications">Notificações do chat</string>
+    <string name="chatNotificationsSum">Exibidas para novas mensagens do chat.</string>
+    <string name="chat_message_to">%1$s → %2$s</string>
+    <string name="chat_message_tts_short_link">(Link para %1$s)</string>
+    <string name="chat_notify_connected">%s conectou-se.</string>
+    <string name="chat_notify_disconnected">%s desconectou-se.</string>
+    <string name="chat_notify_muted">Silenciado.</string>
+    <string name="chat_notify_muted_deafened">Silenciado e áudio desativado.</string>
+    <string name="chat_notify_now_muted">%s agora está silenciado.</string>
+    <string name="chat_notify_now_muted_deafened">%s agora está silenciado e com o áudio desativado.</string>
+    <string name="chat_notify_now_unmuted">%s agora está com o microfone ativado.</string>
+    <string name="chat_notify_unmuted">Microfone reativado.</string>
+    <string name="clearChat">Limpar chat</string>
+    <string name="clearServerCertificates">Limpar certificados de servidor</string>
+    <string name="clearServerCertificatesSum">Remove todos os certificados de servidor confiáveis do Mumla.</string>
+    <string name="close">Fechar</string>
+    <string name="comment_edit_source">Editar fonte</string>
+    <string name="comment_view">Mostrar</string>
+    <string name="comment_view_source">Ver fonte</string>
+    <string name="confirm">Confirmar</string>
+    <string name="confirm_delete_channel">Tem certeza que deseja excluir esse canal\?</string>
+    <string name="confirm_delete_server">Tem certeza que deseja excluir esse servidor\?</string>
+    <string name="confirm_reset_comment">Tem certeza que deseja redefinir o comentário do usuário %s\?</string>
+    <string name="connect">Conectar</string>
+    <string name="connectToServer">Conectar-se ao servidor</string>
+    <string name="connected">Conectado</string>
+    <string name="connecting">Conectando</string>
+    <string name="connecting_to_server">Conectando-se à %s…</string>
+    <string name="connectionRefused">Conexão recusada</string>
+    <string name="context_channel_link">Vincular</string>
+    <string name="context_channel_shout">Definir alvo de voz</string>
+    <string name="context_channel_unlink_all">Desvincular todos</string>
+    <string name="control_channel">Controlar canal</string>
+    <string msgid="6083905920877235314" name="copy">"Copiar"</string>
+    <string name="country">País</string>
+    <string name="current_chat_target">Alvo atual do chat</string>
+    <string name="deafen">Desativar áudio</string>
+    <string name="decrypt_certificate">Descriptografar certificado</string>
+    <string name="defaultUsername">Nome de usuário padrão</string>
+    <string name="defaultUsernameDefault">Usuario_Mumla</string>
+    <string name="defaultUsernameSum">Nome predefinido usado ao adicionar um servidor, ou ao conectar a um servidor público.</string>
+    <string name="default_">Padrão</string>
+    <string name="delete">Excluir</string>
+    <string name="description">Descrição</string>
+    <string name="detectionThreshold">Limite de detecção</string>
+    <string name="detectionThresholdSum">Nível mínimo de volume para detecção de voz (quando o modo de transmissão está configurado para \"Ativação por nível de voz\").</string>
+    <string name="disableOpus">Evitar codec Opus</string>
+    <string name="disableOpusSum">Desativa o suporte ao codec de áudio Opus para servidores Mumble versão 1.2.4.</string>
+    <string name="disconnect">Desconectar</string>
+    <string name="disconnectSure">Tem certeza que deseja desconectar-se de %s\?</string>
+    <string name="donation_thanks">Agradecemos sua doação.</string>
+    <string name="drawer_close">Fechar barra de navegação</string>
+    <string name="drawer_favorites">Favoritos</string>
+    <string name="drawer_header_servers">Servidores</string>
+    <string name="drawer_not_connected">Desconectado</string>
+    <string name="drawer_open">Abrir barra de navegação</string>
+    <string name="drawer_pinned">Canais fixados</string>
+    <string name="drawer_public">Servidores públicos</string>
+    <string name="drawer_server">Todos os canais</string>
+    <string name="drawer_tokens">Tokens de acesso</string>
+    <string name="edit">Editar</string>
+    <string name="error_fetching_servers">Não foi possível obter a lista de servidores.
+\nVocê está conectado à internet\?</string>
+    <string name="error_writing_to_storage">Não foi possível gravar no armazenamento externo.</string>
+    <string name="expand">Expandir</string>
+    <string msgid="2427401033573778270" name="expand_button_title">"Avançado"</string>
+    <string name="export_success">Certificado exportado para %s.</string>
+    <string name="externalStorageUnavailable">Armazenamento externo indisponível, não é possível carregar o certificado</string>
+    <string name="first_run_generate_certificate">Gerar um certificado é altamente recomendado e necessário para se conectar em alguns servidores.</string>
+    <string name="first_run_generate_certificate_title">Bem-vindo(a) ao Mumla</string>
+    <string name="forceTcp">Usar apenas TCP</string>
+    <string name="forceTcpSum">Desativa o protocolo UDP para comunicação.</string>
+    <string name="general">Geral</string>
+    <string name="generate">Gerar</string>
+    <string name="generateCertFailure">Não foi possível gerar o certificado.</string>
+    <string name="generateCertProgress">Gerando certificado…</string>
+    <string name="generateCertSuccess">Seu certificado foi definido e salvo como %s</string>
+    <string name="grant_perm_draw_over_apps">Dê permissão de sobreposição sobre outros aplicativos.</string>
+    <string name="grant_perm_microphone">Dê permissão de acesso ao microfone.</string>
+    <string name="grant_perm_storage">Dê permissão de acesso ao armazenamento externo.</string>
+    <string name="halfDuplex">Áudio unidirecional</string>
+    <string name="halfDuplexSum">Silencia outras reproduções de áudio durante atividade do Pressione para falar para evitar retorno e/ou loops de áudio.</string>
+    <string name="handsetMode">Aparelho portátil</string>
+    <string name="handsetModeSum">Use o alto-falante frontal e o sensor de proximidade para simular uma chamada telefônica tradicional.</string>
+    <string name="hidePtt">Esconder o botão Pressione para falar</string>
+    <string name="hidePttSum">Útil apenas se você utiliza um botão físico ou o recurso Canto do Pressione para falar.</string>
+    <string name="hint_reason">Motivo</string>
+    <string name="hotCorner">Canto do Pressione para falar</string>
+    <string name="hotCornerSum">Pressione um canto da tela para transmitir áudio por todo o Android.</string>
+    <string name="hot_corner_bottom_left">↙ canto inferior esquerdo</string>
+    <string name="hot_corner_bottom_right">canto inferior direito ↘</string>
+    <string name="hot_corner_none">Desativado</string>
+    <string name="hot_corner_top_left">↖ canto superior esquerdo</string>
+    <string name="hot_corner_top_right">canto superior direito ↗</string>
+    <string name="image_confirm_send">Enviar esta imagem\?</string>
+    <string name="information">Informação</string>
+    <string name="inputMethodContinuous">Contínuo</string>
+    <string name="inputMethodPtt">Pressione para falar</string>
+    <string name="inputMethodVoice">Ativação por nível de voz</string>
+    <string name="inputQuality">Qualidade de entrada do microfone</string>
+    <string name="inputQualitySum">Taxa preferencial de dados transmitidos (em bits por segundo).</string>
+    <string name="invalid_certificate">Certificado inválido não pôde ser carregado.</string>
+    <string name="invalid_host">Host inválido</string>
+    <string name="invalid_password">Senha incorreta.</string>
+    <string name="invalid_port_range">Porta inválida (1-65535)</string>
+    <string name="licenses">Licenças</string>
+    <string name="loadImages">Imagens externas</string>
+    <string name="loadImagesSum">Baixa e exibe imagens no chat.</string>
+    <string name="messageReceived">Nova mensagem</string>
+    <string name="messageToChannel">Enviar mensagem ao canal \'%s\'</string>
+    <string name="messageToUser">Enviar mensagem ao usuário \'%s\'</string>
+    <string name="mumble_url_parse_failed">URL Mumble inválida.</string>
+    <string name="mumlaConnected">Mumla conectado</string>
+    <string name="mumlaConnecting">Mumla está conectando…</string>
+    <string name="mumlaDisconnected">Mumla desconectado</string>
+    <string name="mute">Silenciar</string>
+    <string name="name">Nome</string>
+    <string name="no_certificate">Sem certificado</string>
+    <string name="no_servers">Você ainda não adicionou servidores. Pressione o botão \"Adicionar\" na barra de ações para começar.</string>
+    <string msgid="6573031135582639649" name="not_set">"Não definido"</string>
+    <string name="offline">Offline</string>
+    <string name="online">Online</string>
+    <string name="orbot_not_installed">O aplicativo Orbot não está instalado. Não é possível utilizar o Tor.</string>
+    <string name="orbot_tor_failed">Não é possível conectar-se ao proxy local na porta %d (SOCKS).
+\n
+\nCertifique-se que o aplicativo Orbot está sendo executado.</string>
+    <string name="overlay">Sobreposição</string>
+    <string name="password">Senha</string>
+    <string name="perm_denied">Permissão negada.</string>
+    <string name="position">Posição</string>
+    <string name="pref_certificate_summary">O padrão para usar quando conectar-se a um servidor.</string>
+    <string name="pref_certificate_title">Certificado</string>
+    <string name="pref_export_certificate_summary">Exporta um certificado para o armazenamento externo.</string>
+    <string name="pref_export_certificate_title">Exportar certificado</string>
+    <string name="pref_import_certificate_summary">Importa um certificado do armazenamento externo.</string>
+    <string name="pref_import_certificate_title">Importar certificado</string>
+    <string name="pref_show_user_count">Mostrar contador de usuários no canal</string>
+    <string name="pref_show_user_count_summary">Exibe o número de usuários em subárvores do canal.</string>
+    <string name="pref_start_upIn_pinned_mode_sum">Ativa o modo \"Canais fixados\" depois de conectar (esconde canais que não estão fixados).</string>
+    <string name="pref_start_up_in_pinned_mode">Modo de canais fixados</string>
+    <string msgid="6685851473431805375" name="preference_copied">"\"<ns1:g id="SUMMARY">%1$s</ns1:g>\" copiado para a área de transferência."</string>
+    <string name="preprocessor_enabled">Pré-processamento de entrada</string>
+    <string name="preprocessor_enabled_sum">Suprime ruído de ambiente e normaliza o volume do áudio.</string>
+    <string name="pressKey">Pressione um botão físico para usá-lo para o Pressione para falar.</string>
+    <string name="pressKeyInfo">O aplicativo precisa estar aberto para usar isso (devido a restrições do Android).</string>
+    <string name="ptt">Pressionar-para-falar</string>
+    <string name="pttButtonHeight">Altura do botão Pressione para falar</string>
+    <string name="pttButtonHeightSum">Altera o comprimento vertical do botão Pressione para falar.</string>
+    <string name="pttKey">Botão do Pressione para falar</string>
+    <string name="pttKeySum">Use um botão físico para transmitir áudio.</string>
+    <string name="pttSettings">Configurações do Pressione para falar</string>
+    <string name="pttSound">Som do Pressione para falar</string>
+    <string name="pttSoundSum">Reproduz um efeito sonoro quando o botão do Pressione para falar é pressionado.</string>
+    <string name="quickConnect">Conexão rápida</string>
+    <string name="reconnect">Reconectar</string>
+    <string name="reconnect_dialog_message">Você já está conectado em um servidor. Deseja conectar-se a este ao invés disso\?</string>
+    <string name="remove">Excluir</string>
+    <string name="reset_key">Redefinir chave</string>
+    <string name="save">Salvar</string>
+    <string name="search">Procurar</string>
+    <string name="searchHint">Procurar canais e usuários</string>
+    <string name="search_country">País</string>
+    <string msgid="6264217191555673260" name="search_menu_title">"Pesquisar"</string>
+    <string name="search_name">Nome</string>
+    <string name="send_message">Enviar mensagem</string>
+    <string name="server">Servidor</string>
+    <string name="server_host">Endereço</string>
+    <string name="server_info_codec">Codec: %s</string>
+    <string name="server_info_current_bandwidth">Atual %.1f kbit/s</string>
+    <string name="server_info_host">Host remoto %1$s (porta %2$d)</string>
+    <string name="server_info_latency">%.2f ms de latência</string>
+    <string name="server_info_max_bandwidth">Máximo de %.1f kbit/s</string>
+    <string name="server_info_protocol">Protocolo %s.</string>
+    <string name="server_info_version">%1$s (%2$s)</string>
+    <string name="server_label">Etiqueta</string>
+    <string name="server_match">Procurar servidor</string>
+    <string name="server_match_description">Mumla pode procurar automaticamente um servidor vazio, otimizado para sua localização, versão e latência.</string>
+    <string name="server_match_expand_country">Não foi possível encontrar servidores em seu país. Procurar mundialmente\?</string>
+    <string name="server_match_found">Servidor encontrado</string>
+    <string name="server_match_info">Nome: %1$s
+\nHost: %2$s:%3$d
+\nUsuários: %4$d / %5$d
+\nVersão: %6$s
+\nPaís: %7$s
+\nLatência: %8$d ms</string>
+    <string name="server_match_not_found">Não foi possível encontrar o servidor</string>
+    <string name="server_match_progress">Procurando servidor…</string>
+    <string name="server_password">Senha</string>
+    <string name="server_port">Porta</string>
+    <string name="server_username">Nome de usuário</string>
+    <string name="share">Compartilhar</string>
+    <string name="shareMessage">Entre nesse servidor Mumble com o Mumla. %s</string>
+    <string name="shortTtsMessages">Encurtar mensagens de texto para fala</string>
+    <string name="shortTtsMessagesSum">Reduz o tamanho das mensagens lendo apenas os nomes de domínio dos links.</string>
+    <string name="shout_configure">Configurar alvo de voz</string>
+    <string name="shout_failed">Não foi possível criar alvo de voz.</string>
+    <string name="shout_include_linked">Gritar nos canais vinculados</string>
+    <string name="shout_include_subchannels">Gritar nos subcanais</string>
+    <string name="shout_target">Gritando para %s</string>
+    <string name="sort">Ordenar</string>
+    <string name="sortBy">Ordenar por…</string>
+    <string msgid="6277540029070332960" name="status_bar_notification_info_overflow">"999+"</string>
+    <string name="status_notify_muted">Silenciado.</string>
+    <string name="status_notify_muted_and_deafened">Silenciado e áudio desativado.</string>
+    <string name="stay_awake">Manter tela ligada</string>
+    <string msgid="9167775378838880170" name="summary_collapsed_preference_list">"<ns1:g id="CURRENT_ITEMS">%1$s</ns1:g>, <ns1:g id="ADDED_ITEMS">%2$s</ns1:g>"</string>
+    <string name="tcp_encryption_mode">Criptografado com AES-256-SHA de 256 bits</string>
+    <string name="temporary">Temporário</string>
+    <string name="theme">Tema</string>
+    <string name="themeSum">Muda o visual do aplicativo.</string>
+    <string name="theme_dark">Escuro</string>
+    <string name="theme_light">Claro</string>
+    <string name="togglePtt">Botão Pressione para falar alternativo</string>
+    <string name="togglePttSum">O botão Pressione para falar alterna a transmissão de ativada para desativada. Não há necessidade de segurá-lo.</string>
+    <string name="trust_add_failed">Não foi possível adicionar o certificado para a lista de certificados confiáveis.</string>
+    <string name="trust_added">Certificado adicionado à lista de certificados confiáveis</string>
+    <string name="trust_cleared">Lista de certificados confiáveis limpa</string>
+    <string name="tts_failed">Não foi possível iniciar o Texto-para-voz</string>
+    <string name="udp_encryption_mode">Criptografado com OCB-AES-128 de 128 bits</string>
+    <string name="unknown">Desconhecido</string>
+    <string name="untrusted_certificate">Certificado não confiável</string>
+    <string name="useTor">Conectar via Tor</string>
+    <string name="useTorSum">Requer o aplicativo Orbot.</string>
+    <string name="useTts">Texto para fala</string>
+    <string name="useTtsSum">Lê novas mensagens em voz alta usando síntese de fala.</string>
+    <string name="user">Usuário</string>
+    <string name="user_menu_ban">Banir</string>
+    <string name="user_menu_change_comment">Mudar comentário</string>
+    <string name="user_menu_deafen">Desativar áudio</string>
+    <string name="user_menu_ignore_messages">Ignorar mensagens</string>
+    <string name="user_menu_kick">Expulsar</string>
+    <string name="user_menu_local_mute">Silenciar localmente</string>
+    <string name="user_menu_move">Mover</string>
+    <string name="user_menu_mute">Silenciar</string>
+    <string name="user_menu_priority_speaker">Falante prioritário</string>
+    <string name="user_menu_register">Registrar</string>
+    <string name="user_menu_reset_comment">Apagar comentário</string>
+    <string name="user_menu_view_comment">Ver comentário</string>
+    <string msgid="3140233346420563315" name="v7_preference_off">"DESATIVADO"</string>
+    <string msgid="89551595707643515" name="v7_preference_on">"ATIVADO"</string>
+    <string name="version">Versão</string>
+    <string name="voiceActivitySettings">Configurações da Ativação por nível de voz</string>
+    <string name="voice_channel">Canal de voz</string>
+</resources>

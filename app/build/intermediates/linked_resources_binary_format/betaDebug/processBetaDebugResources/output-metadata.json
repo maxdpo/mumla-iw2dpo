@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "LINKED_RESOURCES_BINARY_FORMAT",
+    "kind": "Directory"
+  },
+  "applicationId": "se.lublin.mumla.beta",
+  "variantName": "betaDebug",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 29922946,
+      "versionName": "c59dd55-IW2DPO-autoconnect-beta4-debug",
+      "outputFile": "linked-resources-binary-format-betaDebug.ap_"
+    }
+  ],
+  "elementType": "File"
+}

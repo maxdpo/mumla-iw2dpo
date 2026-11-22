@@ -1,0 +1,5 @@
+se.lublin.mumla.test.app-beta-0 C:\mumla-iw2dpo\app\build\generated\res\resValues\androidTest\beta\debug
+se.lublin.mumla.test.app-updated_navigation_xml-1 C:\mumla-iw2dpo\app\build\generated\updated_navigation_xml\betaDebugAndroidTest
+se.lublin.mumla.test.app-mergeBetaDebugAndroidTestResources-2 C:\mumla-iw2dpo\app\build\intermediates\incremental\betaDebugAndroidTest\mergeBetaDebugAndroidTestResources\merged.dir
+se.lublin.mumla.test.app-mergeBetaDebugAndroidTestResources-3 C:\mumla-iw2dpo\app\build\intermediates\incremental\betaDebugAndroidTest\mergeBetaDebugAndroidTestResources\stripped.dir
+se.lublin.mumla.test.app-betaDebugAndroidTest-4 C:\mumla-iw2dpo\app\build\intermediates\merged_res\betaDebugAndroidTest\mergeBetaDebugAndroidTestResources

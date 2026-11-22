@@ -1,0 +1,7 @@
+#Sun Nov 22 20:47:27 CET 2026
+base.0=C\:\\mumla-iw2dpo\\app\\build\\intermediates\\dex\\betaDebugAndroidTest\\mergeProjectDexBetaDebugAndroidTest\\0\\classes.dex
+base.1=C\:\\mumla-iw2dpo\\app\\build\\intermediates\\dex\\betaDebugAndroidTest\\mergeProjectDexBetaDebugAndroidTest\\13\\classes.dex
+path.0=0/classes.dex
+path.1=13/classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
