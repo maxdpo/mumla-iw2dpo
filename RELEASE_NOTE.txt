@@ -18,6 +18,12 @@ Opne Android studio and then choose :
 - Build → Generate App Bundles or APKs → Generate APKs
 
 
+Version 22-11-2026-5 (branch "master")
+Added ping receiver for autostart and alive test
+in case of app crash. Thanks to this and in conjunction with
+another app called "mumla_monitor" this app start at boot
+and in case of crash is restarted by "mumla_monitor"
+
 Version 22-11-2026-4 (branch "master")
 Side menu: "VER : 22-11-2026-4"
 INCOMING TONE changed: 2300 Hz 90 ms, pause 90 ms, 2300 Hz 90 ms

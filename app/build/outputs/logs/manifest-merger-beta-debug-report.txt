@@ -1,7 +1,11 @@
 -- Merging decision tree log ---
+provider#it.iw2dpo.PingProvider
+INJECTED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:170:9-173:40
+	android:authorities
+		INJECTED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml
 manifest
-ADDED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:18:1-169:12
-MERGED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:18:1-169:12
+ADDED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:18:1-176:12
+MERGED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:18:1-176:12
 INJECTED from C:\mumla-iw2dpo\app\src\beta\AndroidManifest.xml:2:1-9:12
 INJECTED from C:\mumla-iw2dpo\app\src\beta\AndroidManifest.xml:2:1-9:12
 INJECTED from C:\mumla-iw2dpo\app\src\beta\AndroidManifest.xml:2:1-9:12
@@ -154,9 +158,9 @@ ADDED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:45:9-58
 	android:name
 		ADDED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:45:18-55
 application
-ADDED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:48:5-167:19
-MERGED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:48:5-167:19
-MERGED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:48:5-167:19
+ADDED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:48:5-174:19
+MERGED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:48:5-174:19
+MERGED from C:\mumla-iw2dpo\app\src\main\AndroidManifest.xml:48:5-174:19
 INJECTED from C:\mumla-iw2dpo\app\src\beta\AndroidManifest.xml:3:5-8:19
 MERGED from [:libraries:humla] C:\humla-iw2dpo\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:29:5-38:19
 MERGED from [:libraries:humla] C:\humla-iw2dpo\build\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:29:5-38:19

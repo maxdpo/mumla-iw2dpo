@@ -2,5 +2,11 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../humla-iw2dpo" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../humla-iw2dpo/libs/humla-spongycastle" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../humla-iw2dpo/src/main/jni/celt-0.11.0-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../humla-iw2dpo/src/main/jni/celt-0.7.0-src" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../humla-iw2dpo/src/main/jni/opus" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../humla-iw2dpo/src/main/jni/speex" vcs="Git" />
   </component>
 </project>

@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="se.lublin.mumla.beta"
     android:installLocation="auto"
-    android:versionCode="29922946"
-    android:versionName="c59dd55-IW2DPO-autoconnect-beta4-debug" >
+    android:versionCode="29923073"
+    android:versionName="50e58b1-IW2DPO-autoconnect-beta4-debug" >
 
     <uses-sdk
         android:minSdkVersion="21"
@@ -177,6 +177,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!--
+ IW2DPO 22-11-2026: risponde al ping del watchdog MumlaMonitor (it.iw2dpo.mumlamonitor).
+             Viene creato all'avvio del processo e registra il receiver it.iw2dpo.mumla.PING.
+        -->
+        <provider
+            android:name="it.iw2dpo.PingProvider"
+            android:authorities="se.lublin.mumla.beta.iw2dpo.ping"
+            android:exported="false" />
 
         <service
             android:name="se.lublin.humla.HumlaService"

@@ -164,6 +164,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <!-- IW2DPO 22-11-2026: risponde al ping del watchdog MumlaMonitor (it.iw2dpo.mumlamonitor).
+             Viene creato all'avvio del processo e registra il receiver it.iw2dpo.mumla.PING. -->
+        <provider
+            android:name="it.iw2dpo.PingProvider"
+            android:authorities="${applicationId}.iw2dpo.ping"
+            android:exported="false" />
     </application>
 
 </manifest>
