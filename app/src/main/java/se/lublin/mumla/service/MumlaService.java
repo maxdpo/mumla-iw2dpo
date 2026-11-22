@@ -155,6 +155,9 @@ public class MumlaService extends HumlaService implements
     private boolean mPttReleasePending = false;
     /** IW2DPO: local "ready / not ready to talk" tones played on PTT press. */
     private LocalTonePlayer mLocalTonePlayer;
+    /** IW2DPO 22-11-2026-3: sessions of the other users currently talking (RX).
+     * The INCOMING TONE is played when this set goes from empty to non-empty. */
+    private final java.util.Set<Integer> mIncomingTalkers = new java.util.HashSet<>();
     /** IW2DPO 19-11-2026-2: Bluetooth speaker-microphone (UNIWA BM001...) PTT and volume keys. */
     private BluetoothPttMic mBtPttMic;
     private final BluetoothPttMic.Listener mBtPttMicListener = new BluetoothPttMic.Listener() {
@@ -292,6 +295,7 @@ public class MumlaService extends HumlaService implements
 
         @Override
         public void onDisconnected(HumlaException e) {
+            synchronized (mIncomingTalkers) { mIncomingTalkers.clear(); } // IW2DPO 22-11-2026-3
             // IW2DPO: an unexpected drop from the last used server, with automatic
             // connect/reconnect enabled -- keep the foreground notification up (instead of
             // hiding it) so Android doesn't kill this service while the watchdog waits for
@@ -313,6 +317,23 @@ public class MumlaService extends HumlaService implements
                         MumlaReconnectNotification.show(MumlaService.this,
                                 e.getMessage() + (mSettings.isTorEnabled() ? " (Tor)" : ""),
                                 isReconnecting(), MumlaService.this);
+            }
+        }
+
+        /** IW2DPO 22-11-2026-3: a user who leaves is no longer talking. */
+        @Override
+        public void onUserRemoved(IUser user, String reason) {
+            if (user != null) {
+                synchronized (mIncomingTalkers) { mIncomingTalkers.remove(user.getSession()); }
+            }
+        }
+
+        /** IW2DPO 22-11-2026-3: a user who changes channel is no longer talking here. */
+        @Override
+        public void onUserJoinedChannel(IUser user, se.lublin.humla.model.IChannel newChannel,
+                                        se.lublin.humla.model.IChannel oldChannel) {
+            if (user != null) {
+                synchronized (mIncomingTalkers) { mIncomingTalkers.remove(user.getSession()); }
             }
         }
 
@@ -442,6 +463,8 @@ public class MumlaService extends HumlaService implements
                     || user.getTalkState() == TalkState.WHISPERING)) {
                 wakeScreen();
             }
+            // IW2DPO 22-11-2026-3: INCOMING TONE when the channel becomes active
+            handleIncomingTone(user, selfSession);
 
             if (isConnectionEstablished() &&
                     user.getSession() == selfSession &&
@@ -1031,6 +1054,45 @@ public class MumlaService extends HumlaService implements
     private void closeMicGateForTone() {
         mLocalTonesPlaying++;
         MicGate.closeUntil(SystemClock.uptimeMillis() + MIC_GATE_MAX_MS);
+    }
+
+    /**
+     * IW2DPO 22-11-2026-3: INCOMING TONE (Settings > Audio > Incoming audio beep).
+     * Plays 800 Hz 70 ms, 20 ms pause, 1200 Hz 70 ms on the local loudspeaker when the
+     * channel simply becomes active, i.e. the first other user starts talking while
+     * nobody else was talking. Not played for our own TX.
+     */
+    private void handleIncomingTone(IUser user, int selfSession) {
+        if (user == null || user.getSession() == selfSession) {
+            return;
+        }
+        final TalkState state = user.getTalkState();
+        final boolean talking = state == TalkState.TALKING
+                || state == TalkState.SHOUTING
+                || state == TalkState.WHISPERING;
+        final boolean channelBecameActive;
+        synchronized (mIncomingTalkers) {
+            if (!talking) {
+                mIncomingTalkers.remove(user.getSession());
+                return;
+            }
+            final boolean wasIdle = mIncomingTalkers.isEmpty();
+            final boolean added = mIncomingTalkers.add(user.getSession());
+            channelBecameActive = wasIdle && added;
+        }
+        if (!channelBecameActive || mLocalTonePlayer == null || mSettings == null
+                || !mSettings.isIncomingToneEnabled()) {
+            return;
+        }
+        try {
+            if (isTalking()) {
+                return; // we are transmitting: no incoming beep
+            }
+        } catch (Exception ignored) {
+            // not connected / not synchronized yet
+        }
+        mLocalTonePlayer.setHandsetMode(useVoiceCallToneRoute());
+        mLocalTonePlayer.playIncoming(mSettings.getLocalTonesVolume(), null);
     }
 
     /** IW2DPO: original PTT release logic, run immediately or after the debounce delay. */

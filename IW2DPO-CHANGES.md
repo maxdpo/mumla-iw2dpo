@@ -18,6 +18,18 @@ Opne Android studio and then choose :
 - Build → Generate App Bundles or APKs → Generate APKs
 
 
+Version 22-11-2026-3 (branch "master")
+Side menu: "VER : 22-11-2026-3"
+New function INCOMING TONE: when a channel simply becomes active (another user starts
+talking while nobody was talking) a local beep is played: 800 Hz 70 ms, pause 20 ms,
+1200 Hz 70 ms. Same level as "Local tones level", same route as the other local tones
+(Bluetooth SCO / handset when active). Not played for our own TX.
+Settings > Audio > "Incoming audio beep" (checkbox, default ON) enables / disables it.
+Files: LocalTonePlayer.java (INCOMING_TONES, playIncoming), MumlaService.java
+(handleIncomingTone, mIncomingTalkers), Settings.java (PREF_INCOMING_TONE,
+isIncomingToneEnabled), settings_audio.xml, strings_notranslate.xml.
+
+
 Version 22-11-2026-2 (branch "master")
 Branch changed from bluettoth to master.
 Version done only for test the branch change.

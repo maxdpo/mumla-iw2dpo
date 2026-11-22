@@ -176,6 +176,11 @@ public class Settings {
     public static final String PREF_LOCAL_TONES_VOLUME = "local_tones_volume";
     public static final int DEFAULT_LOCAL_TONES_VOLUME = 7; // IW2DPO 16-11-2026-4: 7 %
 
+    /** IW2DPO 22-11-2026-3: INCOMING TONE (800 Hz 70 ms, pause 20 ms, 1200 Hz 70 ms)
+     * played when a channel becomes active (someone starts talking). */
+    public static final String PREF_INCOMING_TONE = "incoming_tone_enabled";
+    public static final boolean DEFAULT_INCOMING_TONE = true;
+
     /** IW2DPO: PTT release debouncing delay in ms ("0" = OFF, "100", "500"). */
     /** IW2DPO: KEYLOCK screen: "auto" (only radios with touch screen), "on", "off". */
     public static final String PREF_KEYLOCK_MODE = "keylock_mode";
@@ -473,6 +478,12 @@ public class Settings {
     /** IW2DPO: @return local tones level, 1-100 % of full scale. */
     public int getLocalTonesVolume() {
         return preferences.getInt(PREF_LOCAL_TONES_VOLUME, DEFAULT_LOCAL_TONES_VOLUME);
+    }
+
+    /** IW2DPO 22-11-2026-3: @return true if the INCOMING TONE is played when a channel
+     * becomes active (Settings > Audio > Incoming audio beep). */
+    public boolean isIncomingToneEnabled() {
+        return preferences.getBoolean(PREF_INCOMING_TONE, DEFAULT_INCOMING_TONE);
     }
 
     /** IW2DPO: @return PTT release debouncing delay in ms, 0 = OFF. */

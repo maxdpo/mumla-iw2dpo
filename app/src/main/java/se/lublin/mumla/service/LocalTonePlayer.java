@@ -35,6 +35,8 @@ import java.util.concurrent.Executors;
  *   <li>READY TO TALK (connected to a server): 1568 Hz, 1046 Hz, 1568 Hz, 1318 Hz,
  *       40 ms each.</li>
  *   <li>NOT READY TO TALK (no server / server unavailable): 300 Hz for 1000 ms.</li>
+ *   <li>INCOMING TONE (22-11-2026-3, channel becomes active): 800 Hz 70 ms, 20 ms pause,
+ *       1200 Hz 70 ms.</li>
  * </ul>
  *
  * Tones are synthesized as PCM 16 bit and played with a static {@link AudioTrack} on a
@@ -81,6 +83,11 @@ public class LocalTonePlayer {
             {300, 500},
     };
     private static final double READY_GAIN = 1.0;
+    /** IW2DPO 22-11-2026-3: INCOMING TONE, played when a channel becomes active
+     * (someone starts talking): 800 Hz 70 ms, 20 ms pause, 1200 Hz 70 ms. */
+    private static final int[][] INCOMING_TONES = {
+            {800, 70}, {0, 20}, {1200, 70},
+    };
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
     private final Object mLock = new Object();
@@ -106,6 +113,11 @@ public class LocalTonePlayer {
     /** IW2DPO 19-11-2026-1: TX TIMEOUT alert. @param volumePercent 1-100. */
     public void playTxTimeout(int volumePercent, Runnable onDone) {
         play(TX_TIMEOUT_TONES, volumePercent, NOT_READY_GAIN, onDone);
+    }
+
+    /** IW2DPO 22-11-2026-3: INCOMING TONE. @param volumePercent 1-100. */
+    public void playIncoming(int volumePercent, Runnable onDone) {
+        play(INCOMING_TONES, volumePercent, READY_GAIN, onDone);
     }
 
     private void play(final int[][] tones, int volumePercent, final double gain,

@@ -54,6 +54,13 @@
         android:defaultValue="7"
         android:text="%"
         app:iconSpaceReserved="false"/>
+    <!-- IW2DPO 22-11-2026-3: INCOMING TONE when a channel becomes active -->
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="incoming_tone_enabled"
+        android:summary="@string/incoming_tone_sum_iw2dpo"
+        android:title="@string/incoming_tone_iw2dpo"
+        app:iconSpaceReserved="false"/>
     <ListPreference
         android:defaultValue="100"
         android:entries="@array/pttDebounceNames"
