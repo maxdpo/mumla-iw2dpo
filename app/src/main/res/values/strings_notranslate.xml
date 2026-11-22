@@ -55,7 +55,7 @@
     <string name="tx_timeout_popup_iw2dpo">TX TIMEOUT</string>
     <!-- IW2DPO 22-11-2026-3: INCOMING TONE -->
     <string name="incoming_tone_iw2dpo">Incoming audio beep</string>
-    <string name="incoming_tone_sum_iw2dpo">Beep (800 Hz + 1200 Hz) when the channel becomes active (someone starts talking)</string>
+    <string name="incoming_tone_sum_iw2dpo">Double beep (2300 Hz) when the channel becomes active (someone starts talking)</string>
     <string-array name="txTimeoutNames_iw2dpo">
         <item>OFF</item>
         <item>1 MIN</item>
@@ -68,5 +68,5 @@
         <item>120</item>
         <item>300</item>
     </string-array>
-    <string name="drawer_version_iw2dpo">VER : 22-11-2026-3</string>
+    <string name="drawer_version_iw2dpo">VER : 22-11-2026-4</string>
 </resources>

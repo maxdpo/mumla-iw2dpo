@@ -1058,7 +1058,7 @@ public class MumlaService extends HumlaService implements
 
     /**
      * IW2DPO 22-11-2026-3: INCOMING TONE (Settings > Audio > Incoming audio beep).
-     * Plays 800 Hz 70 ms, 20 ms pause, 1200 Hz 70 ms on the local loudspeaker when the
+     * Plays 2300 Hz 90 ms, 90 ms pause, 2300 Hz 90 ms (22-11-2026-4) on the loudspeaker when the
      * channel simply becomes active, i.e. the first other user starts talking while
      * nobody else was talking. Not played for our own TX.
      */

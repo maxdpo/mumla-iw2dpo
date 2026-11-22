@@ -176,7 +176,7 @@ public class Settings {
     public static final String PREF_LOCAL_TONES_VOLUME = "local_tones_volume";
     public static final int DEFAULT_LOCAL_TONES_VOLUME = 7; // IW2DPO 16-11-2026-4: 7 %
 
-    /** IW2DPO 22-11-2026-3: INCOMING TONE (800 Hz 70 ms, pause 20 ms, 1200 Hz 70 ms)
+    /** IW2DPO 22-11-2026-3: INCOMING TONE (2300 Hz 90 ms, pause 90 ms, 2300 Hz 90 ms)
      * played when a channel becomes active (someone starts talking). */
     public static final String PREF_INCOMING_TONE = "incoming_tone_enabled";
     public static final boolean DEFAULT_INCOMING_TONE = true;

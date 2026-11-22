@@ -35,8 +35,8 @@ import java.util.concurrent.Executors;
  *   <li>READY TO TALK (connected to a server): 1568 Hz, 1046 Hz, 1568 Hz, 1318 Hz,
  *       40 ms each.</li>
  *   <li>NOT READY TO TALK (no server / server unavailable): 300 Hz for 1000 ms.</li>
- *   <li>INCOMING TONE (22-11-2026-3, channel becomes active): 800 Hz 70 ms, 20 ms pause,
- *       1200 Hz 70 ms.</li>
+ *   <li>INCOMING TONE (22-11-2026-4, channel becomes active): 2300 Hz 90 ms, 90 ms pause,
+ *       2300 Hz 90 ms.</li>
  * </ul>
  *
  * Tones are synthesized as PCM 16 bit and played with a static {@link AudioTrack} on a
@@ -83,10 +83,10 @@ public class LocalTonePlayer {
             {300, 500},
     };
     private static final double READY_GAIN = 1.0;
-    /** IW2DPO 22-11-2026-3: INCOMING TONE, played when a channel becomes active
-     * (someone starts talking): 800 Hz 70 ms, 20 ms pause, 1200 Hz 70 ms. */
+    /** IW2DPO 22-11-2026-4: INCOMING TONE, played when a channel becomes active
+     * (someone starts talking): 2300 Hz 90 ms, 90 ms pause, 2300 Hz 90 ms. */
     private static final int[][] INCOMING_TONES = {
-            {800, 70}, {0, 20}, {1200, 70},
+            {2300, 90}, {0, 90}, {2300, 90},
     };
 
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();

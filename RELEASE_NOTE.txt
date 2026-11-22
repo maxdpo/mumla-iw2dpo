@@ -18,6 +18,14 @@ Opne Android studio and then choose :
 - Build → Generate App Bundles or APKs → Generate APKs
 
 
+Version 22-11-2026-4 (branch "master")
+Side menu: "VER : 22-11-2026-4"
+INCOMING TONE changed: 2300 Hz 90 ms, pause 90 ms, 2300 Hz 90 ms
+(was 800 Hz 70 ms, pause 20 ms, 1200 Hz 70 ms). Menu summary updated.
+Files: LocalTonePlayer.java (INCOMING_TONES), MumlaService.java, Settings.java (comments),
+strings_notranslate.xml.
+
+
 Version 22-11-2026-3 (branch "master")
 Side menu: "VER : 22-11-2026-3"
 New function INCOMING TONE: when a channel simply becomes active (another user starts
