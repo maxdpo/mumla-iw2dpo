@@ -53,6 +53,7 @@ import se.lublin.humla.IHumlaService;
 import se.lublin.humla.IHumlaSession;
 import se.lublin.humla.model.IChannel;
 import se.lublin.humla.model.IUser;
+import se.lublin.humla.model.TalkState;
 import se.lublin.humla.util.HumlaDisconnectedException;
 import se.lublin.humla.util.HumlaException;
 import se.lublin.humla.util.HumlaObserver;
@@ -137,6 +138,22 @@ public class ChannelListFragment extends HumlaServiceFragment implements OnChann
 
         @Override
         public void onUserTalkStateUpdated(IUser user) {
+            // IW2DPO 23-11-2026-1: DYNAMIC USER LIST, whoever starts talking goes to the
+            // top of the list (the previous one slides down by one place).
+            if (user != null && mChannelListAdapter != null && mChannelView != null
+                    && (user.getTalkState() == TalkState.TALKING
+                        || user.getTalkState() == TalkState.SHOUTING
+                        || user.getTalkState() == TalkState.WHISPERING)
+                    && ChannelListAdapter.onUserStartedTalking(user)) {
+                mChannelListAdapter.updateChannels();
+                mChannelListAdapter.notifyDataSetChanged();
+                // keep the talker (and its channel row above it) visible on screen
+                final int pos = mChannelListAdapter.getUserPosition(user);
+                if (pos >= 0) {
+                    mChannelView.scrollToPosition(Math.max(0, pos - 1));
+                }
+                return; // the rebuilt rows already show the new talk state
+            }
             mChannelListAdapter.updateUserStates(user, mChannelView);
         }
     };

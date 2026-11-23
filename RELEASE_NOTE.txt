@@ -5,6 +5,23 @@ What to do next :
 - DONE create a POP UP WINDOWS if PTT KEY is not setted
 - DONE add server stored in a file for avoid add server every APP Update (three dots export/import)
 - DONE add TX TIMEOUT menu
+- TODO add switch for change servers on HYTERA P50
+
+- Da fare su HYTERA P50
+Accade che se si fanno convivere più app per
+comunicazione come ad esempio P50_Hytalk_V3.2.00.070
+e MUMLA quando si preme il PTT laterale si apre sempre
+l'APP Hytalk che manda in trasmissione il POC
+qualunque sia la schermata visualizzata.
+Creami una APP dedicata alla gestione del PTT
+the lavori a monte di tutte le altre e che
+conceda il PTT solo alla APP visualizzata
+a monitor nel momento in cui viene premuto
+escludento la trasmissione delle altre app.
+Considera che in TX ci deve andare sempre e solo
+una app alla volta quella visibile a schermo
+
+
 
 Version is stored here :
 ".......\app\src\main\res\values\strings_notranslate.xml"
@@ -16,6 +33,13 @@ Opne Android studio and then choose :
 - File → Sync Project with Gradle Files
 - Build → Select Build Variant, to check it was set to betaDebug
 - Build → Generate App Bundles or APKs → Generate APKs
+
+
+Version 23-11-2026-1 (branch "master")
+Side menu: "VER : 23-11-2026-1"
+DYNAMIC USER LIST: in the channel list the radio that is talking always goes to the
+top; the previous one slides to 2nd place, the 2nd to 3rd and so on. Radios that never
+talked stay below in the server order. The list scrolls to keep the talker visible.
 
 
 Version 22-11-2026-5 (branch "master")

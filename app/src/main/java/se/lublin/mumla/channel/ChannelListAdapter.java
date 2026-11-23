@@ -39,6 +39,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -80,6 +81,15 @@ public class ChannelListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     private OnChannelClickListener mChannelClickListener;
     private boolean mShowChannelUserCount;
     private final FragmentManager mFragmentManager;
+
+    /**
+     * IW2DPO 23-11-2026-1: DYNAMIC USER LIST. Names of the users (radios) who talked,
+     * most recent first. In every channel the users are shown in this order: whoever
+     * is talking goes to the top, the previous one slides to 2nd place, the 2nd to
+     * 3rd and so on. Users who never talked keep the server order, below them.
+     * Static: the order survives the re-creation of the list (rotation, menu...).
+     */
+    private static final LinkedList<String> sRecentTalkers = new LinkedList<String>();
 
     public ChannelListAdapter(Context context, IHumlaService service, MumlaDatabase database,
                               FragmentManager fragmentManager, boolean showPinnedOnly,
@@ -441,15 +451,74 @@ public class ChannelListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             return; // Skip adding children of contracted/empty channels.
         }
 
-        for (IUser user : channel.getUsers()) {
-            if (user == null) {
-                continue;
-            }
+        // IW2DPO 23-11-2026-1: last talker first (dynamic list)
+        for (IUser user : sortByRecentTalkers(channel.getUsers())) {
             nodes.add(new Node(channelNode, depth, user));
         }
         for (IChannel subc : channel.getSubchannels()) {
             constructNodes(channelNode, subc, depth + 1, nodes);
         }
+    }
+
+    /**
+     * IW2DPO 23-11-2026-1: moves the user who started talking to the top of the
+     * dynamic list.
+     * @return true if the order changed (the list must be rebuilt).
+     */
+    public static boolean onUserStartedTalking(IUser user) {
+        if (user == null || user.getName() == null) {
+            return false;
+        }
+        final String name = user.getName();
+        synchronized (sRecentTalkers) {
+            if (!sRecentTalkers.isEmpty() && name.equals(sRecentTalkers.getFirst())) {
+                return false; // already at the top
+            }
+            sRecentTalkers.remove(name);
+            sRecentTalkers.addFirst(name);
+            return true;
+        }
+    }
+
+    /** IW2DPO 23-11-2026-1: users sorted by "last talker first" (stable sort). */
+    private static List<IUser> sortByRecentTalkers(List<? extends IUser> users) {
+        final List<IUser> sorted = new ArrayList<IUser>();
+        if (users == null) {
+            return sorted;
+        }
+        for (IUser u : users) {
+            if (u != null) {
+                sorted.add(u);
+            }
+        }
+        final List<String> recent;
+        synchronized (sRecentTalkers) {
+            recent = new ArrayList<String>(sRecentTalkers);
+        }
+        if (recent.isEmpty()) {
+            return sorted;
+        }
+        Collections.sort(sorted, (a, b) -> Integer.compare(talkRank(recent, a), talkRank(recent, b)));
+        return sorted;
+    }
+
+    private static int talkRank(List<String> recent, IUser user) {
+        final int i = recent.indexOf(user.getName());
+        return i < 0 ? Integer.MAX_VALUE : i;
+    }
+
+    /** IW2DPO 23-11-2026-1: @return list position of the user, -1 if not shown. */
+    public int getUserPosition(IUser user) {
+        if (user == null) {
+            return -1;
+        }
+        final long itemId = user.getSession() | USER_ID_MASK;
+        for (int i = 0; i < mNodes.size(); i++) {
+            if (getItemId(i) == itemId) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**

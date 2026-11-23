@@ -2777,7 +2777,7 @@
     <string name="drawer_server">All Channels</string>
     <string name="drawer_title_iw2dpo">Mumla</string>
     <string name="drawer_tokens">Access Tokens</string>
-    <string name="drawer_version_iw2dpo">VER : 2026-11-22-5</string>
+    <string name="drawer_version_iw2dpo">VER : 23-11-2026-1</string>
     <string name="echoCancellationDisabled">Disabled</string>
     <string name="echoCancellationMethod">Echo Cancellation</string>
     <string name="echoCancellationMethodSum">Reduce echo from your device\'s speaker while talking. Quality depends on the device.</string>
