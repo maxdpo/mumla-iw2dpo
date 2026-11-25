@@ -6,6 +6,12 @@ What to do next :
 - DONE add server stored in a file for avoid add server every APP Update (three dots export/import)
 - DONE add TX TIMEOUT menu
 - TODO add switch for change servers on HYTERA P50
+- TO FIX : BUG on Bluettoth connection. On POC HIRO if the POC loose the connection with
+  the UNIWA external bluettoth microphone (bcause of the distance) the the microphone
+  is back close to the POC it is necessary to re-enable the Bluetooth flag.
+  Is seems that when the BT connection is lost the BT FLAG is automatically disabled.
+  See TELEGRAM video from PAOLO
+
 
 - Da fare su HYTERA P50
 Accade che se si fanno convivere più app per
