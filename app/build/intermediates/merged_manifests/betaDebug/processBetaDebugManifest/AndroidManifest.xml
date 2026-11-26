@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="se.lublin.mumla.beta"
     android:installLocation="auto"
-    android:versionCode="29924460"
-    android:versionName="f68cfb4-IW2DPO-autoconnect-beta4-debug" >
+    android:versionCode="29927381"
+    android:versionName="161f9639-IW2DPO-autoconnect-beta4-debug" >
 
     <uses-sdk
         android:minSdkVersion="21"

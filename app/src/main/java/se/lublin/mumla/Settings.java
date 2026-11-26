@@ -165,6 +165,11 @@ public class Settings {
     public static final String PREF_HANDSET_MODE = "handset_mode";
     public static final boolean DEFAULT_HANDSET_MODE = false;
 
+    /** IW2DPO 25-11-2026-1: Bluetooth (SCO) option chosen by the user in the channel menu.
+     * It is SAVED, so it survives BT out of range, server change and POC power off/on. */
+    public static final String PREF_BLUETOOTH_SCO = "iw2dpo_bluetooth_sco";
+    public static final boolean DEFAULT_BLUETOOTH_SCO = false;
+
     public static final String PREF_PTT_SOUND = "ptt_sound";
     public static final boolean DEFAULT_PTT_SOUND = false;
 
@@ -448,6 +453,16 @@ public class Settings {
 
     public boolean isHandsetMode() {
         return preferences.getBoolean(PREF_HANDSET_MODE, DEFAULT_HANDSET_MODE);
+    }
+
+    /** IW2DPO 25-11-2026-1: true if the user enabled the Bluetooth option (saved). */
+    public boolean isBluetoothScoEnabled() {
+        return preferences.getBoolean(PREF_BLUETOOTH_SCO, DEFAULT_BLUETOOTH_SCO);
+    }
+
+    /** IW2DPO 25-11-2026-1: saves the Bluetooth option chosen by the user. */
+    public void setBluetoothScoEnabled(boolean enabled) {
+        preferences.edit().putBoolean(PREF_BLUETOOTH_SCO, enabled).apply();
     }
 
     public boolean isPttSoundEnabled() {

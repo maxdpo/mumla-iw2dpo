@@ -9,7 +9,7 @@ public final class BuildConfig {
   public static final String BUILD_TYPE = "debug";
   public static final String FLAVOR = "beta";
   // Field from default config.
-  public static final long TIMESTAMP = 1795467643747L;
+  public static final long TIMESTAMP = 1795642912079L;
   // Field from default config.
-  public static final String VERSIONTAG = "f68cfb4";
+  public static final String VERSIONTAG = "161f9639";
 }

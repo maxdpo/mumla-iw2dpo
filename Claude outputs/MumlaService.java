@@ -21,6 +21,8 @@ import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.media.AudioDeviceCallback;
+import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Binder;
@@ -158,6 +160,56 @@ public class MumlaService extends HumlaService implements
     /** IW2DPO 22-11-2026-3: sessions of the other users currently talking (RX).
      * The INCOMING TONE is played when this set goes from empty to non-empty. */
     private final java.util.Set<Integer> mIncomingTalkers = new java.util.HashSet<>();
+    /**
+     * IW2DPO 25-11-2026-1: BLUETOOTH OPTION KEPT ENABLED.
+     * Before, the Bluetooth checkbox only reflected the momentary SCO state: when the BT
+     * accessory went out of range, on server change and at power off Humla stopped SCO
+     * and the option came back DISABLED. Now the user choice is saved in Settings and,
+     * while it is enabled and we are connected to a server, SCO is restarted
+     * automatically as soon as a Bluetooth headset (SCO device) is available again.
+     */
+    private static final long BT_SCO_RESTORE_DELAY_MS = 1500;
+    private static final long BT_SCO_WATCHDOG_INTERVAL_MS = 10000;
+    private static final long BT_SCO_MIN_RETRY_MS = 8000;
+    private final Handler mBtScoHandler = new Handler(Looper.getMainLooper());
+    private long mLastBtScoStartMs = 0;
+    private final Runnable mBtScoRestoreRunnable = new Runnable() {
+        @Override
+        public void run() {
+            restoreBluetoothScoIfWanted();
+        }
+    };
+    private final Runnable mBtScoWatchdogRunnable = new Runnable() {
+        @Override
+        public void run() {
+            restoreBluetoothScoIfWanted();
+            mBtScoHandler.postDelayed(this, BT_SCO_WATCHDOG_INTERVAL_MS);
+        }
+    };
+    private final AudioDeviceCallback mBtScoDeviceCallback = new AudioDeviceCallback() {
+        @Override
+        public void onAudioDevicesAdded(AudioDeviceInfo[] addedDevices) {
+            for (AudioDeviceInfo d : addedDevices) {
+                if (d.getType() == AudioDeviceInfo.TYPE_BLUETOOTH_SCO) {
+                    Log.i(TAG, "BT SCO device back: restoring Bluetooth audio");
+                    scheduleBluetoothScoRestore();
+                    return;
+                }
+            }
+        }
+    };
+    /** Restore also after an SCO drop (e.g. BT accessory out of range). */
+    private final BroadcastReceiver mBtScoStateReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(android.content.Context context, Intent intent) {
+            int state = intent.getIntExtra(AudioManager.EXTRA_SCO_AUDIO_STATE,
+                    AudioManager.SCO_AUDIO_STATE_ERROR);
+            if (state == AudioManager.SCO_AUDIO_STATE_DISCONNECTED) {
+                scheduleBluetoothScoRestore();
+            }
+        }
+    };
+
     /** IW2DPO 19-11-2026-2: Bluetooth speaker-microphone (UNIWA BM001...) PTT and volume keys. */
     private BluetoothPttMic mBtPttMic;
     private final BluetoothPttMic.Listener mBtPttMicListener = new BluetoothPttMic.Listener() {
@@ -513,6 +565,20 @@ public class MumlaService extends HumlaService implements
         mBtPttMic = new BluetoothPttMic(this, mBtPttMicListener);
         mBtPttMic.start();
 
+        // IW2DPO 25-11-2026-1: keep the Bluetooth option enabled (auto restore of SCO)
+        AudioManager btAm = (AudioManager) getSystemService(AUDIO_SERVICE);
+        if (btAm != null) {
+            btAm.registerAudioDeviceCallback(mBtScoDeviceCallback, mBtScoHandler);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            registerReceiver(mBtScoStateReceiver,
+                    new IntentFilter(AudioManager.ACTION_SCO_AUDIO_STATE_UPDATED), RECEIVER_EXPORTED);
+        } else {
+            registerReceiver(mBtScoStateReceiver,
+                    new IntentFilter(AudioManager.ACTION_SCO_AUDIO_STATE_UPDATED));
+        }
+        mBtScoHandler.postDelayed(mBtScoWatchdogRunnable, BT_SCO_WATCHDOG_INTERVAL_MS);
+
         // IW2DPO: start the reconnect watchdog. checkAutoReconnect() itself does nothing
         // unless the user has enabled automatic connect/reconnect and has used a server
         // at least once before, so this is a no-op for everyone else.
@@ -536,6 +602,16 @@ public class MumlaService extends HumlaService implements
         if (mBtPttMic != null) { // IW2DPO 19-11-2026-2
             mBtPttMic.stop();
             mBtPttMic = null;
+        }
+        // IW2DPO 25-11-2026-1: stop the Bluetooth option auto restore
+        mBtScoHandler.removeCallbacksAndMessages(null);
+        AudioManager btAm = (AudioManager) getSystemService(AUDIO_SERVICE);
+        if (btAm != null) {
+            btAm.unregisterAudioDeviceCallback(mBtScoDeviceCallback);
+        }
+        try {
+            unregisterReceiver(mBtScoStateReceiver);
+        } catch (IllegalArgumentException ignored) {
         }
         MicGate.open(); // IW2DPO
         if (mLocalTonePlayer != null) { // IW2DPO
@@ -687,6 +763,51 @@ public class MumlaService extends HumlaService implements
         if (mSettings.isHandsetMode()) {
             setProximitySensorOn(true);
         }
+
+        // IW2DPO 25-11-2026-1: re-enable Bluetooth audio after (re)connection, server
+        // change or POC power on, if the user had enabled the Bluetooth option.
+        scheduleBluetoothScoRestore();
+    }
+
+    /** IW2DPO 25-11-2026-1: restore SCO shortly (lets the BT stack settle). */
+    private void scheduleBluetoothScoRestore() {
+        mBtScoHandler.removeCallbacks(mBtScoRestoreRunnable);
+        mBtScoHandler.postDelayed(mBtScoRestoreRunnable, BT_SCO_RESTORE_DELAY_MS);
+    }
+
+    /**
+     * IW2DPO 25-11-2026-1: if the Bluetooth option is enabled (saved), we are connected
+     * to a server, SCO is off and a Bluetooth headset is available, restart SCO.
+     * Nothing is done when no BT headset is present (no useless audio restarts).
+     */
+    private void restoreBluetoothScoIfWanted() {
+        if (mSettings == null || !mSettings.isBluetoothScoEnabled()) return;
+        if (!isSynchronized()) return;
+        try {
+            if (usingBluetoothSco()) return;
+        } catch (Exception e) {
+            return;
+        }
+        if (!isBluetoothScoDeviceAvailable()) return;
+        long now = SystemClock.elapsedRealtime();
+        if (now - mLastBtScoStartMs < BT_SCO_MIN_RETRY_MS) return;
+        mLastBtScoStartMs = now;
+        try {
+            Log.i(TAG, "Bluetooth option enabled: starting Bluetooth SCO");
+            enableBluetoothSco();
+        } catch (Exception e) {
+            Log.w(TAG, "enableBluetoothSco failed: " + e);
+        }
+    }
+
+    /** IW2DPO 25-11-2026-1: true if a Bluetooth headset (SCO) is connected to the POC. */
+    private boolean isBluetoothScoDeviceAvailable() {
+        AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
+        if (am == null) return false;
+        for (AudioDeviceInfo d : am.getDevices(AudioManager.GET_DEVICES_OUTPUTS)) {
+            if (d.getType() == AudioDeviceInfo.TYPE_BLUETOOTH_SCO) return true;
+        }
+        return false;
     }
 
     @Override

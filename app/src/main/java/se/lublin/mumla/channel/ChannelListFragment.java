@@ -271,7 +271,10 @@ public class ChannelListFragment extends HumlaServiceFragment implements OnChann
             }
 
             MenuItem bluetoothItem = menu.findItem(R.id.menu_bluetooth);
-            bluetoothItem.setChecked(session.usingBluetoothSco());
+            // IW2DPO 25-11-2026-1: the checkbox shows the SAVED user choice, not the
+            // momentary SCO state (which drops when the BT accessory goes out of range,
+            // on server change and at power off). MumlaService restores SCO automatically.
+            bluetoothItem.setChecked(mSettings.isBluetoothScoEnabled());
         }
     }
 
@@ -370,6 +373,7 @@ public class ChannelListFragment extends HumlaServiceFragment implements OnChann
             return false;
         } else if (itemId == R.id.menu_bluetooth) {
             item.setChecked(!item.isChecked());
+            mSettings.setBluetoothScoEnabled(item.isChecked()); // IW2DPO 25-11-2026-1: save it
             if (item.isChecked()) {
                 session.enableBluetoothSco();
             } else {
@@ -453,4 +457,4 @@ public class ChannelListFragment extends HumlaServiceFragment implements OnChann
             mChannelListAdapter.setShowChannelUserCount(mSettings.shouldShowUserCount());
         }
     }
-}
+}

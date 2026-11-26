@@ -6,11 +6,14 @@ What to do next :
 - DONE add server stored in a file for avoid add server every APP Update (three dots export/import)
 - DONE add TX TIMEOUT menu
 - TODO add switch for change servers on HYTERA P50
-- TO FIX : BUG on Bluettoth connection. On POC HIRO if the POC loose the connection with
+- DONE (25-11-2026-1) : BUG on Bluettoth connection. On POC HIRO if the POC loose the connection with
   the UNIWA external bluettoth microphone (bcause of the distance) the the microphone
   is back close to the POC it is necessary to re-enable the Bluetooth flag.
   Is seems that when the BT connection is lost the BT FLAG is automatically disabled.
   See TELEGRAM video from PAOLO
+- BUG : when the radio is in stand-by the first PTT pression wake the radio
+  and the second activate the TX. The first PTT pression should wake the radio
+  amd activate the TX at the same time
 
 
 - Da fare su HYTERA P50
@@ -40,6 +43,17 @@ Opne Android studio and then choose :
 - Build → Select Build Variant, to check it was set to betaDebug
 - Build → Generate App Bundles or APKs → Generate APKs
 
+
+Version 25-11-2026-1 (branch "master")
+Side menu: "VER : 25-11-2026-1"
+BLUETOOTH OPTION BUG FIXED: the Bluetooth checkbox (channel menu) is now a SAVED
+setting. Before it only showed the momentary SCO state, so it became DISABLED when
+the BT accessory went out of range, on server change and at POC power off/on.
+Now, while the option is enabled and the app is connected to a server, MumlaService
+re-enables Bluetooth audio (SCO) automatically: after connection/server change/boot
+and as soon as the BT microphone comes back in range (audio device callback + SCO
+state receiver + 10 s watchdog). Unchecking the option disables it as before.
+Files: Settings.java, ChannelListFragment.java, MumlaService.java (no Humla change).
 
 Version 23-11-2026-1 (branch "master")
 Side menu: "VER : 23-11-2026-1"
